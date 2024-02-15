@@ -1,0 +1,8 @@
+{
+  "include": ["src", "*.eslintrc.cjs"],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true
+  }
+}
