@@ -1,3 +1,5 @@
+import { ProductCard } from "../components/ProductCard/ProductCard";
+
 export const Catalog = () => {
-  return <div className="catalog">Catalog</div>;
+  return <ProductCard />;
 };

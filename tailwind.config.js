@@ -1,13 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./src/**/*.{html,js,ts,tsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,tsx,ts}"],
   theme: {
@@ -15,6 +6,10 @@ module.exports = {
       mont: ["Mont", "sans-serif"],
     },
     extend: {
+      fontSize: {
+        main: '22px',
+        small: ['14px', '21px'],
+      },
       backgroundImage: {
         darkness: "url('/img/404page/bg-darkness.png')",
         lightness: "url('/img/404page/bg-lightness.png')",
