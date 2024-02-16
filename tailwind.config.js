@@ -26,7 +26,7 @@ module.exports = {
         "secondary-primary": "#89939A",
         "icons-color": "#B4BDC3",
         "element-color": "#E2E6E9",
-        "hover-color": "#E2E6E9",
+        "hover-color": "#FAFBFC",
         green: "#27AE60",
         red: "#EB5757",
       },
