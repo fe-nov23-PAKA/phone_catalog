@@ -1,8 +1,15 @@
 import React from "react";
 import img from "../../../public/img/phones/apple-iphone-11/black/00.webp";
 import fav from "../../../public/img/icons/favourites.svg";
+import { Phone } from "../../types/Phone";
 
-export const ProductCard: React.FC = () => {
+interface Props {
+  phone: Phone;
+}
+
+export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const { name, capacity, priceRegular, priceDiscount, screen, images, ram } = phone;
+
   return (
     <div
       className="
@@ -13,26 +20,30 @@ export const ProductCard: React.FC = () => {
     >
       <div className="p-8 space-y-2">
         <div className="flex justify-center items-center">
-          <img className="w-36 block self-center" src={img} alt="Product" />
+          <img
+            className="w-36 block self-center"
+            src={images[0]}
+            alt="Product"
+          />
         </div>
-        <h3 className="pt-4 font-semibold text-small">
-          Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
-        </h3>
+        <h3 className="pt-4 font-semibold text-small">{name}</h3>
         <div className="flex items-center justify-flex-start mb-2">
-          <span className="font-extrabold text-main leading-8">$849</span>
+          <span className="font-extrabold text-main leading-8">
+            ${priceRegular}
+          </span>
           <span
             className="
           font-semibold ml-2 line-through
           text-secondary text-main leading-7"
           >
-            $1199
+            ${priceDiscount}
           </span>
         </div>
         <div className="border mb-2" />
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="text-gray-elem text-secondary text-xs">Screen</div>
-            <div className="font-semibold text-xs">6.5&#39;&#39; OLED</div>
+            <div className="font-semibold text-xs">{screen}</div>
           </div>
           <div className="flex items-center justify-between">
             <div
@@ -41,7 +52,7 @@ export const ProductCard: React.FC = () => {
             >
               Capacity
             </div>
-            <div className="font-semibold text-xs">512 GB</div>
+            <div className="font-semibold text-xs">{capacity}</div>
           </div>
           <div className="flex items-center justify-between">
             <div
@@ -50,7 +61,7 @@ export const ProductCard: React.FC = () => {
             >
               RAM
             </div>
-            <div className="font-semibold text-xs">4 GB</div>
+            <div className="font-semibold text-xs">{ram}</div>
           </div>
         </div>
 

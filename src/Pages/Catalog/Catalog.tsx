@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import styles from "./PhoneList.module.scss";
+import styles from "./Catalog.module.scss";
 import { getData } from "../../utils/getData";
 import { Phone } from "../../types/Phone";
+import { ProductCard } from "../../components/ProductCard/ProductCard";
 
-export const PhoneList = () => {
+export const Catalog = () => {
   const [visiblePhones, setVisiblePhones] = useState<Phone[]>([]);
   const [itemsOnPage, setItemsOnPage] = useState("16");
   const [sortField, setSortField] = useState("Less expensive");
@@ -153,7 +154,7 @@ export const PhoneList = () => {
       </div>
 
       {visiblePhones.map((phone) => (
-        <p>{phone.name}</p>
+        <ProductCard key={phone.id} phone={phone} />
       ))}
 
       <ul className="flex items-center space-x-1 font-light">
