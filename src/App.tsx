@@ -1,7 +1,6 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 
-import { PhoneList } from "./components/PhoneList/PhoneList";
-
-const App = () => <PhoneList />;
+const App = () => <Outlet />;
 
 export default App;
