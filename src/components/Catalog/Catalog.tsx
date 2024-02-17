@@ -53,29 +53,28 @@ export const Catalog = () => {
   };
 
   return (
-    <>
-      <div className="flex">
+    <div className="mx-4 sm:mx-9">
+      <div className="flex mb-7 col-start">
         <a href="/" className="mr-2">
           <img src={home} alt="home_icon" />
         </a>
         <a href="/" className="mr-2">
           <img src={arrow_right} alt="" />
         </a>
-        <a
-          href="/"
-          className="flex font-mont font-semibold text-xs self-center"
-        >
+        <a href="/" className="flex font-mont font-semibold text-xs">
           Phones
         </a>
       </div>
-      <div className={`${styles.grid_template} mx-4 sm:mx-6 mb-6 md:mb-10`}>
+      <h1 className="font-mont font-extrabold text-4xl mb-2">Mobile phones</h1>
+      <div className="font-mont text-sm font-semibold text-secondary mb-8">
+        95 models
+      </div>
+      <div className={`${styles.grid_template} mb-6 md:mb-10`}>
         <div
           className={`${styles.test} col-start-1 col-end-3 sm:col-start-1 sm:col-end-5`}
         >
           <div>
-            <p className="mb-1 font-mont font-monttext-secondary text-xs">
-              Sort by
-            </p>
+            <p className="mb-1 font-mont text-secondary text-xs">Sort by</p>
             <button
               type="button"
               className={classNames(
@@ -129,7 +128,7 @@ export const Catalog = () => {
           className={`${styles.test} col-start-3 col-end-5 sm:col-start-5 sm:col-end-8`}
         >
           <div>
-            <p className="mb-1 font-mont text-secondary-primary text-xs">
+            <p className="mb-1 font-mont text-secondary text-xs">
               Items on page
             </p>
             <button
@@ -232,6 +231,6 @@ export const Catalog = () => {
           </a>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
