@@ -1,6 +1,6 @@
 /* eslint-disable operator-linebreak */
 import React from "react";
-import fav from "../../../public/img/icons/favourites.svg";
+import fav from "../../assets/img/icons/favourites.svg";
 import { Phone } from "../../types/Phone";
 
 type Props = {

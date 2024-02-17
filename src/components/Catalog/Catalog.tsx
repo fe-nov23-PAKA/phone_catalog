@@ -47,7 +47,7 @@ export const Catalog = () => {
   };
 
   return (
-    <div className={`${styles.grid_template} mx-4 sm:mx-6`}>
+    <div className={`${styles.grid_template} mx-4 sm:mx-6 mb-16 xl:mb-20`}>
       <div
         className={`${styles.test} col-start-1 col-end-3 sm:col-start-1 sm:col-end-5`}
       >

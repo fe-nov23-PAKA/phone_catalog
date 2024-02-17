@@ -1,21 +1,18 @@
-/* eslint-disable max-len */
 /* eslint-disable prettier/prettier */
 import React from "react";
-import classNames from 'classnames';
+import classNames from "classnames";
 import styles from "./Footer.module.scss";
-import {scrollToTop} from "../../utils/scrollToTop";
+import { scrollToTop } from "../../utils/scrollToTop";
+import logo from "../../assets/img/Logo.svg";
+import arrow_up_black from "../../assets/img/icons/arrow-up-black.svg";
 
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div>
-          <a href="/home">
-            <img
-              className="h-7 w-20"
-              src="../../public/img/Logo.svg"
-              alt="nive-gadgets-logo"
-            />
+          <a href="/">
+            <img className="h-7 w-20" src={logo} alt="nice-gadgets-logo" />
           </a>
         </div>
 
@@ -36,16 +33,23 @@ export const Footer: React.FC = () => {
         <div className={styles.button}>
           <button
             type="button"
-            className={classNames(styles.button_top, "group", "hover:text-primary")}
+            className={classNames(
+              styles.button_top,
+              "group",
+              "hover:text-primary",
+            )}
             onClick={scrollToTop}
           >
             Back to top
             <span
-              className={classNames("group-hover:border-primary", styles.img_border)}
+              className={classNames(
+                "group-hover:border-primary",
+                styles.img_border,
+              )}
             >
               <img
                 className="h-2 w-2"
-                src="../../public/img/icons/arrow-up-black.svg"
+                src={arrow_up_black}
                 alt="back-to-top-button"
               />
             </span>
