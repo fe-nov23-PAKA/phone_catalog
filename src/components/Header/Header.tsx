@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,35 +7,62 @@ export const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 640) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <header className="bg-white border-b border-gray-400 flex flex-col">
-      <div className="container mx-auto px-4 flex justify-between items-center">
+    <header
+      className={` bg-white border-b overflow-y-hidden border-gray-400 flex flex-col ${
+        isMenuOpen ? "overflow-hidden" : ""
+      }`}
+    >
+      <div className="px-4 md:pr-0 flex items-center justify-between">
         <div className="flex items-center">
           <a href="#Home" className="py-4">
-            <img src="./public/img/Logo.svg" alt="Logo" className="h-8" />
+            {isMenuOpen ? (
+              <img
+                src="./public/img/Logo-black.svg"
+                alt="Logo"
+                className="h-8"/>
+            ) : (
+              <img
+                src="./public/img/Logo.svg" 
+                alt="Logo" 
+                className="h-8" />
+            )}
           </a>
-
           <nav
             className="hidden md:flex 
               items-center space-x-8 md:ml-8 xl:ml-12"
           >
             <a
               href="#Home"
-              className="text-secondary-primary 
-              text-xs font-extrabold hover:text-black uppercase"
+              className={`relative  text-secondary-primary 
+              text-xs font-extrabold hover:text-black uppercase"`}
             >
               Home
             </a>
             <a
               href="#Phones"
-              className="text-secondary-primary 
+              className=" relative text-secondary-primary 
               text-xs font-extrabold hover:text-black uppercase"
             >
               Phones
             </a>
             <a
               href="#Tablets"
-              className="text-secondary-primary 
+              className=" relative text-secondary-primary 
               text-xs font-extrabold hover:text-black uppercase"
             >
               Tablets
@@ -90,10 +117,10 @@ export const Header = () => {
       </div>
       {isMenuOpen && (
         <div
-          className="bg-white border-t border-gray-600 
-          flex flex-col h-screen w-full overflow-y-hidden"
+          className="bg-white border-t border-gray-400 
+          flex flex-col left-0 w-full h-full justify-between"
         >
-          <ul className="flex flex-col items-center space-y-4 flex-grow">
+          <ul className="flex mt-8 flex-col items-center space-y-4 flex-grow">
             <li>
               <a
                 href="#Home"
@@ -132,14 +159,14 @@ export const Header = () => {
             </li>
           </ul>
           <div className="flex ">
-            <button type="button" className=" py-6  w-1/2 border">
+            <button type="button" className="py-6 w-1/2 border">
               <img
                 src="./public/img/icons/favourites.svg"
                 alt="Favorites"
                 className="h-6 w-6 p-1 mx-auto"
               />
             </button>
-            <button type="button" className="py-6  w-1/2 border">
+            <button type="button" className="py-6 w-1/2 border">
               <img
                 src="./public/img/icons/shopping-bag.svg"
                 alt="Cart"
