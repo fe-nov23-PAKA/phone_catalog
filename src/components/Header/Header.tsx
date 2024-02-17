@@ -49,8 +49,6 @@ export const Header = () => {
             </a>
           </nav>
         </div>
-
-        {/* Cart and Favorites Buttons */}
         <div
           className="hidden md:flex 
           md:border-secondary-primary items-center"
@@ -70,8 +68,6 @@ export const Header = () => {
             />
           </button>
         </div>
-
-        {/* Burger Menu */}
         <button
           type="button"
           className="block md:hidden text-secondary-primary focus:outline-none"
@@ -92,8 +88,6 @@ export const Header = () => {
           )}
         </button>
       </div>
-
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div
           className="bg-white border-t border-gray-600 
