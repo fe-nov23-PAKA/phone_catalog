@@ -1,21 +1,24 @@
+/* eslint-disable operator-linebreak */
 import React from "react";
-import img from "../../../public/img/phones/apple-iphone-11/black/00.webp";
 import fav from "../../../public/img/icons/favourites.svg";
 import { Phone } from "../../types/Phone";
 
-interface Props {
+type Props = {
   phone: Phone;
-}
+};
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, capacity, priceRegular, priceDiscount, screen, images, ram } = phone;
+  const { name, capacity, priceRegular, priceDiscount, screen, images, ram } =
+    phone;
 
   return (
-    <div
+    <li
       className="
-     rounded-lg border flex-col
-     border-gray-300 max-w-72
-     font-mont
+      col-span-full
+     rounded-lg border
+     border-gray-300 max-w-72 w-full
+     font-mont sm:col-span-6 md:col-span-4
+     xl:col-span-6
      "
     >
       <div className="p-8 space-y-2">
@@ -29,14 +32,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         <h3 className="pt-4 font-semibold text-small">{name}</h3>
         <div className="flex items-center justify-flex-start mb-2">
           <span className="font-extrabold text-main leading-8">
-            ${priceRegular}
+            ${priceDiscount}
           </span>
           <span
             className="
           font-semibold ml-2 line-through
           text-secondary text-main leading-7"
           >
-            ${priceDiscount}
+            ${priceRegular}
           </span>
         </div>
         <div className="border mb-2" />
@@ -84,6 +87,6 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           </button>
         </div>
       </div>
-    </div>
+    </li>
   );
 };

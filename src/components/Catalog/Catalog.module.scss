@@ -1,0 +1,29 @@
+.pagination_default_button {
+  @apply border border-gray-300 rounded-full text-primary hover:bg-white hover:border-primary hover:text-primary font-mont bg-white duration-300;
+}
+
+.pagination_active_button {
+  @apply border border-primary rounded-full text-white hover:bg-white hover:border-primary hover:text-primary font-mont bg-primary duration-300;
+}
+
+.dropdown {
+  @apply inline-flex font-mont items-center w-full justify-between rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-icons-color;
+
+  .dropdown_sort {}
+}
+
+.dropdown_options {
+  @apply absolute text-secondary left-0 z-10 mt-1 font-mont 
+  w-full origin-top-right rounded-md bg-white 
+  shadow-lg ring-1 ring-black ring-opacity-5 
+  focus:outline-none;
+}
+
+.grid_template {
+  @apply grid justify-center grid-cols-4 
+  gap-x-4 sm:grid-cols-12 xl:grid-cols-24;
+}
+
+.test {
+  @apply relative text-left mb-6
+}

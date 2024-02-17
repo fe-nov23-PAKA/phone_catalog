@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Cart, Favourites, HomePage, ItemCard } from "../Pages";
-import { NotFoundPage } from "../Pages/NotFoundPage";
-import { Catalog } from "../Pages/Catalog";
+import { Cart, CatalogPage, Favourites, HomePage, ItemCard } from "../Pages";
+import { PageNotFound } from "../Pages/NotFoundPage";
 
 export const Root = () => (
   <Routes>
@@ -9,13 +8,13 @@ export const Root = () => (
       <Route index element={<HomePage />} />
       <Route path="home" element={<Navigate to="/" replace />} />
       <Route path="catalog">
-        <Route index element={<Catalog />} />
+        <Route index element={<CatalogPage />} />
         <Route path=":slug?" element={<ItemCard />} />
       </Route>
       <Route path="favourites" element={<Favourites />} />
       <Route path="cart" element={<Cart />} />
     </Route>
 
-    <Route path="*" element={<NotFoundPage />} />
+    <Route path="*" element={<PageNotFound />} />
   </Routes>
 );
