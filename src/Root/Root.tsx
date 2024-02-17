@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Cart, Catalog, Favourites, HomePage, ItemCard } from "../Pages";
+import { Cart, Favourites, HomePage, ItemCard } from "../Pages";
 import { NotFoundPage } from "../Pages/NotFoundPage";
+import { Catalog } from "../Pages/Catalog";
 
 export const Root = () => (
   <Routes>
