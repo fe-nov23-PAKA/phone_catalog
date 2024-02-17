@@ -10,6 +10,9 @@ module.exports = {
         main: "22px",
         small: ["14px", "21px"],
       },
+      maxWidth: {
+        "percent": "35%",
+      },
       backgroundImage: {
         darkness: "url('/img/404page/bg-darkness.png')",
         lightness: "url('/img/404page/bg-lightness.png')",
