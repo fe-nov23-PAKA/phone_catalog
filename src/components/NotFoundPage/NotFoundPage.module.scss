@@ -1,8 +1,10 @@
 .page {
-  @apply min-h-screen flex flex-grow items-center justify-center bg-lightness bg-cover;
+  @apply min-h-screen flex flex-grow items-center 
+  justify-center bg-lightness bg-cover;
 
   .modal {
-    @apply mx-4 sm:max-w-xl rounded-xl bg-black text-center shadow-xl p-8 sm:mx-6 xl:max-w-2xl xl:mx-8;
+    @apply mx-4 sm:max-w-xl rounded-xl bg-black 
+    text-center shadow-xl p-8 sm:mx-6 xl:max-w-2xl xl:mx-8;
   }
 
   .header {
@@ -14,6 +16,8 @@
   }
 
   .button {
-    @apply mt-8 inline-block rounded bg-accent px-6 py-4 font-bold text-white hover:bg-404color hover:text-black hover:shadow-sh1 duration-300;
+    @apply mt-8 inline-block rounded bg-accent 
+    px-6 py-4 font-bold text-white 
+    hover:bg-404color hover:text-black hover:shadow-sh1 duration-300;
   }
 }

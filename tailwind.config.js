@@ -33,7 +33,7 @@ module.exports = {
         sh1: "0 3px 13px 0px rgba(23, 32, 49, 0.4)",
       },
       gridTemplateColumns: {
-        24: "repeat(24, minmax(0, 32px))",
+        24: "repeat(24, minmax(0, 35px))",
       },
     },
   },

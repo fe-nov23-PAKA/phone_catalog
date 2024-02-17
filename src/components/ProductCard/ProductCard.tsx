@@ -72,7 +72,8 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           <button
             className="
             bg-accent hover:secondary-accent text-small
-            text-white py-2 rounded-lg w-4/5 font-semibold"
+            text-white py-2 rounded-lg w-4/5 font-semibold
+              hover:shadow-sh1"
             type="button"
           >
             Add to cart
@@ -80,7 +81,8 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           <button
             type="button"
             className="
-            border rounded-full w-10 h-10
+            border rounded-full w-10 h-10 
+            border-icons-color hover:border-primary
             flex items-center justify-center"
           >
             <img className="" src={fav} alt="botton-heart" />

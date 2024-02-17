@@ -5,6 +5,12 @@ import styles from "./Catalog.module.scss";
 import { getData } from "../../utils/getData";
 import { Phone } from "../../types/Phone";
 import { ProductCard } from "../ProductCard";
+import arrow_down from "../../assets/img/icons/arrow-down.svg";
+import arrow_up from "../../assets/img/icons/arrow-up.svg";
+import arrow_left_black from "../../assets/img/icons/arrow-left-black.svg";
+import arrow_right_black from "../../assets/img/icons/arrow-right-black.svg";
+import arrow_right from "../../assets/img/icons/arrow-right.svg";
+import home from "../../assets/img/icons/home-page.svg";
 
 export const Catalog = () => {
   const [visiblePhones, setVisiblePhones] = useState<Phone[]>([]);
@@ -47,133 +53,152 @@ export const Catalog = () => {
   };
 
   return (
-    <div className={`${styles.grid_template} mx-4 sm:mx-6 mb-16 xl:mb-20`}>
-      <div
-        className={`${styles.test} col-start-1 col-end-3 sm:col-start-1 sm:col-end-5`}
-      >
-        <div>
-          <p className="mb-1 font-mont font-monttext-secondary text-xs">
-            Sort by
-          </p>
-          <button
-            type="button"
-            className={classNames(
-              { "focus:ring-primary": !isSortDropDownShown },
-              { "hover:ring-secondary": isSortDropDownShown },
-              styles.dropdown,
-            )}
-            onClick={handleSortDropDownClick}
-            id="menu-button"
-            aria-expanded="true"
-            aria-haspopup="true"
-          >
-            {sortField}
-            {isSortDropDownShown ? (
-              <img src="../../../public/img/icons/arrow-down.svg" alt="" />
-            ) : (
-              <img src="../../../public/img/icons/arrow-up.svg" alt="" />
-            )}
-          </button>
-        </div>
-
-        <div
-          className={classNames(
-            { hidden: isSortDropDownShown },
-            styles.dropdown_options,
-          )}
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="menu-button"
-          tabIndex={-1}
+    <>
+      <div className="flex">
+        <a href="/" className="mr-2">
+          <img src={home} alt="home_icon" />
+        </a>
+        <a href="/" className="mr-2">
+          <img src={arrow_right} alt="" />
+        </a>
+        <a
+          href="/"
+          className="flex font-mont font-semibold text-xs self-center"
         >
-          <div className="py-1" role="none">
-            {sortFields.map((field) => (
-              <a
-                href="#/"
-                className="text-secondary-primary block
+          Phones
+        </a>
+      </div>
+      <div className={`${styles.grid_template} mx-4 sm:mx-6 mb-6 md:mb-10`}>
+        <div
+          className={`${styles.test} col-start-1 col-end-3 sm:col-start-1 sm:col-end-5`}
+        >
+          <div>
+            <p className="mb-1 font-mont font-monttext-secondary text-xs">
+              Sort by
+            </p>
+            <button
+              type="button"
+              className={classNames(
+                { "focus:ring-primary": !isSortDropDownShown },
+                { "hover:ring-secondary": isSortDropDownShown },
+                styles.dropdown,
+              )}
+              onClick={handleSortDropDownClick}
+              id="menu-button"
+              aria-expanded="true"
+              aria-haspopup="true"
+            >
+              {sortField}
+              {isSortDropDownShown ? (
+                <img src={arrow_down} alt="" />
+              ) : (
+                <img src={arrow_up} alt="" />
+              )}
+            </button>
+          </div>
+
+          <div
+            className={classNames(
+              { hidden: isSortDropDownShown },
+              styles.dropdown_options,
+            )}
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabIndex={-1}
+          >
+            <div className="py-1" role="none">
+              {sortFields.map((field) => (
+                <a
+                  href="#/"
+                  className="text-secondary-primary block
                   px-4 py-2 text-sm hover:bg-hover-color 
                   hover:rounded-lg hover:text-primary"
-                role="menuitem"
-                tabIndex={-1}
-                id="menu-item-0"
-                onClick={() => handleSortDropDownElementClick(field)}
-              >
-                {field}
-              </a>
-            ))}
+                  role="menuitem"
+                  tabIndex={-1}
+                  id="menu-item-0"
+                  onClick={() => handleSortDropDownElementClick(field)}
+                >
+                  {field}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className={`${styles.test} col-start-3 col-end-5 sm:col-start-5 sm:col-end-8`}
-      >
-        <div>
-          <p className="mb-1 font-mont text-secondary-primary text-xs">
-            Items on page
-          </p>
-          <button
-            type="button"
-            className={classNames(
-              { "focus:ring-primary": !isItemsDropDownShown },
-              { "hover:ring-secondary": isItemsDropDownShown },
-              styles.dropdown,
-            )}
-            onClick={handleItemsDropDownClick}
-            id="menu-button"
-            aria-expanded="true"
-            aria-haspopup="true"
-          >
-            {itemsOnPage}
-            {isItemsDropDownShown ? (
-              <img src="../../../public/img/icons/arrow-down.svg" alt="" />
-            ) : (
-              <img src="../../../public/img/icons/arrow-up.svg" alt="" />
-            )}
-          </button>
-        </div>
-
         <div
-          className={classNames(
-            { hidden: isItemsDropDownShown },
-            styles.dropdown_options,
-          )}
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="menu-button"
-          tabIndex={-1}
+          className={`${styles.test} col-start-3 col-end-5 sm:col-start-5 sm:col-end-8`}
         >
-          <div className="py-1" role="none">
-            {itemsOnPageList.map((quantity) => (
-              <a
-                href="#/"
-                className="block px-4 py-2 
+          <div>
+            <p className="mb-1 font-mont text-secondary-primary text-xs">
+              Items on page
+            </p>
+            <button
+              type="button"
+              className={classNames(
+                { "focus:ring-primary": !isItemsDropDownShown },
+                { "hover:ring-secondary": isItemsDropDownShown },
+                styles.dropdown,
+              )}
+              onClick={handleItemsDropDownClick}
+              id="menu-button"
+              aria-expanded="true"
+              aria-haspopup="true"
+            >
+              {itemsOnPage}
+              {isItemsDropDownShown ? (
+                <img src={arrow_down} alt="" />
+              ) : (
+                <img src={arrow_up} alt="" />
+              )}
+            </button>
+          </div>
+
+          <div
+            className={classNames(
+              { hidden: isItemsDropDownShown },
+              styles.dropdown_options,
+            )}
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabIndex={-1}
+          >
+            <div className="py-1" role="none">
+              {itemsOnPageList.map((quantity) => (
+                <a
+                  href="#/"
+                  className="block px-4 py-2 
                   text-sm hover:bg-hover-color 
                   hover:rounded-lg hover:text-primary"
-                role="menuitem"
-                tabIndex={-1}
-                id="menu-item-0"
-                onClick={() => handleItemsDropDownElementClick(quantity)}
-              >
-                {quantity}
-              </a>
-            ))}
+                  role="menuitem"
+                  tabIndex={-1}
+                  id="menu-item-0"
+                  onClick={() => handleItemsDropDownElementClick(quantity)}
+                >
+                  {quantity}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
+
+        <ul
+          className={`${styles.grid_template} 
+        col-span-full justify-items-center mb-6 md:mb-10 gap-y-10`}
+        >
+          {visiblePhones.map((phone) => (
+            <ProductCard key={phone.id} phone={phone} />
+          ))}
+        </ul>
       </div>
 
       <ul
-        className={`${styles.grid_template} 
-        col-span-full justify-items-center mb-6 md:mb-10 gap-y-10`}
+        className="flex items-center space-x-1 
+      font-light justify-center mb-16 md:mb-20"
       >
-        {visiblePhones.map((phone) => (
-          <ProductCard key={phone.id} phone={phone} />
-        ))}
-      </ul>
-
-      <ul className="flex items-center space-x-1 font-light">
         <li className={styles.pagination_default_button}>
           <a href="#/" className="w-8 h-8 flex items-center justify-center">
-            <img src="../public/img/icons/arrow-left-black.svg" alt="" />
+            <img src={arrow_left_black} alt="" />
           </a>
         </li>
         <li className={styles.pagination_active_button}>
@@ -203,10 +228,10 @@ export const Catalog = () => {
         </li>
         <li className={styles.pagination_default_button}>
           <a href="#/" className="w-8 h-8 flex items-center justify-center">
-            <img src="../public/img/icons/arrow-right-black.svg" alt="" />
+            <img src={arrow_right_black} alt="" />
           </a>
         </li>
       </ul>
-    </div>
+    </>
   );
 };
