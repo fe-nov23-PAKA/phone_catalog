@@ -1,5 +1,9 @@
+/* eslint-disable max-len */
+/* eslint-disable prettier/prettier */
 import React from "react";
+import classNames from 'classnames';
 import styles from "./Footer.module.scss";
+import {scrollToTop} from "../../utils/scrollToTop";
 
 export const Footer: React.FC = () => {
   return (
@@ -30,13 +34,21 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className={styles.button}>
-          <button type="button" className={styles.button_top}>
-            <span className={styles.button_title}>Back to top</span>
-            <img
-              className="h-8 w-8"
-              src="../../public/img/icons/arrow-upToTop.svg"
-              alt="back-to-top-button"
-            />
+          <button
+            type="button"
+            className={classNames(styles.button_top, "group", "hover:text-primary")}
+            onClick={scrollToTop}
+          >
+            Back to top
+            <span
+              className={classNames("group-hover:border-primary", styles.img_border)}
+            >
+              <img
+                className="h-2 w-2"
+                src="../../public/img/icons/arrow-up-black.svg"
+                alt="back-to-top-button"
+              />
+            </span>
           </button>
         </div>
       </div>
