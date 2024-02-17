@@ -15,6 +15,9 @@ module.exports = {
       mont: ["Mont", "sans-serif"],
     },
     extend: {
+      maxWidth: {
+        "percent": "35%",
+      },
       backgroundImage: {
         darkness: "url('/img/404page/bg-darkness.png')",
         lightness: "url('/img/404page/bg-lightness.png')",

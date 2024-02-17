@@ -6,10 +6,10 @@
   }
 
   .links {
-    @apply grid gap-3 md:flex md:items-center md:ml-[5%] md:gap-14;
+    @apply grid gap-3 md:flex md:items-center md:max-w-percent md:w-full md:justify-between;
 
     .link {
-      @apply text-secondary-primary uppercase font-mont font-extrabold text-xs;
+      @apply text-secondary uppercase font-mont font-extrabold text-xs;
     }
   }
 
@@ -20,7 +20,7 @@
       @apply flex items-center self-center gap-4;
 
       .button_title {
-       @apply text-secondary-primary font-mont text-xs font-bold;
+       @apply text-secondary font-mont text-xs font-bold;
       }
     }
   }
