@@ -37,6 +37,12 @@ module.exports = {
         md: "640px",
         lg: "1200px",
       },
+      padding: {
+        "navlinks": "28px",
+      },
+      height: {
+        "custom": "72px",
+      }
     },
   },
   plugins: [],
