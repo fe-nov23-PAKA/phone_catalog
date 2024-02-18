@@ -25,8 +25,8 @@ export const Header = () => {
   return (
     <header
       className={classNames(
-        "bg-white overflow-y-hidden flex flex-col mb-6 sm:mb-8 xl:mb-14",
-        { "overflow-hidden h-screen": isMenuOpen },
+        "bg-white flex flex-col mb-6 sm:mb-8 xl:mb-14",
+        { "overflow-visible h-screen mb-0": isMenuOpen },
         { "border-b": !isMenuOpen },
       )}
     >
@@ -44,8 +44,9 @@ export const Header = () => {
             )}
           </a>
           <nav
-            className="hidden md:flex font-mont font-extrabold
-              items-center gap-x-8 xl:gap-x-16 tracking-wider md:ml-8 xl:ml-12"
+            className={classNames(
+              "hidden md:flex font-mont font-extrabold items-center gap-x-8 xl:gap-x-16 tracking-wider md:ml-8 xl:ml-12",
+            )}
           >
             <a
               href="#Home"
@@ -114,8 +115,7 @@ export const Header = () => {
       </div>
       {isMenuOpen && (
         <div
-          className="bg-white border-t
-          flex flex-col left-0 w-full h-full justify-between"
+          className={classNames("bg-white border-t flex flex-col left-0 w-full h-full justify-between", {"overflow-hidden": window.innerHeight < 400 })}
         >
           <ul className="flex mt-6 tracking-wider font-mont flex-col items-center space-y-4 flex-grow overflow-auto">
             <li>
@@ -151,7 +151,7 @@ export const Header = () => {
               </a>
             </li>
           </ul>
-          <div className="flex min-h-16">
+          <div className="flex">
             <button type="button" className="py-6 w-1/2 border-t border-r">
               <img
                 src="./public/img/icons/favourites.svg"
