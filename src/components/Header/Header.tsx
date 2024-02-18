@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/img/Logo.svg";
 import favourites from "../../assets/img/icons/favourites.svg";
 import shopping_bag from "../../assets/img/icons/shopping-bag.svg";
@@ -47,19 +48,19 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <img src={logo} alt="Logo" className="h-8 text-[#F447AF]" />
             )}
           </a>
-          <nav className="hidden items-center gap-x-8 font-mont font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
+          <nav className="font-mont hidden items-center gap-x-8 font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
             <a
               href="#Home"
               className="py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Home
             </a>
-            <a
-              href="#Phones"
+            <NavLink
+              to="/catalog"
               className="relative py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Phones
-            </a>
+            </NavLink>
             <a
               href="#Tablets"
               className="py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
