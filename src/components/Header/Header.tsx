@@ -25,7 +25,7 @@ export const Header = () => {
   return (
     <header
       className={classNames(
-        "bg-white flex flex-col sm:mb-8 xl:mb-14",
+        "bg-white flex flex-col",
         { "h-screen": isMenuOpen },
         { "border-b mb-6": !isMenuOpen },
       )}
@@ -115,7 +115,7 @@ export const Header = () => {
       </div>
       {isMenuOpen && (
         <div
-          className={classNames("bg-white border-t flex flex-col left-0 w-full h-full justify-between", {"overflow-hidden": window.innerHeight < 400 })}
+          className={classNames("bg-white border-t flex flex-col left-0 w-full h-full justify-between overflow-hidden")}
         >
           <ul className="flex mt-6 tracking-wider font-mont flex-col items-center space-y-4 flex-grow overflow-auto">
             <li>
