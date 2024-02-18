@@ -7,12 +7,12 @@ import arrow_up_black from "../../assets/img/icons/arrow-up-black.svg";
 export const Footer: React.FC = () => {
   return (
     <footer
-      className="border-t border-element-color 
-    flex justify-center items-center"
+      className="flex items-center 
+    justify-center border-t border-element-color"
     >
       <div
-        className="container py-8 pl-4 
-    sm:flex sm:justify-between sm:px-8 w-full"
+        className="container w-full py-8 
+    pl-4 sm:flex sm:justify-between sm:px-8"
       >
         <div className="mb-8 sm:mb-0">
           <a href="/">
@@ -21,28 +21,28 @@ export const Footer: React.FC = () => {
         </div>
 
         <div
-          className="grid gap-3 sm:flex sm:items-center 
-    sm:max-w-[35%] sm:w-full sm:justify-between"
+          className="grid gap-3 sm:flex sm:w-full 
+    sm:max-w-[35%] sm:items-center sm:justify-between"
         >
           <a
-            className="text-secondary uppercase
-          font-extrabold text-xs hover:text-primary duration-300"
+            className="text-xs font-extrabold
+          uppercase text-secondary hover:text-primary "
             href="/"
           >
             Github
           </a>
 
           <a
-            className="text-secondary uppercase 
-          font-extrabold text-xs hover:text-primary duration-300"
+            className="text-xs font-extrabold 
+          uppercase text-secondary hover:text-primary "
             href="/"
           >
             Contacts
           </a>
 
           <a
-            className="text-secondary uppercase 
-          font-extrabold text-xs hover:text-primary duration-300"
+            className="text-xs font-extrabold 
+          uppercase text-secondary hover:text-primary "
             href="/"
           >
             Rights
@@ -51,19 +51,19 @@ export const Footer: React.FC = () => {
 
         <div
           className="flex items-center justify-center 
-        text-secondary  text-xs font-bold"
+        text-xs  font-bold text-secondary"
         >
           <button
             type="button"
-            className="flex items-center self-center 
-            gap-4 duration-300 group hover:text-primary"
+            className="group flex items-center 
+            gap-4  self-center hover:text-primary"
             onClick={scrollToTop}
           >
             Back to top
             <span
-              className="group-hover:border-primary h-8 w-8 
-            justify-center items-center flex 
-            box-border border rounded-full duration-300"
+              className="box-border flex h-8 
+            w-8 items-center justify-center 
+            rounded-full border group-hover:border-primary "
             >
               <img
                 className="h-2 w-2"

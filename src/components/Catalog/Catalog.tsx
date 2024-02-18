@@ -211,9 +211,9 @@ export const Catalog = () => {
       justify-center space-x-1 font-light md:mb-20"
       >
         <li
-          className="rounded-full border border-gray-300 
-        bg-white font-mont text-primary 
-        duration-300 hover:border-primary hover:bg-white hover:text-primary"
+          className="font-mont rounded-full border 
+        border-gray-300 bg-white text-primary 
+         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
             <img src={arrow_left_black} alt="" />
@@ -221,7 +221,7 @@ export const Catalog = () => {
         </li>
         <li
           className="rounded-full border border-primary bg-primary 
-        text-white duration-300 
+        text-white  
         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
@@ -229,9 +229,9 @@ export const Catalog = () => {
           </a>
         </li>
         <li
-          className="rounded-full border border-gray-300
-        bg-white font-mont
-        text-primary duration-300
+          className="font-mont rounded-full border
+        border-gray-300 bg-white
+        text-primary 
         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
@@ -239,9 +239,9 @@ export const Catalog = () => {
           </a>
         </li>
         <li
-          className="rounded-full border border-gray-300 
-        bg-white font-mont 
-        text-primary duration-300 
+          className="font-mont rounded-full border 
+        border-gray-300 bg-white 
+        text-primary  
         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
@@ -249,9 +249,9 @@ export const Catalog = () => {
           </a>
         </li>
         <li
-          className="rounded-full border border-gray-300 
-        bg-white font-mont 
-        text-primary duration-300 
+          className="font-mont rounded-full border 
+        border-gray-300 bg-white 
+        text-primary  
         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
@@ -259,9 +259,9 @@ export const Catalog = () => {
           </a>
         </li>
         <li
-          className="rounded-full border border-gray-300 
-        bg-white font-mont 
-        text-primary duration-300 
+          className="font-mont rounded-full border 
+        border-gray-300 bg-white 
+        text-primary  
         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
@@ -269,9 +269,9 @@ export const Catalog = () => {
           </a>
         </li>
         <li
-          className="rounded-full border border-gray-300 
-        bg-white font-mont 
-        text-primary duration-300 
+          className="font-mont rounded-full border 
+        border-gray-300 bg-white 
+        text-primary  
         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
