@@ -59,15 +59,15 @@ export const Catalog = () => {
           <a href="/" className="">
             <img src={home} alt="home_icon" />
           </a>
-          <a href="/" className="">
+          <div>
             <img src={arrow_right} alt="" />
-          </a>
+          </div>
           <a href="/" className="/[17px] flex font-semibold">
             Phones
           </a>
         </div>
         <h1 className="mb-2 text-4xl font-extrabold">Mobile phones</h1>
-        <div className="mb-8  font-semibold text-secondary">95 models</div>
+        <div className="mb-8 font-semibold text-secondary">95 models</div>
       </div>
 
       <div className="mb-6">
@@ -89,7 +89,7 @@ export const Catalog = () => {
                   { "hover:ring-secondary": isSortDropDownShown },
                   "inline-flex w-full items-center justify-between",
                   "rounded-md bg-white px-3 py-2 ",
-                  "font-semibold text-gray-900",
+                  "text-icons font-semibold",
                   "shadow-sm ring-1 ring-inset ring-icons-color",
                 )}
                 onClick={handleSortDropDownClick}
@@ -147,7 +147,7 @@ export const Catalog = () => {
                   { "hover:ring-secondary": isItemsDropDownShown },
                   "inline-flex w-full items-center justify-between",
                   "rounded-md bg-white px-3 py-2 ",
-                  "font-semibold text-gray-900",
+                  "text-icons font-semibold",
                   "shadow-sm ring-1 ring-inset ring-icons-color",
                 )}
                 onClick={handleItemsDropDownClick}

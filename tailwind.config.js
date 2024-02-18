@@ -16,8 +16,8 @@ module.exports = {
         small: ["14px", "21px"],
       },
       backgroundImage: {
-        darkness: "url('/img/404page/bg-darkness.png')",
-        lightness: "url('/img/404page/bg-lightness.png')",
+        darkness: "url('src/assets/img/404page/bg-darkness.png')",
+        lightness: "url('src/assets/img/404page/bg-lightness.png')",
       },
       colors: {
         accent: "#216CFF",
