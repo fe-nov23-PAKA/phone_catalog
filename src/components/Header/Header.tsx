@@ -50,25 +50,25 @@ export const Header = () => {
           >
             <a
               href="#Home"
-              className="py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
+              className="py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase duration-300"
             >
               Home
             </a>
             <a
               href="#Phones"
-              className="relative py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
+              className="relative py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase duration-300"
             >
               Phones
             </a>
             <a
               href="#Tablets"
-              className="py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
+              className="py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase duration-300"
             >
               Tablets
             </a>
             <a
               href="#Accessories"
-              className="relative py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
+              className="relative py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase duration-300"
             >
               Accessories
             </a>
@@ -78,14 +78,14 @@ export const Header = () => {
           className="hidden md:flex 
           md:border-secondary items-center"
         >
-          <button type="button" className="md:p-6 md:border-l">
+          <button type="button" className="md:p-6 md:border-l hover:bg-hover-color duration-300">
             <img
               src="./public/img/icons/favourites.svg"
               alt="Favorites"
               className="h-6 w-6 p-1 m-0"
             />
           </button>
-          <button type="button" className="md:p-6 md:border-x">
+          <button type="button" className="md:p-6 md:border-x hover:bg-hover-color duration-300">
             <img
               src="./public/img/icons/shopping-bag.svg"
               alt="Cart"
