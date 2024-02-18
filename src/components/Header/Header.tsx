@@ -25,12 +25,12 @@ export const Header = () => {
   return (
     <header
       className={classNames(
-        "bg-white overflow-y-hidden border-gray-400 flex flex-col mb-6 sm:mb-8 xl:mb-14",
-        { "overflow-hidden": isMenuOpen },
+        "bg-white overflow-y-hidden flex flex-col mb-6 sm:mb-8 xl:mb-14",
+        { "overflow-hidden h-screen": isMenuOpen },
         { "border-b": !isMenuOpen },
       )}
     >
-      <div className="px-4 h-custom md:pr-0 flex items-center justify-between">
+      <div className="px-4 h-custom md:pr-0 flex shrink-0 items-center justify-between">
         <div className="flex items-center">
           <a href="#Home" className="py-4">
             {isMenuOpen ? (
@@ -40,7 +40,7 @@ export const Header = () => {
                 className="h-8"
               />
             ) : (
-              <img src="./public/img/Logo.svg" alt="Logo" className="h-8" />
+              <img src="./public/img/Logo.svg" alt="Logo" className="h-8 text-[#F447AF]" />
             )}
           </a>
           <nav
@@ -49,25 +49,25 @@ export const Header = () => {
           >
             <a
               href="#Home"
-              className="relative py-navlinks text-secondary-primary text-xs font-extrabold hover:text-black uppercase active:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+              className="py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
             >
               Home
             </a>
             <a
               href="#Phones"
-              className="relative py-navlinks text-secondary-primary text-xs font-extrabold hover:text-black uppercase active:after:content-['']active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+              className="relative py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
             >
               Phones
             </a>
             <a
               href="#Tablets"
-              className="relative py-navlinks text-secondary-primary text-xs font-extrabold hover:text-black uppercase active:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+              className="py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
             >
               Tablets
             </a>
             <a
               href="#Accessories"
-              className="relative py-navlinks text-secondary-primary text-xs font-extrabold hover:text-black uppercase active:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+              className="relative py-navlinks text-secondary text-xs font-extrabold md:hover:text-primary uppercase"
             >
               Accessories
             </a>
@@ -75,7 +75,7 @@ export const Header = () => {
         </div>
         <div
           className="hidden md:flex 
-          md:border-secondary-primary items-center"
+          md:border-secondary items-center"
         >
           <button type="button" className="md:p-6 md:border-l">
             <img
@@ -94,7 +94,7 @@ export const Header = () => {
         </div>
         <button
           type="button"
-          className="block md:hidden text-secondary-primary focus:outline-none"
+          className="block md:hidden text-secondary focus:outline-none"
           onClick={toggleMenu}
         >
           {isMenuOpen ? (
@@ -114,14 +114,14 @@ export const Header = () => {
       </div>
       {isMenuOpen && (
         <div
-          className="bg-white border-t border-gray-400 
+          className="bg-white border-t
           flex flex-col left-0 w-full h-full justify-between"
         >
-          <ul className="flex mt-6 tracking-wider font-mont flex-col items-center space-y-4 flex-grow">
+          <ul className="flex mt-6 tracking-wider font-mont flex-col items-center space-y-4 flex-grow overflow-auto">
             <li>
               <a
                 href="#Home"
-                className="text-secondary-primary text-xs font-extrabold active:text-black uppercase relative active:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+                className="text-secondary text-xs font-extrabold uppercase"
               >
                 Home
               </a>
@@ -129,7 +129,7 @@ export const Header = () => {
             <li>
               <a
                 href="#Phones"
-                className="text-secondary-primary text-xs font-extrabold hover:text-black uppercase relative active:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+                className="text-secondary text-xs font-extrabold uppercase"
               >
                 Phones
               </a>
@@ -137,7 +137,7 @@ export const Header = () => {
             <li>
               <a
                 href="#Tablets"
-                className="text-secondary-primary text-xs font-extrabold hover:text-black uppercase relative active:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+                className="text-secondary text-xs font-extrabold uppercase"
               >
                 Tablets
               </a>
@@ -145,27 +145,21 @@ export const Header = () => {
             <li>
               <a
                 href="#Accessories"
-                className="text-secondary-primary text-xs font-extrabold hover:text-black uppercase relative active:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
+                className="text-secondary text-xs font-extrabold uppercase"
               >
                 Accessories
               </a>
             </li>
           </ul>
-          <div className="flex fixed bottom-0 left-0 right-0">
-            <button
-              type="button"
-              className="py-6 w-1/2 border-t border-r relativeactive:after:content-[''] active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
-            >
+          <div className="flex min-h-16">
+            <button type="button" className="py-6 w-1/2 border-t border-r">
               <img
                 src="./public/img/icons/favourites.svg"
                 alt="Favorites"
                 className="h-6 w-6 p-1 mx-auto"
               />
             </button>
-            <button
-              type="button"
-              className="py-6 w-1/2 border-t relative active:after:content-['']active:after:h-0.5 active:after:bg-black active:after:absolute active:after:w-full active:after:bottom-0 active:after:left-0"
-            >
+            <button type="button" className="py-6 w-1/2 border-t">
               <img
                 src="./public/img/icons/shopping-bag.svg"
                 alt="Cart"

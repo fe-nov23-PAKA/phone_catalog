@@ -23,7 +23,7 @@ module.exports = {
         accent: "#216CFF",
         "secondary-accent": "#F447AF",
         primary: "#0F0F11",
-        "secondary-primary": "#89939A",
+        "secondary": "#89939A",
         "icons-color": "#B4BDC3",
         "element-color": "#E2E6E9",
         "hover-color": "#E2E6E9",
