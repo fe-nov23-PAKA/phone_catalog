@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
         className="container py-8 pl-4 
     sm:flex sm:justify-between sm:px-8 w-full"
       >
-        <div className="mb-8 sm:mb-0">
+        <div className="mb-8 ms:mb-0">
           <a href="/">
             <img className="h-7 w-20" src={logo} alt="nice-gadgets-logo" />
           </a>

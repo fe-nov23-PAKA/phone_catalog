@@ -23,9 +23,9 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     >
       <a href="/">
         <div className="p-[32px] ">
-          <div className="mb-2 flex items-center justify-center">
+          <div className="mb-2 flex h-[196px] items-center justify-center">
             <img
-              className="block max-h-[196px] max-w-36 self-center"
+              className="block max-w-36 self-center"
               src={images[0]}
               alt="Product"
             />
