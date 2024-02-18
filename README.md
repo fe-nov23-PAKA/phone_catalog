@@ -1,4 +1,5 @@
 [Maket](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?type=design&node-id=0-1&mode=design&t=XBvKz5MyerNznqB6-0)
+[Demo](https://fe-nov23-paka.github.io/phone_catalog/)
 
 # React + TypeScript + Vite
 
