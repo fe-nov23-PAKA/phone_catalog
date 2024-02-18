@@ -2,16 +2,18 @@
 module.exports = {
   content: ["./src/**/*.{html,js,tsx,ts}"],
   theme: {
-    fontFamily: {
-      mont: ["Mont", "sans-serif"],
+    container: {
+      center: true,
+      padding: "24px",
+      
+      screens: {
+        '2xl': '1280px'
+      },
     },
     extend: {
       fontSize: {
         main: "22px",
         small: ["14px", "21px"],
-      },
-      maxWidth: {
-        "percent": "35%",
       },
       backgroundImage: {
         darkness: "url('/img/404page/bg-darkness.png')",
@@ -30,12 +32,17 @@ module.exports = {
         "404color": "#FAF6F2",
       },
       boxShadow: {
-        sh1: "0 3px 13px 0px rgba(23, 32, 49, 0.4)",
+        sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",
+        sh2: "box-shadow: 0px 2px 16px 0px #0000001A"
+
       },
       gridTemplateColumns: {
-        24: "repeat(24, minmax(0, 35px))",
+        24: "repeat(24, 1fr)",
       },
     },
+  },
+  future: {
+    hoverOnlyWhenSupported: true,
   },
   plugins: [],
 };

@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import styles from "./Catalog.module.scss";
 import { getData } from "../../utils/getData";
 import { Phone } from "../../types/Phone";
 import { ProductCard } from "../ProductCard";
@@ -11,6 +10,7 @@ import arrow_left_black from "../../assets/img/icons/arrow-left-black.svg";
 import arrow_right_black from "../../assets/img/icons/arrow-right-black.svg";
 import arrow_right from "../../assets/img/icons/arrow-right.svg";
 import home from "../../assets/img/icons/home-page.svg";
+import { ArrowDown } from "../../assets/img/icons/Arrow-Down";
 
 export const Catalog = () => {
   const [visiblePhones, setVisiblePhones] = useState<Phone[]>([]);
@@ -53,137 +53,152 @@ export const Catalog = () => {
   };
 
   return (
-    <div className="mx-4 sm:mx-9">
-      <div className="flex mb-7 col-start">
-        <a href="/" className="mr-2">
-          <img src={home} alt="home_icon" />
-        </a>
-        <a href="/" className="mr-2">
-          <img src={arrow_right} alt="" />
-        </a>
-        <a href="/" className="flex font-mont font-semibold text-xs">
-          Phones
-        </a>
+    <div className="container">
+      <div className="">
+        <div className="mb-7 flex gap-2">
+          <a href="/" className="">
+            <img src={home} alt="home_icon" />
+          </a>
+          <a href="/" className="">
+            <img src={arrow_right} alt="" />
+          </a>
+          <a href="/" className="/[17px] flex font-semibold">
+            Phones
+          </a>
+        </div>
+        <h1 className="mb-2 text-4xl font-extrabold">Mobile phones</h1>
+        <div className="mb-8  font-semibold text-secondary">95 models</div>
       </div>
-      <h1 className="font-mont font-extrabold text-4xl mb-2">Mobile phones</h1>
-      <div className="font-mont text-sm font-semibold text-secondary mb-8">
-        95 models
-      </div>
-      <div className={`${styles.grid_template} mb-6 md:mb-10`}>
-        <div
-          className={`${styles.test} col-start-1 col-end-3 sm:col-start-1 sm:col-end-5`}
-        >
-          <div>
-            <p className="mb-1 font-mont text-secondary text-xs">Sort by</p>
-            <button
-              type="button"
-              className={classNames(
-                { "focus:ring-primary": !isSortDropDownShown },
-                { "hover:ring-secondary": isSortDropDownShown },
-                styles.dropdown,
-              )}
-              onClick={handleSortDropDownClick}
-              id="menu-button"
-              aria-expanded="true"
-              aria-haspopup="true"
-            >
-              {sortField}
-              {isSortDropDownShown ? (
-                <img src={arrow_down} alt="" />
-              ) : (
-                <img src={arrow_up} alt="" />
-              )}
-            </button>
-          </div>
 
+      <div className="mb-6">
+        <div
+          className="grid grid-cols-4 justify-center
+        justify-items-center gap-x-4 gap-y-10
+        sm:mb-10 sm:grid-cols-12 lg:grid-cols-24"
+        >
           <div
-            className={classNames(
-              { hidden: isSortDropDownShown },
-              styles.dropdown_options,
-            )}
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="menu-button"
-            tabIndex={-1}
+            className="relative col-span-2 mb-6 w-full
+          text-left sm:col-span-4"
           >
-            <div className="py-1" role="none">
-              {sortFields.map((field) => (
-                <a
-                  href="#/"
-                  className="text-secondary-primary block
-                  px-4 py-2 text-sm hover:bg-hover-color 
-                  hover:rounded-lg hover:text-primary"
-                  role="menuitem"
-                  tabIndex={-1}
-                  id="menu-item-0"
-                  onClick={() => handleSortDropDownElementClick(field)}
-                >
-                  {field}
-                </a>
-              ))}
+            <div>
+              <p className="mb-1 text-xs text-secondary">Sort by</p>
+              <button
+                type="button"
+                className={classNames(
+                  { "focus:ring-primary": !isSortDropDownShown },
+                  { "hover:ring-secondary": isSortDropDownShown },
+                  "inline-flex w-full items-center justify-between",
+                  "rounded-md bg-white px-3 py-2 ",
+                  "font-semibold text-gray-900",
+                  "shadow-sm ring-1 ring-inset ring-icons-color",
+                )}
+                onClick={handleSortDropDownClick}
+                id="menu-button"
+              >
+                {sortField}
+                {isSortDropDownShown ? (
+                  <ArrowDown />
+                ) : (
+                  <img src={arrow_up} alt="" />
+                )}
+              </button>
+            </div>
+
+            <div
+              className={classNames(
+                { hidden: isSortDropDownShown },
+                "absolute left-0 z-10 mt-1 text-secondary",
+                "w-full origin-top-right rounded-md bg-white ",
+                "shadow-lg ring-1 ring-black ring-opacity-5",
+                "focus:outline-none",
+              )}
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+            >
+              <div className="py-1" role="none">
+                {sortFields.map((field) => (
+                  <a
+                    href="#/"
+                    className="text-secondary-primary block
+                  px-4 py-2  hover:rounded-lg 
+                  hover:bg-hover-color hover:text-primary"
+                    role="menuitem"
+                    id="menu-item-0"
+                    onClick={() => handleSortDropDownElementClick(field)}
+                  >
+                    {field}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className={`${styles.test} col-start-3 col-end-5 sm:col-start-5 sm:col-end-8`}
-        >
-          <div>
-            <p className="mb-1 font-mont text-secondary text-xs">
-              Items on page
-            </p>
-            <button
-              type="button"
-              className={classNames(
-                { "focus:ring-primary": !isItemsDropDownShown },
-                { "hover:ring-secondary": isItemsDropDownShown },
-                styles.dropdown,
-              )}
-              onClick={handleItemsDropDownClick}
-              id="menu-button"
-              aria-expanded="true"
-              aria-haspopup="true"
-            >
-              {itemsOnPage}
-              {isItemsDropDownShown ? (
-                <img src={arrow_down} alt="" />
-              ) : (
-                <img src={arrow_up} alt="" />
-              )}
-            </button>
-          </div>
 
           <div
-            className={classNames(
-              { hidden: isItemsDropDownShown },
-              styles.dropdown_options,
-            )}
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="menu-button"
-            tabIndex={-1}
+            className="relative col-span-2 mb-6 
+        w-full text-left sm:col-span-3"
           >
-            <div className="py-1" role="none">
-              {itemsOnPageList.map((quantity) => (
-                <a
-                  href="#/"
-                  className="block px-4 py-2 
-                  text-sm hover:bg-hover-color 
-                  hover:rounded-lg hover:text-primary"
-                  role="menuitem"
-                  tabIndex={-1}
-                  id="menu-item-0"
-                  onClick={() => handleItemsDropDownElementClick(quantity)}
-                >
-                  {quantity}
-                </a>
-              ))}
+            <div>
+              <p className="mb-1  text-xs text-secondary">Items on page</p>
+              <button
+                type="button"
+                className={classNames(
+                  { "focus:ring-primary": !isItemsDropDownShown },
+                  { "hover:ring-secondary": isItemsDropDownShown },
+                  "inline-flex w-full items-center justify-between",
+                  "rounded-md bg-white px-3 py-2 ",
+                  "font-semibold text-gray-900",
+                  "shadow-sm ring-1 ring-inset ring-icons-color",
+                )}
+                onClick={handleItemsDropDownClick}
+                id="menu-button"
+                aria-expanded="true"
+                aria-haspopup="true"
+              >
+                {itemsOnPage}
+                {isItemsDropDownShown ? (
+                  <img src={arrow_down} alt="arrow_down-icon" />
+                ) : (
+                  <img src={arrow_up} alt="arrow_up-icon" />
+                )}
+              </button>
+            </div>
+
+            <div
+              className={classNames(
+                { hidden: isItemsDropDownShown },
+                "absolute left-0 z-10 mt-1 text-secondary",
+                "w-full origin-top-right rounded-md bg-white ",
+                "shadow-lg ring-1 ring-black ring-opacity-5 ",
+                "focus:outline-none",
+              )}
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+            >
+              <div className="py-1" role="none">
+                {itemsOnPageList.map((quantity) => (
+                  <a
+                    href="#/"
+                    className="block px-4 py-2 
+                   hover:rounded-lg 
+                  hover:bg-hover-color hover:text-primary"
+                    role="menuitem"
+                    id="menu-item-0"
+                    onClick={() => handleItemsDropDownElementClick(quantity)}
+                  >
+                    {quantity}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         <ul
-          className={`${styles.grid_template} 
-        col-span-full justify-items-center mb-6 md:mb-10 gap-y-10`}
+          className="col-span-full mb-6 grid 
+          grid-cols-4 justify-items-center 
+          gap-x-4 gap-y-10 sm:grid-cols-12 md:mb-10 xl:grid-cols-24"
         >
           {visiblePhones.map((phone) => (
             <ProductCard key={phone.id} phone={phone} />
@@ -192,41 +207,74 @@ export const Catalog = () => {
       </div>
 
       <ul
-        className="flex items-center space-x-1 
-      font-light justify-center mb-16 md:mb-20"
+        className="mb-16 flex items-center 
+      justify-center space-x-1 font-light md:mb-20"
       >
-        <li className={styles.pagination_default_button}>
-          <a href="#/" className="w-8 h-8 flex items-center justify-center">
+        <li
+          className="rounded-full border border-gray-300 
+        bg-white font-mont text-primary 
+        duration-300 hover:border-primary hover:bg-white hover:text-primary"
+        >
+          <a href="#/" className="flex h-8 w-8 items-center justify-center">
             <img src={arrow_left_black} alt="" />
           </a>
         </li>
-        <li className={styles.pagination_active_button}>
-          <a href="#/" className="w-8 h-8 flex items-center justify-center">
+        <li
+          className="rounded-full border border-primary bg-primary 
+        text-white duration-300 
+        hover:border-primary hover:bg-white hover:text-primary"
+        >
+          <a href="#/" className="flex h-8 w-8 items-center justify-center">
             1
           </a>
         </li>
-        <li className={styles.pagination_default_button}>
-          <a href="#/" className="w-8 h-8 flex items-center justify-center">
+        <li
+          className="rounded-full border border-gray-300
+        bg-white font-mont
+        text-primary duration-300
+        hover:border-primary hover:bg-white hover:text-primary"
+        >
+          <a href="#/" className="flex h-8 w-8 items-center justify-center">
             2
           </a>
         </li>
-        <li className={styles.pagination_default_button}>
-          <a href="#/" className="w-8 h-8 flex items-center justify-center">
+        <li
+          className="rounded-full border border-gray-300 
+        bg-white font-mont 
+        text-primary duration-300 
+        hover:border-primary hover:bg-white hover:text-primary"
+        >
+          <a href="#/" className="flex h-8 w-8 items-center justify-center">
             3
           </a>
         </li>
-        <li className={styles.pagination_default_button}>
-          <a href="#/" className="w-8 h-8 flex items-center justify-center">
+        <li
+          className="rounded-full border border-gray-300 
+        bg-white font-mont 
+        text-primary duration-300 
+        hover:border-primary hover:bg-white hover:text-primary"
+        >
+          <a href="#/" className="flex h-8 w-8 items-center justify-center">
             4
           </a>
         </li>
-        <li className={styles.pagination_default_button}>
-          <a href="#/" className="w-8 h-8 flex items-center justify-center">
+        <li
+          className="rounded-full border border-gray-300 
+        bg-white font-mont 
+        text-primary duration-300 
+        hover:border-primary hover:bg-white hover:text-primary"
+        >
+          <a href="#/" className="flex h-8 w-8 items-center justify-center">
             5
           </a>
         </li>
-        <li className={styles.pagination_default_button}>
-          <a href="#/" className="w-8 h-8 flex items-center justify-center">
+        <li
+          className="rounded-full border border-gray-300 
+        bg-white font-mont 
+        text-primary duration-300 
+        hover:border-primary hover:bg-white hover:text-primary"
+        >
+          <a href="#/" className="flex h-8 w-8 items-center justify-center">
             <img src={arrow_right_black} alt="" />
           </a>
         </li>
