@@ -25,9 +25,9 @@ export const Header = () => {
   return (
     <header
       className={classNames(
-        "bg-white flex flex-col mb-6 sm:mb-8 xl:mb-14",
-        { "overflow-visible h-screen mb-0": isMenuOpen },
-        { "border-b": !isMenuOpen },
+        "bg-white flex flex-col sm:mb-8 xl:mb-14",
+        { "h-screen": isMenuOpen },
+        { "border-b mb-6": !isMenuOpen },
       )}
     >
       <div className="px-4 h-custom md:pr-0 flex shrink-0 items-center justify-between">
@@ -151,7 +151,7 @@ export const Header = () => {
               </a>
             </li>
           </ul>
-          <div className="flex">
+          <div className="flex sticky">
             <button type="button" className="py-6 w-1/2 border-t border-r">
               <img
                 src="./public/img/icons/favourites.svg"
