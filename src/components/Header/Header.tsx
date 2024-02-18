@@ -48,7 +48,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <img src={logo} alt="Logo" className="h-8 text-[#F447AF]" />
             )}
           </a>
-          <nav className="font-mont hidden items-center gap-x-8 font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
+          <nav className="hidden items-center gap-x-8 font-mont font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
             <a
               href="#Home"
               className="py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
