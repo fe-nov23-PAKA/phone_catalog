@@ -1,5 +1,10 @@
 import { Catalog } from "../components/Catalog";
+import { Phone } from "../types/Phone";
 
-export const CatalogPage = () => {
-  return <Catalog />;
+interface Props {
+  startVisiblePhones: Phone[];
+}
+
+export const CatalogPage: React.FC<Props> = ({ startVisiblePhones }) => {
+  return <Catalog startVisiblePhones={startVisiblePhones} />;
 };

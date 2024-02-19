@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import classNames from "classnames";
-import { useCallback, useEffect, useState } from "react";
-import { getData } from "../../utils/getData";
+import React, { useCallback, useEffect, useState } from "react";
 import { Phone } from "../../types/Phone";
 import { ProductCard } from "../ProductCard";
 import arrow_down from "../../assets/img/icons/arrow-down.svg";
@@ -14,8 +13,11 @@ import { ArrowDown } from "../../assets/img/icons/Arrow-Down";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
 
-export const Catalog = () => {
-  const [startVisiblePhones, setStartVisiblePhones] = useState<Phone[]>([]);
+interface Props {
+  startVisiblePhones: Phone[];
+}
+
+export const Catalog: React.FC<Props> = ({ startVisiblePhones }) => {
   const [itemsOnPage, setItemsOnPage] = useState(16);
   const [sortField, setSortField] = useState("Less expensive");
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
@@ -24,12 +26,6 @@ export const Catalog = () => {
 
   const itemsOnPageList = [16, 24, 32, 64];
   const sortFields = ["Less expensive", "More expensive"];
-
-  useEffect(() => {
-    getData().then((phones) => {
-      setStartVisiblePhones(phones);
-    });
-  }, []);
 
   useEffect(() => {
     scrollToTop();

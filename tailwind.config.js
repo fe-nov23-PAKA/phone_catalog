@@ -33,7 +33,7 @@ module.exports = {
       },
       boxShadow: {
         sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",
-        sh2: "box-shadow: 0px 2px 16px 0px #0000001A"
+        sh2:"0px 2px 16px 0px #0000001A"
 
       },
       gridTemplateColumns: {
