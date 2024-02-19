@@ -1,16 +1,16 @@
-import img from "../../assets/img/icons/close.svg";
-import phone from "../../assets/img/category-phones.png";
-import minus from "../../assets/img/icons/minus.svg";
-import plus from "../../assets/img/icons/plus.svg";
+import phone from "../../../public/img/category-phones.png";
+import { Plus } from "../../icons/Plus";
+import { Minus } from "../../icons/Minus";
+import { Close } from "../../icons/Close";
 
 export const CartItem = () => {
   return (
-    <div className="flex max-w-[752px] flex-col gap-4 rounded-[16px] border border-solid border-element-color p-6 sm:flex-row sm:gap-4">
+    <div className="flex flex-col gap-4 rounded-[16px] border border-solid border-element-color p-6 sm:flex-row">
       <div className="flex flex-row items-center gap-[24px]">
         <button type="button">
-          <img src={img} alt="close" className="h-4 w-4" />
+          <Close />
         </button>
-        <div className="left-[64px] top-[24px]">
+        <div className="min-h-[80px] min-w-[80px]">
           <img src={phone} alt="phone" className="h-[66px] w-[66px]" />
         </div>
         <div className="">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</div>
@@ -24,7 +24,7 @@ export const CartItem = () => {
             justify-center rounded-full
             border border-icons-color hover:border-primary"
           >
-            <img className="" src={minus} alt="minus" />
+            <Minus />
           </button>
           <div>1</div>
           <button
@@ -34,7 +34,7 @@ export const CartItem = () => {
             justify-center rounded-full
             border border-icons-color hover:border-primary"
           >
-            <img className="" src={plus} alt="plus" />
+            <Plus />
           </button>
         </div>
         <div className="">$1099</div>
