@@ -2,7 +2,7 @@
 /* eslint-disable operator-linebreak */
 import React from "react";
 import { Phone } from "../../types/Phone";
-import { Favorites } from "../../assets/img/icons/Favourites";
+import { Favorites } from "../../icons/Favourites";
 
 type Props = {
   phone: Phone;

@@ -2,8 +2,8 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import { scrollToTop } from "../../utils/scrollToTop";
-import { Logo } from "../../assets/img/Logo";
-import { ArrowUp } from "../../assets/img/icons/Arrow-Up";
+import { Logo } from "../../icons/Logo";
+import { ArrowUp } from "../../icons/Arrow-Up";
 
 export const Footer: React.FC = () => {
   return (
