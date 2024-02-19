@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable prettier/prettier */
 import React from "react";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { Logo } from "../../icons/Logo";

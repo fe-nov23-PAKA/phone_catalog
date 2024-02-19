@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable operator-linebreak */
 import React from "react";
 import { Phone } from "../../types/Phone";
 import { Favorites } from "../../icons/Favourites";

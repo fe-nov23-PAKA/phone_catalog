@@ -19,6 +19,9 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "react"],
   rules: {
+    "jsx-a11y/control-has-associated-label": "off",
     "max-len": "off",
+    "operator-linebreak": "off",
+    "react-hooks/exhaustive-deps": "off",
   },
 };

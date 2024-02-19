@@ -34,7 +34,7 @@ export const DropDown = () => {
           onClick={handleSortDropDownClick}
           id="menu-button"
         >
-          {sortField}
+          {/* {sortField} */}
           {isSortDropDownShown ? <ArrowDown /> : <img src={arrow_up} alt="" />}
         </button>
       </div>
@@ -52,7 +52,7 @@ export const DropDown = () => {
         aria-labelledby="menu-button"
       >
         <div className="py-1" role="none">
-          {sortFields.map((field) => (
+          {/* {sortFields.map((field) => (
             <a
               key={field}
               href="#/"
@@ -67,7 +67,7 @@ export const DropDown = () => {
             >
               {field}
             </a>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
