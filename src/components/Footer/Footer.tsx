@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import { scrollToTop } from "../../utils/scrollToTop";
-import logo from "../../../public/assets/img/Logo.svg";
+import logo from "../../../public/img/Logo.svg";
 import arrow_up_black from "../../icons/arrow-up-black.svg";
 
 export const Footer: React.FC = () => {

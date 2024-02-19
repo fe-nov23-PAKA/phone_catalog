@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../../public/assets/img/Logo.svg";
+import logo from "../../../public/img/Logo.svg";
 import favourites from "../../icons/favourites.svg";
 import shopping_bag from "../../icons/shopping-bag.svg";
 import close from "../../icons/close.svg";
