@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable prettier/prettier */
 import React from "react";
 import { scrollToTop } from "../../utils/scrollToTop";
-import logo from "../../../public/img/Logo.svg";
-import arrow_up_black from "../../icons/arrow-up-black.svg";
+import { Logo } from "../../assets/img/Logo";
+import { ArrowUp } from "../../assets/img/icons/Arrow-Up";
 
 export const Footer: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ export const Footer: React.FC = () => {
       >
         <div className="mb-8 sm:mb-0">
           <a href="/">
-            <img className="h-7 w-20" src={logo} alt="nice-gadgets-logo" />
+            <Logo />
           </a>
         </div>
 
@@ -65,11 +66,7 @@ export const Footer: React.FC = () => {
             w-8 items-center justify-center 
             rounded-full border group-hover:border-primary "
             >
-              <img
-                className="h-2 w-2"
-                src={arrow_up_black}
-                alt="back-to-top-button"
-              />
+              <ArrowUp />
             </span>
           </button>
         </div>

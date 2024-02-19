@@ -4,12 +4,10 @@ import { useCallback, useEffect, useState } from "react";
 import { getData } from "../../utils/getData";
 import { Phone } from "../../types/Phone";
 import { ProductCard } from "../ProductCard";
-import arrow_down from "../../icons/arrow-down.svg";
-import arrow_up from "../../icons/arrow-up.svg";
-import arrow_left_black from "../../icons/arrow-left-black.svg";
-import arrow_right_black from "../../icons/arrow-right-black.svg";
-import arrow_right from "../../icons/arrow-right.svg";
-import home from "../../icons/home-page.svg";
+import { HomePageIcon } from "../../assets/img/icons/HomePageIcon";
+import { ArrowRight } from "../../assets/img/icons/Arrow-Right";
+import { ArrowUp } from "../../assets/img/icons/Arrow-Up";
+import { ArrowLeft } from "../../assets/img/icons/Arrow-Left";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
 import { ArrowDown } from "../../icons/Arrow-Down";
@@ -101,11 +99,9 @@ export const Catalog = () => {
       <div className="">
         <div className="mb-7 flex gap-2">
           <a href="/" className="">
-            <img src={home} alt="home_icon" />
+            <HomePageIcon />
           </a>
-          <div>
-            <img src={arrow_right} alt="" />
-          </div>
+          <ArrowRight />
           <a href="/" className="/[17px] flex font-semibold">
             Phones
           </a>
@@ -142,11 +138,7 @@ export const Catalog = () => {
                 id="menu-button"
               >
                 {sortField}
-                {isSortDropDownShown ? (
-                  <ArrowDown />
-                ) : (
-                  <img src={arrow_up} alt="" />
-                )}
+                {isSortDropDownShown ? <ArrowDown /> : <ArrowUp />}
               </button>
             </div>
 
@@ -202,11 +194,7 @@ export const Catalog = () => {
                 aria-haspopup="true"
               >
                 {itemsOnPage}
-                {isItemsDropDownShown ? (
-                  <img src={arrow_down} alt="arrow_down-icon" />
-                ) : (
-                  <img src={arrow_up} alt="arrow_up-icon" />
-                )}
+                {isItemsDropDownShown ? <ArrowDown /> : <ArrowUp />}
               </button>
             </div>
 
@@ -278,7 +266,7 @@ export const Catalog = () => {
             href="#/"
             className="flex h-8 w-8 items-center justify-center"
           >
-            <img src={arrow_left_black} alt="" />
+            <ArrowLeft />
           </a>
         </li>
         {itemsPagesMap.map((number) => (
@@ -319,7 +307,7 @@ export const Catalog = () => {
             }}
             style={{ pointerEvents: page === itemPages ? "none" : "auto" }}
           >
-            <img src={arrow_right_black} alt="" />
+            <ArrowRight />
           </a>
         </li>
       </ul>

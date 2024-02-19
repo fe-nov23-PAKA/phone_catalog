@@ -1,11 +1,12 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import classNames from "classnames";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../../public/img/Logo.svg";
-import favourites from "../../icons/favourites.svg";
-import shopping_bag from "../../icons/shopping-bag.svg";
-import close from "../../icons/close.svg";
-import menu from "../../icons/menu.svg";
+import { Logo } from "../../assets/img/Logo";
+import { Favorites } from "../../assets/img/icons/Favourites";
+import { ShoppingBag } from "../../assets/img/icons/Shopping-Bag";
+import { Close } from "../../assets/img/icons/Close";
+import { Menu } from "../../assets/img/icons/Menu";
 
 interface Props {
   isMenuOpen: boolean;
@@ -42,34 +43,30 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
       <div className="h-custom flex shrink-0 items-center justify-between px-4 sm:pr-0">
         <div className="flex items-center">
           <a href="#Home" className="py-4">
-            {isMenuOpen ? (
-              <img src={logo} alt="Logo" className="h-8" />
-            ) : (
-              <img src={logo} alt="Logo" className="h-8 text-[#F447AF]" />
-            )}
+            <Logo fill={isMenuOpen ? "#0F0F11" : "#F447AF"} />
           </a>
           <nav className="font-mont hidden items-center gap-x-8 font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
             <a
               href="#Home"
-              className="py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Home
             </a>
             <NavLink
               to="/catalog"
-              className="relative py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="relative py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Phones
             </NavLink>
             <a
               href="#Tablets"
-              className="py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Tablets
             </a>
             <a
               href="#Accessories"
-              className="relative py-[28px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="relative py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Accessories
             </a>
@@ -83,13 +80,13 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             type="button"
             className=" hover:bg-hover-color sm:border-l sm:p-6"
           >
-            <img src={favourites} alt="Favorites" className="m-0 h-6 w-6 p-1" />
+            <Favorites />
           </button>
           <button
             type="button"
             className=" hover:bg-hover-color sm:border-x sm:p-6"
           >
-            <img src={shopping_bag} alt="Cart" className="m-0 h-6  w-6 p-1" />
+            <ShoppingBag />
           </button>
         </div>
         <button
@@ -97,11 +94,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           className="block text-secondary focus:outline-none sm:hidden"
           onClick={toggleMenu}
         >
-          {isMenuOpen ? (
-            <img src={close} alt="Close Menu" className="h-6 w-6" />
-          ) : (
-            <img src={menu} alt="Open Menu" className="h-6 w-6" />
-          )}
+          {isMenuOpen ? <Close /> : <Menu />}
         </button>
       </div>
       {isMenuOpen && (
@@ -144,19 +137,17 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             </li>
           </ul>
           <div className="sticky flex">
-            <button type="button" className="w-1/2 border-r border-t py-6">
-              <img
-                src={favourites}
-                alt="Favorites"
-                className="mx-auto h-6 w-6 p-1"
-              />
+            <button
+              type="button"
+              className="flex w-1/2 justify-center border-r border-t py-6"
+            >
+              <Favorites />
             </button>
-            <button type="button" className="w-1/2 border-t py-6">
-              <img
-                src={shopping_bag}
-                alt="Cart"
-                className="mx-auto h-6 w-6 p-1"
-              />
+            <button
+              type="button"
+              className="flex w-1/2 justify-center border-t py-6"
+            >
+              <ShoppingBag />
             </button>
           </div>
         </div>
