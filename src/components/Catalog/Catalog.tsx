@@ -10,6 +10,7 @@ import { ArrowLeft } from "../../icons/Arrow-Left";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
 import { ArrowDown } from "../../icons/Arrow-Down";
+import { AboutSection } from "../UI/AboutSection";
 
 export const Catalog = () => {
   const [startVisiblePhones, setStartVisiblePhones] = useState<Phone[]>([]);
@@ -110,6 +111,10 @@ export const Catalog = () => {
           {allItemsCount} models
         </div>
       </div>
+
+      {itemsOnPageEditor.map((phone) => (
+        <AboutSection key={phone.id} phone={phone} />
+      ))}
 
       <div className="mb-6">
         <div

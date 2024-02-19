@@ -1,14 +1,23 @@
 import React from "react";
 import { Phone } from "../../types/Phone";
 import { Favorites } from "../../icons/Favourites";
+import { AboutSection } from "../UI/AboutSection";
 
 type Props = {
   phone: Phone;
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, capacity, priceRegular, priceDiscount, screen, images, ram } =
-    phone;
+  const {
+    name,
+    capacity,
+    priceRegular,
+    priceDiscount,
+    screen,
+    images,
+    ram,
+    description,
+  } = phone;
 
   return (
     <li
