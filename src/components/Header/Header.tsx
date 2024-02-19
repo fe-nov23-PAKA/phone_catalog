@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Logo } from "../../icons/Logo";
 import { Favorites } from "../../icons/Favourites";
-import { ShoppingBag } from "../../icons/Shopping-Bag";
 import { Close } from "../../icons/Close";
 import { Menu } from "../../icons/Menu";
+import { ShoppingBag } from "../../icons/Shopping-Bag";
 
 interface Props {
   isMenuOpen: boolean;
@@ -39,33 +39,33 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         { "border-b": !isMenuOpen },
       )}
     >
-      <div className="h-custom flex shrink-0 items-center justify-between px-4 sm:pr-0">
+      <div className="flex shrink-0 items-center justify-between pl-4 sm:pr-0">
         <div className="flex items-center">
           <a href="#Home" className="py-4">
-            <Logo fill={isMenuOpen ? "#0F0F11" : "#F447AF"} />
+            {isMenuOpen ? <Logo /> : <Logo fill="#F447AF" />}
           </a>
           <nav className="font-mont hidden items-center gap-x-8 font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
             <a
               href="#Home"
-              className="py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Home
             </a>
             <NavLink
               to="/catalog"
-              className="relative py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="relative py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Phones
             </NavLink>
             <a
               href="#Tablets"
-              className="py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Tablets
             </a>
             <a
               href="#Accessories"
-              className="relative py-[18.5px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              className="relative py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
             >
               Accessories
             </a>
@@ -90,7 +90,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         </div>
         <button
           type="button"
-          className="block text-secondary focus:outline-none sm:hidden"
+          className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none sm:hidden"
           onClick={toggleMenu}
         >
           {isMenuOpen ? <Close /> : <Menu />}
@@ -138,13 +138,13 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           <div className="sticky flex">
             <button
               type="button"
-              className="flex w-1/2 justify-center border-r border-t py-6"
+              className="flex w-1/2 items-center justify-center border-r border-t py-6"
             >
               <Favorites />
             </button>
             <button
               type="button"
-              className="flex w-1/2 justify-center border-t py-6"
+              className="flex w-1/2 items-center justify-center border-t py-6"
             >
               <ShoppingBag />
             </button>
