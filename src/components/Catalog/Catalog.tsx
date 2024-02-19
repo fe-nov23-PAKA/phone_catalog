@@ -4,13 +4,11 @@ import { useEffect, useState } from "react";
 import { getData } from "../../utils/getData";
 import { Phone } from "../../types/Phone";
 import { ProductCard } from "../ProductCard";
-import arrow_down from "../../assets/img/icons/arrow-down.svg";
-import arrow_up from "../../assets/img/icons/arrow-up.svg";
-import arrow_left_black from "../../assets/img/icons/arrow-left-black.svg";
-import arrow_right_black from "../../assets/img/icons/arrow-right-black.svg";
-import arrow_right from "../../assets/img/icons/arrow-right.svg";
-import home from "../../assets/img/icons/home-page.svg";
 import { ArrowDown } from "../../assets/img/icons/Arrow-Down";
+import { HomePageIcon } from "../../assets/img/icons/HomePageIcon";
+import { ArrowRight } from "../../assets/img/icons/Arrow-Right";
+import { ArrowUp } from "../../assets/img/icons/Arrow-Up";
+import { ArrowLeft } from "../../assets/img/icons/Arrow-Left";
 
 export const Catalog = () => {
   const [visiblePhones, setVisiblePhones] = useState<Phone[]>([]);
@@ -57,10 +55,10 @@ export const Catalog = () => {
       <div className="">
         <div className="mb-7 flex gap-2">
           <a href="/" className="">
-            <img src={home} alt="home_icon" />
+            <HomePageIcon />
           </a>
           <a href="/" className="">
-            <img src={arrow_right} alt="" />
+            <ArrowRight />
           </a>
           <a href="/" className="/[17px] flex font-semibold">
             Phones
@@ -96,11 +94,7 @@ export const Catalog = () => {
                 id="menu-button"
               >
                 {sortField}
-                {isSortDropDownShown ? (
-                  <ArrowDown />
-                ) : (
-                  <img src={arrow_up} alt="" />
-                )}
+                {isSortDropDownShown ? <ArrowDown /> : <ArrowUp />}
               </button>
             </div>
 
@@ -156,11 +150,7 @@ export const Catalog = () => {
                 aria-haspopup="true"
               >
                 {itemsOnPage}
-                {isItemsDropDownShown ? (
-                  <img src={arrow_down} alt="arrow_down-icon" />
-                ) : (
-                  <img src={arrow_up} alt="arrow_up-icon" />
-                )}
+                {isItemsDropDownShown ? <ArrowDown /> : <ArrowUp />}
               </button>
             </div>
 
@@ -216,7 +206,7 @@ export const Catalog = () => {
          hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
-            <img src={arrow_left_black} alt="" />
+            <ArrowLeft />
           </a>
         </li>
         <li
@@ -275,7 +265,7 @@ export const Catalog = () => {
         hover:border-primary hover:bg-white hover:text-primary"
         >
           <a href="#/" className="flex h-8 w-8 items-center justify-center">
-            <img src={arrow_right_black} alt="" />
+            <ArrowRight />
           </a>
         </li>
       </ul>

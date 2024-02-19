@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable operator-linebreak */
 import React from "react";
-import fav from "../../assets/img/icons/favourites.svg";
 import { Phone } from "../../types/Phone";
+import { Favorites } from "../../assets/img/icons/Favourites";
 
 type Props = {
   phone: Phone;
@@ -93,7 +94,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
             justify-center rounded-full
             border border-icons-color hover:border-primary"
             >
-              <img className="" src={fav} alt="botton-heart" />
+              <Favorites />
             </button>
           </div>
         </div>
