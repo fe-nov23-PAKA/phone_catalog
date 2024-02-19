@@ -13,14 +13,14 @@ html {
 @font-face {
   font-family: 'Mont';
   src: url('./fonts/Mont-Regular.otf') format('opentype');
-  font-weight: normal;
+  font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
   src: url('./fonts/Mont-Bold.otf') format('opentype');
-  font-weight: bold;
+  font-weight: 800;
   font-style: normal;
 }
 

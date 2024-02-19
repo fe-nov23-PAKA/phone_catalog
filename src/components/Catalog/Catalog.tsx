@@ -95,14 +95,14 @@ export const Catalog = () => {
   };
 
   return (
-    <div className="container">
-      <div className="">
+    <div className="container mt-6">
+      <div>
         <div className="mb-7 flex gap-2">
-          <a href="/" className="">
+          <a href="/">
             <HomePageIcon />
           </a>
-          <ArrowRight />
-          <a href="/" className="/[17px] flex font-semibold">
+          <ArrowRight fill="#B4BDC3" />
+          <a href="/" className="flex text-base/[17px] font-semibold">
             Phones
           </a>
         </div>
@@ -270,7 +270,7 @@ export const Catalog = () => {
             href="#/"
             className="flex h-8 w-8 items-center justify-center"
           >
-            <ArrowLeft />
+            <ArrowLeft fill="#0F0F11" />
           </a>
         </li>
         {itemsPagesMap.map((number) => (
@@ -311,7 +311,7 @@ export const Catalog = () => {
             }}
             style={{ pointerEvents: page === itemPages ? "none" : "auto" }}
           >
-            <ArrowRight />
+            <ArrowRight fill="#0F0F11" />
           </a>
         </li>
       </ul>
