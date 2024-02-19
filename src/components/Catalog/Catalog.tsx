@@ -11,6 +11,8 @@ import arrow_right_black from "../../assets/img/icons/arrow-right-black.svg";
 import arrow_right from "../../assets/img/icons/arrow-right.svg";
 import home from "../../assets/img/icons/home-page.svg";
 import { ArrowDown } from "../../assets/img/icons/Arrow-Down";
+import { scrollToTop } from "../../utils/scrollToTop";
+import { setShowItems } from "../../utils/setShowItems";
 
 export const Catalog = () => {
   const [startVisiblePhones, setStartVisiblePhones] = useState<Phone[]>([]);
@@ -28,6 +30,10 @@ export const Catalog = () => {
       setStartVisiblePhones(phones);
     });
   }, []);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [page]);
 
   const allItemsCount = startVisiblePhones.length;
 
@@ -51,22 +57,12 @@ export const Catalog = () => {
     [page],
   );
 
-  function setShowItems() {
-    const itemsStart = itemsOnPage * page - itemsOnPage;
-    const itemsEnd = itemsOnPage * page;
-
-    if (page === itemsPagesMap[itemsPagesMap.length - 1]) {
-      const shownItems = startVisiblePhones.slice(itemsStart);
-
-      return shownItems;
-    }
-
-    const shownItems = startVisiblePhones.slice(itemsStart, itemsEnd);
-
-    return shownItems;
-  }
-
-  const itemsOnPageEditor = setShowItems();
+  const itemsOnPageEditor = setShowItems(
+    itemsOnPage,
+    page,
+    itemsPagesMap,
+    startVisiblePhones,
+  );
 
   const handleSortDropDownClick = () => {
     setIsSortDropDownShown((currentValue) => !currentValue);
@@ -138,8 +134,8 @@ export const Catalog = () => {
                   { "focus:ring-primary": !isSortDropDownShown },
                   { "hover:ring-secondary": isSortDropDownShown },
                   "inline-flex w-full items-center justify-between",
-                  "rounded-md bg-white px-3 py-2 ",
-                  "font-semibold text-gray-900",
+                  "rounded-md px-3 py-2 ",
+                  "font-semibold text-primary",
                   "shadow-sm ring-1 ring-inset ring-icons-color",
                 )}
                 onClick={handleSortDropDownClick}
@@ -158,7 +154,7 @@ export const Catalog = () => {
               className={classNames(
                 { hidden: isSortDropDownShown },
                 "absolute left-0 z-10 mt-1 text-secondary",
-                "w-full origin-top-right rounded-md bg-white ",
+                "w-full origin-top-right rounded-md",
                 "shadow-lg ring-1 ring-black ring-opacity-5",
                 "focus:outline-none",
               )}
@@ -171,14 +167,14 @@ export const Catalog = () => {
                   <a
                     key={field}
                     href="#/"
-                    className="text-secondary-primary block
-                    px-4 py-2  hover:rounded-lg 
+                    className="block bg-white
+                    px-4 py-2 hover:rounded-lg
                   hover:bg-hover-color hover:text-primary"
                     role="menuitem"
                     id="menu-item-0"
-                    onClick={(event) =>
-                      handleSortDropDownElementClick(field, event)
-                    }
+                    onClick={(event) => {
+                      handleSortDropDownElementClick(field, event);
+                    }}
                   >
                     {field}
                   </a>
@@ -187,10 +183,7 @@ export const Catalog = () => {
             </div>
           </div>
 
-          <div
-            className="relative col-span-2 mb-6 
-        w-full text-left sm:col-span-3"
-          >
+          <div className="relative col-span-2 mb-6 w-full text-left sm:col-span-3">
             <div>
               <p className="mb-1  text-xs text-secondary">Items on page</p>
               <button
@@ -199,8 +192,8 @@ export const Catalog = () => {
                   { "focus:ring-primary": !isItemsDropDownShown },
                   { "hover:ring-secondary": isItemsDropDownShown },
                   "inline-flex w-full items-center justify-between",
-                  "rounded-md bg-white px-3 py-2 ",
-                  "font-semibold text-gray-900",
+                  "rounded-md px-3 py-2 ",
+                  "font-semibold text-primary",
                   "shadow-sm ring-1 ring-inset ring-icons-color",
                 )}
                 onClick={handleItemsDropDownClick}
@@ -221,8 +214,8 @@ export const Catalog = () => {
               className={classNames(
                 { hidden: isItemsDropDownShown },
                 "absolute left-0 z-10 mt-1 text-secondary",
-                "w-full origin-top-right rounded-md bg-white ",
-                "shadow-lg ring-1 ring-black ring-opacity-5 ",
+                "w-full origin-top-right rounded-md bg-white",
+                "shadow-lg ring-1 ring-primary ring-opacity-5 ",
                 "focus:outline-none",
               )}
               role="menu"
@@ -234,14 +227,15 @@ export const Catalog = () => {
                   <a
                     key={quantity}
                     href="#/"
-                    className="block px-4 py-2 
-                   hover:rounded-lg 
+                    className="block bg-white px-4 
+                   py-2 last:rounded-lg hover:rounded-lg
                   hover:bg-hover-color hover:text-primary"
                     role="menuitem"
                     id="menu-item-0"
-                    onClick={(event) =>
-                      handleItemsDropDownElementClick(quantity, event)
-                    }
+                    onClick={(event) => {
+                      handleItemsDropDownElementClick(quantity, event);
+                      setPage(1);
+                    }}
                   >
                     {quantity}
                   </a>
