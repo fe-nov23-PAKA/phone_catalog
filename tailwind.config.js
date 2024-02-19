@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{html,js,tsx,ts}"],
   theme: {
+    fontFamily: {
+      mont: ["Mont", "sans-serif"]
+    },
     container: {
       center: true,
       padding: "24px",
