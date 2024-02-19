@@ -4,15 +4,15 @@ import { useCallback, useEffect, useState } from "react";
 import { getData } from "../../utils/getData";
 import { Phone } from "../../types/Phone";
 import { ProductCard } from "../ProductCard";
-import arrow_down from "../../assets/img/icons/arrow-down.svg";
-import arrow_up from "../../assets/img/icons/arrow-up.svg";
-import arrow_left_black from "../../assets/img/icons/arrow-left-black.svg";
-import arrow_right_black from "../../assets/img/icons/arrow-right-black.svg";
-import arrow_right from "../../assets/img/icons/arrow-right.svg";
-import home from "../../assets/img/icons/home-page.svg";
-import { ArrowDown } from "../../assets/img/icons/Arrow-Down";
+import arrow_down from "../../icons/arrow-down.svg";
+import arrow_up from "../../icons/arrow-up.svg";
+import arrow_left_black from "../../icons/arrow-left-black.svg";
+import arrow_right_black from "../../icons/arrow-right-black.svg";
+import arrow_right from "../../icons/arrow-right.svg";
+import home from "../../icons/home-page.svg";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
+import { ArrowDown } from "../../icons/Arrow-Down";
 
 export const Catalog = () => {
   const [startVisiblePhones, setStartVisiblePhones] = useState<Phone[]>([]);

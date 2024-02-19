@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/img/Logo.svg";
-import favourites from "../../assets/img/icons/favourites.svg";
-import shopping_bag from "../../assets/img/icons/shopping-bag.svg";
-import close from "../../assets/img/icons/close.svg";
-import menu from "../../assets/img/icons/menu.svg";
+import logo from "../../../public/assets/img/Logo.svg";
+import favourites from "../../icons/favourites.svg";
+import shopping_bag from "../../icons/shopping-bag.svg";
+import close from "../../icons/close.svg";
+import menu from "../../icons/menu.svg";
 
 interface Props {
   isMenuOpen: boolean;
