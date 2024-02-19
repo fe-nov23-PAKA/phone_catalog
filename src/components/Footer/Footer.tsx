@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
       >
         <div className="mb-8 sm:mb-0">
           <a href="/">
-            <Logo />
+            <Logo fill="#F447AF" />
           </a>
         </div>
 
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
             w-8 items-center justify-center 
             rounded-full border group-hover:border-primary "
             >
-              <ArrowUp />
+              <ArrowUp fill="#0F0F11" />
             </span>
           </button>
         </div>
