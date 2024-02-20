@@ -1,10 +1,10 @@
-import { Phone } from "../types/Item";
+import { Item } from "../types/Item";
 
 export function setShowItems(
   itemsOnPage: number,
   page: number,
   itemsPagesMap: number[],
-  startVisiblePhones: Phone[],
+  startVisiblePhones: Item[],
 ) {
   const itemsStart = itemsOnPage * page - itemsOnPage;
   const itemsEnd = itemsOnPage * page;
