@@ -1,25 +1,48 @@
 /* eslint-disable operator-linebreak */
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import classNames from "classnames";
 import fav from "../../assets/img/icons/favourites.svg";
 import { Phone } from "../../types/Phone";
 
 type Props = {
   phone: Phone;
+  classname?: string;
+  setItemCarouselWidth?: (number: number) => void;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
+export const ProductCard: React.FC<Props> = ({
+  phone,
+  classname,
+  setItemCarouselWidth,
+}) => {
   const { name, capacity, priceRegular, priceDiscount, screen, images, ram } =
     phone;
 
+  const carouselItemRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (carouselItemRef.current && setItemCarouselWidth) {
+        setItemCarouselWidth(carouselItemRef.current.offsetWidth);
+      }
+    };
+
+    updateWidth();
+
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, [setItemCarouselWidth]);
+
   return (
     <li
-      className="
-      hover:shadow-sh2
-     col-span-full w-full
-     rounded-lg border
-      border-element-color sm:col-span-6
-     md:col-span-4 xl:col-span-6
-     "
+      ref={carouselItemRef}
+      className={classNames(
+        "col-span-full w-full rounded-lg border border-element-color hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
+        { [`${classname}`]: classname },
+      )}
     >
       <a href="/">
         <div className="p-[32px] ">
