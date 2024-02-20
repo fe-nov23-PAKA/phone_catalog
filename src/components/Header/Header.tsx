@@ -85,7 +85,12 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             type="button"
             className=" hover:bg-hover-color sm:border-x sm:p-6"
           >
-            <ShoppingBag />
+            <div className="relative">
+              <ShoppingBag />
+              <div className="absolute bottom-3 left-2 h-5 w-5 rounded-full border-2 border-white bg-secondary-accent text-xs text-white">
+                12
+              </div>
+            </div>
           </button>
         </div>
         <button
