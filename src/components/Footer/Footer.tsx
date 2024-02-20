@@ -6,7 +6,7 @@ import { ArrowUp } from "../../icons/Arrow-Up";
 export const Footer: React.FC = () => {
   return (
     <footer
-      className="flex items-center 
+      className="flex items-center
     justify-center border-t border-element-color"
     >
       <div
@@ -20,8 +20,8 @@ export const Footer: React.FC = () => {
         </div>
 
         <div
-          className="grid gap-3 sm:flex sm:w-full 
-    sm:max-w-[35%] sm:items-center sm:justify-between"
+          className="mb-8 flex flex-col gap-3 sm:w-full
+    sm:max-w-[35%] sm:flex-row sm:items-center sm:justify-between"
         >
           <a
             className="text-xs font-extrabold

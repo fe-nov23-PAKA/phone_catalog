@@ -1,7 +1,6 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useState } from "react";
-import { getData } from "../../utils/getData";
-import { Phone } from "../../types/Phone";
+import { useEffect, useState } from "react";
+import { Item } from "../../types/Item";
 import { ProductCard } from "../ProductCard";
 import { HomePageIcon } from "../../icons/HomePageIcon";
 import { ArrowRight } from "../../icons/Arrow-Right";
@@ -11,8 +10,11 @@ import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
 import { ArrowDown } from "../../icons/Arrow-Down";
 
-export const Catalog = () => {
-  const [startVisiblePhones, setStartVisiblePhones] = useState<Phone[]>([]);
+interface Props {
+  items: Item[];
+}
+
+export const Catalog: React.FC<Props> = ({ items }) => {
   const [itemsOnPage, setItemsOnPage] = useState(16);
   const [sortField, setSortField] = useState("Less expensive");
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
@@ -23,42 +25,33 @@ export const Catalog = () => {
   const sortFields = ["Less expensive", "More expensive"];
 
   useEffect(() => {
-    getData().then((phones) => {
-      setStartVisiblePhones(phones);
-    });
-  }, []);
-
-  useEffect(() => {
     scrollToTop();
   }, [page]);
 
-  const allItemsCount = startVisiblePhones.length;
+  const allItemsCount = items.length;
 
-  const itemPages = Math.ceil(startVisiblePhones.length / itemsOnPage);
+  const itemPages = Math.ceil(items.length / itemsOnPage);
   const itemsPagesMap: number[] = [];
 
   for (let i = 1; i <= itemPages; i += 1) {
     itemsPagesMap.push(i);
   }
 
-  const handleSetPage = useCallback(
-    (
-      number: number,
-      event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    ) => {
-      event?.preventDefault();
-      if (number !== page) {
-        setPage(number);
-      }
-    },
-    [page],
-  );
+  const handleSetPage = (
+    number: number,
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
+    event?.preventDefault();
+    if (number !== page) {
+      setPage(number);
+    }
+  };
 
   const itemsOnPageEditor = setShowItems(
     itemsOnPage,
     page,
     itemsPagesMap,
-    startVisiblePhones,
+    items,
   );
 
   const handleSortDropDownClick = () => {
@@ -249,7 +242,7 @@ export const Catalog = () => {
       >
         <li
           className={classNames(
-            "font-mont rounded-full border",
+            "rounded-full border font-mont",
             { disabled: page === 1 },
             { "hover:border-primary": !(page === 1) },
           )}
@@ -272,7 +265,7 @@ export const Catalog = () => {
           <li
             key={number}
             className={classNames(
-              "font-mont rounded-full border text-primary duration-300 hover:border-primary",
+              "rounded-full border font-mont text-primary duration-300 hover:border-primary",
               {
                 "border-primary bg-primary text-white hover:bg-white hover:text-primary":
                   page === number,
@@ -290,7 +283,7 @@ export const Catalog = () => {
         ))}
         <li
           className={classNames(
-            "font-mont rounded-full border",
+            "rounded-full border font-mont",
             { disabled: page === itemPages },
             { "hover:border-primary": !(page === itemPages) },
           )}

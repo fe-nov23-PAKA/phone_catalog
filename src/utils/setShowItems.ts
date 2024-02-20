@@ -1,4 +1,4 @@
-import { Phone } from "../types/Phone";
+import { Phone } from "../types/Item";
 
 export function setShowItems(
   itemsOnPage: number,
