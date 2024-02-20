@@ -1,9 +1,9 @@
-import { CartItem } from "../components/CartItem";
-import { ArrowLeft } from "../icons/Arrow-Left";
+import { CartItem } from "../CartItem";
+import { ArrowLeft } from "../../icons/Arrow-Left";
 
 export const Cart = () => {
   return (
-    <div className="cart container">
+    <div className="cart container mb-14">
       <button type="button" className="mb-6 flex flex-row items-center pr-1">
         <ArrowLeft />
         <span className="font-bold text-secondary">Back</span>
@@ -11,8 +11,8 @@ export const Cart = () => {
       <h1 className="leading-14 mb-6 text-left text-4xl font-extrabold tracking-tighter">
         Cart
       </h1>
-      <div className="flex flex-col sm:flex-row">
-        <div className="mb-8 mr-4 flex flex-col gap-y-4">
+      <div className="grid md:grid-cols-3">
+        <div className="mb-8 mr-4 flex flex-col gap-y-4 md:col-span-2">
           <CartItem />
           <CartItem />
           <CartItem />
@@ -24,9 +24,9 @@ export const Cart = () => {
           <div className=" text-center text-base text-secondary">
             Total for 3 items
           </div>
-          <div className="my-6 w-80 border" />
+          <div className="my-6 w-full border" />
           <button
-            className="h-12 w-80 rounded-lg bg-accent text-element-color hover:shadow-sh1"
+            className="h-12 w-full rounded-lg bg-accent text-element-color hover:shadow-sh1"
             type="button"
           >
             Checkout

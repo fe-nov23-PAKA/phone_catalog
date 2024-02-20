@@ -8,14 +8,14 @@ export const CartItem = () => {
     <div className="flex flex-col gap-4 rounded-[16px] border border-solid border-element-color p-6 sm:flex-row">
       <div className="flex flex-row items-center gap-[24px]">
         <button type="button">
-          <Close />
+          <Close fill="#b4bdc3" />
         </button>
-        <div className="min-h-[80px] min-w-[80px]">
+        <div className="min-h-[80px] min-w-[55px]">
           <img src={phone} alt="phone" className="h-[66px] w-[66px]" />
         </div>
         <div className="">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</div>
       </div>
-      <div className="flex flex-row items-center justify-between  gap-[24px]">
+      <div className="flex flex-row items-center justify-between gap-[24px]">
         <div className="flex flex-row items-center gap-3">
           <button
             type="button"
@@ -37,7 +37,7 @@ export const CartItem = () => {
             <Plus />
           </button>
         </div>
-        <div className="">$1099</div>
+        <div className="font-extrabold leading-8">$1099</div>
       </div>
     </div>
   );
