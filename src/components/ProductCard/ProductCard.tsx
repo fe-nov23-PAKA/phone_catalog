@@ -1,16 +1,36 @@
 import React from "react";
+<<<<<<< HEAD
+import { Phone } from "../../types/Phone";
+import { Favorites } from "../../icons/Favourites";
+import { AboutSection } from "../UI/AboutSection";
+=======
 import classNames from "classnames";
 import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
+>>>>>>> 74fdbc3521c5bdbfbda3f86bdcf9411fdc985464
 
 type Props = {
   phone: Item;
   classnames?: string;
 };
 
+<<<<<<< HEAD
+export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const {
+    name,
+    capacity,
+    priceRegular,
+    priceDiscount,
+    screen,
+    images,
+    ram,
+    description,
+  } = phone;
+=======
 export const ProductCard: React.FC<Props> = ({ phone, classnames }) => {
   const { name, capacity, priceRegular, priceDiscount, screen, images, ram } =
     phone;
+>>>>>>> 74fdbc3521c5bdbfbda3f86bdcf9411fdc985464
 
   return (
     <li

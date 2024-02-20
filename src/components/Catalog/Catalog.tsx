@@ -7,15 +7,12 @@ import { ArrowRight } from "../../icons/Arrow-Right";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
-import { DropDownMenu } from "../UI/DropDownMenu";
+import { ArrowDown } from "../../icons/Arrow-Down";
 
-interface Props {
-  items: Item[];
-}
-
-export const Catalog: React.FC<Props> = ({ items }) => {
-  const [itemsOnPage, setItemsOnPage] = useState("16");
-  const [sortField, setSortField] = useState("Cheapest");
+export const Catalog = () => {
+  const [startVisiblePhones, setStartVisiblePhones] = useState<Phone[]>([]);
+  const [itemsOnPage, setItemsOnPage] = useState(16);
+  const [sortField, setSortField] = useState("Less expensive");
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
   const [isItemsDropDownShown, setIsItemsDropDownShown] = useState(true);
   const [page, setPage] = useState("1");
@@ -101,6 +98,10 @@ export const Catalog: React.FC<Props> = ({ items }) => {
           {items.length} models
         </div>
       </div>
+
+      {itemsOnPageEditor.map((phone) => (
+        <AboutSection key={phone.id} phone={phone} />
+      ))}
 
       <div className="mb-6">
         <div
