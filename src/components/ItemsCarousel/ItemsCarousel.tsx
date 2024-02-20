@@ -33,7 +33,7 @@ export const ItemsCarousel: React.FC<Props> = ({
     }
 
     setScrollDistance(newScroll);
-  }, [itemCarouselWidth, carouselRef.current, window.innerWidth]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +76,7 @@ export const ItemsCarousel: React.FC<Props> = ({
     <>
       <div className="container pb-20">
         <div className="flex items-center justify-between pb-6">
-          <h2 className="text-[32px] font-extrabold">{titleName}</h2>
+          <h2 className="text-[32px] font-extrabold leading-[41px]">{titleName}</h2>
           <div className="flex gap-4">
             <a
               onClick={handleScrollLeft}

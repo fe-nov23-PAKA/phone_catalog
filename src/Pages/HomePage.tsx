@@ -1,4 +1,5 @@
 import React from "react";
+import { Phones } from "../components/Phones/Phones";
 import { Phone } from "../types/Phone";
 import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
 
@@ -16,6 +17,8 @@ export const HomePage: React.FC<Props> = ({ startVisiblePhones }) => {
         titleName={OFFER_TITLE_NEW}
         startVisiblePhones={startVisiblePhones}
       />
+
+      <Phones />
 
       <ItemsCarousel
         titleName={OFFER_TITLE_HOT_PRICE}
