@@ -1,18 +1,21 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { Item } from "../../types/Item";
 import { ProductCard } from "../ProductCard";
 import { HomePageIcon } from "../../icons/HomePageIcon";
 import { ArrowRight } from "../../icons/Arrow-Right";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
-import { ArrowDown } from "../../icons/Arrow-Down";
+import { DropDownMenu } from "../UI/DropDownMenu";
+import { Item } from "../../types/Item";
 
-export const Catalog = () => {
-  const [startVisiblePhones, setStartVisiblePhones] = useState<Phone[]>([]);
-  const [itemsOnPage, setItemsOnPage] = useState(16);
-  const [sortField, setSortField] = useState("Less expensive");
+interface Props {
+  items: Item[];
+}
+
+export const Catalog: React.FC<Props> = ({ items }) => {
+  const [itemsOnPage, setItemsOnPage] = useState("16");
+  const [sortField, setSortField] = useState("Cheapest");
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
   const [isItemsDropDownShown, setIsItemsDropDownShown] = useState(true);
   const [page, setPage] = useState("1");
@@ -99,10 +102,6 @@ export const Catalog = () => {
         </div>
       </div>
 
-      {itemsOnPageEditor.map((phone) => (
-        <AboutSection key={phone.id} phone={phone} />
-      ))}
-
       <div className="mb-6">
         <div
           className="grid grid-cols-4 justify-center
@@ -135,8 +134,8 @@ export const Catalog = () => {
           grid-cols-4 justify-items-center 
           gap-x-4 gap-y-10 sm:grid-cols-12 md:mb-10 xl:grid-cols-24"
         >
-          {itemsOnPageEditor.map((phone) => (
-            <ProductCard key={phone.id} phone={phone} />
+          {itemsOnPageEditor.map((item) => (
+            <ProductCard key={item.id} item={item} />
           ))}
         </ul>
       </div>

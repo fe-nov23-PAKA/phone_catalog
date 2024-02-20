@@ -6,7 +6,7 @@ import { ArrowUp } from "../../icons/Arrow-Up";
 export const Footer: React.FC = () => {
   return (
     <footer
-      className="fixed bottom-0 flex w-full items-center
+      className="flex w-full items-center
     justify-center border-t border-element-color"
     >
       <div

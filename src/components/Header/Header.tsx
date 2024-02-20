@@ -51,6 +51,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           <nav className="hidden items-center gap-x-8 font-mont font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
             {NAV_LIST.map((nav_item) => (
               <NavLinkMenu
+                key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
                 classname="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
               >

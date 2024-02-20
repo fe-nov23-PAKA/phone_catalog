@@ -1,22 +1,17 @@
 import React from "react";
-<<<<<<< HEAD
-import { Phone } from "../../types/Phone";
-import { Favorites } from "../../icons/Favourites";
-import { AboutSection } from "../UI/AboutSection";
-=======
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
->>>>>>> 74fdbc3521c5bdbfbda3f86bdcf9411fdc985464
 
 type Props = {
-  phone: Item;
+  item: Item;
   classnames?: string;
 };
 
-<<<<<<< HEAD
-export const ProductCard: React.FC<Props> = ({ phone }) => {
+export const ProductCard: React.FC<Props> = ({ item, classnames }) => {
   const {
+    id,
     name,
     capacity,
     priceRegular,
@@ -24,13 +19,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     screen,
     images,
     ram,
-    description,
-  } = phone;
-=======
-export const ProductCard: React.FC<Props> = ({ phone, classnames }) => {
-  const { name, capacity, priceRegular, priceDiscount, screen, images, ram } =
-    phone;
->>>>>>> 74fdbc3521c5bdbfbda3f86bdcf9411fdc985464
+  } = item;
 
   return (
     <li
@@ -39,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ phone, classnames }) => {
         { [`${classnames}`]: classnames },
       )}
     >
-      <a href="/">
+      <Link to={`${id}`}>
         <div className="p-[32px] ">
           <div className="mb-2 flex h-[196px] items-center justify-center">
             <img
@@ -115,7 +104,7 @@ export const ProductCard: React.FC<Props> = ({ phone, classnames }) => {
             </button>
           </div>
         </div>
-      </a>
+      </Link>
     </li>
   );
 };

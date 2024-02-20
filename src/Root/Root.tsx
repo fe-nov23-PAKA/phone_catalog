@@ -18,18 +18,18 @@ export const Root = () => {
           <Route path="home" element={<HomePage />} />
 
           <Route path="phones" element={<ItemsPage option="phones" />}>
-            <Route path=":slug?" element={<ItemCard />} />
+            <Route path=":phoneID" element={<ItemCard />} />
           </Route>
 
           <Route path="tablets" element={<ItemsPage option="tablets" />}>
-            <Route path=":slug?" element={<ItemCard />} />
+            <Route path=":tabletsID" element={<ItemCard />} />
           </Route>
 
           <Route
             path="accessories"
             element={<ItemsPage option="accessories" />}
           >
-            <Route path=":slug?" element={<ItemCard />} />
+            <Route path=":acceID" element={<ItemCard />} />
           </Route>
 
           <Route path="favourites" element={<Favourites />} />
