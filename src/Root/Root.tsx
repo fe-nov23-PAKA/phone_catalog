@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import {
   AccessoriesPage,
@@ -22,6 +22,7 @@ export const Root = () => {
 
       {!isMenuOpen && (
         <Routes>
+          <Route path="/" element={<Navigate to="home" />} />
           <Route path="home" element={<HomePage />} />
 
           <Route path="phones" element={<PhonesPage />}>
