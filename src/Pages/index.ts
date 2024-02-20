@@ -1,5 +1,5 @@
 export * from "./HomePage";
-export * from "./CatalogPage";
 export * from "./ItemCard";
+export * from "./ItemsPage";
 export * from "./Favourites";
-export * from "./Cart";
+export * from "../components/Cart/Cart";

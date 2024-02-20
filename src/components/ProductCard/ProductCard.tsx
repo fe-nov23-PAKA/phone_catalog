@@ -1,12 +1,20 @@
 import React from "react";
+<<<<<<< HEAD
 import { Phone } from "../../types/Phone";
 import { Favorites } from "../../icons/Favourites";
 import { AboutSection } from "../UI/AboutSection";
+=======
+import classNames from "classnames";
+import { Item } from "../../types/Item";
+import { Favourites } from "../../icons/Favourites";
+>>>>>>> 74fdbc3521c5bdbfbda3f86bdcf9411fdc985464
 
 type Props = {
-  phone: Phone;
+  phone: Item;
+  classnames?: string;
 };
 
+<<<<<<< HEAD
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   const {
     name,
@@ -18,16 +26,18 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     ram,
     description,
   } = phone;
+=======
+export const ProductCard: React.FC<Props> = ({ phone, classnames }) => {
+  const { name, capacity, priceRegular, priceDiscount, screen, images, ram } =
+    phone;
+>>>>>>> 74fdbc3521c5bdbfbda3f86bdcf9411fdc985464
 
   return (
     <li
-      className="
-      hover:shadow-sh2
-     col-span-full w-full
-     rounded-lg border
-      border-element-color sm:col-span-6
-     md:col-span-4 xl:col-span-6
-     "
+      className={classNames(
+        "hover:shadow-sh2 col-span-full w-full rounded-lg border border-element-color sm:col-span-6 md:col-span-4 xl:col-span-6",
+        { [`${classnames}`]: classnames },
+      )}
     >
       <a href="/">
         <div className="p-[32px] ">
@@ -101,7 +111,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
             justify-center rounded-full
             border border-icons-color hover:border-primary"
             >
-              <Favorites />
+              <Favourites />
             </button>
           </div>
         </div>

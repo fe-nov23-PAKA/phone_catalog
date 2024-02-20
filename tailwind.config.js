@@ -19,8 +19,8 @@ module.exports = {
         small: ["14px", "21px"],
       },
       backgroundImage: {
-        darkness: "url('public/img/404page/bg-darkness.png')",
-        lightness: "url('public/img/404page/bg-lightness.png')",
+        darkness: "url('src/assets/img/404page/bg-darkness.png')",
+        lightness: "url('src/assets/img/404page/bg-lightness.png')",
       },
       colors: {
         accent: "#216CFF",
@@ -36,7 +36,7 @@ module.exports = {
       },
       boxShadow: {
         sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",
-        sh2: "box-shadow: 0px 2px 16px 0px #0000001A"
+        sh2: "0 2px 16px 0 #000"
 
       },
       gridTemplateColumns: {

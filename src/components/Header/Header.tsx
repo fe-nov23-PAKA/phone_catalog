@@ -2,10 +2,13 @@ import classNames from "classnames";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Logo } from "../../icons/Logo";
-import { Favorites } from "../../icons/Favourites";
 import { Close } from "../../icons/Close";
 import { Menu } from "../../icons/Menu";
 import { ShoppingBag } from "../../icons/Shopping-Bag";
+import { BurgerMenu } from "../UI/BurgerMenu";
+import { Favourites } from "../../icons/Favourites";
+import { NavLinkMenu } from "../UI/NavLinkMenu";
+import { NAV_LIST } from "../../variables";
 
 interface Props {
   isMenuOpen: boolean;
@@ -41,34 +44,18 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
     >
       <div className="flex shrink-0 items-center justify-between pl-4 sm:pr-0">
         <div className="flex items-center">
-          <a href="#Home" className="py-4">
+          <NavLink to="/" className="py-4">
             {isMenuOpen ? <Logo /> : <Logo fill="#F447AF" />}
-          </a>
-          <nav className="font-mont hidden items-center gap-x-8 font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
-            <a
-              href="#Home"
-              className="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
-            >
-              Home
-            </a>
-            <NavLink
-              to="/catalog"
-              className="relative py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
-            >
-              Phones
-            </NavLink>
-            <a
-              href="#Tablets"
-              className="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
-            >
-              Tablets
-            </a>
-            <a
-              href="#Accessories"
-              className="relative py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
-            >
-              Accessories
-            </a>
+          </NavLink>
+          <nav className="hidden items-center gap-x-8 font-mont font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
+            {NAV_LIST.map((nav_item) => (
+              <NavLinkMenu
+                to={`/${nav_item.toLowerCase()}`}
+                classname="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              >
+                {nav_item}
+              </NavLinkMenu>
+            ))}
           </nav>
         </div>
         <div
@@ -79,13 +66,18 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             type="button"
             className=" hover:bg-hover-color sm:border-l sm:p-6"
           >
-            <Favorites />
+            <Favourites />
           </button>
           <button
             type="button"
             className=" hover:bg-hover-color sm:border-x sm:p-6"
           >
-            <ShoppingBag />
+            <div className="relative">
+              <ShoppingBag />
+              <div className="absolute bottom-3 left-2 h-5 w-5 rounded-full border-2 border-white bg-secondary-accent text-xs text-white">
+                12
+              </div>
+            </div>
           </button>
         </div>
         <button
@@ -96,61 +88,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           {isMenuOpen ? <Close /> : <Menu />}
         </button>
       </div>
-      {isMenuOpen && (
-        <div className="left-0 flex h-full w-full flex-col justify-between overflow-hidden border-t bg-white">
-          <ul
-            className="mt-6 flex flex-grow flex-col 
-          items-center space-y-4 overflow-auto tracking-wider"
-          >
-            <li>
-              <a
-                href="#Home"
-                className="text-xs font-extrabold uppercase text-secondary"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#Phones"
-                className="text-xs font-extrabold uppercase text-secondary"
-              >
-                Phones
-              </a>
-            </li>
-            <li>
-              <a
-                href="#Tablets"
-                className="text-xs font-extrabold uppercase text-secondary"
-              >
-                Tablets
-              </a>
-            </li>
-            <li>
-              <a
-                href="#Accessories"
-                className="text-xs font-extrabold uppercase text-secondary"
-              >
-                Accessories
-              </a>
-            </li>
-          </ul>
-          <div className="sticky flex">
-            <button
-              type="button"
-              className="flex w-1/2 items-center justify-center border-r border-t py-6"
-            >
-              <Favorites />
-            </button>
-            <button
-              type="button"
-              className="flex w-1/2 items-center justify-center border-t py-6"
-            >
-              <ShoppingBag />
-            </button>
-          </div>
-        </div>
-      )}
+      {isMenuOpen && <BurgerMenu setIsMenuOpen={setIsMenuOpen} />}
     </header>
   );
 };
