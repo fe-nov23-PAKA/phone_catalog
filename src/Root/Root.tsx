@@ -1,14 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import {
-  AccessoriesPage,
-  Cart,
-  Favourites,
-  HomePage,
-  ItemCard,
-  PhonesPage,
-  TabletsPage,
-} from "../Pages";
+import { Cart, Favourites, HomePage, ItemCard, ItemsPage } from "../Pages";
 import { PageNotFound } from "../Pages/NotFoundPage";
 import { Footer } from "../components/Footer/Footer";
 import { Header } from "../components/Header/Header";
@@ -25,15 +17,18 @@ export const Root = () => {
           <Route path="/" element={<Navigate to="home" />} />
           <Route path="home" element={<HomePage />} />
 
-          <Route path="phones" element={<PhonesPage />}>
+          <Route path="phones" element={<ItemsPage option="phones" />}>
             <Route path=":slug?" element={<ItemCard />} />
           </Route>
 
-          <Route path="tablets" element={<TabletsPage />}>
+          <Route path="tablets" element={<ItemsPage option="tablets" />}>
             <Route path=":slug?" element={<ItemCard />} />
           </Route>
 
-          <Route path="accessories" element={<AccessoriesPage />}>
+          <Route
+            path="accessories"
+            element={<ItemsPage option="accessories" />}
+          >
             <Route path=":slug?" element={<ItemCard />} />
           </Route>
 

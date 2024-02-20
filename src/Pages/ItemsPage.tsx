@@ -3,12 +3,12 @@ import { Catalog } from "../components/Catalog";
 import { Item } from "../types/Item";
 import { getData } from "../utils/getData";
 
-export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Item[]>([]);
+export const ItemsPage = ({ option }: { option: string }) => {
+  const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
-    getData("phones").then(setPhones);
-  }, []);
+    getData(option).then(setItems);
+  }, [items]);
 
-  return <Catalog items={phones} />;
+  return <Catalog items={items} />;
 };
