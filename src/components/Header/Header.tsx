@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Logo } from "../../icons/Logo";
 import { Close } from "../../icons/Close";
 import { Menu } from "../../icons/Menu";
@@ -9,6 +9,7 @@ import { BurgerMenu } from "../UI/BurgerMenu";
 import { Favourites } from "../../icons/Favourites";
 import { NavLinkMenu } from "../UI/NavLinkMenu";
 import { NAV_LIST } from "../../variables";
+import { ChosenItemsIcon } from "../../icons/Chosen-Items-Icon";
 
 interface Props {
   isMenuOpen: boolean;
@@ -62,23 +63,18 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           className="hidden items-center 
           sm:flex sm:border-secondary"
         >
-          <button
-            type="button"
+          <Link
+            to="favourites"
             className=" hover:bg-hover-color sm:border-l sm:p-6"
           >
             <Favourites />
-          </button>
-          <button
-            type="button"
-            className=" hover:bg-hover-color sm:border-x sm:p-6"
-          >
+          </Link>
+          <Link to="cart" className=" hover:bg-hover-color sm:border-x sm:p-6">
             <div className="relative">
               <ShoppingBag />
-              <div className="absolute bottom-3 left-2 h-5 w-5 rounded-full border-2 border-white bg-secondary-accent text-xs text-white">
-                12
-              </div>
+              <ChosenItemsIcon classname="bottom-2 left-2" />
             </div>
-          </button>
+          </Link>
         </div>
         <button
           type="button"

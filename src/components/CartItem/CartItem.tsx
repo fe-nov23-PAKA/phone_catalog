@@ -1,4 +1,4 @@
-import phone from "../../../public/img/category-phones.png";
+import phone from "../../assets/img/category-phones.png";
 import { Plus } from "../../icons/Plus";
 import { Minus } from "../../icons/Minus";
 import { Close } from "../../icons/Close";

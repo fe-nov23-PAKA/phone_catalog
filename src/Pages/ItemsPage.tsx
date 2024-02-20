@@ -8,7 +8,7 @@ export const ItemsPage = ({ option }: { option: string }) => {
 
   useEffect(() => {
     getData(option).then(setItems);
-  }, [items]);
+  }, [option]);
 
   return <Catalog items={items} />;
 };

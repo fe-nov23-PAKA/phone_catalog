@@ -1,3 +1,4 @@
+import { ChosenItemsIcon } from "../../../icons/Chosen-Items-Icon";
 import { Favourites } from "../../../icons/Favourites";
 import { ShoppingBag } from "../../../icons/Shopping-Bag";
 import { NAV_LIST } from "../../../variables";
@@ -36,7 +37,10 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => (
         type="button"
         className="flex w-1/2 items-center justify-center border-t py-6"
       >
-        <ShoppingBag />
+        <div className="relative">
+          <ChosenItemsIcon classname="bottom-2 left-2" />
+          <ShoppingBag />
+        </div>
       </button>
     </div>
   </div>
