@@ -17,6 +17,8 @@ module.exports = {
       fontSize: {
         main: "22px",
         small: ["14px", "21px"],
+        "favourites-sm": ["32px", "41px"],
+        "favourites-base": ["48px", "56px"],
       },
       backgroundImage: {
         darkness: "url('src/assets/img/404page/bg-darkness.png')",
