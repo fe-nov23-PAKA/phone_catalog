@@ -1,15 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable operator-linebreak */
+import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
 
 type Props = {
   item: Item;
-  classnames?: string;
+  classname?: string;
+  setItemCarouselWidth?: (number: number) => void;
 };
 
-export const ProductCard: React.FC<Props> = ({ item, classnames }) => {
+export const ProductCard: React.FC<Props> = ({
+  item,
+  classname,
+  setItemCarouselWidth,
+}) => {
   const {
     id,
     name,
@@ -21,11 +27,30 @@ export const ProductCard: React.FC<Props> = ({ item, classnames }) => {
     ram,
   } = item;
 
+  const carouselItemRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (carouselItemRef.current && setItemCarouselWidth) {
+        setItemCarouselWidth(carouselItemRef.current.offsetWidth);
+      }
+    };
+
+    updateWidth();
+
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, [setItemCarouselWidth]);
+
   return (
     <li
+      ref={carouselItemRef}
       className={classNames(
-        "col-span-full w-full rounded-lg border border-element-color hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
-        { [`${classnames}`]: classnames },
+        "col-span-full box-border w-full rounded-lg border border-element-color hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
+        { [`${classname}`]: classname },
       )}
     >
       <Link to={`${id}`}>
