@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import { Phone } from "../../types/Phone";
-import arrow_left_black from "../../assets/img/icons/arrow-left-black.svg";
-import arrow_right_black from "../../assets/img/icons/arrow-right-black.svg";
+import { Item } from "../../types/Item";
 import { ProductCard } from "../ProductCard";
+import { ArrowLeft } from "../../icons/Arrow-Left";
+import { ArrowRight } from "../../icons/Arrow-Right";
 
 interface Props {
   titleName: string;
-  startVisiblePhones: Phone[];
+  startVisiblePhones: Item[];
 }
 
 export const ItemsCarousel: React.FC<Props> = ({
@@ -76,7 +76,9 @@ export const ItemsCarousel: React.FC<Props> = ({
     <>
       <div className="container pb-20">
         <div className="flex items-center justify-between pb-6">
-          <h2 className="text-[32px] font-extrabold leading-[41px]">{titleName}</h2>
+          <h2 className="text-[32px] font-extrabold leading-[41px]">
+            {titleName}
+          </h2>
           <div className="flex gap-4">
             <a
               onClick={handleScrollLeft}
@@ -86,7 +88,7 @@ export const ItemsCarousel: React.FC<Props> = ({
                 { "pointer-events-none opacity-50": isAtStart },
               )}
             >
-              <img src={arrow_left_black} alt="arrow-left" />
+              <ArrowLeft fill="#0F0F11" />
             </a>
             <a
               onClick={handleScrollRight}
@@ -96,7 +98,7 @@ export const ItemsCarousel: React.FC<Props> = ({
                 { "pointer-events-none opacity-50": isAtEnd },
               )}
             >
-              <img src={arrow_right_black} alt="arrow-right" />
+              <ArrowRight fill="#0F0F11" />
             </a>
           </div>
         </div>
@@ -109,7 +111,7 @@ export const ItemsCarousel: React.FC<Props> = ({
             <ProductCard
               setItemCarouselWidth={setItemCarouselWidth}
               key={phone.id}
-              phone={phone}
+              item={phone}
               classname="sm:min-w-[294px] min-w-[271px]"
             />
           ))}

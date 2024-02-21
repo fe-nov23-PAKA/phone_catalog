@@ -1,15 +1,12 @@
-import React from "react";
 import { Phones } from "../components/Phones/Phones";
-import { Phone } from "../types/Phone";
 import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
+import { useAppSelector } from "../app/hooks";
 
-interface Props {
-  startVisiblePhones: Phone[];
-}
-
-export const HomePage: React.FC<Props> = ({ startVisiblePhones }) => {
+export const HomePage = () => {
   const OFFER_TITLE_NEW = "Brand new models";
   const OFFER_TITLE_HOT_PRICE = "Hot prices";
+
+  const startVisiblePhones = useAppSelector((state) => state.items.items);
 
   return (
     <>
