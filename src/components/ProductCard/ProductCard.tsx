@@ -24,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ item, classnames }) => {
   return (
     <li
       className={classNames(
-        "hover:shadow-sh2 col-span-full w-full rounded-lg border border-element-color sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "col-span-full w-full rounded-lg border border-element-color hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classnames}`]: classnames },
       )}
     >
