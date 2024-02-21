@@ -24,14 +24,14 @@ export const Root = () => {
             </Route>
 
             <Route path="tablets" element={<ItemsPage option="tablets" />}>
-              <Route path=":tabletID" element={<ItemCard />} />{" "}
+              <Route path=":tabletID" element={<ItemCard />} />
             </Route>
 
             <Route
               path="accessories"
               element={<ItemsPage option="accessories" />}
             >
-              <Route path=":accessoryID" element={<ItemCard />} />{" "}
+              <Route path=":accessoryID" element={<ItemCard />} />
             </Route>
 
             <Route path="favourites" element={<Favourites />} />

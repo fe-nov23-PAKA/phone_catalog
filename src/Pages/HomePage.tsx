@@ -1,10 +1,18 @@
+import { useEffect } from "react";
 import { Phones } from "../components/Phones/Phones";
 import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
-import { useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import * as itemsSlice from "../features/ItemsSlice";
 
 export const HomePage = () => {
   const OFFER_TITLE_NEW = "Brand new models";
   const OFFER_TITLE_HOT_PRICE = "Hot prices";
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(itemsSlice.init("phones"));
+  }, []);
 
   const startVisiblePhones = useAppSelector((state) => state.items.items);
 
