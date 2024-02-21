@@ -14,6 +14,15 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => (
       className="mt-6 flex flex-grow flex-col 
           items-center space-y-4 overflow-auto tracking-wider"
     >
+      <li>
+        <NavLinkMenu
+          onClick={() => setIsMenuOpen(false)}
+          to="/"
+          classname="text-xs font-extrabold uppercase text-secondary"
+        >
+          Home
+        </NavLinkMenu>
+      </li>
       {NAV_LIST.map((navItem) => (
         <li>
           <NavLinkMenu

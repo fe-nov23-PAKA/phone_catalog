@@ -14,26 +14,29 @@ export const Root = () => {
 
       {!isMenuOpen && (
         <Routes>
-          <Route path="/" element={<Navigate to="home" />} />
-          <Route path="home" element={<HomePage />} />
+          <Route path="/">
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<Navigate to="/" />} />
 
-          <Route path="phones" element={<ItemsPage option="phones" />}>
-            <Route path=":phoneID" element={<ItemCard />} />
+            <Route path="phones">
+              <Route index element={<ItemsPage option="phones" />} />
+              <Route path=":phoneID" element={<ItemCard />} />
+            </Route>
+
+            <Route path="tablets" element={<ItemsPage option="tablets" />}>
+              <Route path=":tabletID" element={<ItemCard />} />{" "}
+            </Route>
+
+            <Route
+              path="accessories"
+              element={<ItemsPage option="accessories" />}
+            >
+              <Route path=":accessoryID" element={<ItemCard />} />{" "}
+            </Route>
+
+            <Route path="favourites" element={<Favourites />} />
+            <Route path="cart" element={<Cart />} />
           </Route>
-
-          <Route path="tablets" element={<ItemsPage option="tablets" />}>
-            <Route path=":tabletsID" element={<ItemCard />} />
-          </Route>
-
-          <Route
-            path="accessories"
-            element={<ItemsPage option="accessories" />}
-          >
-            <Route path=":acceID" element={<ItemCard />} />
-          </Route>
-
-          <Route path="favourites" element={<Favourites />} />
-          <Route path="cart" element={<Cart />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>

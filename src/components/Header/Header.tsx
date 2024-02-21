@@ -48,7 +48,16 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           <NavLink to="/" className="py-4">
             {isMenuOpen ? <Logo /> : <Logo fill="#F447AF" />}
           </NavLink>
-          <nav className="hidden items-center gap-x-8 font-mont font-extrabold tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16">
+          <nav
+            className="hidden items-center gap-x-8 font-mont font-extrabold 
+          tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16"
+          >
+            <NavLinkMenu
+              to="/"
+              classname="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+            >
+              Home
+            </NavLinkMenu>
             {NAV_LIST.map((nav_item) => (
               <NavLinkMenu
                 key={nav_item}
