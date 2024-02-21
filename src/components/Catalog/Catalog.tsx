@@ -11,9 +11,10 @@ import { Item } from "../../types/Item";
 
 interface Props {
   items: Item[];
+  title: string;
 }
 
-export const Catalog: React.FC<Props> = ({ items }) => {
+export const Catalog: React.FC<Props> = ({ items, title }) => {
   const [itemsOnPage, setItemsOnPage] = useState("16");
   const [sortField, setSortField] = useState("Cheapest");
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
@@ -92,11 +93,14 @@ export const Catalog: React.FC<Props> = ({ items }) => {
             <HomePageIcon />
           </a>
           <ArrowRight fill="#B4BDC3" />
-          <a href="/" className="flex text-base/[17px] font-semibold">
-            Phones
+          <a
+            href="/"
+            className="flex text-base/[17px] font-semibold capitalize"
+          >
+            {title}
           </a>
         </div>
-        <h1 className="mb-2 text-4xl font-extrabold">Mobile phones</h1>
+        <h1 className="mb-2 text-4xl font-extrabold">Mobile Phones</h1>
         <div className="mb-8  font-semibold text-secondary">
           {items.length} models
         </div>

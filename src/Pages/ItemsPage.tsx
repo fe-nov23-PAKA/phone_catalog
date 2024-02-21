@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Catalog } from "../components/Catalog";
-import { Item } from "../types/Item";
-import { getData } from "../utils/getData";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import * as itemsSlice from "../features/ItemsSlice";
 
 export const ItemsPage = ({ option }: { option: string }) => {
-  const [items, setItems] = useState<Item[]>([]);
+  const dispatch = useAppDispatch();
+  const items = useAppSelector((state) => state.items.items);
 
   useEffect(() => {
-    getData(option).then(setItems);
-  }, [option]);
+    dispatch(itemsSlice.init(option));
+  }, []);
 
-  return <Catalog items={items} />;
+  return <Catalog items={items} title={option} />;
 };
