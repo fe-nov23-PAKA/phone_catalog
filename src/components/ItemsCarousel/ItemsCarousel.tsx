@@ -26,14 +26,14 @@ export const ItemsCarousel: React.FC<Props> = ({
   const ITEMS_GAP = 16;
 
   useEffect(() => {
-    let newScroll = itemCarouselWidth + ITEMS_GAP - 1;
+    let newScroll = itemCarouselWidth + ITEMS_GAP;
 
     if (window.innerWidth < 640 && carouselRef.current) {
-      newScroll = carouselRef.current.offsetWidth + ITEMS_GAP;
+      newScroll = carouselRef.current.offsetWidth + ITEMS_GAP - 1;
     }
 
     setScrollDistance(newScroll);
-  }, []);
+  }, [itemCarouselWidth, carouselRef, scrollDistance]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,13 +62,13 @@ export const ItemsCarousel: React.FC<Props> = ({
 
   const handleScrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft -= window.innerWidth < 640 ? scrollDistance : scrollDistance;
+      carouselRef.current.scrollLeft -= scrollDistance;
     }
   };
 
   const handleScrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft += window.innerWidth < 640 ? scrollDistance : scrollDistance;
+      carouselRef.current.scrollLeft += scrollDistance;
     }
   };
 
@@ -110,7 +110,7 @@ export const ItemsCarousel: React.FC<Props> = ({
               setItemCarouselWidth={setItemCarouselWidth}
               key={phone.id}
               phone={phone}
-              classname="min-w-[272px]"
+              classname="sm:min-w-[294px] min-w-[271px]"
             />
           ))}
         </ul>

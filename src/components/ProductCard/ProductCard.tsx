@@ -40,7 +40,7 @@ export const ProductCard: React.FC<Props> = ({
     <li
       ref={carouselItemRef}
       className={classNames(
-        "col-span-full w-full rounded-lg border border-element-color hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "col-span-full box-border w-full rounded-lg border border-element-color hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >
