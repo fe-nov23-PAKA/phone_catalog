@@ -97,10 +97,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             href="/"
             className="flex text-base/[17px] font-semibold capitalize"
           >
-            {title}
+            Phones
           </a>
         </div>
-        <h1 className="mb-2 text-4xl font-extrabold">Mobile Phones</h1>
+        <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
         <div className="mb-8  font-semibold text-secondary">
           {items.length} models
         </div>

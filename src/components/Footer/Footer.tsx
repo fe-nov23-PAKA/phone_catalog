@@ -20,8 +20,8 @@ export const Footer: React.FC = () => {
         </div>
 
         <div
-          className="mb-8 flex flex-col gap-3 sm:w-full
-    sm:max-w-[35%] sm:flex-row sm:items-center sm:justify-between"
+          className="mb-8 flex flex-col gap-3 sm:mb-0
+    sm:w-full sm:max-w-[35%] sm:flex-row sm:items-center sm:justify-between"
         >
           <a
             className="text-xs font-extrabold

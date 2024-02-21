@@ -4,6 +4,7 @@ import { Cart, Favourites, HomePage, ItemCard, ItemsPage } from "../Pages";
 import { PageNotFound } from "../Pages/NotFoundPage";
 import { Footer } from "../components/Footer/Footer";
 import { Header } from "../components/Header/Header";
+import { ItemTitle } from "../types/ItemTitle";
 
 export const Root = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,17 +20,25 @@ export const Root = () => {
             <Route path="home" element={<Navigate to="/" />} />
 
             <Route path="phones">
-              <Route index element={<ItemsPage option="phones" />} />
+              <Route
+                index
+                element={<ItemsPage option="phones" title={ItemTitle.phone} />}
+              />
               <Route path=":phoneID" element={<ItemCard />} />
             </Route>
 
-            <Route path="tablets" element={<ItemsPage option="tablets" />}>
+            <Route
+              path="tablets"
+              element={<ItemsPage option="tablets" title={ItemTitle.tablets} />}
+            >
               <Route path=":tabletID" element={<ItemCard />} />
             </Route>
 
             <Route
               path="accessories"
-              element={<ItemsPage option="accessories" />}
+              element={
+                <ItemsPage option="accessories" title={ItemTitle.accessories} />
+              }
             >
               <Route path=":accessoryID" element={<ItemCard />} />
             </Route>
