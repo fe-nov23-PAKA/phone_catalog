@@ -16,18 +16,18 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   const [currentColor, setCurrentColor] = useState(item.color);
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
   const [currentItem, setCurrentItem] = useState(item);
-  const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0);
   const temporeryID = "ID: 802390";
 
   const swiperRef = useRef<SwiperRef>(null);
 
   const pagination = {
+    bulletActiveClass: "ring-1 ring-primary",
     clickable: true,
     el: ".swiper_pagination",
     renderBullet(index: number, className: string) {
       const image = currentItem.images[index];
 
-      return `<div class="${className} ${index === currentIndexSwiper ? "ring-1 ring-primary" : ""} rounded-lg max-h-[60px] max-w-[60px] flex border-black items-center flex-grow"><img src="${image}" alt="phone_image" class="h-full w-full object-contain" /></div>`;
+      return `<div class="${className} rounded-lg max-h-[60px] max-w-[60px] p-[3.5px] flex border-black items-center flex-grow"><img src="${image}" alt="phone_image" class="h-full w-full object-contain" /></div>`;
     },
   };
 
@@ -85,9 +85,6 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
       </h2>
       <div className="col-span-full sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
         <Swiper
-          onSlideChange={(swiper) => {
-            setCurrentIndexSwiper(swiper.activeIndex);
-          }}
           ref={swiperRef}
           key={currentItem.images[0]}
           pagination={pagination}
