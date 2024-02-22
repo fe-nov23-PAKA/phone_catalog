@@ -1,7 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Item } from "../types/Item";
 
-const initialState: Item[] = [];
+const isFavouritesInLocalStorage: string | null =
+  localStorage.getItem("favouriteItems");
+
+const favouritesInLocalStorage = isFavouritesInLocalStorage
+  ? JSON.parse(isFavouritesInLocalStorage)
+  : [];
+
+const initialState: Item[] = favouritesInLocalStorage;
 
 export const cartSlice = createSlice({
   name: "favourites",
