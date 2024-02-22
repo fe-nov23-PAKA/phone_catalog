@@ -1,5 +1,6 @@
 /* eslint-disable operator-linebreak */
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
@@ -71,24 +72,26 @@ export const ProductCard: React.FC<Props> = ({
     <li
       ref={carouselItemRef}
       className={classNames(
-        "col-span-full box-border w-full rounded-lg border border-element-color transition-all hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "col-span-full box-border w-full rounded-lg border border-element-color transition-all sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >
       <div className="p-[32px] ">
-        <div className="mb-2 flex h-[196px] items-center justify-center">
-          <img
-            className="block max-w-36 self-center"
-            src={images[0]}
-            alt="Product"
-          />
-        </div>
-        <h3
-          className="flex min-h-[58px] flex-col 
+        <Link to={`${item.id}`}>
+          <div className="mb-2 flex h-[196px] items-center justify-center">
+            <img
+              className="block max-w-36 self-center transition-all hover:scale-[1.1]"
+              src={images[0]}
+              alt="Product"
+            />
+          </div>
+          <h3
+            className="flex min-h-[58px] flex-col 
           justify-end  font-semibold"
-        >
-          {name}
-        </h3>
+          >
+            {name}
+          </h3>
+        </Link>
         <div className="justify-flex-start mb-2 flex items-center">
           <span className="text-main font-extrabold leading-8">
             ${priceDiscount}

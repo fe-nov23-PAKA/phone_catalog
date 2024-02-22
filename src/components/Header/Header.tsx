@@ -42,7 +42,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "flex flex-col bg-white",
+        "sticky top-0 z-[1] flex flex-col bg-white",
         { "h-screen": isMenuOpen },
         { "border-b": !isMenuOpen },
       )}

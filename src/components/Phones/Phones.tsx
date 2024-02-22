@@ -16,7 +16,7 @@ export const Phones = () => {
               <img
                 src={phone_1}
                 alt="phone_1"
-                className="rounded-lg rounded-b-lg"
+                className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px]">
@@ -31,7 +31,7 @@ export const Phones = () => {
               <img
                 src={phone_2}
                 alt="phone_1"
-                className="rounded-lg rounded-b-lg"
+                className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px]">
@@ -46,7 +46,7 @@ export const Phones = () => {
               <img
                 src={phone_3}
                 alt="phone_1"
-                className="rounded-lg rounded-b-lg"
+                className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px]">

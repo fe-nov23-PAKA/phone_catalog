@@ -62,14 +62,14 @@ export const DropDownMenu: React.FC<Props> = ({
         aria-orientation="vertical"
         aria-labelledby="menu-button"
       >
-        <div className="py-1" role="none">
+        <div className="rounded-lg bg-white py-1" role="none">
           {dropDownFields.map((field) => (
             <a
               key={field}
               href="#/"
-              className="block bg-white px-4
+              className="block px-4
                     py-2 text-sm transition-all
-                  hover:rounded-lg hover:bg-hover-color hover:text-primary"
+                  hover:bg-hover-color hover:text-primary"
               role="menuitem"
               id="menu-item-0"
               onClick={(event) => handlerOnClick(field, event)}

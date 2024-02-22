@@ -169,9 +169,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
           <li
             key={number}
             className={classNames(
-              "duration-300 rounded-full border font-mont text-primary transition-all hover:border-primary",
+              "rounded-full border font-mont text-primary transition-all hover:border-primary",
               {
-                "border-primary bg-primary text-white transition-all hover:bg-white hover:text-primary":
+                "border-primary bg-primary text-white hover:bg-white hover:text-primary":
                   page === number,
               },
             )}
