@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
 
         <div
           className="flex items-center justify-center 
-        text-xs  font-bold text-secondary"
+        text-xs font-bold text-secondary"
         >
           <button
             type="button"

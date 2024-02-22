@@ -40,14 +40,17 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => (
         type="button"
         className="flex w-1/2 items-center justify-center border-r border-t py-6"
       >
-        <Favourites />
+        <div className="relative">
+          <ChosenItemsIcon classname="bottom-2 left-2" count={5} />
+          <Favourites />
+        </div>
       </button>
       <button
         type="button"
         className="flex w-1/2 items-center justify-center border-t py-6"
       >
         <div className="relative">
-          <ChosenItemsIcon classname="bottom-2 left-2" />
+          <ChosenItemsIcon classname="bottom-2 left-2" count={5} />
           <ShoppingBag />
         </div>
       </button>

@@ -155,19 +155,18 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             { "hover:border-primary": !(page === "1") },
           )}
         >
-          <a
+          <button
+            disabled={page === "1"}
+            type="button"
             onClick={(event) => {
-              if (page !== "1") {
-                event.preventDefault();
-                setPage((currentPage) => (+currentPage - 1).toString());
-              }
+              event.preventDefault();
+              setPage((currentPage) => (+currentPage - 1).toString());
             }}
             style={{ pointerEvents: page === "1" ? "none" : "auto" }}
-            href="#/"
             className="flex h-8 w-8 items-center justify-center"
           >
-            <ArrowLeft fill="#0F0F11" />
-          </a>
+            <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
+          </button>
         </li>
         {itemsPagesMap.map((number) => (
           <li
@@ -196,19 +195,18 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             { "hover:border-primary": !(+page === itemPages) },
           )}
         >
-          <a
-            href="#/"
+          <button
+            disabled={+page === itemPages}
+            type="button"
             className="flex h-8 w-8 items-center justify-center"
             onClick={(event) => {
-              if (+page !== itemPages) {
-                event.preventDefault();
-                setPage((currentPage) => (+currentPage + 1).toString());
-              }
+              event.preventDefault();
+              setPage((currentPage) => (+currentPage + 1).toString());
             }}
             style={{ pointerEvents: +page === itemPages ? "none" : "auto" }}
           >
-            <ArrowRight fill="#0F0F11" />
-          </a>
+            <ArrowRight fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"} />
+          </button>
         </li>
       </ul>
     </div>

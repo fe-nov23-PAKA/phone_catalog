@@ -67,8 +67,8 @@ export const DropDownMenu: React.FC<Props> = ({
             <a
               key={field}
               href="#/"
-              className="block bg-white
-                    px-4 py-2 transition-all
+              className="block bg-white px-4
+                    py-2 text-sm transition-all
                   hover:rounded-lg hover:bg-hover-color hover:text-primary"
               role="menuitem"
               id="menu-item-0"
