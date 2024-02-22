@@ -11,5 +11,9 @@ export const ItemsPage = ({ option }: { option: string }) => {
     dispatch(itemsSlice.init(option));
   }, []);
 
-  return <Catalog items={items} title={option} />;
+  return (
+    <>
+      <Catalog items={items} title={option} />
+    </>
+  );
 };

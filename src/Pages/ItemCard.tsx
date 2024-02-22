@@ -1,17 +1,14 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getData } from "../utils/getData";
-import { Item } from "../types/Item";
+import { useAppSelector } from "../app/hooks";
+import { ItemDescription } from "../components/ItemDescriptionSlider/ItemDescriptionSlider";
+import { AboutSection } from "../components/UI/AboutSection";
 
 export const ItemCard = () => {
-  const [items, setItems] = useState<Item[]>([]);
-  const { phoneID } = useParams();
+  const items = useAppSelector((state) => state.items.items);
 
-  useEffect(() => {
-    getData("phones").then(setItems);
-  }, []);
-
-  console.log(items);
-  
-  return <div className="">Hello</div>;
+  return (
+    <>
+      {items.length > 0 && <ItemDescription item={items[0]} allItems={items} />}
+      <AboutSection item={items[0]} />
+    </>
+  );
 };

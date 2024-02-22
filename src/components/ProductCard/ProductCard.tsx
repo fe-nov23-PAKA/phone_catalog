@@ -61,7 +61,7 @@ export const ProductCard: React.FC<Props> = ({ item, classnames }) => {
               <div className="text-gray-elem text-xs text-secondary">
                 Screen
               </div>
-              <div className="text-xs font-semibold">{screen}</div>
+              <div className="text-sm font-semibold">{screen}</div>
             </div>
             <div className="flex items-center justify-between">
               <div
