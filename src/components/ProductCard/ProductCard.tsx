@@ -30,8 +30,6 @@ export const ProductCard: React.FC<Props> = ({
     ram,
   } = item;
 
-  const dispatch = useAppDispatch();
-
   const carouselItemRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -50,8 +48,24 @@ export const ProductCard: React.FC<Props> = ({
     };
   }, [setItemCarouselWidth]);
 
+  const dispatch = useAppDispatch();
   const favouriteItems = useAppSelector((state) => state.favourites);
   const favouriteItemsIds = favouriteItems.map((favItem) => favItem.id);
+  const cartItems = useAppSelector((state) => state.cart);
+  const cartItemsIds = cartItems.map((cartItem) => cartItem.id);
+
+  const addToCartHandler = (elem: Item) => {
+    dispatch(cartActions.add(elem));
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify([
+        {
+          item: [...cartItems],
+          counter: 1,
+        },
+      ]),
+    );
+  };
 
   const addToFavouritesHandler = (elem: Item) => {
     dispatch(favouritesActions.add(elem));
@@ -96,8 +110,8 @@ export const ProductCard: React.FC<Props> = ({
           </span>
           <span
             className="
-          ml-2 text-main font-semibold
-          leading-7 text-secondary line-through"
+          ml-2 text-main font-semibold leading-7
+          text-secondary line-through"
           >
             ${priceRegular}
           </span>
@@ -129,27 +143,34 @@ export const ProductCard: React.FC<Props> = ({
         </div>
 
         <div className="flex items-center justify-between gap-x-2">
-          <button
-            className="
-            hover:secondary-accent all w-4/5
-            rounded-lg bg-accent py-2 font-semibold text-white
+          {cartItemsIds.includes(item.id) ? (
+            <button
+              className="all w-4/5 rounded-lg border border-element-color bg-white py-2 font-semibold text-accent transition-all"
+              type="button"
+            >
+              Added to cart
+            </button>
+          ) : (
+            <button
+              className="
+            all w-4/5
+            rounded-lg border border-accent bg-accent py-2 font-semibold text-white
               transition-all hover:shadow-sh1"
-            type="button"
-            onClick={() => dispatch(cartActions.add(item))}
-          >
-            Add to cart
-          </button>
+              type="button"
+              onClick={() => addToCartHandler(item)}
+            >
+              Add to cart
+            </button>
+          )}
+
           {favouriteItemsIds.includes(id) ? (
             <button
               type="button"
-              onClick={() => {
-                dispatch(cartActions.add(item));
-                removeFromFavouritesHandler(item);
-              }}
               className="
             flex h-10 w-10 items-center 
             justify-center rounded-full
             border border-icons-color transition-all hover:border-primary"
+              onClick={() => removeFromFavouritesHandler(item)}
             >
               <FavouritesFilled fill="#F447AF" />
             </button>

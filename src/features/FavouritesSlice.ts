@@ -10,7 +10,7 @@ const favouritesInLocalStorage = isFavouritesInLocalStorage
 
 const initialState: Item[] = favouritesInLocalStorage;
 
-export const cartSlice = createSlice({
+export const favouritesSlice = createSlice({
   name: "favourites",
   initialState,
   reducers: {
@@ -24,5 +24,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { actions } = cartSlice;
-export default cartSlice.reducer;
+export const { actions } = favouritesSlice;
+export default favouritesSlice.reducer;

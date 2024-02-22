@@ -5,7 +5,7 @@ import { Minus } from "../../icons/Minus";
 import { Close } from "../../icons/Close";
 import { Item } from "../../types/Item";
 import { actions as cartActions } from "../../features/CartSlice";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 type Props = {
   item: Item;
@@ -19,6 +19,7 @@ export const CartItem: React.FC<Props> = ({
   handleItemCountUpdate,
 }) => {
   const [itemCount, setItemCount] = useState(1);
+  const cartItems = useAppSelector((state) => state.cart);
 
   const handleItemCountChange = (increment: number) => {
     const newItemCount = itemCount + increment;
@@ -33,13 +34,19 @@ export const CartItem: React.FC<Props> = ({
 
   const dispatch = useAppDispatch();
 
+  const removeFromCartHandler = (elem: Item) => {
+    dispatch(cartActions.replace(elem));
+    const storageWithOutElem = cartItems.filter(
+      (el: Item) => el.id !== elem.id,
+    );
+
+    localStorage.setItem("cartItems", JSON.stringify(storageWithOutElem));
+  };
+
   return (
     <div className="box-border flex flex-col justify-between gap-4 rounded-[16px] border border-solid border-element-color p-4 sm:flex-row sm:p-6">
       <div className="flex flex-row items-center gap-4">
-        <button
-          type="button"
-          onClick={() => dispatch(cartActions.replace(item))}
-        >
+        <button type="button" onClick={() => removeFromCartHandler(item)}>
           <Close fill="#b4bdc3" />
         </button>
         <div className="flex min-h-[80px] min-w-[80px] items-center justify-center">

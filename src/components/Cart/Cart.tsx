@@ -22,7 +22,7 @@ export const Cart = () => {
   };
 
   return (
-    <div className="container mb-14 mt-6 px-4 sm:mt-10 sm:px-6 xl:px-8">
+    <div className="container mb-14 px-4 pt-6 sm:px-6 sm:pt-10 xl:px-8">
       <button type="button" className="mb-6 flex flex-row items-center">
         <ArrowLeft />
         <span className="font-bold text-secondary">Back</span>
