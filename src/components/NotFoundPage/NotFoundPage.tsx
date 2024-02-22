@@ -20,7 +20,7 @@ export const NotFoundPage: React.FC = () => {
           href="/"
           className="mt-8 inline-block rounded bg-accent 
     px-6 py-4 font-bold text-white 
-     hover:bg-404color hover:text-black hover:shadow-sh1"
+     transition-all hover:bg-404color hover:text-black hover:shadow-sh1"
         >
           Go back to Home
         </a>

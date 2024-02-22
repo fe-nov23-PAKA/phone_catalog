@@ -13,8 +13,8 @@ export const Root = () => {
     <>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-      <div className="min-h-[calc(100vh-64px-98px)] bg-hover-color">
-        {!isMenuOpen && (
+      {!isMenuOpen && (
+        <div className="min-h-[calc(100vh-64px-98px)] bg-hover-color">
           <Routes>
             <Route path="/">
               <Route index element={<HomePage />} />
@@ -57,8 +57,8 @@ export const Root = () => {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        )}
-      </div>
+        </div>
+      )}
 
       {!isMenuOpen && <Footer />}
     </>

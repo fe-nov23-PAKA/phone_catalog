@@ -1,7 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Item } from "../types/Item";
 
-const initialState: Item[] = [];
+const isCartInLocalStorage: string | null = localStorage.getItem("cartItems");
+
+const cartInLocalStorage = isCartInLocalStorage
+  ? JSON.parse(isCartInLocalStorage)
+  : [];
+
+const initialState: Item[] = cartInLocalStorage;
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -11,7 +17,7 @@ export const cartSlice = createSlice({
       items.push(action.payload);
     },
     replace: (items, action: PayloadAction<Item>) => {
-      return items.filter((item) => item !== action.payload);
+      return items.filter((item) => item.id !== action.payload.id);
     },
     clear: () => [],
   },
