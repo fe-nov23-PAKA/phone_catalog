@@ -93,11 +93,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <HomePageIcon />
           </a>
           <ArrowRight fill="#B4BDC3" />
-          <a
-            href="/"
-            className="flex text-base/[17px] font-semibold capitalize"
-          >
-            Phones
+          <a href="/" className="flex text-sm/[17px] font-semibold capitalize">
+            {title}
           </a>
         </div>
         <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
@@ -172,7 +169,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
           <li
             key={number}
             className={classNames(
-              "rounded-full border font-mont text-primary transition-all duration-300 hover:border-primary",
+              "duration-300 rounded-full border font-mont text-primary transition-all hover:border-primary",
               {
                 "border-primary bg-primary text-white transition-all hover:bg-white hover:text-primary":
                   page === number,

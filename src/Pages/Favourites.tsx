@@ -14,7 +14,9 @@ export const Favourites = () => {
         <div className="mb-[24px] flex flex-row items-center gap-2">
           <HomePageIcon />
           <ArrowRight />
-          <span className="text-xs font-bold text-secondary">Favourites</span>
+          <span className="text-sm/[17px] font-semibold text-secondary">
+            Favourites
+          </span>
         </div>
         <span className="mb-[8px] text-favourites-sm font-extrabold tracking-[-0.01em] text-primary md:text-favourites-base">
           Favourites
