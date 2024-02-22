@@ -1,7 +1,6 @@
 /* eslint-disable operator-linebreak */
 import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
