@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
+import { useAppDispatch } from "../../app/hooks";
+import { actions as cartActions } from "../../features/CartSlice";
 
 type Props = {
   item: Item;
@@ -20,6 +22,8 @@ export const ProductCard: React.FC<Props> = ({ item, classnames }) => {
     images,
     ram,
   } = item;
+
+  const dispatch = useAppDispatch();
 
   return (
     <li
@@ -90,6 +94,7 @@ export const ProductCard: React.FC<Props> = ({ item, classnames }) => {
             rounded-lg bg-accent py-2 font-semibold text-white
               hover:shadow-sh1"
               type="button"
+              onClick={() => dispatch(cartActions.add(item))}
             >
               Add to cart
             </button>

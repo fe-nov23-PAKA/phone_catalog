@@ -7,7 +7,6 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "24px",
       
       screens: {
         '2xl': '1280px'
