@@ -11,7 +11,7 @@ export const cartSlice = createSlice({
       items.push(action.payload);
     },
     replace: (items, action: PayloadAction<Item>) => {
-      return items.filter((item) => item !== action.payload);
+      return items.filter((item) => item.id !== action.payload.id);
     },
     clear: () => [],
   },

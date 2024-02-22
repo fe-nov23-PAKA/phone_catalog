@@ -10,6 +10,7 @@ import { Favourites } from "../../icons/Favourites";
 import { NavLinkMenu } from "../UI/NavLinkMenu";
 import { NAV_LIST } from "../../variables";
 import { ChosenItemsIcon } from "../../icons/Chosen-Items-Icon";
+import { useAppSelector } from "../../app/hooks";
 
 interface Props {
   isMenuOpen: boolean;
@@ -20,6 +21,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const favouriteItems = useAppSelector((state) => state.favourites);
+  const cartItems = useAppSelector((state) => state.cart);
 
   useEffect(() => {
     const handleResize = () => {
@@ -77,12 +81,21 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             to="favourites"
             className=" hover:bg-hover-color sm:border-l sm:p-6"
           >
-            <Favourites />
+            <div className="relative">
+              <Favourites />
+              <ChosenItemsIcon
+                count={favouriteItems.length}
+                classname="bottom-2 left-2"
+              />
+            </div>
           </Link>
           <Link to="cart" className=" hover:bg-hover-color sm:border-x sm:p-6">
             <div className="relative">
               <ShoppingBag />
-              <ChosenItemsIcon classname="bottom-2 left-2" />
+              <ChosenItemsIcon
+                count={cartItems.length}
+                classname="bottom-2 left-2"
+              />
             </div>
           </Link>
         </div>
