@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
         >
           <a
             className="text-xs font-extrabold
-          uppercase text-secondary hover:text-primary "
+          uppercase text-secondary transition-all hover:text-primary"
             href="/"
           >
             Github
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
 
           <a
             className="text-xs font-extrabold 
-          uppercase text-secondary hover:text-primary "
+          uppercase text-secondary transition-all hover:text-primary"
             href="/"
           >
             Contacts
@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
 
           <a
             className="text-xs font-extrabold 
-          uppercase text-secondary hover:text-primary "
+          uppercase text-secondary transition-all hover:text-primary"
             href="/"
           >
             Rights
@@ -55,14 +55,14 @@ export const Footer: React.FC = () => {
           <button
             type="button"
             className="group flex items-center 
-            gap-4  self-center hover:text-primary"
+            gap-4  self-center transition-all hover:text-primary"
             onClick={scrollToTop}
           >
             Back to top
             <span
               className="box-border flex h-8 
             w-8 items-center justify-center 
-            rounded-full border group-hover:border-primary "
+            rounded-full border transition-all group-hover:border-primary"
             >
               <ArrowUp fill="#0F0F11" />
             </span>

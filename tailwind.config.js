@@ -2,18 +2,24 @@
 module.exports = {
   content: ["./src/**/*.{html,js,tsx,ts}"],
   theme: {
+    transitionDuration: {
+      DEFAULT: "300ms",
+    },
     fontFamily: {
-      mont: ["Mont", "sans-serif"]
+      mont: ["Mont", "sans-serif"],
     },
     container: {
       center: true,
       padding: "24px",
-      
+
       screens: {
-        '2xl': '1280px'
+        "2xl": "1280px",
       },
     },
     extend: {
+      transitionProperty: {
+        all: "all", // Применяет transition ко всем свойствам
+      },
       fontSize: {
         main: "22px",
         small: ["14px", "21px"],
@@ -38,7 +44,7 @@ module.exports = {
       },
       boxShadow: {
         sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",
-        sh2: "0 2px 16px 0 #000"
+        sh2: "0 2px 16px 0 #000",
       },
       gridTemplateColumns: {
         24: "repeat(24, 1fr)",

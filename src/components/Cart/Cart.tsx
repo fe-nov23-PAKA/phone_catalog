@@ -29,7 +29,7 @@ export const Cart = () => {
           </div>
           <div className="my-6 w-full border" />
           <button
-            className="h-12 w-full rounded-lg bg-accent text-element-color hover:shadow-sh1"
+            className="h-12 w-full rounded-lg bg-accent text-element-color transition-all hover:shadow-sh1"
             type="button"
           >
             Checkout

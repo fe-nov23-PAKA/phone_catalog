@@ -55,7 +55,7 @@ export const ProductCard: React.FC<Props> = ({
     <li
       ref={carouselItemRef}
       className={classNames(
-        "col-span-full box-border w-full rounded-lg border border-element-color hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "col-span-full box-border w-full rounded-lg border border-element-color transition-all hover:shadow-sh2 sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >
@@ -116,7 +116,7 @@ export const ProductCard: React.FC<Props> = ({
             className="
             hover:secondary-accent all w-4/5
             rounded-lg bg-accent py-2 font-semibold text-white
-              hover:shadow-sh1"
+              transition-all hover:shadow-sh1"
             type="button"
           >
             Add to cart
@@ -127,7 +127,7 @@ export const ProductCard: React.FC<Props> = ({
               className="
             flex h-10 w-10 items-center 
             justify-center rounded-full
-            border border-icons-color hover:border-primary"
+            border border-icons-color transition-all hover:border-primary"
               onClick={() => dispatch(favouritesActions.replace(item))}
             >
               <FavouritesFilled fill="#F447AF" />
@@ -138,7 +138,7 @@ export const ProductCard: React.FC<Props> = ({
               className="
             flex h-10 w-10 items-center 
             justify-center rounded-full
-            border border-icons-color hover:border-primary"
+            border border-icons-color transition-all hover:border-primary"
               onClick={() => dispatch(favouritesActions.add(item))}
             >
               <Favourites />

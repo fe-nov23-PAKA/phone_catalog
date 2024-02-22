@@ -86,7 +86,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   };
 
   return (
-    <div className="container mt-6">
+    <div className="container pt-6">
       <div>
         <div className="mb-7 flex gap-2">
           <a href="/">
@@ -145,12 +145,12 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       </div>
 
       <ul
-        className="mb-16 flex items-center 
-      justify-center space-x-1 font-light md:mb-20"
+        className="flex items-center justify-center 
+      space-x-1 pb-16 font-light md:pb-20"
       >
         <li
           className={classNames(
-            "rounded-full border font-mont",
+            "rounded-full border font-mont transition-all",
             { disabled: page === "1" },
             { "hover:border-primary": !(page === "1") },
           )}
@@ -173,9 +173,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
           <li
             key={number}
             className={classNames(
-              "rounded-full border font-mont text-primary duration-300 hover:border-primary",
+              "rounded-full border font-mont text-primary transition-all duration-300 hover:border-primary",
               {
-                "border-primary bg-primary text-white hover:bg-white hover:text-primary":
+                "border-primary bg-primary text-white transition-all hover:bg-white hover:text-primary":
                   page === number,
               },
             )}
@@ -191,7 +191,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
         ))}
         <li
           className={classNames(
-            "rounded-full border font-mont",
+            "rounded-full border font-mont transition-all",
             { disabled: +page === itemPages },
             { "hover:border-primary": !(+page === itemPages) },
           )}

@@ -22,7 +22,7 @@ export const CartItem = () => {
             className="
             flex h-10 w-10 items-center 
             justify-center rounded-full
-            border border-icons-color hover:border-primary"
+            border border-icons-color transition-all hover:border-primary"
           >
             <Minus />
           </button>
@@ -32,7 +32,7 @@ export const CartItem = () => {
             className="
             flex h-10 w-10 items-center
             justify-center rounded-full
-            border border-icons-color hover:border-primary"
+            border border-icons-color transition-all hover:border-primary"
           >
             <Plus />
           </button>

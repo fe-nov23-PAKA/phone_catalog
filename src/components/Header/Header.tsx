@@ -58,7 +58,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <NavLinkMenu
               to="/"
-              classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary"
+              classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary transition-all"
             >
               Home
             </NavLinkMenu>
@@ -66,7 +66,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <NavLinkMenu
                 key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
-                classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary"
+                classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary transition-all"
               >
                 {nav_item}
               </NavLinkMenu>
@@ -79,7 +79,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         >
           <Link
             to="favourites"
-            className=" hover:bg-hover-color sm:border-l sm:p-6"
+            className=" transition-all hover:bg-hover-color sm:border-l sm:p-6"
           >
             <div className="relative">
               <Favourites />
@@ -89,7 +89,10 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               />
             </div>
           </Link>
-          <Link to="cart" className=" hover:bg-hover-color sm:border-x sm:p-6">
+          <Link
+            to="cart"
+            className=" transition-all hover:bg-hover-color sm:border-x sm:p-6"
+          >
             <div className="relative">
               <ShoppingBag />
               <ChosenItemsIcon

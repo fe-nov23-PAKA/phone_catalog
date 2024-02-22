@@ -40,7 +40,7 @@ export const DropDownMenu: React.FC<Props> = ({
             "inline-flex w-full items-center justify-between",
             "rounded-md px-3 py-2 ",
             "font-semibold text-primary",
-            "shadow-sm ring-1 ring-inset ring-icons-color ",
+            "shadow-sm ring-1 ring-inset ring-icons-color transition-all",
           )}
           onClick={handlerToOpen}
           id="menu-button"
@@ -68,8 +68,8 @@ export const DropDownMenu: React.FC<Props> = ({
               key={field}
               href="#/"
               className="block bg-white
-                    px-4 py-2 hover:rounded-lg
-                  hover:bg-hover-color hover:text-primary"
+                    px-4 py-2 transition-all
+                  hover:rounded-lg hover:bg-hover-color hover:text-primary"
               role="menuitem"
               id="menu-item-0"
               onClick={(event) => handlerOnClick(field, event)}
