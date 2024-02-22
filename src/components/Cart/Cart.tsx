@@ -30,6 +30,8 @@ export const Cart = () => {
           <div className="my-6 w-full border" />
           <button
             className="h-12 w-full rounded-lg bg-accent text-element-color hover:shadow-sh1"
+            data-modal-target="default-modal"
+            data-modal-toggle="default-modal"
             type="button"
           >
             Checkout
