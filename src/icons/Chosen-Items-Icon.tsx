@@ -1,10 +1,11 @@
 import classNames from "classnames";
 
 interface Props {
+  count: number;
   classname?: string;
 }
 
-export const ChosenItemsIcon: React.FC<Props> = ({ classname }) => {
+export const ChosenItemsIcon: React.FC<Props> = ({ count, classname }) => {
   return (
     <div
       className={classNames(
@@ -14,7 +15,7 @@ export const ChosenItemsIcon: React.FC<Props> = ({ classname }) => {
         { [`${classname}`]: classname },
       )}
     >
-      12
+      {count}
     </div>
   );
 };

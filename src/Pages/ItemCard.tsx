@@ -11,7 +11,5 @@ export const ItemCard = () => {
     getData("phones").then(setItems);
   }, []);
 
-  console.log(items);
-  
   return <div className="">Hello</div>;
 };
