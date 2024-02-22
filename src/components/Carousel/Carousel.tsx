@@ -27,23 +27,17 @@ export const Carousel: React.FC = () => {
   };
 
   return (
-    <div className="slider-container mb-14 md:mb-16 xl:mb-20 md:container ">
-      <h1 className=" slider-title mb-6 md:mb-8 text-4xl md:text-5xl container font-mont font-extrabold ">
-        Welcome to Nice Gadgets store!
-      </h1>
-      <Slider {...settings} className="slider md:container">
-        {imgIds.map((item) => (
-          <div key={item} className="slider__banner w-full xl:items-center xl:justify-center">
-            <a href="#home">
-              <img
-                src="../../public/img/Banner.png"
-                alt="HerroBanner"
-                className="slider__main-img md:container xl:ml-20"
-              />
-            </a>
-          </div>
-        ))}
-      </Slider>
+    <div className="container-carousel">
+      <div className="carousel-wrapper">
+        <h1 className="carousel__title">Welcome to Nice Gadgets store!</h1>
+        <Slider {...settings} className="carousel">
+          {imgIds.map((item) => (
+            <div key={item} className="carousel__banner">
+              <img src="../public/img/Banner.png" alt="HeroBanner" className="carousel__main-img" />
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
