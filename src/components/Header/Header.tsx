@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Logo } from "../../icons/Logo";
 import { Close } from "../../icons/Close";
 import { Menu } from "../../icons/Menu";
@@ -58,7 +58,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <NavLinkMenu
               to="/"
-              classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary transition-all"
+              classname="text-xs/[62px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all after:origin-center relative after:scale-0"
             >
               Home
             </NavLinkMenu>
@@ -66,7 +66,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <NavLinkMenu
                 key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
-                classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary transition-all"
+                classname="text-xs/[62px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all after:origin-center relative after:scale-0"
               >
                 {nav_item}
               </NavLinkMenu>
@@ -77,9 +77,17 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           className="hidden items-center 
           sm:flex sm:border-secondary"
         >
-          <Link
+          <NavLink
             to="favourites"
-            className=" transition-all hover:bg-hover-color sm:border-l sm:p-6"
+            className={({ isActive }) =>
+              classNames(
+                "relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                {
+                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                    isActive,
+                },
+              )
+            }
           >
             <div className="relative">
               <Favourites />
@@ -90,10 +98,18 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
                 />
               )}
             </div>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="cart"
-            className=" transition-all hover:bg-hover-color sm:border-x sm:p-6"
+            className={({ isActive }) =>
+              classNames(
+                "relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                {
+                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                    isActive,
+                },
+              )
+            }
           >
             <div className="relative">
               <ShoppingBag />
@@ -104,7 +120,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
                 />
               )}
             </div>
-          </Link>
+          </NavLink>
         </div>
         <button
           type="button"

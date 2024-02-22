@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import classNames from "classnames";
 import { useAppSelector } from "../../../app/hooks";
 import { ChosenItemsIcon } from "../../../icons/Chosen-Items-Icon";
 import { Favourites } from "../../../icons/Favourites";
@@ -24,7 +25,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
           <NavLinkMenu
             onClick={() => setIsMenuOpen(false)}
             to="/"
-            classname="text-xs font-extrabold uppercase text-secondary"
+            classname="text-xs font-extrabold uppercase text-secondary relative"
           >
             Home
           </NavLinkMenu>
@@ -34,7 +35,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
             <NavLinkMenu
               onClick={() => setIsMenuOpen(false)}
               to={`/${navItem.toLowerCase()}`}
-              classname="text-xs font-extrabold uppercase text-secondary"
+              classname="text-xs font-extrabold uppercase text-secondary relative"
             >
               {navItem}
             </NavLinkMenu>
@@ -42,10 +43,18 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
         ))}
       </ul>
       <div className="sticky flex">
-        <Link
+        <NavLink
           onClick={() => setIsMenuOpen(false)}
           to="favourites"
-          className="flex w-1/2 items-center justify-center border-r border-t py-6"
+          className={({ isActive }) =>
+            classNames(
+              " relative flex w-1/2 items-center justify-center border-r border-t py-6",
+              {
+                "after:content[] after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                  isActive,
+              },
+            )
+          }
         >
           <div className="relative">
             {!!favouriteItems.length && (
@@ -56,11 +65,19 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
             )}
             <Favourites />
           </div>
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           onClick={() => setIsMenuOpen(false)}
           to="cart"
-          className="flex w-1/2 items-center justify-center border-t py-6"
+          className={({ isActive }) =>
+            classNames(
+              " relative flex w-1/2 items-center justify-center border-r border-t py-6",
+              {
+                "after:content[] after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                  isActive,
+              },
+            )
+          }
         >
           <div className="relative">
             {!!cartItems.length && (
@@ -71,7 +88,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
             )}
             <ShoppingBag />
           </div>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );
