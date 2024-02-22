@@ -3,12 +3,15 @@ import { ArrowLeft } from "../../icons/Arrow-Left";
 
 export const Cart = () => {
   return (
-    <div className="container mb-14 mt-6 sm:mt-10">
-      <button type="button" className="mb-6 flex flex-row items-center">
+    <div className="container pb-14 pt-[25px] sm:pb-16 sm:pt-10 xl:pb-20">
+      <button
+        type="button"
+        className="mb-6 flex flex-row items-center gap-x-[10px] sm:mb-4"
+      >
         <ArrowLeft />
         <span className="font-bold text-secondary">Back</span>
       </button>
-      <h1 className="leading-14 mb-8 text-left text-4xl font-extrabold tracking-tighter sm:mb-4 sm:text-5xl/[56px]">
+      <h1 className="mb-8 text-left text-4xl font-extrabold leading-[48px] tracking-tighter sm:text-5xl/[56px]">
         Cart
       </h1>
       <div className="grid gap-x-4 md:grid-cols-3">
@@ -26,7 +29,7 @@ export const Cart = () => {
           </div>
           <div className="my-6 w-full border" />
           <button
-            className="h-12 w-full rounded-lg bg-accent text-element-color hover:shadow-sh1"
+            className="h-12 w-full rounded-lg bg-accent text-element-color transition-all hover:shadow-sh1"
             type="button"
           >
             Checkout
