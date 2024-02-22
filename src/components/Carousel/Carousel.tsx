@@ -8,12 +8,14 @@ import banner from "../../assets/img/Banner.png";
 export const Carousel: React.FC = () => {
   const imgIds = [1, 2, 3];
   const settings = {
+    autoplay: true,
+    autoplaySpeed: 3000,
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: true,
+    cssEase: "linear",
     customPaging: () => (
       <div
         className="slick-dot"
