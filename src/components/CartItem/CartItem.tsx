@@ -4,6 +4,8 @@ import { Plus } from "../../icons/Plus";
 import { Minus } from "../../icons/Minus";
 import { Close } from "../../icons/Close";
 import { Item } from "../../types/Item";
+import { actions as cartActions } from "../../features/CartSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 type Props = {
   item: Item;
@@ -29,10 +31,15 @@ export const CartItem: React.FC<Props> = ({
     }
   };
 
+  const dispatch = useAppDispatch();
+
   return (
     <div className="box-border flex flex-col justify-between gap-4 rounded-[16px] border border-solid border-element-color p-4 sm:flex-row sm:p-6">
       <div className="flex flex-row items-center gap-4">
-        <button type="button">
+        <button
+          type="button"
+          onClick={() => dispatch(cartActions.replace(item))}
+        >
           <Close fill="#b4bdc3" />
         </button>
         <div className="flex min-h-[80px] min-w-[80px] items-center justify-center">
