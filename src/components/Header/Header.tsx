@@ -54,7 +54,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <NavLinkMenu
               to="/"
-              classname="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary"
             >
               Home
             </NavLinkMenu>
@@ -62,7 +62,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <NavLinkMenu
                 key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
-                classname="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+                classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary"
               >
                 {nav_item}
               </NavLinkMenu>
