@@ -5,6 +5,7 @@ import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { actions as favouritesActions } from "../../features/FavouritesSlice";
+import { actions as cartActions } from "../../features/CartSlice";
 import { FavouritesFilled } from "../../icons/FavouritesFilled";
 
 type Props = {
@@ -50,6 +51,21 @@ export const ProductCard: React.FC<Props> = ({
   const dispatch = useAppDispatch();
   const favouriteItems = useAppSelector((state) => state.favourites);
   const favouriteItemsIds = favouriteItems.map((favItem) => favItem.id);
+
+  const addToFavouritesHandler = (elem: Item) => {
+    dispatch(favouritesActions.add(elem));
+    localStorage.setItem(
+      "favouriteItems",
+      JSON.stringify([...favouriteItems, elem]),
+    );
+  };
+
+  const removeFromFavouritesHandler = (elem: Item) => {
+    dispatch(favouritesActions.replace(elem));
+    const storageWithOutElem = favouriteItems.filter((el) => el.id !== elem.id);
+
+    localStorage.setItem("favouriteItems", JSON.stringify(storageWithOutElem));
+  };
 
   return (
     <li
@@ -118,6 +134,7 @@ export const ProductCard: React.FC<Props> = ({
             rounded-lg bg-accent py-2 font-semibold text-white
               transition-all hover:shadow-sh1"
             type="button"
+            onClick={() => dispatch(cartActions.add(item))}
           >
             Add to cart
           </button>
@@ -128,7 +145,7 @@ export const ProductCard: React.FC<Props> = ({
             flex h-10 w-10 items-center 
             justify-center rounded-full
             border border-icons-color transition-all hover:border-primary"
-              onClick={() => dispatch(favouritesActions.replace(item))}
+              onClick={() => removeFromFavouritesHandler(item)}
             >
               <FavouritesFilled fill="#F447AF" />
             </button>
@@ -139,7 +156,7 @@ export const ProductCard: React.FC<Props> = ({
             flex h-10 w-10 items-center 
             justify-center rounded-full
             border border-icons-color transition-all hover:border-primary"
-              onClick={() => dispatch(favouritesActions.add(item))}
+              onClick={() => addToFavouritesHandler(item)}
             >
               <Favourites />
             </button>

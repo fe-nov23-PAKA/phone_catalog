@@ -83,10 +83,12 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <div className="relative">
               <Favourites />
-              <ChosenItemsIcon
-                count={favouriteItems.length}
-                classname="bottom-2 left-2"
-              />
+              {favouriteItems.length > 0 && (
+                <ChosenItemsIcon
+                  count={favouriteItems.length}
+                  classname="bottom-2 left-2"
+                />
+              )}
             </div>
           </Link>
           <Link
@@ -95,10 +97,12 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <div className="relative">
               <ShoppingBag />
-              <ChosenItemsIcon
-                count={cartItems.length}
-                classname="bottom-2 left-2"
-              />
+              {cartItems.length > 0 && (
+                <ChosenItemsIcon
+                  count={cartItems.length}
+                  classname="bottom-2 left-2"
+                />
+              )}
             </div>
           </Link>
         </div>
