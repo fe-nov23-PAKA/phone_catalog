@@ -1,7 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Item } from "../types/Item";
 
-const initialState: Item[] = [];
+const isFavouritesInLocalStorage: string | null =
+  localStorage.getItem("favouriteItems");
+
+const favouritesInLocalStorage = isFavouritesInLocalStorage
+  ? JSON.parse(isFavouritesInLocalStorage)
+  : [];
+
+const initialState: Item[] = favouritesInLocalStorage;
 
 export const cartSlice = createSlice({
   name: "favourites",
@@ -11,7 +18,7 @@ export const cartSlice = createSlice({
       items.push(action.payload);
     },
     replace: (items, action: PayloadAction<Item>) => {
-      return items.filter((item) => item !== action.payload);
+      return items.filter((item) => item.id !== action.payload.id);
     },
     clear: () => [],
   },

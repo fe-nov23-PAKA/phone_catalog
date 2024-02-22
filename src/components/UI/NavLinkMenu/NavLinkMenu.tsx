@@ -13,7 +13,7 @@ export const NavLinkMenu: React.FC<Props> = ({
 }) => {
   const navActive = (isActive: boolean) =>
     classNames(`${classname}`, {
-      "border-b-2 border-primary": isActive,
+      "border-b-2 border-primary !text-primary": isActive,
     });
 
   return (

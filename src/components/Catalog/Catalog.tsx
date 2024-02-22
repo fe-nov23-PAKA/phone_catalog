@@ -86,7 +86,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   };
 
   return (
-    <div className="container mt-6">
+    <div className="container pt-6">
       <div>
         <div className="mb-7 flex gap-2">
           <a href="/">
@@ -97,10 +97,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             href="/"
             className="flex text-base/[17px] font-semibold capitalize"
           >
-            {title}
+            Phones
           </a>
         </div>
-        <h1 className="mb-2 text-4xl font-extrabold">Mobile Phones</h1>
+        <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
         <div className="mb-8  font-semibold text-secondary">
           {items.length} models
         </div>
@@ -145,37 +145,36 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       </div>
 
       <ul
-        className="mb-16 flex items-center 
-      justify-center space-x-1 font-light md:mb-20"
+        className="flex items-center justify-center 
+      space-x-1 pb-16 font-light md:pb-20"
       >
         <li
           className={classNames(
-            "rounded-full border font-mont",
+            "rounded-full border font-mont transition-all",
             { disabled: page === "1" },
             { "hover:border-primary": !(page === "1") },
           )}
         >
-          <a
+          <button
+            disabled={page === "1"}
+            type="button"
             onClick={(event) => {
-              if (page !== "1") {
-                event.preventDefault();
-                setPage((currentPage) => (+currentPage - 1).toString());
-              }
+              event.preventDefault();
+              setPage((currentPage) => (+currentPage - 1).toString());
             }}
             style={{ pointerEvents: page === "1" ? "none" : "auto" }}
-            href="#/"
             className="flex h-8 w-8 items-center justify-center"
           >
-            <ArrowLeft fill="#0F0F11" />
-          </a>
+            <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
+          </button>
         </li>
         {itemsPagesMap.map((number) => (
           <li
             key={number}
             className={classNames(
-              "rounded-full border font-mont text-primary duration-300 hover:border-primary",
+              "rounded-full border font-mont text-primary transition-all duration-300 hover:border-primary",
               {
-                "border-primary bg-primary text-white hover:bg-white hover:text-primary":
+                "border-primary bg-primary text-white transition-all hover:bg-white hover:text-primary":
                   page === number,
               },
             )}
@@ -191,24 +190,23 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
         ))}
         <li
           className={classNames(
-            "rounded-full border font-mont",
+            "rounded-full border font-mont transition-all",
             { disabled: +page === itemPages },
             { "hover:border-primary": !(+page === itemPages) },
           )}
         >
-          <a
-            href="#/"
+          <button
+            disabled={+page === itemPages}
+            type="button"
             className="flex h-8 w-8 items-center justify-center"
             onClick={(event) => {
-              if (+page !== itemPages) {
-                event.preventDefault();
-                setPage((currentPage) => (+currentPage + 1).toString());
-              }
+              event.preventDefault();
+              setPage((currentPage) => (+currentPage + 1).toString());
             }}
             style={{ pointerEvents: +page === itemPages ? "none" : "auto" }}
           >
-            <ArrowRight fill="#0F0F11" />
-          </a>
+            <ArrowRight fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"} />
+          </button>
         </li>
       </ul>
     </div>

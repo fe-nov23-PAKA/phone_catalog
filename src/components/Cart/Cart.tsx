@@ -27,7 +27,7 @@ export const Cart = () => {
         <ArrowLeft />
         <span className="font-bold text-secondary">Back</span>
       </button>
-      <h1 className="leading-14 mb-8 text-left text-4xl font-extrabold tracking-tighter sm:mb-4 sm:text-5xl/[56px]">
+      <h1 className="mb-8 text-left text-4xl font-extrabold leading-[48px] tracking-tighter sm:text-5xl/[56px]">
         Cart
       </h1>
       {cartForPurchase.length > 0 ? (

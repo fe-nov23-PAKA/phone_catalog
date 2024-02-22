@@ -10,6 +10,7 @@ import { Favourites } from "../../icons/Favourites";
 import { NavLinkMenu } from "../UI/NavLinkMenu";
 import { NAV_LIST } from "../../variables";
 import { ChosenItemsIcon } from "../../icons/Chosen-Items-Icon";
+import { useAppSelector } from "../../app/hooks";
 
 interface Props {
   isMenuOpen: boolean;
@@ -20,6 +21,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const favouriteItems = useAppSelector((state) => state.favourites);
+  const cartItems = useAppSelector((state) => state.cart);
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,7 +58,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <NavLinkMenu
               to="/"
-              classname="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+              classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary transition-all"
             >
               Home
             </NavLinkMenu>
@@ -62,7 +66,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <NavLinkMenu
                 key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
-                classname="py-[21px] text-xs font-extrabold uppercase text-secondary  sm:hover:text-primary"
+                classname="py-[24px] text-xs font-extrabold uppercase text-secondary sm:hover:text-primary transition-all"
               >
                 {nav_item}
               </NavLinkMenu>
@@ -75,14 +79,30 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         >
           <Link
             to="favourites"
-            className=" hover:bg-hover-color sm:border-l sm:p-6"
+            className=" transition-all hover:bg-hover-color sm:border-l sm:p-6"
           >
-            <Favourites />
+            <div className="relative">
+              <Favourites />
+              {favouriteItems.length > 0 && (
+                <ChosenItemsIcon
+                  count={favouriteItems.length}
+                  classname="bottom-2 left-2"
+                />
+              )}
+            </div>
           </Link>
-          <Link to="cart" className=" hover:bg-hover-color sm:border-x sm:p-6">
+          <Link
+            to="cart"
+            className=" transition-all hover:bg-hover-color sm:border-x sm:p-6"
+          >
             <div className="relative">
               <ShoppingBag />
-              <ChosenItemsIcon classname="bottom-2 left-2" />
+              {cartItems.length > 0 && (
+                <ChosenItemsIcon
+                  count={cartItems.length}
+                  classname="bottom-2 left-2"
+                />
+              )}
             </div>
           </Link>
         </div>
