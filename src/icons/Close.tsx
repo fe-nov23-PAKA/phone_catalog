@@ -1,6 +1,6 @@
 import { FCIcon } from "./icon.typedefs";
 
-export const Close: FCIcon = ({ fill = "currentColor", ...props }) => (
+export const Close: FCIcon = ({ fill = "#0F0F11", ...props }) => (
   <svg
     width="16"
     height="16"
