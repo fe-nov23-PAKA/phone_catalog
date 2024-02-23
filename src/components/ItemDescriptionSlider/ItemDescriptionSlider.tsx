@@ -119,16 +119,14 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
             </div>
             <div className="flex gap-2">
               {colorsAvailable.map((itemColor) => {
-                const colorBg = `bg-${itemColor}`;
-
                 return (
                   <button
                     key={itemColor}
                     onClick={(event) => handleColorChange(itemColor, event)}
                     type="button"
                     className={classNames(
-                      "h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 ring-icons-color hover:ring-1 hover:ring-primary",
-                      { [colorBg]: true },
+                      `h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 
+                      ring-icons-color hover:ring-1 hover:ring-primary bg-${itemColor}`,
                       { "ring-primary": currentColor === itemColor },
                     )}
                     style={{ backgroundColor: itemColor }}

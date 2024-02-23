@@ -33,16 +33,16 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
               <h3 className="mb-4 text-[16px]/[21px] font-bold sm:text-[20px]/[26px]">
                 {section.title}
               </h3>
-              <p className="text-[14px]/[21px] font-semibold text-secondary xl:font-medium">
+              <div className="text-[14px]/[21px] font-semibold text-secondary xl:font-medium">
                 {section.text.map((paragraph) => (
-                  <>
-                    <div>{paragraph}</div>
+                  <React.Fragment key={paragraph}>
+                    <p>{paragraph}</p>
                     {paragraph !== section.text[section.text.length - 1] && (
                       <br />
                     )}
-                  </>
+                  </React.Fragment>
                 ))}
-              </p>
+              </div>
             </div>
           ))}
         </div>
@@ -52,7 +52,7 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
           </h2>
           <div className="grid gap-y-2">
             {Object.entries(techSpecs).map(([key, value]) => (
-              <div className="flex justify-between">
+              <div className="flex justify-between" key={key}>
                 <span className="text-[14px]/[21px] font-medium text-secondary">
                   {key === "ram"
                     ? `${key.toUpperCase()}`
