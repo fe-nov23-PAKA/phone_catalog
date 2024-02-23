@@ -83,7 +83,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   return (
     <div className="container mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
       <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+        {currentItem.name}
       </h2>
       <div className="col-span-full sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
         <Swiper
@@ -91,7 +91,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
           key={currentItem.images[0]}
           pagination={pagination}
           modules={[Pagination]}
-          className="sm:max-m-[450px] sm:w-[60%]"
+          className="sm:max-w-[450px]"
           spaceBetween={100}
         >
           {currentItem.images.map((image) => (
@@ -106,7 +106,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
         </Swiper>
         <div className="swiper_pagination mb-10 mt-4 flex justify-between gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
       </div>
-      <div className="col-span-full flex flex-col gap-8 sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
+      <div className="col-span-full flex flex-col justify-between gap-8 sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
         <div className="justify-between border-b-[1px] pb-[24px]">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
