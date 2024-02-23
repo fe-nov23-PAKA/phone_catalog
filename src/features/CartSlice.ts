@@ -1,17 +1,41 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Item } from "../types/Item";
 
-const initialState: Item[] = [];
+interface InitialState {
+  id: number;
+  quantity: number;
+  product: Item;
+}
+
+const initialState: InitialState[] = [];
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    add: (items, action: PayloadAction<Item>) => {
-      items.push(action.payload);
+    add: (state, action: PayloadAction<Item>) => {
+      state.push({
+        id: action.payload.id,
+        quantity: 1,
+        product: action.payload,
+      });
     },
-    replace: (items, action: PayloadAction<Item>) => {
-      return items.filter((item) => item !== action.payload);
+    replace: (state, action: PayloadAction<Item>) => {
+      return state.filter((item) => item.id !== action.payload.id);
+    },
+    increase: (state, action: PayloadAction<Item>) => {
+      return state.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      );
+    },
+    decrease: (state, action: PayloadAction<Item>) => {
+      return state.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item,
+      );
     },
     clear: () => [],
   },
