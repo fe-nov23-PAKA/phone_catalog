@@ -28,13 +28,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     scrollToTop();
   }, [page]);
 
-  const itemPages = Math.ceil(items.length / +itemsOnPage);
-  const itemsPagesMap: string[] = [];
-
-  for (let i = 1; i <= itemPages; i += 1) {
-    itemsPagesMap.push(i.toString());
-  }
-
   const handleSetPage = (
     number: string,
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -44,13 +37,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       setPage(number);
     }
   };
-
-  const itemsOnPageEditor = setShowItems(
-    itemsOnPage,
-    page,
-    itemsPagesMap,
-    items,
-  );
 
   const handleSortDropDownClick = () => {
     setIsSortDropDownShown((currentValue) => !currentValue);
@@ -84,6 +70,31 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     setItemsOnPage(option);
     setPage("1");
   };
+
+  const sortedItems = [...items].sort((a, b) => {
+    if (sortField === "Cheapest") {
+      return a.priceRegular - b.priceRegular;
+    }
+
+    if (sortField === "Expensive") {
+      return b.priceRegular - a.priceRegular;
+    }
+
+    return 0;
+  });
+  const itemPages = Math.ceil(items.length / +itemsOnPage);
+  const itemsPagesMap: string[] = [];
+
+  for (let i = 1; i <= itemPages; i += 1) {
+    itemsPagesMap.push(i.toString());
+  }
+
+  const itemsOnPageEditor = setShowItems(
+    itemsOnPage,
+    page,
+    itemsPagesMap,
+    sortedItems,
+  );
 
   return (
     <div className="container pt-6">
