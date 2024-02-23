@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "../../../types/Item";
+import { Item } from "../../types/Item";
 
 type Props = {
   item: Item;
@@ -22,8 +22,8 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
   } = item;
 
   return (
-    <div>
-      <div className="grid grid-cols-4 gap-x-4 font-semibold sm:mb-10 sm:grid-cols-12 xl:grid-cols-24">
+    <div className="container">
+      <div className="grid grid-cols-4 gap-x-4 pb-14 font-semibold sm:grid-cols-12 sm:pb-10 xl:grid-cols-24">
         <div className="col-span-full mb-14 grid gap-y-8 xl:col-span-12">
           <h2 className="border-b pb-4 text-[20px]/[26px] font-bold sm:text-[22px]/[31px] sm:font-extrabold">
             About
