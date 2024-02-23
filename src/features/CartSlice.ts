@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Item } from "../types/Item";
+import { InitialState } from "../types/InitialState";
 
-interface InitialState {
-  id: number;
-  quantity: number;
-  product: Item;
-}
+const isCartInLocalStorage: string | null = localStorage.getItem("cartList");
 
-const initialState: InitialState[] = [];
+const cartInLocalStorage = isCartInLocalStorage
+  ? JSON.parse(isCartInLocalStorage)
+  : [];
+
+const initialState: InitialState[] = cartInLocalStorage;
 
 export const cartSlice = createSlice({
   name: "cart",
