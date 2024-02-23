@@ -4,9 +4,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.scss";
 import banner from "../../assets/img/Banner.png";
+import bannerPhones from "../../assets/img/banner-phones.png";
+import bannerTablets from "../../assets/img/banner-tablets.png";
 
 export const Carousel: React.FC = () => {
-  const imgIds = [1, 2, 3];
+  const imgIds = [banner, bannerPhones, bannerTablets];
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -32,7 +34,7 @@ export const Carousel: React.FC = () => {
     <Slider {...settings} className="carousel">
       {imgIds.map((item) => (
         <div key={item} className="carousel__banner">
-          <img src={banner} alt="HeroBanner" className="carousel__main-img" />
+          <img src={item} alt="HeroBanner" className="carousel__main-img" />
         </div>
       ))}
     </Slider>

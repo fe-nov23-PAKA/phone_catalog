@@ -10,12 +10,11 @@ export const ItemCard = () => {
   const { items, error, loading } = useAppSelector((state) => state.items);
   const [productsList, setProductsList] = useState<ItemDescriptionType[]>([]);
   const { slug } = useParams();
-  const choosedItemCategory = items.find((item) => item.itemId === slug)
-    ?.category as string;
+  const choosedItem = items.find((item) => item.itemId === slug);
 
   useEffect(() => {
-    getData(choosedItemCategory).then(setProductsList);
-  }, [choosedItemCategory]);
+    getData(choosedItem?.category as string).then(setProductsList);
+  }, [choosedItem]);
 
   const fullChoosedCard = () =>
     productsList.find((product) => product.id === slug) as ItemDescriptionType;

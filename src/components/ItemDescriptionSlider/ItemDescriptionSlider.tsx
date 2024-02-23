@@ -16,7 +16,6 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   const [currentColor, setCurrentColor] = useState(item.color);
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
   const [currentItem, setCurrentItem] = useState(item);
-  const temporeryID = "ID: 802390";
 
   const swiperRef = useRef<SwiperRef>(null);
 
@@ -34,6 +33,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   };
 
   const {
+    id,
     capacityAvailable,
     priceRegular,
     priceDiscount,
@@ -114,7 +114,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
                 Available colors
               </span>
               <span className="text-[12px] font-bold leading-[15px] text-icons-color">
-                {temporeryID}
+                {id}
               </span>
             </div>
             <div className="flex gap-2">
