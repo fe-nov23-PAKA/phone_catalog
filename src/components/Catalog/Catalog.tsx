@@ -103,7 +103,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
         </div>
       </div>
 
-      <div className="mb-6">
+      <div className="pb-6">
         <div
           className="grid grid-cols-4 justify-center
         justify-items-center gap-x-4 gap-y-10
@@ -131,9 +131,12 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
         </div>
 
         <ul
-          className="col-span-full mb-6 grid 
-          grid-cols-4 justify-items-center 
-          gap-x-4 gap-y-10 sm:grid-cols-12 md:mb-10 xl:grid-cols-24"
+          className={classNames(
+            "col-span-full mb-6 grid",
+            "grid-cols-4 justify-items-center",
+            "gap-x-4 gap-y-10 sm:grid-cols-12 md:mb-10 xl:grid-cols-24",
+            { "mb-0 pb-6 md:mb-0 md:pb-10": !(itemsPagesMap.length > 1) },
+          )}
         >
           {itemsOnPageEditor.map((item) => (
             <ProductCard key={item.id} item={item} />
@@ -141,71 +144,73 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
         </ul>
       </div>
 
-      <ul
-        className="flex items-center justify-center 
+      {itemsPagesMap.length > 1 && (
+        <ul
+          className="flex items-center justify-center 
       space-x-1 pb-16 font-light md:pb-20"
-      >
-        <li
-          className={classNames(
-            "rounded-full border font-mont transition-all",
-            { disabled: page === "1" },
-            { "hover:border-primary": !(page === "1") },
-          )}
         >
-          <button
-            disabled={page === "1"}
-            type="button"
-            onClick={(event) => {
-              event.preventDefault();
-              setPage((currentPage) => (+currentPage - 1).toString());
-            }}
-            style={{ pointerEvents: page === "1" ? "none" : "auto" }}
-            className="flex h-8 w-8 items-center justify-center"
-          >
-            <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
-          </button>
-        </li>
-        {itemsPagesMap.map((number) => (
           <li
-            key={number}
             className={classNames(
-              "rounded-full border font-mont text-primary transition-all hover:border-primary",
-              {
-                "border-primary bg-primary text-white hover:bg-white hover:text-primary":
-                  page === number,
-              },
+              "rounded-full border font-mont transition-all",
+              { disabled: page === "1" },
+              { "hover:border-primary": !(page === "1") },
             )}
           >
-            <a
-              onClick={(event) => handleSetPage(number, event)}
-              href="#/"
+            <button
+              disabled={page === "1"}
+              type="button"
+              onClick={(event) => {
+                event.preventDefault();
+                setPage((currentPage) => (+currentPage - 1).toString());
+              }}
+              style={{ pointerEvents: page === "1" ? "none" : "auto" }}
               className="flex h-8 w-8 items-center justify-center"
             >
-              {number}
-            </a>
+              <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
+            </button>
           </li>
-        ))}
-        <li
-          className={classNames(
-            "rounded-full border font-mont transition-all",
-            { disabled: +page === itemPages },
-            { "hover:border-primary": !(+page === itemPages) },
-          )}
-        >
-          <button
-            disabled={+page === itemPages}
-            type="button"
-            className="flex h-8 w-8 items-center justify-center"
-            onClick={(event) => {
-              event.preventDefault();
-              setPage((currentPage) => (+currentPage + 1).toString());
-            }}
-            style={{ pointerEvents: +page === itemPages ? "none" : "auto" }}
+          {itemsPagesMap.map((number) => (
+            <li
+              key={number}
+              className={classNames(
+                "rounded-full border font-mont text-primary transition-all hover:border-primary",
+                {
+                  "border-primary bg-primary text-white hover:bg-white hover:text-primary":
+                    page === number,
+                },
+              )}
+            >
+              <a
+                onClick={(event) => handleSetPage(number, event)}
+                href="#/"
+                className="flex h-8 w-8 items-center justify-center"
+              >
+                {number}
+              </a>
+            </li>
+          ))}
+          <li
+            className={classNames(
+              "rounded-full border font-mont transition-all",
+              { disabled: +page === itemPages },
+              { "hover:border-primary": !(+page === itemPages) },
+            )}
           >
-            <ArrowRight fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"} />
-          </button>
-        </li>
-      </ul>
+            <button
+              disabled={+page === itemPages}
+              type="button"
+              className="flex h-8 w-8 items-center justify-center"
+              onClick={(event) => {
+                event.preventDefault();
+                setPage((currentPage) => (+currentPage + 1).toString());
+              }}
+              style={{ pointerEvents: +page === itemPages ? "none" : "auto" }}
+            >
+              <ArrowRight fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"} />
+            </button>
+          </li>
+        </ul>
+      )}
     </div>
   );
 };

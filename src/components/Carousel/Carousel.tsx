@@ -14,7 +14,6 @@ export const Carousel: React.FC = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: true,
     cssEase: "linear",
     customPaging: () => (
       <div
