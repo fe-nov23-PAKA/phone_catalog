@@ -81,7 +81,7 @@ export const ProductCard: React.FC<Props> = ({
           </div>
           <h3
             className="flex min-h-[58px] flex-col 
-          justify-end  font-semibold"
+          justify-end text-[14px]/[21px] font-semibold"
           >
             {name}
           </h3>
@@ -97,28 +97,28 @@ export const ProductCard: React.FC<Props> = ({
           </span>
         </div>
         <div className="mb-2 border" />
-        <div className="mb-4">
+        <div className="mb-2 flex flex-col gap-y-2 py-2">
           <div className="flex items-center justify-between">
-            <div className="text-gray-elem text-xs text-secondary">Screen</div>
-            <div className="text-xs font-semibold">{screen}</div>
+            <div className="text-xs font-bold text-secondary">Screen</div>
+            <div className="text-xs font-bold">{screen}</div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-xs text-secondary"
+            text-xs font-bold text-secondary"
             >
               Capacity
             </div>
-            <div className="text-xs font-semibold">{capacity}</div>
+            <div className="text-xs font-bold">{capacity}</div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-xs text-secondary"
+            text-xs font-bold text-secondary"
             >
               RAM
             </div>
-            <div className="text-xs font-semibold">{ram}</div>
+            <div className="text-xs font-bold">{ram}</div>
           </div>
         </div>
 
