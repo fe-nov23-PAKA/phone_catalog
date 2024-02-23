@@ -44,6 +44,9 @@ export const ProductCard: React.FC<Props> = ({
   const favouriteItems = useAppSelector((state) => state.favourites);
   const favouriteItemsIds = favouriteItems.map((favItem) => favItem.itemId);
 
+  const cartItems = useAppSelector((state) => state.cart);
+  const cartItemsIds = cartItems.map((cartItem) => cartItem.id);
+
   const addToFavouritesHandler = (elem: Item) => {
     dispatch(favouritesActions.add(elem));
     localStorage.setItem(
@@ -123,18 +126,28 @@ export const ProductCard: React.FC<Props> = ({
         </div>
 
         <div className="flex items-center justify-between gap-x-2">
-          <button
-            className="
-            hover:secondary-accent all w-4/5
-            rounded-lg bg-accent py-2 font-semibold text-white
+          {cartItemsIds.includes(item.id) ? (
+            <button
+              disabled
+              className="all w-4/5 rounded-lg border border-element-color bg-white py-2 font-semibold text-accent transition-all"
+              type="button"
+            >
+              Added to cart
+            </button>
+          ) : (
+            <button
+              className="
+            all w-4/5
+            rounded-lg border border-accent bg-accent py-2 font-semibold text-white
               transition-all hover:shadow-sh1"
-            type="button"
-            onClick={() => {
-              dispatch(cartActions.add(item));
-            }}
-          >
-            Add to cart
-          </button>
+              type="button"
+              onClick={() => {
+                dispatch(cartActions.add(item));
+              }}
+            >
+              Add to cart
+            </button>
+          )}
           {favouriteItemsIds.includes(itemId) ? (
             <button
               type="button"
