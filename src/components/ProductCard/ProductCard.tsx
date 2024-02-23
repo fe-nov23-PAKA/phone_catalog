@@ -2,12 +2,12 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { actions as favouritesActions } from "../../features/FavouritesSlice";
 import { actions as cartActions } from "../../features/CartSlice";
 import { FavouritesFilled } from "../../icons/FavouritesFilled";
+import { Item } from "../../types/Item";
 
 type Props = {
   item: Item;
@@ -20,16 +20,7 @@ export const ProductCard: React.FC<Props> = ({
   classname,
   setItemCarouselWidth,
 }) => {
-  const {
-    id,
-    name,
-    capacity,
-    priceRegular,
-    priceDiscount,
-    screen,
-    images,
-    ram,
-  } = item;
+  const { itemId, name, capacity, fullPrice, price, screen, image, ram } = item;
 
   const carouselItemRef = useRef<HTMLLIElement>(null);
 
@@ -51,7 +42,7 @@ export const ProductCard: React.FC<Props> = ({
 
   const dispatch = useAppDispatch();
   const favouriteItems = useAppSelector((state) => state.favourites);
-  const favouriteItemsIds = favouriteItems.map((favItem) => favItem.id);
+  const favouriteItemsIds = favouriteItems.map((favItem) => favItem.itemId);
 
   const addToFavouritesHandler = (elem: Item) => {
     dispatch(favouritesActions.add(elem));
@@ -63,7 +54,9 @@ export const ProductCard: React.FC<Props> = ({
 
   const removeFromFavouritesHandler = (elem: Item) => {
     dispatch(favouritesActions.replace(elem));
-    const storageWithOutElem = favouriteItems.filter((el) => el.id !== elem.id);
+    const storageWithOutElem = favouriteItems.filter(
+      (el) => el.itemId !== elem.itemId,
+    );
 
     localStorage.setItem("favouriteItems", JSON.stringify(storageWithOutElem));
   };
@@ -72,16 +65,17 @@ export const ProductCard: React.FC<Props> = ({
     <li
       ref={carouselItemRef}
       className={classNames(
-        "col-span-full box-border w-full rounded-lg border border-element-color transition-all sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "col-span-full box-border h-full w-full rounded-lg border",
+        "border-element-color transition-all sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >
       <div className="p-[32px] ">
-        <Link to={`${item.id}`}>
+        <Link to={`${item.itemId}`}>
           <div className="mb-2 flex h-[196px] items-center justify-center">
             <img
-              className="block max-w-36 self-center transition-all hover:scale-[1.1]"
-              src={images[0]}
+              className="block max-w-32 self-center transition-all hover:scale-[1.1]"
+              src={image}
               alt="Product"
             />
           </div>
@@ -93,15 +87,13 @@ export const ProductCard: React.FC<Props> = ({
           </h3>
         </Link>
         <div className="justify-flex-start mb-2 flex items-center">
-          <span className="text-main font-extrabold leading-8">
-            ${priceDiscount}
-          </span>
+          <span className="text-main font-extrabold leading-8">${price}</span>
           <span
             className="
           ml-2 text-main font-semibold
           leading-7 text-secondary line-through"
           >
-            ${priceRegular}
+            ${fullPrice}
           </span>
         </div>
         <div className="mb-2 border" />
@@ -141,7 +133,7 @@ export const ProductCard: React.FC<Props> = ({
           >
             Add to cart
           </button>
-          {favouriteItemsIds.includes(id) ? (
+          {favouriteItemsIds.includes(itemId) ? (
             <button
               type="button"
               className="

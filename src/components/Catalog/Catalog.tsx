@@ -73,11 +73,11 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
 
   const sortedItems = [...items].sort((a, b) => {
     if (sortField === "Cheapest") {
-      return a.priceRegular - b.priceRegular;
+      return a.price - b.price;
     }
 
     if (sortField === "Expensive") {
-      return b.priceRegular - a.priceRegular;
+      return b.price - a.price;
     }
 
     return 0;

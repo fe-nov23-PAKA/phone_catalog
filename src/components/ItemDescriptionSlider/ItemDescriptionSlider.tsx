@@ -2,14 +2,14 @@ import classNames from "classnames";
 import { Pagination } from "swiper/modules";
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import { Item } from "../../types/Item";
 import { Favourites } from "../../icons/Favourites";
+import { ItemDescriptionType } from "../../types/ItemDescriptionType";
 
 import "swiper/css";
 
 interface Props {
-  item: Item;
-  allItems: Item[];
+  item: ItemDescriptionType;
+  allItems: ItemDescriptionType[];
 }
 
 export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
@@ -21,13 +21,15 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   const swiperRef = useRef<SwiperRef>(null);
 
   const pagination = {
+    bulletClass: "border border-element-color",
     bulletActiveClass: "ring-1 ring-primary",
     clickable: true,
     el: ".swiper_pagination",
     renderBullet(index: number, className: string) {
       const image = currentItem.images[index];
 
-      return `<div class="${className} rounded-lg max-h-[60px] max-w-[60px] p-[3.5px] flex border-black items-center flex-grow"><img src="${image}" alt="phone_image" class="h-full w-full object-contain" /></div>`;
+      return `<div class="${className} shrink rounded-lg xl:max-h-[80px] xl:max-w-[80px] max-h-[50px] max-w-[50px] p-[3.5px] flex border-black items-center flex-grow"><img src="${image}" 
+      alt="phone_image" class="h-full w-full object-contain" /></div>`;
     },
   };
 
@@ -50,7 +52,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
           itemMap.color === currentColor,
       );
 
-      return futureItem as Item;
+      return futureItem as ItemDescriptionType;
     }
 
     return currentItem;
@@ -89,7 +91,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
           key={currentItem.images[0]}
           pagination={pagination}
           modules={[Pagination]}
-          className="sm:w-full"
+          className="sm:max-m-[450px] sm:w-[60%]"
           spaceBetween={100}
         >
           {currentItem.images.map((image) => (

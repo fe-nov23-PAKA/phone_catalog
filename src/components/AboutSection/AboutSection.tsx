@@ -1,8 +1,8 @@
 import React from "react";
-import { Item } from "../../types/Item";
+import { ItemDescriptionType } from "../../types/ItemDescriptionType";
 
 type Props = {
-  item: Item;
+  item: ItemDescriptionType;
 };
 
 export const AboutSection: React.FC<Props> = ({ item }) => {

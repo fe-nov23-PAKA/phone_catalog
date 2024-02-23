@@ -1,22 +1,14 @@
-import { Description } from "./Description";
-
-export interface Item {
-  id: string;
-  namespaceId: string;
+export type Item = {
+  id: number;
+  category: string;
+  itemId: string;
   name: string;
-  capacityAvailable: string[];
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
-  images: string[];
-  description: Description[];
+  fullPrice: number;
+  price: number;
   screen: string;
-  resolution: string;
-  processor: string;
+  capacity: string;
+  color: string;
   ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
-}
+  year: number;
+  image: string;
+};

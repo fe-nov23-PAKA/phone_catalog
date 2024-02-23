@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import { Item } from "../../types/Item";
 import { ProductCard } from "../ProductCard";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { ArrowRight } from "../../icons/Arrow-Right";
+import { Item } from '../../types/Item';
 
 interface Props {
   titleName: string;

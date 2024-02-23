@@ -1,13 +1,20 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Cart, Favourites, HomePage, ItemCard, ItemsPage } from "../Pages";
 import { PageNotFound } from "../Pages/NotFoundPage";
 import { Footer } from "../components/Footer/Footer";
 import { Header } from "../components/Header/Header";
 import { ItemTitle } from "../types/ItemTitle";
+import { useAppDispatch } from "../app/hooks";
+import * as itemsSlice from "../features/ItemsSlice";
 
 export const Root = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(itemsSlice.init("products"));
+  }, []);
 
   return (
     <>
@@ -27,7 +34,7 @@ export const Root = () => {
                     <ItemsPage option="phones" title={ItemTitle.phone} />
                   }
                 />
-                <Route path=":phoneID" element={<ItemCard />} />
+                <Route path=":slug" element={<ItemCard />} />
               </Route>
 
               <Route
@@ -36,7 +43,7 @@ export const Root = () => {
                   <ItemsPage option="tablets" title={ItemTitle.tablets} />
                 }
               >
-                <Route path=":tabletID" element={<ItemCard />} />
+                <Route path=":slug" element={<ItemCard />} />
               </Route>
 
               <Route
@@ -48,7 +55,7 @@ export const Root = () => {
                   />
                 }
               >
-                <Route path=":accessoryID" element={<ItemCard />} />
+                <Route path=":slug" element={<ItemCard />} />
               </Route>
 
               <Route path="favourites" element={<Favourites />} />

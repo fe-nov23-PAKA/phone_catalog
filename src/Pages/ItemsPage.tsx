@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Catalog } from "../components/Catalog";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import * as itemsSlice from "../features/ItemsSlice";
+import { useAppSelector } from "../app/hooks";
 import { ItemTitle } from "../types/ItemTitle";
 
 interface Props {
@@ -12,11 +10,7 @@ interface Props {
 export const ItemsPage: React.FC<Props> = ({ option, title }) => {
   const items = useAppSelector((state) => state.items.items);
 
-  const dispatch = useAppDispatch();
+  const filterProducts = () => items.filter((item) => item.category === option);
 
-  useEffect(() => {
-    dispatch(itemsSlice.init(option));
-  }, [option]);
-
-  return <Catalog items={items} title={title} />;
+  return <Catalog items={filterProducts()} title={title} />;
 };
