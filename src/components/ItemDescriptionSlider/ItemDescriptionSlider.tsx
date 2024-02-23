@@ -119,7 +119,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
             </div>
             <div className="flex gap-2">
               {colorsAvailable.map((itemColor) => {
-                const colorBg = `bg-${itemColor}`;
+                const colorBg = `bg-[${itemColor}]`;
 
                 return (
                   <button

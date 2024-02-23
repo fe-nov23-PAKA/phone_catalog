@@ -129,7 +129,9 @@ export const ProductCard: React.FC<Props> = ({
             rounded-lg bg-accent py-2 font-semibold text-white
               transition-all hover:shadow-sh1"
             type="button"
-            onClick={() => dispatch(cartActions.add(item))}
+            onClick={() => {
+              dispatch(cartActions.add(item));
+            }}
           >
             Add to cart
           </button>
