@@ -8,6 +8,7 @@ import { setShowItems } from "../../utils/setShowItems";
 import { DropDownMenu } from "../UI/DropDownMenu";
 import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
+import { Loader } from "../UI/Loader/Loader";
 
 interface Props {
   items: Item[];
@@ -99,125 +100,135 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   );
 
   return (
-    <div className="container pt-6">
-      <div>
-        <div className="mb-7 flex items-center gap-2">
-          <Breadcrumbs />
-        </div>
-        <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
-        <div className="mb-8  font-semibold text-secondary">
-          {items.length} models
-        </div>
-      </div>
+    <>
+      {items.length <= 0 ? (
+        <Loader />
+      ) : (
+        <div className="container pt-6">
+          <div>
+            <div className="mb-7 flex items-center gap-2">
+              <Breadcrumbs />
+            </div>
+            <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
+            <div className="mb-8  font-semibold text-secondary">
+              {items.length} models
+            </div>
+          </div>
 
-      <div className="pb-6">
-        <div
-          className="grid grid-cols-4 justify-center
+          <div className="pb-6">
+            <div
+              className="grid grid-cols-4 justify-center
         justify-items-center gap-x-4 gap-y-10
         sm:mb-10 sm:grid-cols-12 lg:grid-cols-24"
-        >
-          <DropDownMenu
-            classname="sm:col-span-4"
-            label="Sort by"
-            dropDownField={sortField}
-            dropDownFields={sortFields}
-            isOpen={isSortDropDownShown}
-            handlerToOpen={handleSortDropDownClick}
-            handlerOnClick={handleSortDropDownElementClick}
-          />
-
-          <DropDownMenu
-            classname="sm:col-span-3"
-            label="Items on page"
-            dropDownField={itemsOnPage}
-            dropDownFields={itemsOnPageList}
-            isOpen={isItemsDropDownShown}
-            handlerToOpen={handleItemsDropDownClick}
-            handlerOnClick={handleItemsDropDownElementClick}
-          />
-        </div>
-
-        <ul
-          className={classNames(
-            "col-span-full mb-6 grid",
-            "grid-cols-4 justify-items-center",
-            "gap-x-4 gap-y-10 sm:grid-cols-12 md:mb-10 xl:grid-cols-24",
-            { "mb-0 pb-6 md:mb-0 md:pb-10": !(itemsPagesMap.length > 1) },
-          )}
-        >
-          {itemsOnPageEditor.map((item) => (
-            <ProductCard key={item.id} item={item} />
-          ))}
-        </ul>
-      </div>
-
-      {itemsPagesMap.length > 1 && (
-        <ul
-          className="flex items-center justify-center 
-      space-x-1 pb-16 font-light md:pb-20"
-        >
-          <li
-            className={classNames(
-              "rounded-full border font-mont transition-all",
-              { disabled: page === "1" },
-              { "hover:border-primary": !(page === "1") },
-            )}
-          >
-            <button
-              disabled={page === "1"}
-              type="button"
-              onClick={(event) => {
-                event.preventDefault();
-                setPage((currentPage) => (+currentPage - 1).toString());
-              }}
-              style={{ pointerEvents: page === "1" ? "none" : "auto" }}
-              className="flex h-8 w-8 items-center justify-center"
             >
-              <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
-            </button>
-          </li>
-          {itemsPagesMap.map((number) => (
-            <li
-              key={number}
+              <DropDownMenu
+                classname="sm:col-span-4"
+                label="Sort by"
+                dropDownField={sortField}
+                dropDownFields={sortFields}
+                isOpen={isSortDropDownShown}
+                handlerToOpen={handleSortDropDownClick}
+                handlerOnClick={handleSortDropDownElementClick}
+              />
+
+              <DropDownMenu
+                classname="sm:col-span-3"
+                label="Items on page"
+                dropDownField={itemsOnPage}
+                dropDownFields={itemsOnPageList}
+                isOpen={isItemsDropDownShown}
+                handlerToOpen={handleItemsDropDownClick}
+                handlerOnClick={handleItemsDropDownElementClick}
+              />
+            </div>
+
+            <ul
               className={classNames(
-                "rounded-full border font-mont text-primary transition-all hover:border-primary",
-                {
-                  "border-primary bg-primary text-white hover:bg-white hover:text-primary":
-                    page === number,
-                },
+                "col-span-full mb-6 grid",
+                "grid-cols-4 justify-items-center",
+                "gap-x-4 gap-y-10 sm:grid-cols-12 md:mb-10 xl:grid-cols-24",
+                { "mb-0 pb-6 md:mb-0 md:pb-10": !(itemsPagesMap.length > 1) },
               )}
             >
-              <a
-                onClick={(event) => handleSetPage(number, event)}
-                href="#/"
-                className="flex h-8 w-8 items-center justify-center"
-              >
-                {number}
-              </a>
-            </li>
-          ))}
-          <li
-            className={classNames(
-              "rounded-full border font-mont transition-all",
-              { disabled: +page === itemPages },
-              { "hover:border-primary": !(+page === itemPages) },
-            )}
-          >
-            <button
-              disabled={+page === itemPages}
-              type="button"
-              className="flex h-8 w-8 items-center justify-center"
-              onClick={(event) => {
-                event.preventDefault();
-                setPage((currentPage) => (+currentPage + 1).toString());
-              }}
-              style={{ pointerEvents: +page === itemPages ? "none" : "auto" }}
+              {itemsOnPageEditor.map((item) => (
+                <ProductCard key={item.id} item={item} />
+              ))}
+            </ul>
+          </div>
+
+          {itemsPagesMap.length > 1 && (
+            <ul
+              className="flex items-center justify-center 
+      space-x-1 pb-16 font-light md:pb-20"
             >
-              <ArrowRight fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"} />
-            </button>
-          </li>
-        </ul>
+              <li
+                className={classNames(
+                  "rounded-full border font-mont transition-all",
+                  { disabled: page === "1" },
+                  { "hover:border-primary": !(page === "1") },
+                )}
+              >
+                <button
+                  disabled={page === "1"}
+                  type="button"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setPage((currentPage) => (+currentPage - 1).toString());
+                  }}
+                  style={{ pointerEvents: page === "1" ? "none" : "auto" }}
+                  className="flex h-8 w-8 items-center justify-center"
+                >
+                  <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
+                </button>
+              </li>
+              {itemsPagesMap.map((number) => (
+                <li
+                  key={number}
+                  className={classNames(
+                    "rounded-full border font-mont text-primary transition-all hover:border-primary",
+                    {
+                      "border-primary bg-primary text-white hover:bg-white hover:text-primary":
+                        page === number,
+                    },
+                  )}
+                >
+                  <a
+                    onClick={(event) => handleSetPage(number, event)}
+                    href="#/"
+                    className="flex h-8 w-8 items-center justify-center"
+                  >
+                    {number}
+                  </a>
+                </li>
+              ))}
+              <li
+                className={classNames(
+                  "rounded-full border font-mont transition-all",
+                  { disabled: +page === itemPages },
+                  { "hover:border-primary": !(+page === itemPages) },
+                )}
+              >
+                <button
+                  disabled={+page === itemPages}
+                  type="button"
+                  className="flex h-8 w-8 items-center justify-center"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setPage((currentPage) => (+currentPage + 1).toString());
+                  }}
+                  style={{
+                    pointerEvents: +page === itemPages ? "none" : "auto",
+                  }}
+                >
+                  <ArrowRight
+                    fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"}
+                  />
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };

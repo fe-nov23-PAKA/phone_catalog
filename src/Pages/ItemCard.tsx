@@ -7,9 +7,10 @@ import { getData } from "../utils/getData";
 import { ItemDescriptionType } from "../types/ItemDescriptionType";
 import { Item } from "../types/Item";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
+import { Loader } from "../components/UI/Loader/Loader";
 
 export const ItemCard = () => {
-  const { items, error, loading } = useAppSelector((state) => state.items);
+  const { items } = useAppSelector((state) => state.items);
   const [productsList, setProductsList] = useState<ItemDescriptionType[]>([]);
   const { slug } = useParams();
   const choosedItem = items.find((item) => item.itemId === slug) as Item;
@@ -23,10 +24,7 @@ export const ItemCard = () => {
 
   return (
     <div className="container">
-      {loading && <div className="">Loader</div>}
-      {error && <div className="">Error</div>}
-
-      {!loading && !error && !!productsList.length && (
+      {productsList.length > 0 ? (
         <>
           <Breadcrumbs />
           <ItemDescription
@@ -36,6 +34,8 @@ export const ItemCard = () => {
           />
           <AboutSection item={fullChoosedCard()} />
         </>
+      ) : (
+        <Loader />
       )}
     </div>
   );
