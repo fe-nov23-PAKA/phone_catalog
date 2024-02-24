@@ -27,8 +27,8 @@ module.exports = {
         "favourites-base": ["48px", "56px"],
       },
       backgroundImage: {
-        darkness: "url('src/assets/img/404page/bg-darkness.png')",
-        lightness: "url('src/assets/img/404page/bg-lightness.png')",
+        darkness: "url('/src/assets/img/404page/bg-darkness.png')",
+        lightness: "url('/src/assets/img/404page/bg-lightness.png')",
       },
       colors: {
         accent: "#216CFF",

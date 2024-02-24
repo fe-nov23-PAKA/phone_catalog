@@ -7,7 +7,7 @@ export const NotFoundPage: React.FC = () => {
     justify-center bg-lightness bg-cover"
     >
       <div
-        className="x-4 rounded-xl p-8 text-center 
+        className="mx-4 rounded-xl p-8 text-center 
         shadow-2xl shadow-zinc-950 backdrop-invert sm:mx-6 sm:max-w-xl xl:mx-8 xl:max-w-2xl"
       >
         <h1 className="mb-6 text-6xl font-bold text-404color sm:text-7xl">
