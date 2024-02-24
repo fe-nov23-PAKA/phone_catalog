@@ -3,10 +3,11 @@ import { Phones } from "../components/Phones/Phones";
 import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
 import { useAppSelector } from "../app/hooks";
 import { Loader } from "../components/UI/Loader/Loader";
+import { SortType } from "../types/SortType";
 
 export const HomePage = () => {
-  const OFFER_TITLE_NEW = "Brand new models";
-  const OFFER_TITLE_HOT_PRICE = "Hot prices";
+  const OFFER_TITLE_NEW = SortType.HOT;
+  const OFFER_TITLE_HOT_PRICE = SortType.NEW;
 
   const { items, loading, error } = useAppSelector((state) => state.items);
 
@@ -25,14 +26,14 @@ export const HomePage = () => {
           </div>
           <ItemsCarousel
             titleName={OFFER_TITLE_NEW}
-            startVisiblePhones={items}
+            startVisibleItems={items}
           />
 
           <Phones />
 
           <ItemsCarousel
             titleName={OFFER_TITLE_HOT_PRICE}
-            startVisiblePhones={items}
+            startVisibleItems={items}
           />
         </>
       )}
