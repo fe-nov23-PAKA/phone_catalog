@@ -1,30 +1,13 @@
-.loader-40 {
-	border: .05em #EB5757 solid;
-	border-radius: .2em;
-	overflow: hidden;
+.loader-19 {
+	border-top: .2em solid #EB5757;
+	border-right: .2em solid transparent;
+	animation: loader-19 1s linear infinite;
+	border-radius: 100%;
 	position: relative;
-	&:after, &:before {
-		content: '';
-		border-radius: 50%;
-		position: absolute;
-		width: inherit;
-		height: inherit;
-		animation: loader-40 2s infinite linear;
-	}
-	&:before {
-		border-top: .2em #EB5757 solid;
-		top: -.15em;
-		left: calc( -50% - .15em );
-		transform-origin: right center;
-	}
-	&:after {
-		border-bottom: .2em #EB5757 solid;
-		top: .15em;
-		right: calc( -50% - .15em );
-		transform-origin: left center;
-	}
 }
-@keyframes loader-40 {
-	from { transform: rotate(0deg); }
-	to { transform: rotate(359deg); }
+
+@keyframes loader-19 {
+	to {
+		transform: rotate(360deg);
+	}
 }
