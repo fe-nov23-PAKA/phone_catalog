@@ -2,17 +2,23 @@ import classNames from "classnames";
 import { Pagination } from "swiper/modules";
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import { Favourites } from "../../icons/Favourites";
 import { ItemDescriptionType } from "../../types/ItemDescriptionType";
-
+import { AddToCartButton } from "../UI/AddToCartButton";
+import { Item } from "../../types/Item";
 import "swiper/css";
+import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
 
 interface Props {
+  shortInfoItem: Item;
   item: ItemDescriptionType;
   allItems: ItemDescriptionType[];
 }
 
-export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
+export const ItemDescription: React.FC<Props> = ({
+  item,
+  allItems,
+  shortInfoItem,
+}) => {
   const [currentColor, setCurrentColor] = useState(item.color);
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
   const [currentItem, setCurrentItem] = useState(item);
@@ -33,7 +39,6 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   };
 
   const {
-    id,
     capacityAvailable,
     priceRegular,
     priceDiscount,
@@ -114,7 +119,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
                 Available colors
               </span>
               <span className="text-[12px] font-bold leading-[15px] text-icons-color">
-                {id}
+                {`ID: ${shortInfoItem.id}`}
               </span>
             </div>
             <div className="flex gap-2">
@@ -169,24 +174,8 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
             </span>
           </div>
           <div className="flex items-center justify-between gap-x-2">
-            <button
-              className="
-            hover:secondary-accent all min-h-[48px]
-            w-4/5 rounded-lg bg-accent py-2 font-semibold
-              text-white hover:shadow-sh1"
-              type="button"
-            >
-              Add to cart
-            </button>
-            <button
-              type="button"
-              className="
-            flex h-10 w-10 items-center 
-            justify-center rounded-full
-            border border-icons-color hover:border-primary"
-            >
-              <Favourites />
-            </button>
+            <AddToCartButton item={shortInfoItem} />
+            <AddToFavouritesButton item={shortInfoItem} />
           </div>
         </div>
 

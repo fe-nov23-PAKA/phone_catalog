@@ -2,12 +2,9 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { Favourites } from "../../icons/Favourites";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { actions as favouritesActions } from "../../features/FavouritesSlice";
-import { actions as cartActions } from "../../features/CartSlice";
-import { FavouritesFilled } from "../../icons/FavouritesFilled";
 import { Item } from "../../types/Item";
+import { AddToCartButton } from "../UI/AddToCartButton";
+import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
 
 type Props = {
   item: Item;
@@ -20,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({
   classname,
   setItemCarouselWidth,
 }) => {
-  const { itemId, name, capacity, fullPrice, price, screen, image, ram } = item;
+  const { name, capacity, fullPrice, price, screen, image, ram } = item;
 
   const carouselItemRef = useRef<HTMLLIElement>(null);
 
@@ -39,30 +36,6 @@ export const ProductCard: React.FC<Props> = ({
       window.removeEventListener("resize", updateWidth);
     };
   }, [setItemCarouselWidth]);
-
-  const dispatch = useAppDispatch();
-  const favouriteItems = useAppSelector((state) => state.favourites);
-  const favouriteItemsIds = favouriteItems.map((favItem) => favItem.itemId);
-
-  const cartItems = useAppSelector((state) => state.cart);
-  const cartItemsIds = cartItems.map((cartItem) => cartItem.id);
-
-  const addToFavouritesHandler = (elem: Item) => {
-    dispatch(favouritesActions.add(elem));
-    localStorage.setItem(
-      "favouriteItems",
-      JSON.stringify([...favouriteItems, elem]),
-    );
-  };
-
-  const removeFromFavouritesHandler = (elem: Item) => {
-    dispatch(favouritesActions.replace(elem));
-    const storageWithOutElem = favouriteItems.filter(
-      (el) => el.itemId !== elem.itemId,
-    );
-
-    localStorage.setItem("favouriteItems", JSON.stringify(storageWithOutElem));
-  };
 
   return (
     <li
@@ -126,51 +99,8 @@ export const ProductCard: React.FC<Props> = ({
         </div>
 
         <div className="flex items-center justify-between gap-x-2">
-          {cartItemsIds.includes(item.id) ? (
-            <button
-              disabled
-              className="all w-4/5 rounded-lg border border-element-color bg-white py-2 font-semibold text-accent transition-all"
-              type="button"
-            >
-              Added to cart
-            </button>
-          ) : (
-            <button
-              className="
-            all w-4/5
-            rounded-lg border border-accent bg-accent py-2 font-semibold text-white
-              transition-all hover:shadow-sh1"
-              type="button"
-              onClick={() => {
-                dispatch(cartActions.add(item));
-              }}
-            >
-              Add to cart
-            </button>
-          )}
-          {favouriteItemsIds.includes(itemId) ? (
-            <button
-              type="button"
-              className="
-            flex h-10 w-10 items-center 
-            justify-center rounded-full
-            border border-icons-color transition-all hover:border-primary"
-              onClick={() => removeFromFavouritesHandler(item)}
-            >
-              <FavouritesFilled fill="#F447AF" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="
-            flex h-10 w-10 items-center 
-            justify-center rounded-full
-            border border-icons-color transition-all hover:border-primary"
-              onClick={() => addToFavouritesHandler(item)}
-            >
-              <Favourites />
-            </button>
-          )}
+          <AddToCartButton item={item} />
+          <AddToFavouritesButton item={item} />
         </div>
       </div>
     </li>

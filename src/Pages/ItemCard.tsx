@@ -5,12 +5,13 @@ import { ItemDescription } from "../components/ItemDescriptionSlider/ItemDescrip
 import { AboutSection } from "../components/AboutSection";
 import { getData } from "../utils/getData";
 import { ItemDescriptionType } from "../types/ItemDescriptionType";
+import { Item } from "../types/Item";
 
 export const ItemCard = () => {
   const { items, error, loading } = useAppSelector((state) => state.items);
   const [productsList, setProductsList] = useState<ItemDescriptionType[]>([]);
   const { slug } = useParams();
-  const choosedItem = items.find((item) => item.itemId === slug);
+  const choosedItem = items.find((item) => item.itemId === slug) as Item;
 
   useEffect(() => {
     getData(choosedItem?.category as string).then(setProductsList);
@@ -26,7 +27,11 @@ export const ItemCard = () => {
 
       {!loading && !error && !!productsList.length && (
         <>
-          <ItemDescription item={fullChoosedCard()} allItems={productsList} />
+          <ItemDescription
+            item={fullChoosedCard()}
+            allItems={productsList}
+            shortInfoItem={choosedItem}
+          />
           <AboutSection item={fullChoosedCard()} />
         </>
       )}

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Item } from "../types/Item";
 
 const isFavouritesInLocalStorage: string | null =
-  localStorage.getItem("favouriteItems");
+  localStorage.getItem("favouritesList");
 
 const favouritesInLocalStorage = isFavouritesInLocalStorage
   ? JSON.parse(isFavouritesInLocalStorage)
