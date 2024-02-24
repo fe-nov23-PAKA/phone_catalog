@@ -1,7 +1,6 @@
 import { useAppSelector } from "../app/hooks";
 import { ProductCard } from "../components/ProductCard";
-import { ArrowRight } from "../icons/Arrow-Right";
-import { HomePageIcon } from "../icons/HomePageIcon";
+import { Breadcrumbs } from "../components/UI/Breadcrumbs";
 
 export const Favourites = () => {
   const favouriteItems = useAppSelector((state) => state.favourites);
@@ -11,13 +10,7 @@ export const Favourites = () => {
   return (
     <div className="favourites container">
       <div className="mb-[32px] flex flex-col gap-2 pt-[24px] sm:mb-[40px]">
-        <div className="mb-[24px] flex flex-row items-center gap-2">
-          <HomePageIcon />
-          <ArrowRight />
-          <span className="text-sm/[17px] font-semibold text-secondary">
-            Favourites
-          </span>
-        </div>
+        <Breadcrumbs />
         <span className="mb-[8px] text-favourites-sm font-extrabold tracking-[-0.01em] text-primary md:text-favourites-base">
           Favourites
         </span>

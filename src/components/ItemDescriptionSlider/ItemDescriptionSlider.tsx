@@ -86,7 +86,7 @@ export const ItemDescription: React.FC<Props> = ({
   };
 
   return (
-    <div className="container mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
+    <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
       <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
         {currentItem.name}
       </h2>

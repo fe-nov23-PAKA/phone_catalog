@@ -6,6 +6,7 @@ import { AboutSection } from "../components/AboutSection";
 import { getData } from "../utils/getData";
 import { ItemDescriptionType } from "../types/ItemDescriptionType";
 import { Item } from "../types/Item";
+import { Breadcrumbs } from "../components/UI/Breadcrumbs";
 
 export const ItemCard = () => {
   const { items, error, loading } = useAppSelector((state) => state.items);
@@ -21,12 +22,13 @@ export const ItemCard = () => {
     productsList.find((product) => product.id === slug) as ItemDescriptionType;
 
   return (
-    <>
+    <div className="container">
       {loading && <div className="">Loader</div>}
       {error && <div className="">Error</div>}
 
       {!loading && !error && !!productsList.length && (
         <>
+          <Breadcrumbs />
           <ItemDescription
             item={fullChoosedCard()}
             allItems={productsList}
@@ -35,6 +37,6 @@ export const ItemCard = () => {
           <AboutSection item={fullChoosedCard()} />
         </>
       )}
-    </>
+    </div>
   );
 };

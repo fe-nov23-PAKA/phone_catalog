@@ -1,13 +1,13 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { ProductCard } from "../ProductCard";
-import { HomePageIcon } from "../../icons/HomePageIcon";
 import { ArrowRight } from "../../icons/Arrow-Right";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { setShowItems } from "../../utils/setShowItems";
 import { DropDownMenu } from "../UI/DropDownMenu";
 import { Item } from "../../types/Item";
+import { Breadcrumbs } from "../UI/Breadcrumbs";
 
 interface Props {
   items: Item[];
@@ -101,14 +101,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   return (
     <div className="container pt-6">
       <div>
-        <div className="mb-7 flex gap-2">
-          <a href="/">
-            <HomePageIcon />
-          </a>
-          <ArrowRight fill="#B4BDC3" />
-          <a href="/" className="flex text-sm/[17px] font-semibold capitalize">
-            {title}
-          </a>
+        <div className="mb-7 flex items-center gap-2">
+          <Breadcrumbs />
         </div>
         <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
         <div className="mb-8  font-semibold text-secondary">
