@@ -22,11 +22,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const [page, setPage] = useState("1");
 
   const itemsOnPageList = ["16", "24", "32", "64"];
-  const sortFields = ["Cheapest", "Expensive"];
+  const sortFields = ["Cheapest", "Newest", "Alphabetically"];
 
   useEffect(() => {
     scrollToTop();
   }, [page]);
+
+  useEffect(() => setPage("1"), [items]);
 
   const handleSetPage = (
     number: string,
@@ -37,8 +39,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       setPage(number);
     }
   };
-
-  useEffect(() => setPage("1"), [items]);
 
   const handleSortDropDownClick = () => {
     setIsSortDropDownShown((currentValue) => !currentValue);
@@ -78,12 +78,17 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       return a.price - b.price;
     }
 
-    if (sortField === "Expensive") {
-      return b.price - a.price;
+    if (sortField === "Newest") {
+      return b.year - a.year;
+    }
+
+    if (sortField === "Alphabetically") {
+      return a.name.localeCompare(b.name);
     }
 
     return 0;
   });
+
   const itemPages = Math.ceil(items.length / +itemsOnPage);
   const itemsPagesMap: string[] = [];
 
@@ -105,17 +110,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
           <Breadcrumbs />
         </div>
         <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
-        <div className="mb-8  font-semibold text-secondary">
+        <div className="mb-8 font-semibold text-secondary">
           {items.length} models
         </div>
       </div>
 
       <div className="pb-6">
-        <div
-          className="grid grid-cols-4 justify-center
-        justify-items-center gap-x-4 gap-y-10
-        sm:mb-10 sm:grid-cols-12 lg:grid-cols-24"
-        >
+        <div className="grid grid-cols-4 justify-center justify-items-center gap-x-4 gap-y-10 sm:mb-10 sm:grid-cols-12 lg:grid-cols-24">
           <DropDownMenu
             classname="sm:col-span-4"
             label="Sort by"
@@ -152,10 +153,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       </div>
 
       {itemsPagesMap.length > 1 && (
-        <ul
-          className="flex items-center justify-center 
-      space-x-1 pb-16 font-light md:pb-20"
-        >
+        <ul className="flex items-center justify-center space-x-1 pb-16 font-light md:pb-20">
           <li
             className={classNames(
               "rounded-full border font-mont transition-all",
@@ -211,9 +209,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 event.preventDefault();
                 setPage((currentPage) => (+currentPage + 1).toString());
               }}
-              style={{ pointerEvents: +page === itemPages ? "none" : "auto" }}
+              style={{
+                pointerEvents: +page === itemPages ? "none" : "auto",
+              }}
             >
-              <ArrowRight fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"} />
+              <ArrowRight
+                fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"}
+              />
             </button>
           </li>
         </ul>
