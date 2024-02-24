@@ -46,7 +46,7 @@ export const ProductCard: React.FC<Props> = ({
         { [`${classname}`]: classname },
       )}
     >
-      <div className="p-[32px] ">
+      <div className="p-[32px] transition-all hover:shadow-sh2">
         <Link to={`${item.itemId}`}>
           <div className="mb-2 flex h-[196px] items-center justify-center">
             <img

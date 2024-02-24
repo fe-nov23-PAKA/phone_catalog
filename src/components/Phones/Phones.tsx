@@ -2,8 +2,23 @@ import { Link } from "react-router-dom";
 import phone_1 from "../../assets/img/PhonesHome/Phones_1.png";
 import phone_2 from "../../assets/img/PhonesHome/Phones_2.png";
 import phone_3 from "../../assets/img/PhonesHome/Phones_3.png";
+import { useAppSelector } from "../../app/hooks";
 
 export const Phones = () => {
+  const products = useAppSelector((state) => state.items.items);
+
+  const phonesQuantity = products.filter(
+    (product) => product.category === "phones",
+  ).length;
+
+  const tabletsQuantity = products.filter(
+    (product) => product.category === "tablets",
+  ).length;
+
+  const accessoriesQuantity = products.filter(
+    (product) => product.category === "accessories",
+  ).length;
+
   return (
     <>
       <div className="container pb-16">
@@ -22,7 +37,7 @@ export const Phones = () => {
                 <span className="text-xl font-bold leading-[26px]">
                   Mobile phones
                 </span>
-                <span className="text-sm text-secondary">95 models</span>
+                <span className="text-sm text-secondary">{`${phonesQuantity} models`}</span>
               </div>
             </div>
           </Link>
@@ -37,7 +52,7 @@ export const Phones = () => {
                 <span className="text-xl font-bold leading-[26px]">
                   Tablets
                 </span>
-                <span className="text-sm text-secondary">24 models</span>
+                <span className="text-sm text-secondary">{`${tabletsQuantity} models`}</span>
               </div>
             </div>
           </Link>
@@ -52,7 +67,7 @@ export const Phones = () => {
                 <span className="text-xl font-bold leading-[26px]">
                   Accessories
                 </span>
-                <span className="text-sm text-secondary">100 models</span>
+                <span className="text-sm text-secondary">{`${accessoriesQuantity} models`}</span>
               </div>
             </div>
           </Link>

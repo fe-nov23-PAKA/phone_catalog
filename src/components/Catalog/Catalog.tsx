@@ -38,6 +38,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     }
   };
 
+  useEffect(() => setPage("1"), [items]);
+
   const handleSortDropDownClick = () => {
     setIsSortDropDownShown((currentValue) => !currentValue);
     if (!isItemsDropDownShown) {

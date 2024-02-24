@@ -51,7 +51,7 @@ module.exports = {
       },
       boxShadow: {
         sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",
-        sh2: "0 2px 16px 0 #000",
+        sh2: "0 2px 16px 0 #0000001A",
       },
       gridTemplateColumns: {
         24: "repeat(24, 1fr)",
