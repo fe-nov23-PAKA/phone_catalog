@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { Pagination } from "swiper/modules";
+import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Favourites } from "../../icons/Favourites";
@@ -15,7 +16,8 @@ interface Props {
 export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   const [currentColor, setCurrentColor] = useState(item.color);
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
-  const [currentItem, setCurrentItem] = useState(item);
+  const [currentItem, setCurrentItem] = useState<ItemDescriptionType>(item);
+  const { slug } = useParams();
 
   const swiperRef = useRef<SwiperRef>(null);
 
@@ -45,11 +47,15 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   } = currentItem;
 
   const findItem = () => {
+    const newItemName = currentItem.name.toLowerCase().split(" ");
+
+    newItemName[newItemName.length - 1] = currentColor;
+
+    newItemName[newItemName.length - 2] = currentCapacity.toLowerCase();
+
     if (currentCapacity && currentColor) {
       const futureItem = allItems.find(
-        (itemMap) =>
-          itemMap.capacity === currentCapacity &&
-          itemMap.color === currentColor,
+        (itemMap) => itemMap.id === newItemName.join("-"),
       );
 
       return futureItem as ItemDescriptionType;
@@ -62,7 +68,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
     const newCurrentItem = findItem();
 
     setCurrentItem(newCurrentItem);
-  }, [currentColor, currentCapacity]);
+  }, [currentColor, currentCapacity, slug]);
 
   const handleColorChange = (
     phoneColor: string,
@@ -93,7 +99,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   return (
     <div className="container mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
       <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+        {currentItem.name}
       </h2>
       <div className="col-span-full sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
         <Swiper
@@ -101,7 +107,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
           key={currentItem.images[0]}
           pagination={pagination}
           modules={[Pagination]}
-          className="sm:max-m-[450px] sm:w-[445px]"
+          className="sm:w-[445px] sm:max-w-[450px]"
           spaceBetween={100}
         >
           {currentItem.images.map((image) => (
@@ -142,7 +148,7 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
                     type="button"
                     className={classNames(
                       `h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 
-                      ring-icons-color hover:ring-1 hover:ring-primary bg-${itemColor}`,
+                      ring-icons-color hover:ring-1 hover:ring-primary`,
                       { "ring-primary": currentColor === itemColor },
                     )}
                     style={{ backgroundColor: color }}
