@@ -47,15 +47,12 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
   } = currentItem;
 
   const findItem = () => {
-    const newItemName = currentItem.name.toLowerCase().split(" ");
-
-    newItemName[newItemName.length - 1] = currentColor;
-
-    newItemName[newItemName.length - 2] = currentCapacity.toLowerCase();
-
     if (currentCapacity && currentColor) {
       const futureItem = allItems.find(
-        (itemMap) => itemMap.id === newItemName.join("-"),
+        (itemMap) =>
+          itemMap.capacity === currentCapacity &&
+          itemMap.color === currentColor &&
+          itemMap.namespaceId === currentItem.namespaceId,
       );
 
       return futureItem as ItemDescriptionType;
@@ -136,6 +133,10 @@ export const ItemDescription: React.FC<Props> = ({ item, allItems }) => {
             <div className="flex gap-2">
               {colorsAvailable.map((itemColor) => {
                 let color = itemColor;
+
+                if (itemColor.split(" ").length === 2) {
+                  color = itemColor.replace(" ", "");
+                }
 
                 if (color in anotherColors) {
                   color = anotherColors[color];
