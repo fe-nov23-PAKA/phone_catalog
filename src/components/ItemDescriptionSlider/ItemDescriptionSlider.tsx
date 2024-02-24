@@ -85,6 +85,16 @@ export const ItemDescription: React.FC<Props> = ({
     setCurrentCapacity(capacityMap);
   };
 
+  const anotherColors: { [key: string]: string } = {
+    midnightgreen: "#004953",
+    spacegray: "#717378",
+    rosegold: "#B76E79",
+    spaceblack: "#505150",
+    midnight: "#000E34",
+    sierrablue: "#69ABCE",
+    graphite: "#41424C",
+  };
+
   return (
     <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
       <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
@@ -96,7 +106,7 @@ export const ItemDescription: React.FC<Props> = ({
           key={currentItem.images[0]}
           pagination={pagination}
           modules={[Pagination]}
-          className="sm:max-w-[450px]"
+          className="sm:max-m-[450px] sm:w-[445px]"
           spaceBetween={100}
         >
           {currentItem.images.map((image) => (
@@ -124,6 +134,12 @@ export const ItemDescription: React.FC<Props> = ({
             </div>
             <div className="flex gap-2">
               {colorsAvailable.map((itemColor) => {
+                let color = itemColor;
+
+                if (color in anotherColors) {
+                  color = anotherColors[color];
+                }
+
                 return (
                   <button
                     key={itemColor}
@@ -134,7 +150,7 @@ export const ItemDescription: React.FC<Props> = ({
                       ring-icons-color hover:ring-1 hover:ring-primary bg-${itemColor}`,
                       { "ring-primary": currentColor === itemColor },
                     )}
-                    style={{ backgroundColor: itemColor }}
+                    style={{ backgroundColor: color }}
                   />
                 );
               })}
