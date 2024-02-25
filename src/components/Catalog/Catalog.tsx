@@ -18,7 +18,7 @@ interface Props {
 
 export const Catalog: React.FC<Props> = ({ items, title }) => {
   const [itemsOnPage, setItemsOnPage] = useState("16");
-  const [sortField, setSortField] = useState("Cheapest");
+  const [sortField, setSortField] = useState("Newest");
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
   const [isItemsDropDownShown, setIsItemsDropDownShown] = useState(true);
   const [page, setPage] = useState("1");
