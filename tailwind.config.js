@@ -27,8 +27,8 @@ module.exports = {
         "favourites-base": ["48px", "56px"],
       },
       backgroundImage: {
-        darkness: "url('src/assets/img/404page/bg-darkness.png')",
-        lightness: "url('src/assets/img/404page/bg-lightness.png')",
+        darkness: "url('/src/assets/img/404page/bg-darkness.png')",
+        lightness: "url('/src/assets/img/404page/bg-lightness.png')",
       },
       colors: {
         accent: "#216CFF",
@@ -41,10 +41,17 @@ module.exports = {
         green: "#27AE60",
         red: "#EB5757",
         "404color": "#FAF6F2",
+        midnightgreen: "#004953",
+        spacegray: "#717378",
+        rosegold: "#B76E79",
+        spaceblack: "#505150",
+        midnight: "#000E34",
+        sierrablue: "#69ABCE",
+        graphite: "#41424C",
       },
       boxShadow: {
         sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",
-        sh2: "0 2px 16px 0 #000",
+        sh2: "0 2px 16px 0 #0000001A",
       },
       gridTemplateColumns: {
         24: "repeat(24, 1fr)",

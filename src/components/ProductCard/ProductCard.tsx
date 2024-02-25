@@ -1,13 +1,11 @@
 /* eslint-disable operator-linebreak */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { Favourites } from "../../icons/Favourites";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { actions as favouritesActions } from "../../features/FavouritesSlice";
-import { actions as cartActions } from "../../features/CartSlice";
-import { FavouritesFilled } from "../../icons/FavouritesFilled";
 import { Item } from "../../types/Item";
+import { AddToCartButton } from "../UI/AddToCartButton";
+import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
+import { CardLoader } from "../UI/Loader/CardLoader/CardLoader";
 
 type Props = {
   item: Item;
@@ -20,9 +18,10 @@ export const ProductCard: React.FC<Props> = ({
   classname,
   setItemCarouselWidth,
 }) => {
-  const { itemId, name, capacity, fullPrice, price, screen, image, ram } = item;
+  const { name, capacity, fullPrice, price, screen, image, ram } = item;
 
   const carouselItemRef = useRef<HTMLLIElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const updateWidth = () => {
@@ -40,26 +39,13 @@ export const ProductCard: React.FC<Props> = ({
     };
   }, [setItemCarouselWidth]);
 
-  const dispatch = useAppDispatch();
-  const favouriteItems = useAppSelector((state) => state.favourites);
-  const favouriteItemsIds = favouriteItems.map((favItem) => favItem.itemId);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
 
-  const addToFavouritesHandler = (elem: Item) => {
-    dispatch(favouritesActions.add(elem));
-    localStorage.setItem(
-      "favouriteItems",
-      JSON.stringify([...favouriteItems, elem]),
-    );
-  };
-
-  const removeFromFavouritesHandler = (elem: Item) => {
-    dispatch(favouritesActions.replace(elem));
-    const storageWithOutElem = favouriteItems.filter(
-      (el) => el.itemId !== elem.itemId,
-    );
-
-    localStorage.setItem("favouriteItems", JSON.stringify(storageWithOutElem));
-  };
+    return () => clearTimeout(timerId);
+  }, []);
 
   return (
     <li
@@ -70,18 +56,22 @@ export const ProductCard: React.FC<Props> = ({
         { [`${classname}`]: classname },
       )}
     >
-      <div className="p-[32px] ">
-        <Link to={`${item.itemId}`}>
-          <div className="mb-2 flex h-[196px] items-center justify-center">
-            <img
-              className="block max-w-32 self-center transition-all hover:scale-[1.1]"
-              src={image}
-              alt="Product"
-            />
+      <div className="p-[32px] transition-all hover:shadow-sh2">
+        <Link to={`../${item.category}/${item.itemId}`}>
+          <div className="relative mb-2 flex h-[196px] items-center justify-center">
+            {isLoading ? (
+              <CardLoader />
+            ) : (
+              <img
+                className="block max-w-32 object-cover transition-all hover:scale-[1.1]"
+                src={image}
+                alt="Product"
+              />
+            )}
           </div>
           <h3
             className="flex min-h-[58px] flex-col 
-          justify-end  font-semibold"
+          justify-end text-[14px]/[21px] font-semibold"
           >
             {name}
           </h3>
@@ -97,65 +87,34 @@ export const ProductCard: React.FC<Props> = ({
           </span>
         </div>
         <div className="mb-2 border" />
-        <div className="mb-4">
+        <div className="mb-2 flex flex-col gap-y-2 py-2">
           <div className="flex items-center justify-between">
-            <div className="text-gray-elem text-xs text-secondary">Screen</div>
-            <div className="text-xs font-semibold">{screen}</div>
+            <div className="text-xs font-bold text-secondary">Screen</div>
+            <div className="text-xs font-bold">{screen}</div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-xs text-secondary"
+            text-xs font-bold text-secondary"
             >
               Capacity
             </div>
-            <div className="text-xs font-semibold">{capacity}</div>
+            <div className="text-xs font-bold">{capacity}</div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-xs text-secondary"
+            text-xs font-bold text-secondary"
             >
               RAM
             </div>
-            <div className="text-xs font-semibold">{ram}</div>
+            <div className="text-xs font-bold">{ram}</div>
           </div>
         </div>
 
         <div className="flex items-center justify-between gap-x-2">
-          <button
-            className="
-            hover:secondary-accent all w-4/5
-            rounded-lg bg-accent py-2 font-semibold text-white
-              transition-all hover:shadow-sh1"
-            type="button"
-            onClick={() => dispatch(cartActions.add(item))}
-          >
-            Add to cart
-          </button>
-          {favouriteItemsIds.includes(itemId) ? (
-            <button
-              type="button"
-              className="
-            flex h-10 w-10 items-center 
-            justify-center rounded-full
-            border border-icons-color transition-all hover:border-primary"
-              onClick={() => removeFromFavouritesHandler(item)}
-            >
-              <FavouritesFilled fill="#F447AF" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="
-            flex h-10 w-10 items-center 
-            justify-center rounded-full
-            border border-icons-color transition-all hover:border-primary"
-              onClick={() => addToFavouritesHandler(item)}
-            >
-              <Favourites />
-            </button>
-          )}
+          <AddToCartButton item={item} />
+          <AddToFavouritesButton item={item} />
         </div>
       </div>
     </li>

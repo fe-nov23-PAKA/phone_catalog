@@ -5,32 +5,38 @@ import { ItemDescription } from "../components/ItemDescriptionSlider/ItemDescrip
 import { AboutSection } from "../components/AboutSection";
 import { getData } from "../utils/getData";
 import { ItemDescriptionType } from "../types/ItemDescriptionType";
+import { Item } from "../types/Item";
+import { Breadcrumbs } from "../components/UI/Breadcrumbs";
+import { Loader } from "../components/UI/Loader/Loader";
 
 export const ItemCard = () => {
-  const { items, error, loading } = useAppSelector((state) => state.items);
+  const { items } = useAppSelector((state) => state.items);
   const [productsList, setProductsList] = useState<ItemDescriptionType[]>([]);
   const { slug } = useParams();
-  const choosedItemCategory = items.find((item) => item.itemId === slug)
-    ?.category as string;
+  const choosedItem = items.find((item) => item.itemId === slug) as Item;
 
   useEffect(() => {
-    getData(choosedItemCategory).then(setProductsList);
-  }, [choosedItemCategory]);
+    getData(choosedItem?.category as string).then(setProductsList);
+  }, [choosedItem]);
 
   const fullChoosedCard = () =>
     productsList.find((product) => product.id === slug) as ItemDescriptionType;
 
   return (
-    <>
-      {loading && <div className="">Loader</div>}
-      {error && <div className="">Error</div>}
-
-      {!loading && !error && !!productsList.length && (
+    <div className="container">
+      {productsList.length > 0 ? (
         <>
-          <ItemDescription item={fullChoosedCard()} allItems={productsList} />
+          <Breadcrumbs />
+          <ItemDescription
+            item={fullChoosedCard()}
+            allItems={productsList}
+            shortInfoItem={choosedItem}
+          />
           <AboutSection item={fullChoosedCard()} />
         </>
+      ) : (
+        <Loader />
       )}
-    </>
+    </div>
   );
 };

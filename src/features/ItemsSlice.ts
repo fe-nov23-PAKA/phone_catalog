@@ -12,7 +12,7 @@ interface InitialState {
 
 const initialState: InitialState = {
   items: [],
-  loading: false,
+  loading: true,
   error: "",
 };
 

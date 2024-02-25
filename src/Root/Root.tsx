@@ -37,24 +37,26 @@ export const Root = () => {
                 <Route path=":slug" element={<ItemCard />} />
               </Route>
 
-              <Route
-                path="tablets"
-                element={
-                  <ItemsPage option="tablets" title={ItemTitle.tablets} />
-                }
-              >
+              <Route path="tablets">
+                <Route
+                  index
+                  element={
+                    <ItemsPage option="tablets" title={ItemTitle.tablets} />
+                  }
+                />
                 <Route path=":slug" element={<ItemCard />} />
               </Route>
 
-              <Route
-                path="accessories"
-                element={
-                  <ItemsPage
-                    option="accessories"
-                    title={ItemTitle.accessories}
-                  />
-                }
-              >
+              <Route path="accessories">
+                <Route
+                  index
+                  element={
+                    <ItemsPage
+                      option="accessories"
+                      title={ItemTitle.accessories}
+                    />
+                  }
+                />
                 <Route path=":slug" element={<ItemCard />} />
               </Route>
 

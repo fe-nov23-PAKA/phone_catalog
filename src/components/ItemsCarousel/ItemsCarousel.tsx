@@ -105,7 +105,7 @@ export const ItemsCarousel: React.FC<Props> = ({
         <ul
           style={{ scrollBehavior: "smooth", scrollbarWidth: "none" }}
           ref={carouselRef}
-          className="flex list-none gap-x-[16px] overflow-auto"
+          className="flex list-none gap-x-[16px] overflow-auto sm:p-2"
         >
           {visiblePhones.map((phone) => (
             <ProductCard

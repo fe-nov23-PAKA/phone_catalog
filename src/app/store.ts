@@ -11,5 +11,22 @@ export const store = configureStore({
   },
 });
 
+const saveCartToLocalStorage = () => {
+  const state = store.getState().cart;
+
+  localStorage.setItem("cartList", JSON.stringify(state));
+};
+
+const saveFavouritesToLocalStorage = () => {
+  const state = store.getState().favourites;
+
+  localStorage.setItem("favouritesList", JSON.stringify(state));
+};
+
+store.subscribe(() => {
+  saveCartToLocalStorage();
+  saveFavouritesToLocalStorage();
+});
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
