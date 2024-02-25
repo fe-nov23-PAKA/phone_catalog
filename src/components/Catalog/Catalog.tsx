@@ -8,6 +8,7 @@ import { setShowItems } from "../../utils/setShowItems";
 import { DropDownMenu } from "../UI/DropDownMenu";
 import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
+import { sortedItems } from "../../utils/sortedItems";
 import { Loader } from "../UI/Loader/CardLoader/Loader";
 
 interface Props {
@@ -23,11 +24,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const [page, setPage] = useState("1");
 
   const itemsOnPageList = ["16", "24", "32", "64"];
-  const sortFields = ["Cheapest", "Expensive"];
+  const sortFields = ["Cheapest", "Newest", "Alphabetically"];
 
   useEffect(() => {
     scrollToTop();
   }, [page]);
+
+  useEffect(() => setPage("1"), [items]);
 
   const handleSetPage = (
     number: string,
@@ -38,8 +41,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       setPage(number);
     }
   };
-
-  useEffect(() => setPage("1"), [items]);
 
   const handleSortDropDownClick = () => {
     setIsSortDropDownShown((currentValue) => !currentValue);
@@ -74,17 +75,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     setPage("1");
   };
 
-  const sortedItems = [...items].sort((a, b) => {
-    if (sortField === "Cheapest") {
-      return a.price - b.price;
-    }
+  sortedItems(items, sortField);
 
-    if (sortField === "Expensive") {
-      return b.price - a.price;
-    }
-
-    return 0;
-  });
   const itemPages = Math.ceil(items.length / +itemsOnPage);
   const itemsPagesMap: string[] = [];
 
@@ -96,7 +88,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     itemsOnPage,
     page,
     itemsPagesMap,
-    sortedItems,
+    sortedItems(items, sortField),
   );
 
   return (
