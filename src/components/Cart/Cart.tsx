@@ -4,6 +4,7 @@ import { ArrowLeft } from "../../icons/Arrow-Left";
 import { useAppSelector } from "../../app/hooks";
 import { InitialState } from "../../types/InitialState";
 import { CheckoutModal } from "../CheckoutModal";
+import classNames from "classnames";
 
 export const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,8 +43,12 @@ export const Cart = () => {
                 </div>
               </div>
               <button
-                className="min-h-12 w-full rounded-lg bg-accent text-[14px]/[21px] font-semibold text-white hover:shadow-sh1"
+                className={classNames(
+                  "min-h-12 w-full rounded-lg bg-accent text-[14px]/[21px] font-semibold text-white hover:shadow-sh1",
+                  { "bg-icons-color hover:shadow-none": !cartItems.length },
+                )}
                 type="button"
+                disabled={!cartItems.length}
                 onClick={() => setIsModalOpen(true)}
               >
                 Checkout
