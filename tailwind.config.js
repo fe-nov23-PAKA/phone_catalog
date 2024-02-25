@@ -17,9 +17,6 @@ module.exports = {
       },
     },
     extend: {
-      transitionProperty: {
-        all: "all", // Применяет transition ко всем свойствам
-      },
       fontSize: {
         main: "22px",
         small: ["14px", "21px"],

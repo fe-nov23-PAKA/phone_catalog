@@ -11,6 +11,7 @@ import { NavLinkMenu } from "../UI/NavLinkMenu";
 import { NAV_LIST } from "../../variables";
 import { ChosenItemsIcon } from "../../icons/Chosen-Items-Icon";
 import { useAppSelector } from "../../app/hooks";
+import "./HoverNav.scss";
 
 interface Props {
   isMenuOpen: boolean;
@@ -42,7 +43,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-20 flex flex-col bg-white",
+        "sticky top-0 z-[2] flex flex-col bg-white",
         { "h-screen": isMenuOpen },
         { "border-b": !isMenuOpen },
       )}
@@ -58,7 +59,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <NavLinkMenu
               to="/"
-              classname="text-xs/[62px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all after:origin-center relative after:scale-0"
+              classname="hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative"
             >
               Home
             </NavLinkMenu>
@@ -66,7 +67,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <NavLinkMenu
                 key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
-                classname="text-xs/[62px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all after:origin-center relative after:scale-0"
+                classname="hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative"
               >
                 {nav_item}
               </NavLinkMenu>
