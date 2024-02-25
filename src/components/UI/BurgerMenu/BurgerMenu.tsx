@@ -16,7 +16,10 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
   const cartItems = useAppSelector((state) => state.cart);
 
   return (
-    <div className="left-0 flex h-full w-full flex-col justify-between overflow-hidden border-t bg-white">
+    <div
+      className="left-0 flex h-full w-full flex-col justify-between 
+    overflow-hidden border-t bg-white"
+    >
       <ul
         className="mt-6 flex flex-grow flex-col 
           items-center space-y-4 overflow-auto tracking-wider"

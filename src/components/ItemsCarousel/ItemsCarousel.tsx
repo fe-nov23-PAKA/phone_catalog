@@ -23,23 +23,8 @@ export const ItemsCarousel: React.FC<Props> = ({
 
   const carouselRef = useRef<HTMLUListElement>(null);
 
-  function getItemsToShow(sortType: SortType): Item[] {
-    const chekedItems = [...startVisibleItems];
-
-    return chekedItems.sort((item1, item2) => {
-      switch (sortType) {
-        case SortType.NEW:
-          return item2.year - item1.year;
-        case SortType.HOT:
-          return (item2.fullPrice - item2.price) - (item1.fullPrice - item1.price);
-        default:
-          return 0;
-      }
-    }
-    );
-  }
-
-  const visibleItems = getItemsToShow(titleName);
+  // const visibleItems = useMemo(() => getItemsToShow(titleName, startVisibleItems), []);
+  const visibleItems = startVisibleItems.slice(0, 20);
   const ITEMS_GAP = 16;
 
   useEffect(() => {
