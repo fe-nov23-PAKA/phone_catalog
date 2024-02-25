@@ -5,15 +5,16 @@ import { ProductCard } from "../ProductCard";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { ArrowRight } from "../../icons/Arrow-Right";
 import { Item } from '../../types/Item';
+import { SortType } from '../../types/SortType';
 
 interface Props {
-  titleName: string;
-  startVisiblePhones: Item[];
+  titleName: SortType;
+  startVisibleItems: Item[];
 }
 
 export const ItemsCarousel: React.FC<Props> = ({
   titleName,
-  startVisiblePhones,
+  startVisibleItems,
 }) => {
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
@@ -22,7 +23,23 @@ export const ItemsCarousel: React.FC<Props> = ({
 
   const carouselRef = useRef<HTMLUListElement>(null);
 
-  const visiblePhones = startVisiblePhones.slice(0, 20);
+  function getItemsToShow(sortType: SortType): Item[] {
+    const chekedItems = [...startVisibleItems];
+
+    return chekedItems.sort((item1, item2) => {
+      switch (sortType) {
+        case SortType.NEW:
+          return item2.year - item1.year;
+        case SortType.HOT:
+          return (item2.fullPrice - item2.price) - (item1.fullPrice - item1.price);
+        default:
+          return 0;
+      }
+    }
+    );
+  }
+
+  const visibleItems = getItemsToShow(titleName);
   const ITEMS_GAP = 16;
 
   useEffect(() => {
@@ -58,7 +75,7 @@ export const ItemsCarousel: React.FC<Props> = ({
         carouselRef.current.removeEventListener("scroll", handleScroll);
       }
     };
-  }, [startVisiblePhones]);
+  }, [startVisibleItems]);
 
   const handleScrollLeft = () => {
     if (carouselRef.current) {
@@ -107,7 +124,7 @@ export const ItemsCarousel: React.FC<Props> = ({
           ref={carouselRef}
           className="flex list-none gap-x-[16px] overflow-auto sm:p-2"
         >
-          {visiblePhones.map((phone) => (
+          {visibleItems.map((phone) => (
             <ProductCard
               setItemCarouselWidth={setItemCarouselWidth}
               key={phone.id}
