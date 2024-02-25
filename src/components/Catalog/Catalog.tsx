@@ -8,6 +8,7 @@ import { setShowItems } from "../../utils/setShowItems";
 import { DropDownMenu } from "../UI/DropDownMenu";
 import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
+import { sortedItems } from "../../utils/sortedItems";
 
 interface Props {
   items: Item[];
@@ -73,21 +74,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     setPage("1");
   };
 
-  const sortedItems = [...items].sort((a, b) => {
-    if (sortField === "Cheapest") {
-      return a.price - b.price;
-    }
-
-    if (sortField === "Newest") {
-      return b.year - a.year;
-    }
-
-    if (sortField === "Alphabetically") {
-      return a.name.localeCompare(b.name);
-    }
-
-    return 0;
-  });
+  sortedItems(items, sortField);
 
   const itemPages = Math.ceil(items.length / +itemsOnPage);
   const itemsPagesMap: string[] = [];
@@ -100,7 +87,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     itemsOnPage,
     page,
     itemsPagesMap,
-    sortedItems,
+    sortedItems(items, sortField),
   );
 
   return (
