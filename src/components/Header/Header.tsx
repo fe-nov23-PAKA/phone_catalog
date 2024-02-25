@@ -11,6 +11,7 @@ import { NavLinkMenu } from "../UI/NavLinkMenu";
 import { NAV_LIST } from "../../variables";
 import { ChosenItemsIcon } from "../../icons/Chosen-Items-Icon";
 import { useAppSelector } from "../../app/hooks";
+import { DarkThemeToggler } from "../UI/DarkThemeToggler/DarkThemeToggler";
 import "./HoverNav.scss";
 
 interface Props {
@@ -78,6 +79,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           className="hidden items-center 
           sm:flex sm:border-secondary"
         >
+          <DarkThemeToggler />
           <NavLink
             to="favourites"
             className={({ isActive }) =>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Tick } from "../../../icons/Tick";
 import { useAppDispatch } from "../../../app/hooks";
 import { actions as cartActions } from "../../../features/CartSlice";
