@@ -52,7 +52,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             <Plus />
           </button>
         </div>
-        <div className="max-w-[80px] text-[22px]/[31px] font-extrabold">{`$${price * quantity}`}</div>
+        <div className="min-w-[100px] max-w-[80px] text-[22px]/[31px] font-extrabold">{`$${price * quantity}`}</div>
       </div>
     </div>
   );
