@@ -8,7 +8,7 @@ import { setShowItems } from "../../utils/setShowItems";
 import { DropDownMenu } from "../UI/DropDownMenu";
 import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
-import { Loader } from "../UI/Loader/Loader";
+import { Loader } from "../UI/Loader/CardLoader/Loader";
 
 interface Props {
   items: Item[];

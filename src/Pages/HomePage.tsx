@@ -2,7 +2,7 @@ import { Carousel } from "../components/Carousel/Carousel";
 import { Phones } from "../components/Phones/Phones";
 import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
 import { useAppSelector } from "../app/hooks";
-import { Loader } from "../components/UI/Loader/Loader";
+import { Loader } from "../components/UI/Loader/CardLoader/Loader";
 import { SortType } from "../types/SortType";
 
 export const HomePage = () => {

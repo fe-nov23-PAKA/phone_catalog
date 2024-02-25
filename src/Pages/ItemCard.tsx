@@ -7,7 +7,7 @@ import { getData } from "../utils/getData";
 import { ItemDescriptionType } from "../types/ItemDescriptionType";
 import { Item } from "../types/Item";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
-import { Loader } from "../components/UI/Loader/Loader";
+import { Loader } from "../components/UI/Loader/CardLoader/Loader";
 
 export const ItemCard = () => {
   const { items } = useAppSelector((state) => state.items);
