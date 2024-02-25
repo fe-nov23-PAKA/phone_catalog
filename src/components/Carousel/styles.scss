@@ -32,20 +32,19 @@
   ;
 
   &__main-img {
+    max-height: 400px;
     height: 100%;
     width: 100%;
-    object-fit: fill;
+    object-fit: contain;
   }
 
   &__banner {
     content: url('../../assets/img/Banner-small.png');
     width: 100%;
     margin: 0 auto;
-    object-fit: fill;
 
     @include onTablet {
       content: '';
-      width: 100%;
       margin: 0 auto;
     }
 
@@ -150,4 +149,14 @@
       background: #0f0f11;
     }
   }
+
+  @include onTablet {
+    &-track {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  
 }

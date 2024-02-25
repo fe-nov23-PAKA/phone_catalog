@@ -6,9 +6,10 @@ import "./styles.scss";
 import banner from "../../assets/img/Banner.png";
 import bannerPhones from "../../assets/img/banner-phones.png";
 import bannerTablets from "../../assets/img/banner-tablets.png";
+import bannerAccessories from "../../assets/img/phone-accessories-1.jpg";
 
 export const Carousel: React.FC = () => {
-  const imgIds = [banner, bannerPhones, bannerTablets];
+  const imgIds = [banner, bannerPhones, bannerTablets, bannerAccessories];
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
