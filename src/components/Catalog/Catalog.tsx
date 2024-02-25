@@ -96,16 +96,18 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
         <div className="mb-7 flex items-center gap-2">
           <Breadcrumbs />
         </div>
-        <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
-        <div className="mb-8 font-semibold text-secondary">
+        <h1 className="dark:text-dm-white mb-2 text-4xl font-extrabold">
+          {title}
+        </h1>
+        <div className="dark:text-dm-secondary mb-8 font-semibold text-secondary">
           {items.length} models
         </div>
       </div>
 
       <div className="pb-6">
-        <div className="grid grid-cols-4 justify-center justify-items-center gap-x-4 gap-y-10 sm:mb-10 sm:grid-cols-12 lg:grid-cols-24">
+        <div className="grid grid-cols-4 justify-center justify-items-center gap-x-4 gap-y-10 sm:mb-10 sm:grid-cols-12 lg:grid-cols-24 ">
           <DropDownMenu
-            classname="sm:col-span-4"
+            classname="sm:col-span-4 dark:text-dm-white dark:bg-dm-surface-2"
             label="Sort by"
             dropDownField={sortField}
             dropDownFields={sortFields}
@@ -115,7 +117,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
           />
 
           <DropDownMenu
-            classname="sm:col-span-3"
+            classname="sm:col-span-3 dark:text-dm-white dark:bg-dm-surface-2"
             label="Items on page"
             dropDownField={itemsOnPage}
             dropDownFields={itemsOnPageList}
@@ -156,7 +158,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 setPage((currentPage) => (+currentPage - 1).toString());
               }}
               style={{ pointerEvents: page === "1" ? "none" : "auto" }}
-              className="flex h-8 w-8 items-center justify-center"
+              className="dark:bg-dm-surface-2 flex h-8 w-8 items-center justify-center"
             >
               <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
             </button>
@@ -165,7 +167,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <li
               key={number}
               className={classNames(
-                "rounded-full border font-mont text-primary transition-all hover:border-primary",
+                "dark:bg-dm-surface-1 dark:text-dm-white dark:active:bg-dm-accent rounded-full border font-mont text-primary transition-all hover:border-primary dark:rounded-none",
                 {
                   "border-primary bg-primary text-white hover:bg-white hover:text-primary":
                     page === number,
@@ -191,7 +193,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <button
               disabled={+page === itemPages}
               type="button"
-              className="flex h-8 w-8 items-center justify-center"
+              className=" dark:bg-dm-surface-2 flex h-8 w-8 items-center justify-center"
               onClick={(event) => {
                 event.preventDefault();
                 setPage((currentPage) => (+currentPage + 1).toString());
@@ -200,9 +202,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 pointerEvents: +page === itemPages ? "none" : "auto",
               }}
             >
-              <ArrowRight
-                fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"}
-              />
+              <ArrowRight fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"} />
             </button>
           </li>
         </ul>

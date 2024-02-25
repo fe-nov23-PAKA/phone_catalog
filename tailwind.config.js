@@ -17,9 +17,6 @@ module.exports = {
       },
     },
     extend: {
-      transitionProperty: {
-        all: "all", // Применяет transition ко всем свойствам
-      },
       fontSize: {
         main: "22px",
         small: ["14px", "21px"],
@@ -48,6 +45,13 @@ module.exports = {
         midnight: "#000E34",
         sierrablue: "#69ABCE",
         graphite: "#41424C",
+        "dm-surface-1": "#161827",
+        "dm-surface-2": "#323542",
+        "dm-accent": "#905BFF",
+        "dm-secondary": "#75767F",
+        "dm-black": "#0F1121",
+        "dm-elements": "#3B3E4A",
+        "dm-white": "#F1F2F9",
       },
       boxShadow: {
         sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",

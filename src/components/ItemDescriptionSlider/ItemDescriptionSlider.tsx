@@ -7,6 +7,7 @@ import { AddToCartButton } from "../UI/AddToCartButton";
 import { Item } from "../../types/Item";
 import "swiper/css";
 import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
+import { CardLoader } from "../UI/Loader/CardLoader/CardLoader";
 
 interface Props {
   shortInfoItem: Item;
@@ -22,6 +23,7 @@ export const ItemDescription: React.FC<Props> = ({
   const [currentColor, setCurrentColor] = useState(item.color);
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
   const [currentItem, setCurrentItem] = useState(item);
+  const [isLoading, setIsLoading] = useState(true);
 
   const swiperRef = useRef<SwiperRef>(null);
 
@@ -37,6 +39,14 @@ export const ItemDescription: React.FC<Props> = ({
       alt="phone_image" class="h-full w-full object-contain" /></div>`;
     },
   };
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timerId);
+  }, [currentColor]);
 
   const {
     capacityAvailable,
@@ -54,7 +64,8 @@ export const ItemDescription: React.FC<Props> = ({
       const futureItem = allItems.find(
         (itemMap) =>
           itemMap.capacity === currentCapacity &&
-          itemMap.color === currentColor,
+          itemMap.color === currentColor &&
+          itemMap.namespaceId === currentItem.namespaceId,
       );
 
       return futureItem as ItemDescriptionType;
@@ -75,6 +86,7 @@ export const ItemDescription: React.FC<Props> = ({
   ) => {
     event.preventDefault();
     setCurrentColor(phoneColor);
+    setIsLoading(true);
   };
 
   const handleCapacityChange = (
@@ -85,33 +97,49 @@ export const ItemDescription: React.FC<Props> = ({
     setCurrentCapacity(capacityMap);
   };
 
+  const anotherColors: { [key: string]: string } = {
+    midnightgreen: "#004953",
+    spacegray: "#717378",
+    rosegold: "#B76E79",
+    spaceblack: "#505150",
+    midnight: "#000E34",
+    sierrablue: "#69ABCE",
+    graphite: "#41424C",
+  };
+
   return (
     <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
       <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
         {currentItem.name}
       </h2>
-      <div className="col-span-full sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
-        <Swiper
-          ref={swiperRef}
-          key={currentItem.images[0]}
-          pagination={pagination}
-          modules={[Pagination]}
-          className="sm:max-w-[450px]"
-          spaceBetween={100}
-        >
-          {currentItem.images.map((image) => (
-            <SwiperSlide key={image}>
-              <img
-                src={image}
-                alt="phone_image"
-                className="aspect-square h-full w-full object-contain"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className="swiper_pagination mb-10 mt-4 flex justify-between gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
+      <div className="relative col-span-full min-h-[400px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
+        {isLoading ? (
+          <CardLoader />
+        ) : (
+          <>
+            <Swiper
+              ref={swiperRef}
+              key={currentItem.images[0]}
+              pagination={pagination}
+              modules={[Pagination]}
+              className="sm:max-m-[450px] sm:w-[445px]"
+              spaceBetween={100}
+            >
+              {currentItem.images.map((image) => (
+                <SwiperSlide key={image}>
+                  <img
+                    src={image}
+                    alt="phone_image"
+                    className="mx-auto aspect-square h-full max-h-[290px] w-full max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
+          </>
+        )}
       </div>
-      <div className="col-span-full flex flex-col justify-between gap-8 sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
+      <div className="col-span-full flex flex-col gap-[37.5px] sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
         <div className="justify-between border-b-[1px] pb-[24px]">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
@@ -124,8 +152,19 @@ export const ItemDescription: React.FC<Props> = ({
             </div>
             <div className="flex gap-2">
               {colorsAvailable.map((itemColor) => {
+                let color = itemColor;
+
+                if (itemColor.split(" ").length === 2) {
+                  color = itemColor.replace(" ", "");
+                }
+
+                if (color in anotherColors) {
+                  color = anotherColors[color];
+                }
+
                 return (
                   <button
+                    disabled={currentColor === itemColor}
                     key={itemColor}
                     onClick={(event) => handleColorChange(itemColor, event)}
                     type="button"
@@ -134,7 +173,7 @@ export const ItemDescription: React.FC<Props> = ({
                       ring-icons-color hover:ring-1 hover:ring-primary bg-${itemColor}`,
                       { "ring-primary": currentColor === itemColor },
                     )}
-                    style={{ backgroundColor: itemColor }}
+                    style={{ backgroundColor: color }}
                   />
                 );
               })}

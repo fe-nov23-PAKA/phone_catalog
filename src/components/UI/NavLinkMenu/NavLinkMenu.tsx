@@ -13,7 +13,7 @@ export const NavLinkMenu: React.FC<Props> = ({
 }) => {
   const navActive = (isActive: boolean) =>
     classNames(`${classname}`, {
-      "after:content[] after:absolute after:block after:w-full after:h-[2px] after:bg-primary after:scale-100 !text-primary":
+      "after:content[] after:absolute after:block after:w-full after:h-[2px] after:bg-primary after:scale-100 !text-primary !bg-none":
         isActive,
     });
 

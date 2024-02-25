@@ -1,10 +1,11 @@
 /* eslint-disable operator-linebreak */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { Item } from "../../types/Item";
 import { AddToCartButton } from "../UI/AddToCartButton";
 import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
+import { CardLoader } from "../UI/Loader/CardLoader/CardLoader";
 
 type Props = {
   item: Item;
@@ -20,6 +21,7 @@ export const ProductCard: React.FC<Props> = ({
   const { name, capacity, fullPrice, price, screen, image, ram } = item;
 
   const carouselItemRef = useRef<HTMLLIElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const updateWidth = () => {
@@ -37,6 +39,14 @@ export const ProductCard: React.FC<Props> = ({
     };
   }, [setItemCarouselWidth]);
 
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timerId);
+  }, []);
+
   return (
     <li
       ref={carouselItemRef}
@@ -48,12 +58,16 @@ export const ProductCard: React.FC<Props> = ({
     >
       <div className="p-[32px] transition-all hover:shadow-sh2">
         <Link to={`../${item.category}/${item.itemId}`}>
-          <div className="mb-2 flex h-[196px] items-center justify-center">
-            <img
-              className="block max-w-32 self-center transition-all hover:scale-[1.1]"
-              src={image}
-              alt="Product"
-            />
+          <div className="relative mb-2 flex h-[196px] items-center justify-center">
+            {isLoading ? (
+              <CardLoader />
+            ) : (
+              <img
+                className="block max-w-32 object-cover transition-all hover:scale-[1.1]"
+                src={image}
+                alt="Product"
+              />
+            )}
           </div>
           <h3
             className="flex min-h-[58px] flex-col 
