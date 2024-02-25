@@ -112,7 +112,7 @@ export const ItemDescription: React.FC<Props> = ({
       <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
         {currentItem.name}
       </h2>
-      <div className="relative col-span-full min-h-[380px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
+      <div className="relative col-span-full min-h-[400px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
         {isLoading ? (
           <CardLoader />
         ) : (
@@ -130,12 +130,12 @@ export const ItemDescription: React.FC<Props> = ({
                   <img
                     src={image}
                     alt="phone_image"
-                    className="aspect-square h-full w-full object-contain"
+                    className="mx-auto aspect-square h-full max-h-[290px] w-full max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="swiper_pagination mb-10 mt-4 flex justify-between gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
+            <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
           </>
         )}
       </div>
