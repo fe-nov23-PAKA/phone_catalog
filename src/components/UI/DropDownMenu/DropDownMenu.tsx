@@ -13,6 +13,7 @@ interface Props {
     option: string,
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => void;
+  setIsFieldOpen?: (isShown: boolean) => void;
 }
 
 export const DropDownMenu: React.FC<Props> = ({
@@ -23,6 +24,7 @@ export const DropDownMenu: React.FC<Props> = ({
   isOpen,
   handlerToOpen = () => {},
   handlerOnClick = () => {},
+  setIsFieldOpen = () => {},
 }) => {
   return (
     <div
@@ -30,7 +32,7 @@ export const DropDownMenu: React.FC<Props> = ({
         [`${classname}`]: classname,
       })}
     >
-      <div>
+      <div onBlur={() => setIsFieldOpen(true)}>
         <p className="mb-1 text-xs text-secondary">{label}</p>
         <button
           type="button"
@@ -38,7 +40,7 @@ export const DropDownMenu: React.FC<Props> = ({
             { "focus:ring-primary": !isOpen },
             { "hover:ring-secondary": isOpen },
             "inline-flex w-full items-center justify-between",
-            "rounded-md px-3 py-2 ",
+            "rounded-md px-3 py-2 capitalize",
             "font-semibold text-primary",
             "shadow-sm ring-1 ring-inset ring-icons-color transition-all",
           )}

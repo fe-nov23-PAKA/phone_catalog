@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ProductCard } from "../ProductCard";
 import { ArrowRight } from "../../icons/Arrow-Right";
@@ -8,7 +9,6 @@ import { setShowItems } from "../../utils/setShowItems";
 import { DropDownMenu } from "../UI/DropDownMenu";
 import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
-import { sortedItems } from "../../utils/sortedItems";
 import { Loader } from "../UI/Loader/CardLoader/Loader";
 
 interface Props {
@@ -17,29 +17,58 @@ interface Props {
 }
 
 export const Catalog: React.FC<Props> = ({ items, title }) => {
-  const [itemsOnPage, setItemsOnPage] = useState("16");
-  const [sortField, setSortField] = useState("Newest");
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
   const [isItemsDropDownShown, setIsItemsDropDownShown] = useState(true);
-  const [page, setPage] = useState("1");
-
+  const sortField = searchParams.get("sort") || "cheapest";
+  const page = searchParams.get("page") || "1";
+  const itemsOnPage = searchParams.get("perPage") || "16";
   const itemsOnPageList = ["16", "24", "32", "64"];
-  const sortFields = ["Cheapest", "Newest", "Alphabetically"];
+  const sortFields = ["cheapest", "expensive"];
+
+  const params = new URLSearchParams(searchParams);
+
+  useEffect(() => {
+    if (
+      !searchParams.has("page") ||
+      !searchParams.has("sort") ||
+      !searchParams.has("perPage")
+    ) {
+      const defaultSearchParams = new URLSearchParams({
+        sort: "cheapest",
+        perPage: "16",
+      });
+
+      setSearchParams(defaultSearchParams);
+    }
+  }, [items]);
 
   useEffect(() => {
     scrollToTop();
   }, [page]);
 
-  useEffect(() => setPage("1"), [items]);
-
   const handleSetPage = (
     number: string,
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event?.preventDefault();
-    if (number !== page) {
-      setPage(number);
+    if (number !== page && number !== "1") {
+      params.set("page", number);
+      setSearchParams(params);
+    } else {
+      params.delete("page");
+      setSearchParams(params);
     }
+  };
+
+  const handleSortDropDownElementClick = (
+    option: string,
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+
+    params.set("sort", option.toLowerCase());
+    setSearchParams(params);
   };
 
   const handleSortDropDownClick = () => {
@@ -56,26 +85,28 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     }
   };
 
-  const handleSortDropDownElementClick = (
-    option: string,
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  ) => {
-    event.preventDefault();
-    setIsSortDropDownShown(true);
-    setSortField(option);
-  };
-
   const handleItemsDropDownElementClick = (
     option: string,
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
     event.preventDefault();
     setIsItemsDropDownShown(true);
-    setItemsOnPage(option);
-    setPage("1");
+
+    params.set("perPage", option);
+    setSearchParams(params);
   };
 
-  sortedItems(items, sortField);
+  const sortedItems = [...items].sort((a, b) => {
+    if (sortField === "cheapest") {
+      return a.price - b.price;
+    }
+
+    if (sortField === "expensive") {
+      return b.price - a.price;
+    }
+
+    return 0;
+  });
 
   const itemPages = Math.ceil(items.length / +itemsOnPage);
   const itemsPagesMap: string[] = [];
@@ -88,7 +119,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     itemsOnPage,
     page,
     itemsPagesMap,
-    sortedItems(items, sortField),
+    sortedItems,
   );
 
   return (
@@ -121,6 +152,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 isOpen={isSortDropDownShown}
                 handlerToOpen={handleSortDropDownClick}
                 handlerOnClick={handleSortDropDownElementClick}
+                setIsFieldOpen={setIsSortDropDownShown}
               />
 
               <DropDownMenu
@@ -131,6 +163,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 isOpen={isItemsDropDownShown}
                 handlerToOpen={handleItemsDropDownClick}
                 handlerOnClick={handleItemsDropDownElementClick}
+                setIsFieldOpen={setIsItemsDropDownShown}
               />
             </div>
 
@@ -165,9 +198,15 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   type="button"
                   onClick={(event) => {
                     event.preventDefault();
-                    setPage((currentPage) => (+currentPage - 1).toString());
+
+                    if (+page - 1 !== 1) {
+                      params.set("page", `${+page - 1}`);
+                      setSearchParams(params);
+                    } else {
+                      params.delete("page");
+                      setSearchParams(params);
+                    }
                   }}
-                  style={{ pointerEvents: page === "1" ? "none" : "auto" }}
                   className="flex h-8 w-8 items-center justify-center"
                 >
                   <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
@@ -184,13 +223,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                     },
                   )}
                 >
-                  <a
+                  <button
+                    type="button"
                     onClick={(event) => handleSetPage(number, event)}
-                    href="#/"
                     className="flex h-8 w-8 items-center justify-center"
                   >
                     {number}
-                  </a>
+                  </button>
                 </li>
               ))}
               <li
@@ -206,10 +245,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   className="flex h-8 w-8 items-center justify-center"
                   onClick={(event) => {
                     event.preventDefault();
-                    setPage((currentPage) => (+currentPage + 1).toString());
-                  }}
-                  style={{
-                    pointerEvents: +page === itemPages ? "none" : "auto",
+
+                    params.set("page", `${+page + 1}`);
+                    setSearchParams(params);
                   }}
                 >
                   <ArrowRight
