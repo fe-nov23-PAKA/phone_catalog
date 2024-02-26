@@ -29,14 +29,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const params = new URLSearchParams(searchParams);
 
   useEffect(() => {
-    if (
-      !searchParams.has("page") ||
-      !searchParams.has("sort") ||
-      !searchParams.has("perPage")
-    ) {
+    if (sortField === "cheapest" && itemsOnPage === "16") {
       const defaultSearchParams = new URLSearchParams({
-        sort: "cheapest",
         perPage: "16",
+        sort: "cheapest",
       });
 
       setSearchParams(defaultSearchParams);
@@ -52,7 +48,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event?.preventDefault();
-    if (number !== page && number !== "1") {
+    if (number !== "1") {
       params.set("page", number);
       setSearchParams(params);
     } else {
@@ -91,8 +87,12 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   ) => {
     event.preventDefault();
     setIsItemsDropDownShown(true);
-
+    params.set("page", "1");
     params.set("perPage", option);
+    setSearchParams(params);
+
+    params.delete("page");
+
     setSearchParams(params);
   };
 
@@ -152,7 +152,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 isOpen={isSortDropDownShown}
                 handlerToOpen={handleSortDropDownClick}
                 handlerOnClick={handleSortDropDownElementClick}
-                setIsFieldOpen={setIsSortDropDownShown}
               />
 
               <DropDownMenu
@@ -163,7 +162,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 isOpen={isItemsDropDownShown}
                 handlerToOpen={handleItemsDropDownClick}
                 handlerOnClick={handleItemsDropDownElementClick}
-                setIsFieldOpen={setIsItemsDropDownShown}
               />
             </div>
 

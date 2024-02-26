@@ -25,14 +25,14 @@ export const HomePage = () => {
             <Carousel />
           </div>
           <ItemsCarousel
-            titleName={OFFER_TITLE_NEW}
+            titleName={OFFER_TITLE_HOT_PRICE}
             startVisibleItems={items}
           />
 
           <Phones />
 
           <ItemsCarousel
-            titleName={OFFER_TITLE_HOT_PRICE}
+            titleName={OFFER_TITLE_NEW}
             startVisibleItems={items}
           />
         </>
