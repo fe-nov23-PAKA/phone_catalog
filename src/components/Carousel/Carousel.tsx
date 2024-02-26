@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "react-slick";
+import Slider, { CustomArrowProps } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.scss";
@@ -11,11 +11,12 @@ import bannerAccessories from "../../assets/img/phone-accessories-1.jpg";
 export const Carousel: React.FC = () => {
   const imgIds = [banner, bannerPhones, bannerTablets, bannerAccessories];
 
-  function SampleNextArrow(props) {
+  function SampleNextArrow(props: CustomArrowProps) {
     const { onClick } = props;
 
     return (
-      <div
+      <button
+        type="button"
         className={
           localStorage.getItem("theme") === "dark"
             ? "dark_slick-next"
@@ -26,11 +27,12 @@ export const Carousel: React.FC = () => {
     );
   }
 
-  function SamplePrevArrow(props) {
+  function SamplePrevArrow(props: CustomArrowProps) {
     const { onClick } = props;
 
     return (
-      <div
+      <button
+        type="button"
         className={
           localStorage.getItem("theme") === "dark"
             ? "dark_slick-prev"

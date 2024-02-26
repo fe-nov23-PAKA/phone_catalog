@@ -1,10 +1,10 @@
+import classNames from "classnames";
 import { useState } from "react";
 import { CartItem } from "../CartItem";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { useAppSelector } from "../../app/hooks";
 import { InitialState } from "../../types/InitialState";
 import { CheckoutModal } from "../CheckoutModal";
-import classNames from "classnames";
 
 export const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

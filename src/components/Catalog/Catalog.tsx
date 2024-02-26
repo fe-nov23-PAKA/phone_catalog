@@ -132,10 +132,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
-            <h1 className="dark:text-dark-white mb-2 text-[32px]/[41px] font-extrabold sm:text-[48px]/[56px]">
+            <h1 className="mb-2 text-[32px]/[41px] font-extrabold dark:text-dark-white sm:text-[48px]/[56px]">
               {title}
             </h1>
-            <div className="dark:text-dark-secondary  mb-8 font-semibold text-secondary">
+            <div className="mb-8  font-semibold text-secondary dark:text-dark-secondary">
               {items.length} models
             </div>
           </div>

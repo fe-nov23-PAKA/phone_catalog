@@ -44,9 +44,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "dark:bg-dark-black sticky top-0 z-[2] flex flex-col bg-white transition-all",
+        "sticky top-0 z-[2] flex flex-col bg-white transition-all dark:bg-dark-black",
         { "h-screen": isMenuOpen },
-        { "dark:border-dark-elements border-b": !isMenuOpen },
+        { "border-b dark:border-dark-elements": !isMenuOpen },
       )}
     >
       <div className="flex pl-4 sm:pr-0">
@@ -102,7 +102,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             to="favourites"
             className={({ isActive }) =>
               classNames(
-                "dark:sm:border-dark-elements dark:hover:bg-dark-surface2 relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-6 dark:sm:border-dark-elements",
                 {
                   "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
@@ -126,7 +126,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             to="cart"
             className={({ isActive }) =>
               classNames(
-                "dark:sm:border-dark-elements dark:hover:bg-dark-surface2 relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-6 dark:sm:border-dark-elements",
                 {
                   "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
@@ -150,7 +150,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="dark:border-dark-elements block border-l px-[17px] py-[21px] text-secondary focus:outline-none"
+            className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none dark:border-dark-elements"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
