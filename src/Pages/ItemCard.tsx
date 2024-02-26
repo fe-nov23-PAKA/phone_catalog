@@ -23,7 +23,7 @@ export const ItemCard = () => {
     productsList.find((product) => product.id === slug) as ItemDescriptionType;
 
   return (
-    <div className="container">
+    <div className="container pt-6">
       {productsList.length > 0 ? (
         <>
           <Breadcrumbs />

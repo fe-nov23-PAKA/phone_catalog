@@ -129,11 +129,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       ) : (
         <div className="container pt-6">
           <div>
-            <div className="mb-7 flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
-            <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
-            <div className="mb-8  font-semibold text-secondary">
+            <h1 className="dark:text-dark-white mb-2 text-[32px]/[41px] font-extrabold sm:text-[48px]/[56px]">
+              {title}
+            </h1>
+            <div className="dark:text-dark-secondary  mb-8 font-semibold text-secondary">
               {items.length} models
             </div>
           </div>

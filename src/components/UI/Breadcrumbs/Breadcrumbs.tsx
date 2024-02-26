@@ -12,17 +12,22 @@ export const Breadcrumbs = () => {
   return (
     <div className="mb-6 flex items-center gap-x-2 text-[14px]/[14px] font-bold sm:mb-10">
       <Link to="/">
-        <HomePageIcon />
+        <HomePageIcon className="dark:text-dark-secondary dark:hover:text-dark-white transition" />
       </Link>
       {link.map((linkItem, index) => (
         <React.Fragment key={linkItem}>
-          <ArrowRight fill="#89939A" />
+          <ArrowRight
+            fill={
+              localStorage.getItem("theme") === "dark" ? "#4A4D58" : "#89939A"
+            }
+          />
           <Link
             to={`/${linkItem}`}
             className={classNames(
-              "capitalize text-primary",
+              "dark:text-dark-secondary dark:hover:text-dark-white capitalize text-primary transition",
               {
-                "pointer-events-none text-secondary": index === link.length - 1,
+                "dark:text-dark-white pointer-events-none text-secondary":
+                  index === link.length - 1,
               },
               {
                 "pt-[1px]": index === 0,

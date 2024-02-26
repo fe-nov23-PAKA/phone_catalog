@@ -44,7 +44,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[2] flex flex-col bg-white transition-all",
+        "dark:bg-dark-black sticky top-0 z-[2] flex flex-col bg-white transition-all",
         { "h-screen": isMenuOpen },
         { "dark:border-dark-elements border-b": !isMenuOpen },
       )}
@@ -150,10 +150,18 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none"
+            className="dark:border-dark-elements block border-l px-[17px] py-[21px] text-secondary focus:outline-none"
             onClick={toggleMenu}
           >
-            {isMenuOpen ? <Close /> : <Menu />}
+            {isMenuOpen ? (
+              <Close
+                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+              />
+            ) : (
+              <Menu
+                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+              />
+            )}
           </button>
         </div>
       </div>

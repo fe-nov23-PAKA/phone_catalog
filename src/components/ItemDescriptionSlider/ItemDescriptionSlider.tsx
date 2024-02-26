@@ -28,14 +28,14 @@ export const ItemDescription: React.FC<Props> = ({
   const swiperRef = useRef<SwiperRef>(null);
 
   const pagination = {
-    bulletClass: "border border-element-color",
-    bulletActiveClass: "ring-1 ring-primary",
+    bulletClass: "border border-element-color dark:border-dark-elements",
+    bulletActiveClass: "ring-1 ring-primary dark:ring-dark-white",
     clickable: true,
     el: ".swiper_pagination",
     renderBullet(index: number, className: string) {
       const image = currentItem.images[index];
 
-      return `<div class="${className} shrink rounded-lg xl:max-h-[80px] xl:max-w-[80px] max-h-[50px] max-w-[50px] p-[3.5px] flex border-black items-center flex-grow"><img src="${image}" 
+      return `<div class="${className} shrink rounded-lg xl:max-h-[80px] xl:max-w-[80px] max-h-[50px] max-w-[50px] p-[3.5px] flex items-center flex-grow"><img src="${image}" 
       alt="phone_image" class="h-full w-full object-contain" /></div>`;
     },
   };
@@ -109,7 +109,7 @@ export const ItemDescription: React.FC<Props> = ({
 
   return (
     <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
-      <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
+      <h2 className="dark:text-dark-white col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] sm:mb-10">
         {currentItem.name}
       </h2>
       <div className="relative col-span-full min-h-[400px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
@@ -140,13 +140,13 @@ export const ItemDescription: React.FC<Props> = ({
         )}
       </div>
       <div className="col-span-full flex flex-col gap-[37.5px] sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
-        <div className="justify-between border-b-[1px] pb-[24px]">
+        <div className="dark:border-dark-elements justify-between border-b-[1px] pb-[24px]">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
-              <span className="text-[12px] font-semibold leading-[15px] text-secondary">
+              <span className="dark:text-dark-secondary text-[12px] font-bold leading-[15px] text-secondary">
                 Available colors
               </span>
-              <span className="text-[12px] font-bold leading-[15px] text-icons-color">
+              <span className="dark:text-dark-icons text-[12px] font-bold leading-[15px] text-icons-color">
                 {`ID: ${shortInfoItem.id}`}
               </span>
             </div>
@@ -169,9 +169,12 @@ export const ItemDescription: React.FC<Props> = ({
                     onClick={(event) => handleColorChange(itemColor, event)}
                     type="button"
                     className={classNames(
-                      `h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 
-                      ring-icons-color hover:ring-1 hover:ring-primary bg-${itemColor}`,
-                      { "ring-primary": currentColor === itemColor },
+                      `dark:border-dark-black dark:ring-dark-elements dark:hover:ring-dark-white h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 ring-icons-color
+                      transition hover:ring-1 hover:ring-primary bg-${itemColor}`,
+                      {
+                        "dark:ring-dark-white ring-primary":
+                          currentColor === itemColor,
+                      },
                     )}
                     style={{ backgroundColor: color }}
                   />
@@ -180,7 +183,7 @@ export const ItemDescription: React.FC<Props> = ({
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2 border-b-[1px] pb-[24px] text-[12px] font-semibold leading-[15px] text-secondary">
+        <div className="dark:border-dark-elements flex flex-col gap-2 border-b-[1px] pb-[24px] text-[12px] font-bold leading-[15px] text-secondary">
           <span>Select capacity</span>
           <div className="flex gap-2">
             {capacityAvailable.map((capacityMap) => (
@@ -188,8 +191,11 @@ export const ItemDescription: React.FC<Props> = ({
                 key={capacityMap}
                 type="button"
                 className={classNames(
-                  "h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] hover:border-primary",
-                  { "bg-primary text-white": capacityMap === currentCapacity },
+                  "dark:border-dark-icons dark:hover:border-dark-white h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] transition hover:border-primary",
+                  {
+                    "dark:bg-dark-white dark:border-dark-white dark:text-dark-black bg-primary text-white":
+                      capacityMap === currentCapacity,
+                  },
                 )}
                 onClick={(event) => handleCapacityChange(capacityMap, event)}
               >
@@ -200,12 +206,12 @@ export const ItemDescription: React.FC<Props> = ({
         </div>
         <div className="flex flex-col gap-4">
           <div className="justify-flex-start mb-2 flex items-center">
-            <span className="text-[32px]/[41px] text-main font-extrabold leading-8">
+            <span className="dark:text-dark-white text-[32px]/[41px] font-extrabold leading-8">
               ${priceDiscount}
             </span>
             <span
               className="
-          ml-2 text-[22px]/[28.12px] text-main
+          dark:text-dark-secondary ml-2 text-[22px]/[28.12px]
           font-semibold text-secondary
           line-through"
             >
@@ -220,40 +226,46 @@ export const ItemDescription: React.FC<Props> = ({
 
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <div className="text-gray-elem text-[12px] text-secondary">
+            <div className="text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary">
               Screen
             </div>
-            <div className="text-[12px] font-semibold">{screen}</div>
+            <div className="dark:text-dark-white text-[12px] font-bold">
+              {screen}
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-[12px] text-secondary"
+            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary"
             >
               Resolution
             </div>
-            <div className="text-[12px] font-semibold">{resolution}</div>
+            <div className="dark:text-dark-white text-[12px] font-bold">
+              {resolution}
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-[12px] text-secondary"
+            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary"
             >
               Processor
             </div>
-            <div className="text-[12px] font-semibold">{processor}</div>
+            <div className="dark:text-dark-white text-[12px] font-bold">
+              {processor}
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-[12px] text-secondary"
+            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary"
             >
               RAM
             </div>
-            <div className="text-xs font-semibold">{ram}</div>
+            <div className="dark:text-dark-white text-xs font-bold">{ram}</div>
           </div>
         </div>
       </div>
