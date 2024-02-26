@@ -112,22 +112,22 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     setSearchParams(params);
   };
 
-  const sortedProducts = sortedItems(items, sortField);
+  const sortedProducts = sortedItems(items, sortField, query);
 
-  const itemPages = Math.ceil(items.length / +itemsOnPage);
   const itemsPagesMap: string[] = [];
-
-  for (let i = 1; i <= itemPages; i += 1) {
-    itemsPagesMap.push(i.toString());
-  }
 
   const itemsOnPageEditor = setShowItems(
     itemsOnPage,
     page,
     itemsPagesMap,
     sortedProducts,
-    query,
   );
+
+  const itemPages = Math.ceil(sortedProducts.length / +itemsOnPage);
+
+  for (let i = 1; i <= itemPages; i += 1) {
+    itemsPagesMap.push(i.toString());
+  }
 
   return (
     <>
@@ -149,7 +149,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div
               className="mb-6 grid grid-cols-4
         justify-center justify-items-center gap-x-4
-        gap-y-10 sm:grid-cols-12 lg:grid-cols-24"
+        gap-y-10 sm:grid-cols-12 xl:grid-cols-24"
             >
               <DropDownMenu
                 classname="sm:col-span-4"
@@ -171,14 +171,14 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 handlerOnClick={handleItemsDropDownElementClick}
               />
 
-              <div className="sm:col-span-6">
+              <div className="col-span-4 w-full sm:col-start-9 sm:col-end-[-1] xl:col-start-[17]">
                 <label className="block">
-                  <span className="after:text-red-500 block text-sm font-medium text-slate-700 after:ml-0.5">
-                    Looking for something specific?
+                  <span className="mb-1 block text-xs font-medium text-secondary after:ml-0.5">
+                    Looking for something?
                   </span>
                   <input
                     type="search"
-                    name="email"
+                    name="search"
                     className="block min-h-10 w-full rounded-md border border-slate-300 bg-white px-3 py-2 placeholder-slate-400 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
                     placeholder="Type here"
                     onChange={handleSetQueryParams}
