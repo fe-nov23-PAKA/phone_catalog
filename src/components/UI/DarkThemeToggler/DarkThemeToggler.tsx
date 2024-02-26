@@ -28,11 +28,12 @@ export const DarkThemeToggler = () => {
         type="checkbox"
         id="darkmode-toggle"
         onChange={toggleDarkMode}
+        className="dark-mode-toggle-input"
       />
-      <label htmlFor="darkmode-toggle">
+      <label htmlFor="darkmode-toggle" className="dark-mode-toggle-label">
         <svg
           version="1.1"
-          className="sun"
+          className="dark-mode-toggle-svg sun"
           width="16px"
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
@@ -140,7 +141,7 @@ export const DarkThemeToggler = () => {
         </svg>
         <svg
           version="1.1"
-          className="moon"
+          className="dark-mode-toggle-svg moon"
           width="16px"
           xmlns="http://www.w3.org/2000/svg"
           x="0px"

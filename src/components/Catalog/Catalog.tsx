@@ -11,6 +11,7 @@ import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
 import { Loader } from "../UI/Loader/CardLoader/Loader";
 import { sortedItems } from "../../utils/sortedItems";
+import { setSearchWith } from "../../utils/setSearchWith";
 
 interface Props {
   items: Item[];
@@ -24,6 +25,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const sortField = searchParams.get("sort") || "Cheapest";
   const page = searchParams.get("page") || "1";
   const itemsOnPage = searchParams.get("perPage") || "16";
+  const query = searchParams.get("query") || "";
+  const [queryFilter, setQueryFilter] = useState(query);
+
   const itemsOnPageList = ["16", "24", "32", "64"];
   const sortFields = ["Cheapest", "Newest", "Alphabetically"];
 
@@ -51,11 +55,18 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     event?.preventDefault();
     if (number !== "1") {
       params.set("page", number);
-      setSearchParams(params);
+      setSearchParams(params.toString());
     } else {
       params.delete("page");
-      setSearchParams(params);
+      setSearchParams(params.toString());
     }
+  };
+
+  const handleSetQueryParams = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const queryValue = event.target.value.trim().toLowerCase();
+
+    setQueryFilter(event.target.value);
+    setSearchWith(searchParams, { query: queryValue || null }, setSearchParams);
   };
 
   const handleSortDropDownClick = () => {
@@ -111,6 +122,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     page,
     itemsPagesMap,
     sortedProducts,
+    query,
   );
 
   return (
@@ -154,6 +166,22 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 handlerToOpen={handleItemsDropDownClick}
                 handlerOnClick={handleItemsDropDownElementClick}
               />
+
+              <div className="sm:col-span-6">
+                <label className="block">
+                  <span className="after:text-red-500 block text-sm font-medium text-slate-700 after:ml-0.5">
+                    Looking for something specific?
+                  </span>
+                  <input
+                    type="search"
+                    name="search"
+                    className="block min-h-10 w-full rounded-md border border-slate-300 bg-white px-3 py-2 placeholder-slate-400 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+                    placeholder="Type here"
+                    onChange={handleSetQueryParams}
+                    value={queryFilter}
+                  />
+                </label>
+              </div>
             </div>
 
             <ul

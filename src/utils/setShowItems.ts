@@ -5,17 +5,26 @@ export function setShowItems(
   page: string,
   itemsPagesMap: string[],
   startVisiblePhones: Item[],
+  query?: string | null,
 ) {
+  let queriedItems = [...startVisiblePhones];
+
+  if (query) {
+    queriedItems = queriedItems.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase().trim()),
+    );
+  }
+
   const itemsStart = +itemsOnPage * +page - +itemsOnPage;
   const itemsEnd = +itemsOnPage * +page;
 
   if (page === itemsPagesMap[itemsPagesMap.length - 1]) {
-    const shownItems = startVisiblePhones.slice(itemsStart);
+    queriedItems = queriedItems.slice(itemsStart);
 
-    return shownItems;
+    return queriedItems;
   }
 
-  const shownItems = startVisiblePhones.slice(itemsStart, itemsEnd);
+  queriedItems = queriedItems.slice(itemsStart, itemsEnd);
 
-  return shownItems;
+  return queriedItems;
 }
