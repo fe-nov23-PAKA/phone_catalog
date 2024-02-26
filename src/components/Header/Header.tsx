@@ -44,12 +44,12 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[2] flex flex-col bg-white",
+        "sticky top-0 z-[2] flex flex-col bg-white transition-all",
         { "h-screen": isMenuOpen },
         { "border-b": !isMenuOpen },
       )}
     >
-      <div className="flex shrink-0 items-center justify-between pl-4 sm:pr-0">
+      <div className="flex pl-4 sm:pr-0">
         <div className="flex items-center">
           <NavLink to="/" className="py-4">
             {isMenuOpen ? <Logo /> : <Logo fill="#F447AF" />}
@@ -75,11 +75,11 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             ))}
           </nav>
         </div>
+        <DarkThemeToggler />
         <div
-          className="hidden items-center 
+          className="hidden items-center
           sm:flex sm:border-secondary"
         >
-          <DarkThemeToggler />
           <NavLink
             to="favourites"
             className={({ isActive }) =>
@@ -125,13 +125,15 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             </div>
           </NavLink>
         </div>
-        <button
-          type="button"
-          className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none sm:hidden"
-          onClick={toggleMenu}
-        >
-          {isMenuOpen ? <Close /> : <Menu />}
-        </button>
+        <div className="flex sm:hidden">
+          <button
+            type="button"
+            className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? <Close /> : <Menu />}
+          </button>
+        </div>
       </div>
       {isMenuOpen && <BurgerMenu setIsMenuOpen={setIsMenuOpen} />}
     </header>

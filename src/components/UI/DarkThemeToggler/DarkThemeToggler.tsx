@@ -22,7 +22,7 @@ export const DarkThemeToggler = () => {
   };
 
   return (
-    <div className="mr-7 flex items-center">
+    <div className="ml-auto mr-8 flex items-center">
       <input
         checked={isDark}
         type="checkbox"
