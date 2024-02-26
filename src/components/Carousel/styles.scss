@@ -70,6 +70,104 @@
   }
 }
 
+.dark_slick {
+  &-prev,
+  &-next {
+    display: none !important;
+  }
+
+  @include onDesktop;
+  @include onLaptop;
+
+  @include onTablet {
+
+    &-prev,
+    &-next {
+      display: block !important;
+
+      width: 32px;
+      height: 100%;
+      background-color: #323542;
+
+      border: 1px solid #323542;
+      
+      outline: none;
+      padding: 14px;
+      transition: all 0.3s;
+
+      &:hover {
+        border: 1px solid #905BFF;
+        background-color: #905BFF;
+        cursor: pointer;
+      }
+    }
+
+    &-prev {
+      position: absolute;
+      display: flex !important;
+      align-items: center;
+      top: 0;
+      left: -50px;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+
+        width: 6px;
+        height: 10px;
+        background-image: url('../../assets/img/arrow_left_white.svg');
+      }
+    }
+
+    &-next {
+      position: absolute;
+      display: flex !important;
+      right: -50px;
+      align-items: center;
+      top: 0;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+
+        width: 6px;
+        height: 10px;
+
+        background-image: url('../../assets/img/arrow_right_white.svg');
+
+      }
+    }
+  }
+
+  
+
+  
+
+  @include onTablet {
+    &-track {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+}
+
+.dark_slick-dot {
+  background: #3B3E4A;
+
+  &:hover {
+    background: #F1F2F9;
+  }
+}
+
+.slick-active {
+  .dark_slick-dot {
+    background: #905BFF;
+  }
+}
+
 .slick {
 
   &-prev,
@@ -84,7 +182,9 @@
 
     &-prev,
     &-next {
-      display: block !important;
+      display: flex !important;
+      align-items: center;
+      transition: all 0.3s;
 
       width: 32px;
       height: 100%;
@@ -110,6 +210,7 @@
       &::before {
         content: '';
         display: block;
+        position: absolute;
 
         width: 6px;
         height: 10px;
@@ -126,6 +227,7 @@
       &::before {
         content: '';
         display: block;
+        position: absolute;
 
         width: 6px;
         height: 10px;
@@ -157,6 +259,4 @@
       gap: 5px;
     }
   }
-
-  
 }

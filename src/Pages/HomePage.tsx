@@ -18,7 +18,7 @@ export const HomePage = () => {
 
       {!loading && !error && (
         <>
-          <h1 className="container py-6 text-left text-[32px]/[41px] font-extrabold sm:py-8 xl:py-14">
+          <h1 className="dark:text-dark-white container py-6 text-left text-[32px]/[41px] font-extrabold sm:py-8 xl:py-14">
             Welcome to Nice Gadgets store!
           </h1>
           <div className="mx-auto max-w-[1232px] sm:px-[74px] xl:px-[82px]">

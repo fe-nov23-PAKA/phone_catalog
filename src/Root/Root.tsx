@@ -21,7 +21,7 @@ export const Root = () => {
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
       {!isMenuOpen && (
-        <div className="min-h-[calc(100vh-64px-98px)] bg-hover-color">
+        <div className="min-h-[calc(100vh-64px-98px)] bg-hover-color dark:bg-dark-black">
           <Routes>
             <Route path="/">
               <Route index element={<HomePage />} />

@@ -13,6 +13,7 @@ export const ChosenItemsIcon: React.FC<Props> = ({ count, classname }) => {
         "justify-center rounded-full border border-white",
         "bg-secondary-accent text-[9px]/[11px] text-white",
         { [`${classname}`]: classname },
+        { "dark:bg-dark-red": localStorage.getItem("theme") === "dark" },
       )}
     >
       {count}

@@ -4,8 +4,8 @@ import classNames from "classnames";
 import { ProductCard } from "../ProductCard";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { ArrowRight } from "../../icons/Arrow-Right";
-import { Item } from '../../types/Item';
-import { SortType } from '../../types/SortType';
+import { Item } from "../../types/Item";
+import { SortType } from "../../types/SortType";
 
 interface Props {
   titleName: SortType;
@@ -78,7 +78,7 @@ export const ItemsCarousel: React.FC<Props> = ({
     <>
       <div className="container pb-20">
         <div className="flex items-center justify-between pb-6">
-          <h2 className="text-[32px] font-extrabold leading-[41px]">
+          <h2 className="dark:text-dark-white text-[32px] font-extrabold leading-[41px]">
             {titleName}
           </h2>
           <div className="flex gap-4">
@@ -86,21 +86,33 @@ export const ItemsCarousel: React.FC<Props> = ({
               onClick={handleScrollLeft}
               href="#/"
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border",
+                "dark:border-dark-elements dark:hover:border-dark-white flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition hover:border-primary",
                 { "pointer-events-none opacity-50": isAtStart },
               )}
             >
-              <ArrowLeft fill="#0F0F11" />
+              <ArrowLeft
+                fill={
+                  localStorage.getItem("theme") === "dark"
+                    ? "#F1F2F9"
+                    : "#0F0F11"
+                }
+              />
             </a>
             <a
               onClick={handleScrollRight}
               href="#/"
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border",
+                "dark:border-dark-elements dark:hover:border-dark-white flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition hover:border-primary",
                 { "pointer-events-none opacity-50": isAtEnd },
               )}
             >
-              <ArrowRight fill="#0F0F11" />
+              <ArrowRight
+                fill={
+                  localStorage.getItem("theme") === "dark"
+                    ? "#F1F2F9"
+                    : "#0F0F11"
+                }
+              />
             </a>
           </div>
         </div>

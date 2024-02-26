@@ -52,13 +52,13 @@ export const ProductCard: React.FC<Props> = ({
       ref={carouselItemRef}
       className={classNames(
         "col-span-full box-border h-full w-full rounded-lg border",
-        "border-element-color transition-all sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "dark:bg-dark-surface1 dark:border-dark-surface1 border-element-color transition-all sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >
       <div className="p-[32px] transition-all hover:shadow-sh2">
         <Link to={`../${item.category}/${item.itemId}`}>
-          <div className="relative mb-2 flex h-[196px] items-center justify-center">
+          <div className=" relative mb-2 flex h-[196px] items-center justify-center">
             {isLoading ? (
               <CardLoader />
             ) : (
@@ -70,45 +70,53 @@ export const ProductCard: React.FC<Props> = ({
             )}
           </div>
           <h3
-            className="flex min-h-[58px] flex-col 
-          justify-end text-[14px]/[21px] font-semibold"
+            className="dark:text-dark-white flex min-h-[58px] 
+          flex-col justify-end text-[14px]/[21px] font-semibold"
           >
             {name}
           </h3>
         </Link>
         <div className="justify-flex-start mb-2 flex items-center">
-          <span className="text-main font-extrabold leading-8">${price}</span>
+          <span className="dark:text-dark-white text-main font-extrabold leading-8">
+            ${price}
+          </span>
           <span
             className="
-          ml-2 text-main font-semibold
-          leading-7 text-secondary line-through"
+          dark:text-dark-secondary ml-2 text-main
+          font-semibold leading-7 text-secondary line-through"
           >
             ${fullPrice}
           </span>
         </div>
-        <div className="mb-2 border" />
+        <div className="dark:border-elements mb-2 border" />
         <div className="mb-2 flex flex-col gap-y-2 py-2">
           <div className="flex items-center justify-between">
-            <div className="text-xs font-bold text-secondary">Screen</div>
-            <div className="text-xs font-bold">{screen}</div>
+            <div className="dark:text-dark-secondary text-xs font-bold text-secondary">
+              Screen
+            </div>
+            <div className="dark:text-dark-white text-xs font-bold">
+              {screen}
+            </div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            text-xs font-bold text-secondary"
+            dark:text-dark-secondary text-xs font-bold text-secondary"
             >
               Capacity
             </div>
-            <div className="text-xs font-bold">{capacity}</div>
+            <div className="dark:text-dark-white text-xs font-bold">
+              {capacity}
+            </div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            text-xs font-bold text-secondary"
+            dark:text-dark-secondary text-xs font-bold text-secondary"
             >
               RAM
             </div>
-            <div className="text-xs font-bold">{ram}</div>
+            <div className="dark:text-dark-white text-xs font-bold">{ram}</div>
           </div>
         </div>
 

@@ -44,15 +44,27 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[2] flex flex-col bg-white",
+        "dark:bg-dark-black sticky top-0 z-[2] flex flex-col bg-white",
         { "h-screen": isMenuOpen },
-        { "border-b": !isMenuOpen },
+        { "dark:border-dark-elements border-b": !isMenuOpen },
       )}
     >
       <div className="flex shrink-0 items-center justify-between pl-4 sm:pr-0">
         <div className="flex items-center">
           <NavLink to="/" className="py-4">
-            {isMenuOpen ? <Logo /> : <Logo fill="#F447AF" />}
+            {isMenuOpen ? (
+              <Logo
+                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+              />
+            ) : (
+              <Logo
+                fill={
+                  localStorage.getItem("theme") === "dark"
+                    ? "#F1F2F9"
+                    : "#F447AF"
+                }
+              />
+            )}
           </NavLink>
           <nav
             className="hidden items-center gap-x-8 font-mont font-extrabold 
@@ -60,7 +72,10 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <NavLinkMenu
               to="/"
-              classname="hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative"
+              classname={classNames(
+                "dark:text-dark-secondary hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary dark:sm:hover:text-dark-white sm:hover:text-primary transition-all relative",
+                { darkhover: localStorage.getItem("theme") === "dark" },
+              )}
             >
               Home
             </NavLinkMenu>
@@ -68,7 +83,10 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               <NavLinkMenu
                 key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
-                classname="hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative"
+                classname={classNames(
+                  "dark:text-dark-secondary dark:sm:hover:text-dark-white hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative",
+                  { darkhover: localStorage.getItem("theme") === "dark" },
+                )}
               >
                 {nav_item}
               </NavLinkMenu>
@@ -84,7 +102,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             to="favourites"
             className={({ isActive }) =>
               classNames(
-                "relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                "dark:sm:border-dark-elements dark:hover:bg-dark-surface2 relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
                 {
                   "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
@@ -93,7 +111,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             }
           >
             <div className="relative">
-              <Favourites />
+              <Favourites
+                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+              />
               {favouriteItems.length > 0 && (
                 <ChosenItemsIcon
                   count={favouriteItems.length}
@@ -106,7 +126,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             to="cart"
             className={({ isActive }) =>
               classNames(
-                "relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                "dark:sm:border-dark-elements dark:hover:bg-dark-surface2 relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
                 {
                   "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
@@ -115,7 +135,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             }
           >
             <div className="relative">
-              <ShoppingBag />
+              <ShoppingBag
+                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+              />
               {cartItems.length > 0 && (
                 <ChosenItemsIcon
                   count={cartItems.length}
@@ -127,10 +149,18 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         </div>
         <button
           type="button"
-          className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none sm:hidden"
+          className="block dark:border-dark-elements border-l px-[17px] py-[21px] text-secondary focus:outline-none sm:hidden"
           onClick={toggleMenu}
         >
-          {isMenuOpen ? <Close /> : <Menu />}
+          {isMenuOpen ? (
+            <Close
+              fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+            />
+          ) : (
+            <Menu
+              fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+            />
+          )}
         </button>
       </div>
       {isMenuOpen && <BurgerMenu setIsMenuOpen={setIsMenuOpen} />}

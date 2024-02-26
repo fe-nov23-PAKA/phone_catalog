@@ -10,6 +10,37 @@ import bannerAccessories from "../../assets/img/phone-accessories-1.jpg";
 
 export const Carousel: React.FC = () => {
   const imgIds = [banner, bannerPhones, bannerTablets, bannerAccessories];
+
+  function SampleNextArrow(props) {
+    const { onClick } = props;
+
+    return (
+      <div
+        className={
+          localStorage.getItem("theme") === "dark"
+            ? "dark_slick-next"
+            : "slick-next"
+        }
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { onClick } = props;
+
+    return (
+      <div
+        className={
+          localStorage.getItem("theme") === "dark"
+            ? "dark_slick-prev"
+            : "slick-prev"
+        }
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -20,7 +51,11 @@ export const Carousel: React.FC = () => {
     cssEase: "linear",
     customPaging: () => (
       <div
-        className="slick-dot"
+        className={
+          localStorage.getItem("theme") === "dark"
+            ? "dark_slick-dot"
+            : "slick-dot"
+        }
         style={{
           width: "14px",
           height: "4px",
@@ -29,6 +64,8 @@ export const Carousel: React.FC = () => {
         }}
       />
     ),
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
   };
 
   return (

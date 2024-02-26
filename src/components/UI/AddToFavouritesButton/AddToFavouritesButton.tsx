@@ -17,9 +17,9 @@ export const AddToFavouritesButton: React.FC<Props> = ({ item }) => {
     <button
       type="button"
       className="
-            flex h-10 w-10 items-center 
-            justify-center rounded-full
-            border border-icons-color transition-all hover:border-primary"
+            dark:bg-dark-surface2 dark:border-dark-surface2 dark:hover:bg-dark-icons flex h-10 w-10
+            items-center justify-center
+            rounded-full border border-icons-color transition-all hover:border-primary"
       onClick={() =>
         favouriteItemsIds.includes(item.itemId)
           ? dispatch(favouritesActions.replace(item))
@@ -27,9 +27,15 @@ export const AddToFavouritesButton: React.FC<Props> = ({ item }) => {
       }
     >
       {favouriteItemsIds.includes(item.itemId) ? (
-        <FavouritesFilled fill="#F447AF" />
+        <FavouritesFilled
+          fill={
+            localStorage.getItem("theme") === "dark" ? "#EB5757" : "#F447AF"
+          }
+        />
       ) : (
-        <Favourites />
+        <Favourites
+          fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
+        />
       )}
     </button>
   );
