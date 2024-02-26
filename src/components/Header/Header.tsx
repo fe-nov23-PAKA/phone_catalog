@@ -55,8 +55,8 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             {isMenuOpen ? <Logo /> : <Logo fill="#F447AF" />}
           </NavLink>
           <nav
-            className="hidden items-center gap-x-8 font-mont font-extrabold 
-          tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16"
+            className="xl:gap-x-15 hidden items-center font-mont 
+          font-extrabold tracking-wider sm:ml-8 sm:flex sm:gap-x-4 md:gap-x-16 xl:ml-12"
           >
             <NavLinkMenu
               to="/"
