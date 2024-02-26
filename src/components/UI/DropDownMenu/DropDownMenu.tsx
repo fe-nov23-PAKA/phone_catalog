@@ -38,9 +38,9 @@ export const DropDownMenu: React.FC<Props> = ({
           className={classNames(
             { "focus:ring-primary": !isOpen },
             { "hover:ring-secondary": isOpen },
-            "inline-flex w-full items-center justify-between",
-            "w-full rounded-md px-3 py-2 text-left capitalize",
-            "font-semibold text-primary",
+            "inline-flex items-center justify-between",
+            "rounded-md px-3 py-2 capitalize",
+            "w-full font-semibold text-primary",
             "shadow-sm ring-1 ring-inset ring-icons-color transition-all",
           )}
           onClick={handlerToOpen}
@@ -68,7 +68,7 @@ export const DropDownMenu: React.FC<Props> = ({
             <button
               key={field}
               type="button"
-              className="block px-4 py-2
+              className="block w-full px-4 py-2 text-left
                     text-sm capitalize transition-all
                   hover:bg-hover-color hover:text-primary"
               role="menuitem"
