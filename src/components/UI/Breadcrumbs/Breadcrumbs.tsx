@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { Link, useLocation } from "react-router-dom";
+import React from "react";
 import { ArrowRight } from "../../../icons/Arrow-Right";
 import { HomePageIcon } from "../../../icons/HomePageIcon";
 
@@ -14,7 +15,7 @@ export const Breadcrumbs = () => {
         <HomePageIcon />
       </Link>
       {link.map((linkItem, index) => (
-        <>
+        <React.Fragment key={linkItem}>
           <ArrowRight fill="#89939A" />
           <Link
             to={`/${linkItem}`}
@@ -31,7 +32,7 @@ export const Breadcrumbs = () => {
           >
             {linkItem}
           </Link>
-        </>
+        </React.Fragment>
       ))}
     </div>
   );
