@@ -63,7 +63,7 @@ export const ProductCard: React.FC<Props> = ({
               <CardLoader />
             ) : (
               <img
-                className="block max-w-32 object-cover transition-all hover:scale-[1.1]"
+                className="block h-full w-full object-contain transition-all hover:scale-[1.1]"
                 src={image}
                 alt="Product"
               />

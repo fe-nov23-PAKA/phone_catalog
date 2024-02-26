@@ -44,12 +44,12 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "dark:bg-dark-black sticky top-0 z-[2] flex flex-col bg-white",
+        "sticky top-0 z-[2] flex flex-col bg-white transition-all",
         { "h-screen": isMenuOpen },
         { "dark:border-dark-elements border-b": !isMenuOpen },
       )}
     >
-      <div className="flex shrink-0 items-center justify-between pl-4 sm:pr-0">
+      <div className="flex pl-4 sm:pr-0">
         <div className="flex items-center">
           <NavLink to="/" className="py-4">
             {isMenuOpen ? (
@@ -67,8 +67,8 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             )}
           </NavLink>
           <nav
-            className="hidden items-center gap-x-8 font-mont font-extrabold 
-          tracking-wider sm:ml-8 sm:flex xl:ml-12 xl:gap-x-16"
+            className="xl:gap-x-15 hidden items-center font-mont 
+          font-extrabold tracking-wider sm:ml-8 sm:flex sm:gap-x-4 md:gap-x-16 xl:ml-12"
           >
             <NavLinkMenu
               to="/"
@@ -93,11 +93,11 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             ))}
           </nav>
         </div>
+        <DarkThemeToggler />
         <div
-          className="hidden items-center 
+          className="hidden items-center
           sm:flex sm:border-secondary"
         >
-          <DarkThemeToggler />
           <NavLink
             to="favourites"
             className={({ isActive }) =>
@@ -147,21 +147,15 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             </div>
           </NavLink>
         </div>
-        <button
-          type="button"
-          className="block dark:border-dark-elements border-l px-[17px] py-[21px] text-secondary focus:outline-none sm:hidden"
-          onClick={toggleMenu}
-        >
-          {isMenuOpen ? (
-            <Close
-              fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-            />
-          ) : (
-            <Menu
-              fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-            />
-          )}
-        </button>
+        <div className="flex sm:hidden">
+          <button
+            type="button"
+            className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? <Close /> : <Menu />}
+          </button>
+        </div>
       </div>
       {isMenuOpen && <BurgerMenu setIsMenuOpen={setIsMenuOpen} />}
     </header>

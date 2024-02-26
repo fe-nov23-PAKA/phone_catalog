@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import classNames from "classnames";
 import { ProductCard } from "../ProductCard";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { ArrowRight } from "../../icons/Arrow-Right";
-import { Item } from "../../types/Item";
-import { SortType } from "../../types/SortType";
+import { Item } from '../../types/Item';
+import { SortType } from '../../types/SortType';
+import { getItemsToShow } from '../../utils/getItemsToShow';
 
 interface Props {
   titleName: SortType;
@@ -23,8 +24,7 @@ export const ItemsCarousel: React.FC<Props> = ({
 
   const carouselRef = useRef<HTMLUListElement>(null);
 
-  // const visibleItems = useMemo(() => getItemsToShow(titleName, startVisibleItems), []);
-  const visibleItems = startVisibleItems.slice(0, 20);
+  const visibleItems = useMemo(() => getItemsToShow(titleName, startVisibleItems), []);
   const ITEMS_GAP = 16;
 
   useEffect(() => {

@@ -1,22 +1,34 @@
 /* eslint-disable react/no-unknown-property */
+import { useState } from "react";
 import "./DarkTahemeTogglerStyles.scss";
 
 export const DarkThemeToggler = () => {
+  const [isDark, setIsDark] = useState(
+    localStorage.getItem("theme") === "dark",
+  );
+
   const toggleDarkMode = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
       document.documentElement.classList.add("dark");
+      setIsDark(true);
       localStorage.theme = "dark";
     } else {
       document.documentElement.classList.remove("dark");
+      setIsDark(false);
       localStorage.theme = "light";
     }
   };
 
   return (
-    <div className="mr-7 flex items-center">
-      <input type="checkbox" id="darkmode-toggle" onChange={toggleDarkMode} />
+    <div className="ml-auto mr-8 flex items-center">
+      <input
+        checked={isDark}
+        type="checkbox"
+        id="darkmode-toggle"
+        onChange={toggleDarkMode}
+      />
       <label htmlFor="darkmode-toggle">
         <svg
           version="1.1"
