@@ -11,7 +11,7 @@ interface Props {
   handlerToOpen?: () => void;
   handlerOnClick?: (
     option: string,
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
   setIsFieldOpen?: (isShown: boolean) => void;
 }
@@ -27,7 +27,7 @@ export const DropDownMenu: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={classNames("relative col-span-2 mb-6 w-full text-left", {
+      className={classNames("relative col-span-2 w-full text-left", {
         [`${classname}`]: classname,
       })}
     >
@@ -39,7 +39,7 @@ export const DropDownMenu: React.FC<Props> = ({
             { "focus:ring-primary": !isOpen },
             { "hover:ring-secondary": isOpen },
             "inline-flex w-full items-center justify-between",
-            "rounded-md px-3 py-2 capitalize",
+            "w-full rounded-md px-3 py-2 text-left capitalize",
             "font-semibold text-primary",
             "shadow-sm ring-1 ring-inset ring-icons-color transition-all",
           )}
@@ -65,18 +65,18 @@ export const DropDownMenu: React.FC<Props> = ({
       >
         <div className="rounded-lg bg-white py-1" role="none">
           {dropDownFields.map((field) => (
-            <a
+            <button
               key={field}
-              href="#/"
-              className="block px-4
-                    py-2 text-sm transition-all
+              type="button"
+              className="block px-4 py-2
+                    text-sm capitalize transition-all
                   hover:bg-hover-color hover:text-primary"
               role="menuitem"
               id="menu-item-0"
               onClick={(event) => handlerOnClick(field, event)}
             >
               {field}
-            </a>
+            </button>
           ))}
         </div>
       </div>

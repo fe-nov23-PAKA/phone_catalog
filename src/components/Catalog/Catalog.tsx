@@ -10,6 +10,7 @@ import { DropDownMenu } from "../UI/DropDownMenu";
 import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
 import { Loader } from "../UI/Loader/CardLoader/Loader";
+import { sortedItems } from "../../utils/sortedItems";
 
 interface Props {
   items: Item[];
@@ -20,19 +21,19 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
   const [isItemsDropDownShown, setIsItemsDropDownShown] = useState(true);
-  const sortField = searchParams.get("sort") || "cheapest";
+  const sortField = searchParams.get("sort") || "Cheapest";
   const page = searchParams.get("page") || "1";
   const itemsOnPage = searchParams.get("perPage") || "16";
   const itemsOnPageList = ["16", "24", "32", "64"];
-  const sortFields = ["cheapest", "expensive"];
+  const sortFields = ["Cheapest", "Newest", "Alphabetically"];
 
   const params = new URLSearchParams(searchParams);
 
   useEffect(() => {
-    if (sortField === "cheapest" && itemsOnPage === "16") {
+    if (sortField === "Cheapest" && itemsOnPage === "16") {
       const defaultSearchParams = new URLSearchParams({
         perPage: "16",
-        sort: "cheapest",
+        sort: "Cheapest",
       });
 
       setSearchParams(defaultSearchParams);
@@ -57,16 +58,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     }
   };
 
-  const handleSortDropDownElementClick = (
-    option: string,
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  ) => {
-    event.preventDefault();
-
-    params.set("sort", option.toLowerCase());
-    setSearchParams(params);
-  };
-
   const handleSortDropDownClick = () => {
     setIsSortDropDownShown((currentValue) => !currentValue);
     if (!isItemsDropDownShown) {
@@ -81,13 +72,23 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     }
   };
 
+  const handleSortDropDownElementClick = (
+    option: string,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+    setIsSortDropDownShown(true);
+    params.delete("page");
+    params.set("sort", option.toLowerCase());
+    setSearchParams(params);
+  };
+
   const handleItemsDropDownElementClick = (
     option: string,
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event.preventDefault();
     setIsItemsDropDownShown(true);
-    params.set("page", "1");
     params.set("perPage", option);
     setSearchParams(params);
 
@@ -96,17 +97,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     setSearchParams(params);
   };
 
-  const sortedItems = [...items].sort((a, b) => {
-    if (sortField === "cheapest") {
-      return a.price - b.price;
-    }
-
-    if (sortField === "expensive") {
-      return b.price - a.price;
-    }
-
-    return 0;
-  });
+  const sortedProducts = sortedItems(items, sortField);
 
   const itemPages = Math.ceil(items.length / +itemsOnPage);
   const itemsPagesMap: string[] = [];
@@ -119,7 +110,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     itemsOnPage,
     page,
     itemsPagesMap,
-    sortedItems,
+    sortedProducts,
   );
 
   return (
@@ -129,20 +120,20 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
       ) : (
         <div className="container pt-6">
           <div>
-            <div className="mb-7 flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
             <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
-            <div className="mb-8  font-semibold text-secondary">
+            <div className="mb-8 font-semibold text-secondary">
               {items.length} models
             </div>
           </div>
 
           <div className="pb-6">
             <div
-              className="grid grid-cols-4 justify-center
-        justify-items-center gap-x-4 gap-y-10
-        sm:mb-10 sm:grid-cols-12 lg:grid-cols-24"
+              className="mb-6 grid grid-cols-4
+        justify-center justify-items-center gap-x-4
+        gap-y-10 sm:grid-cols-12 lg:grid-cols-24"
             >
               <DropDownMenu
                 classname="sm:col-span-4"
