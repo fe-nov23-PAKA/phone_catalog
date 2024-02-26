@@ -16,6 +16,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
     "classnames": "^2.5.1",
+    "lodash": "^4.17.21",
     "postcss-custom-properties": "^13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@mate-academy/eslint-config-react-typescript": "^1.0.15",
     "@mate-academy/scripts": "^1.7.0",
+    "@types/lodash": "^4.14.202",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/react-slick": "^0.23.13",

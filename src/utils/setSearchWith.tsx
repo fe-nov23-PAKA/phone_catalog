@@ -1,3 +1,5 @@
+import { debounce } from "lodash";
+
 export type SearchParams = {
   [key: string]: string | null;
 };
@@ -19,7 +21,7 @@ function getSearchWith(
   return newParams.toString();
 }
 
-export function setSearchWith(
+function setSearchWith(
   currentParams: URLSearchParams,
   paramsToUpdate: SearchParams,
   setNewParams: (params: string) => void,
@@ -28,3 +30,5 @@ export function setSearchWith(
 
   setNewParams(newParams);
 }
+
+export const debouncedSetSearchWith = debounce(setSearchWith, 500);
