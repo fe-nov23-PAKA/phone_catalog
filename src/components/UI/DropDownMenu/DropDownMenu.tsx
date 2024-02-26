@@ -24,7 +24,6 @@ export const DropDownMenu: React.FC<Props> = ({
   isOpen,
   handlerToOpen = () => {},
   handlerOnClick = () => {},
-  setIsFieldOpen = () => {},
 }) => {
   return (
     <div
@@ -32,7 +31,7 @@ export const DropDownMenu: React.FC<Props> = ({
         [`${classname}`]: classname,
       })}
     >
-      <div onBlur={() => setIsFieldOpen(true)}>
+      <div>
         <p className="mb-1 text-xs text-secondary">{label}</p>
         <button
           type="button"
