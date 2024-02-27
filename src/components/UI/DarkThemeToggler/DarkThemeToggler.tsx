@@ -5,6 +5,11 @@ import { actions as themeActions } from "../../../features/ThemeSlice";
 
 export const DarkThemeToggler = () => {
   const isDark = useAppSelector((state) => state.theme) === "dark";
+
+  if (isDark) {
+    document.documentElement.classList.add("dark");
+  }
+
   const dispatch = useAppDispatch();
 
   const toggleDarkMode = (event: React.ChangeEvent<HTMLInputElement>) => {
