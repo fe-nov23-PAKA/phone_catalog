@@ -29,7 +29,7 @@ export const CheckoutModal = () => {
       ></div>
       <div
         className={classNames(
-          "dark:bg-dark-white fixed left-[50%] top-[50%] z-20 h-[40%] w-[90%] translate-x-[-50%] translate-y-[-50%] rounded-3xl border border-secondary bg-white opacity-0 shadow-xl shadow-zinc-500 transition-opacity duration-[1100ms] sm:w-[65%] xl:w-[45%]",
+          "fixed left-[50%] top-[50%] z-20 h-[40%] w-[90%] translate-x-[-50%] translate-y-[-50%] rounded-3xl border border-secondary bg-white opacity-0 shadow-xl shadow-zinc-500 transition-opacity duration-[1100ms] dark:bg-dark-white sm:w-[65%] xl:w-[45%]",
           { "opacity-100": isActive },
         )}
       >

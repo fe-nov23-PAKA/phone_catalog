@@ -142,10 +142,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
-            <h1 className="dark:text-dark-white mb-2 text-[32px]/[41px] font-extrabold transition-all sm:text-[48px]/[56px]">
+            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
               {title}
             </h1>
-            <div className="dark:text-dark-secondary mb-8 font-semibold text-secondary transition-all">
+            <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
               {items.length} models
             </div>
           </div>
@@ -214,13 +214,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             >
               <li
                 className={classNames(
-                  "dark:border-dark-surface2 dark:bg-dark-surface2 rounded-full border transition-all dark:rounded-none",
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       page === "1",
                   },
                   {
-                    "dark:hover:border-dark-icons dark:hover:bg-dark-icons hover:border-primary":
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(page === "1"),
                   },
                 )}
@@ -258,9 +258,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 <li
                   key={number}
                   className={classNames(
-                    "dark:border-dark-surface1 dark:bg-dark-surface1 dark:text-dark-white dark:hover:border-dark-elements dark:hover:bg-dark-elements rounded-full border text-primary transition-all hover:border-primary dark:rounded-none",
+                    "rounded-full border text-primary transition-all hover:border-primary dark:rounded-none dark:border-dark-surface1 dark:bg-dark-surface1 dark:text-dark-white dark:hover:border-dark-elements dark:hover:bg-dark-elements",
                     {
-                      "dark:!border-dark-accent dark:!bg-dark-accent dark:text-dark-white dark:hover:!border-dark-hover dark:hover:!bg-dark-hover border-primary bg-primary text-white hover:bg-white hover:text-primary":
+                      "border-primary bg-primary text-white hover:bg-white hover:text-primary dark:!border-dark-accent dark:!bg-dark-accent dark:text-dark-white dark:hover:!border-dark-hover dark:hover:!bg-dark-hover":
                         page === number,
                     },
                   )}
@@ -276,13 +276,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               ))}
               <li
                 className={classNames(
-                  "dark:border-dark-surface2 dark:bg-dark-surface2 rounded-full border transition-all dark:rounded-none",
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       +page === itemPages,
                   },
                   {
-                    "dark:hover:border-dark-icons dark:hover:bg-dark-icons hover:border-primary":
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(+page === itemPages),
                   },
                 )}

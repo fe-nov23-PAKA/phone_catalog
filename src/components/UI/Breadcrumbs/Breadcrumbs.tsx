@@ -15,7 +15,7 @@ export const Breadcrumbs = () => {
   return (
     <div className="mb-6 flex items-center gap-x-2 text-[14px]/[14px] font-bold sm:mb-10">
       <Link to="/">
-        <HomePageIcon className="dark:text-dark-secondary dark:hover:text-dark-white transition-all" />
+        <HomePageIcon className="transition-all dark:text-dark-secondary dark:hover:text-dark-white" />
       </Link>
       {link.map((linkItem, index) => (
         <React.Fragment key={linkItem}>
@@ -23,9 +23,9 @@ export const Breadcrumbs = () => {
           <Link
             to={`/${linkItem}`}
             className={classNames(
-              "dark:text-dark-secondary dark:hover:text-dark-white capitalize text-primary transition-all",
+              "capitalize text-primary transition-all dark:text-dark-secondary dark:hover:text-dark-white",
               {
-                "dark:text-dark-white pointer-events-none text-secondary transition-all":
+                "pointer-events-none text-secondary transition-all dark:text-dark-white":
                   index === link.length - 1,
               },
               {
