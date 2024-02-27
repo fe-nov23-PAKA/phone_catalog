@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { Pagination } from "swiper/modules";
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 import { ItemDescriptionType } from "../../types/ItemDescriptionType";
 import { AddToCartButton } from "../UI/AddToCartButton";
 import { Item } from "../../types/Item";
@@ -26,6 +27,8 @@ export const ItemDescription: React.FC<Props> = ({
   const [isLoading, setIsLoading] = useState(true);
 
   const swiperRef = useRef<SwiperRef>(null);
+
+  const navigate = useNavigate();
 
   const pagination = {
     bulletClass: "border border-element-color dark:border-dark-elements",
@@ -87,6 +90,9 @@ export const ItemDescription: React.FC<Props> = ({
     event.preventDefault();
     setCurrentColor(phoneColor);
     setIsLoading(true);
+    navigate(
+      `../${item.namespaceId}-${currentCapacity.toLowerCase()}-${phoneColor.toLowerCase()}`,
+    );
   };
 
   const handleCapacityChange = (
@@ -95,6 +101,9 @@ export const ItemDescription: React.FC<Props> = ({
   ) => {
     event.preventDefault();
     setCurrentCapacity(capacityMap);
+    navigate(
+      `../${item.namespaceId}-${capacityMap.toLowerCase()}-${currentColor}`,
+    );
   };
 
   const anotherColors: { [key: string]: string } = {
@@ -108,7 +117,7 @@ export const ItemDescription: React.FC<Props> = ({
   };
 
   return (
-    <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
+    <div className="mb-14 grid grid-cols-4 gap-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
       <h2 className="dark:text-dark-white col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] transition-all sm:mb-10">
         {currentItem.name}
       </h2>
@@ -130,7 +139,8 @@ export const ItemDescription: React.FC<Props> = ({
                   <img
                     src={image}
                     alt="phone_image"
-                    className="mx-auto aspect-square h-full max-h-[290px] w-full max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
+                    className="mx-auto aspect-square h-full max-h-[290px] w-full 
+                    max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
                   />
                 </SwiperSlide>
               ))}

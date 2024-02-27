@@ -6,7 +6,7 @@ export const BackButton = () => {
 
   return (
     <button
-      onClick={() => navigate(-1)}
+      onClick={() => navigate("..")}
       type="button"
       className="flex flex-row items-center pb-6"
     >
