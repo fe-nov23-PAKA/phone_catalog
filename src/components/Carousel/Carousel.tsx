@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "react-slick";
+import Slider, { CustomArrowProps } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.scss";
@@ -7,9 +7,36 @@ import banner from "../../assets/img/Banner.png";
 import bannerPhones from "../../assets/img/banner-phones.png";
 import bannerTablets from "../../assets/img/banner-tablets.png";
 import bannerAccessories from "../../assets/img/phone-accessories-1.jpg";
+import { useAppSelector } from "../../app/hooks";
 
 export const Carousel: React.FC = () => {
   const imgIds = [banner, bannerPhones, bannerTablets, bannerAccessories];
+  const theme = useAppSelector((state) => state.theme);
+
+  function SampleNextArrow(props: CustomArrowProps) {
+    const { onClick } = props;
+
+    return (
+      <button
+        type="button"
+        className={theme === "dark" ? "dark_slick-next" : "slick-next"}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props: CustomArrowProps) {
+    const { onClick } = props;
+
+    return (
+      <button
+        type="button"
+        className={theme === "dark" ? "dark_slick-prev" : "slick-prev"}
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -20,7 +47,11 @@ export const Carousel: React.FC = () => {
     cssEase: "linear",
     customPaging: () => (
       <div
-        className="slick-dot"
+        className={
+          theme === "dark"
+            ? "dark_slick-dot transition-all"
+            : "slick-dot transition-all"
+        }
         style={{
           width: "14px",
           height: "4px",
@@ -29,6 +60,8 @@ export const Carousel: React.FC = () => {
         }}
       />
     ),
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
   };
 
   return (

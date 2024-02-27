@@ -4,9 +4,10 @@ import classNames from "classnames";
 import { ProductCard } from "../ProductCard";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { ArrowRight } from "../../icons/Arrow-Right";
-import { Item } from '../../types/Item';
-import { SortType } from '../../types/SortType';
-import { getItemsToShow } from '../../utils/getItemsToShow';
+import { Item } from "../../types/Item";
+import { SortType } from "../../types/SortType";
+import { getItemsToShow } from "../../utils/getItemsToShow";
+import { useAppSelector } from "../../app/hooks";
 
 interface Props {
   titleName: SortType;
@@ -24,8 +25,12 @@ export const ItemsCarousel: React.FC<Props> = ({
 
   const carouselRef = useRef<HTMLUListElement>(null);
 
-  const visibleItems = useMemo(() => getItemsToShow(titleName, startVisibleItems), []);
+  const visibleItems = useMemo(
+    () => getItemsToShow(titleName, startVisibleItems),
+    [],
+  );
   const ITEMS_GAP = 16;
+  const theme = useAppSelector((state) => state.theme);
 
   useEffect(() => {
     let newScroll = itemCarouselWidth + ITEMS_GAP;
@@ -78,7 +83,7 @@ export const ItemsCarousel: React.FC<Props> = ({
     <>
       <div className="container pb-20">
         <div className="flex items-center justify-between pb-6">
-          <h2 className="text-[32px] font-extrabold leading-[41px]">
+          <h2 className="text-[32px] font-extrabold leading-[41px] dark:text-dark-white transition-all">
             {titleName}
           </h2>
           <div className="flex gap-4">
@@ -86,21 +91,21 @@ export const ItemsCarousel: React.FC<Props> = ({
               onClick={handleScrollLeft}
               href="#/"
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border",
+                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:border-dark-elements dark:hover:border-dark-white",
                 { "pointer-events-none opacity-50": isAtStart },
               )}
             >
-              <ArrowLeft fill="#0F0F11" />
+              <ArrowLeft fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
             </a>
             <a
               onClick={handleScrollRight}
               href="#/"
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border",
+                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:border-dark-elements dark:hover:border-dark-white",
                 { "pointer-events-none opacity-50": isAtEnd },
               )}
             >
-              <ArrowRight fill="#0F0F11" />
+              <ArrowRight fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
             </a>
           </div>
         </div>

@@ -21,8 +21,6 @@ module.exports = {
       fontSize: {
         main: "22px",
         small: ["14px", "21px"],
-        "favourites-sm": ["32px", "41px"],
-        "favourites-base": ["48px", "56px"],
       },
       backgroundImage: {
         darkness: "url('/src/assets/img/404page/bg-darkness.png')",
@@ -46,6 +44,16 @@ module.exports = {
         midnight: "#000E34",
         sierrablue: "#69ABCE",
         graphite: "#41424C",
+        "dark-secondary": "#75767F",
+        "dark-icons": "#4A4D58",
+        "dark-elements": "#3B3E4A",
+        "dark-surface2": "#323542",
+        "dark-surface1": "#161827",
+        "dark-black": "#0F1121",
+        "dark-white": "#F1F2F9",
+        "dark-accent": "#905BFF",
+        "dark-red": "#EB5757",
+        "dark-hover": "#A378FF",
       },
       boxShadow: {
         sh1: "0 3px 13px 0 rgba(23, 32, 49, 0.4)",

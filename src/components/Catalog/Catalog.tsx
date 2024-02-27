@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import classNames from "classnames";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -11,6 +12,7 @@ import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
 import { Loader } from "../UI/Loader/CardLoader/Loader";
 import { sortedItems } from "../../utils/sortedItems";
+import { useAppSelector } from "../../app/hooks";
 
 interface Props {
   items: Item[];
@@ -26,6 +28,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const itemsOnPage = searchParams.get("perPage") || "16";
   const itemsOnPageList = ["16", "24", "32", "64"];
   const sortFields = ["cheapest", "newest", "alphabetically"];
+  const theme = useAppSelector((state) => state.theme);
 
   const params = new URLSearchParams(searchParams);
 
@@ -123,8 +126,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
-            <h1 className="mb-2 text-4xl font-extrabold">{title}</h1>
-            <div className="mb-8 font-semibold text-secondary">
+            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
+              {title}
+            </h1>
+            <div className="mb-8  font-semibold text-secondary transition-all dark:text-dark-secondary">
               {items.length} models
             </div>
           </div>
@@ -177,9 +182,15 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             >
               <li
                 className={classNames(
-                  "rounded-full border font-mont transition-all",
-                  { disabled: page === "1" },
-                  { "hover:border-primary": !(page === "1") },
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
+                  {
+                    "disabled dark:!border-dark-elements dark:!bg-dark-black":
+                      page === "1",
+                  },
+                  {
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
+                      !(page === "1"),
+                  },
                 )}
               >
                 <button
@@ -198,16 +209,26 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   }}
                   className="flex h-8 w-8 items-center justify-center"
                 >
-                  <ArrowLeft fill={page === "1" ? "#B4BDC3" : "#0F0F11"} />
+                  <ArrowLeft
+                    fill={
+                      page === "1" && theme === "dark"
+                        ? "#4A4D58"
+                        : page === "1"
+                          ? "#B4BDC3"
+                          : theme === "dark"
+                            ? "#F1F2F9"
+                            : "#0F0F11"
+                    }
+                  />
                 </button>
               </li>
               {itemsPagesMap.map((number) => (
                 <li
                   key={number}
                   className={classNames(
-                    "rounded-full border font-mont text-primary transition-all hover:border-primary",
+                    "rounded-full border text-primary transition-all hover:border-primary dark:rounded-none dark:border-dark-surface1 dark:bg-dark-surface1 dark:text-dark-white dark:hover:border-dark-elements dark:hover:bg-dark-elements",
                     {
-                      "border-primary bg-primary text-white hover:bg-white hover:text-primary":
+                      "border-primary bg-primary text-white hover:bg-white hover:text-primary dark:!border-dark-accent dark:!bg-dark-accent dark:text-dark-white dark:hover:!border-dark-hover dark:hover:!bg-dark-hover":
                         page === number,
                     },
                   )}
@@ -223,9 +244,15 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               ))}
               <li
                 className={classNames(
-                  "rounded-full border font-mont transition-all",
-                  { disabled: +page === itemPages },
-                  { "hover:border-primary": !(+page === itemPages) },
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
+                  {
+                    "disabled dark:!border-dark-elements dark:!bg-dark-black":
+                      +page === itemPages,
+                  },
+                  {
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
+                      !(+page === itemPages),
+                  },
                 )}
               >
                 <button
@@ -240,7 +267,15 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   }}
                 >
                   <ArrowRight
-                    fill={+page === itemPages ? "#B4BDC3" : "#0F0F11"}
+                    fill={
+                      +page === itemPages && theme === "dark"
+                        ? "#4A4D58"
+                        : +page === itemPages
+                          ? "#B4BDC3"
+                          : theme === "dark"
+                            ? "#F1F2F9"
+                            : "#0F0F11"
+                    }
                   />
                 </button>
               </li>

@@ -2,12 +2,15 @@ import React from "react";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { Logo } from "../../icons/Logo";
 import { ArrowUp } from "../../icons/Arrow-Up";
+import { useAppSelector } from "../../app/hooks";
 
 export const Footer: React.FC = () => {
+  const theme = useAppSelector((state) => state.theme);
+
   return (
     <footer
-      className="flex w-full items-center
-    justify-center border-t border-element-color"
+      className="flex w-full items-center justify-center border-t
+    border-element-color transition-all dark:border-dark-elements dark:bg-dark-black"
     >
       <div
         className="container w-full py-8 
@@ -15,7 +18,7 @@ export const Footer: React.FC = () => {
       >
         <div className="mb-8 sm:mb-0">
           <a href="/">
-            <Logo fill="#F447AF" />
+            <Logo fill={theme === "dark" ? "#F1F2F9" : "#F447AF"} />
           </a>
         </div>
 
@@ -24,24 +27,24 @@ export const Footer: React.FC = () => {
     sm:w-full sm:max-w-[35%] sm:flex-row sm:items-center sm:justify-between"
         >
           <a
-            className="text-xs font-extrabold
-          uppercase text-secondary transition-all hover:text-primary"
+            className="text-xs font-extrabold uppercase text-secondary
+          transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
             Github
           </a>
 
           <a
-            className="text-xs font-extrabold 
-          uppercase text-secondary transition-all hover:text-primary"
+            className="text-xs font-extrabold uppercase text-secondary 
+          transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
             Contacts
           </a>
 
           <a
-            className="text-xs font-extrabold 
-          uppercase text-secondary transition-all hover:text-primary"
+            className="text-xs font-extrabold uppercase text-secondary 
+          transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
             Rights
@@ -54,17 +57,17 @@ export const Footer: React.FC = () => {
         >
           <button
             type="button"
-            className="group flex items-center 
-            gap-4  self-center transition-all hover:text-primary"
+            className="group flex items-center gap-4 
+            self-center transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             onClick={scrollToTop}
           >
             Back to top
             <span
               className="box-border flex h-8 
-            w-8 items-center justify-center 
-            rounded-full border transition-all group-hover:border-primary"
+            w-8 items-center justify-center rounded-full
+            border transition-all group-hover:border-primary dark:border-dark-secondary dark:group-hover:border-dark-white"
             >
-              <ArrowUp fill="#0F0F11" />
+              <ArrowUp fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
             </span>
           </button>
         </div>

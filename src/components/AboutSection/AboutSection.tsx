@@ -24,15 +24,15 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
   return (
     <div className="grid grid-cols-4 gap-x-4 pb-14 font-semibold sm:grid-cols-12 sm:pb-10 xl:grid-cols-24">
       <div className="col-span-full mb-14 grid gap-y-8 xl:col-span-12">
-        <h2 className="border-b pb-4 text-[20px]/[26px] font-bold sm:text-[22px]/[31px] sm:font-extrabold">
+        <h2 className="border-b pb-4 text-[20px]/[26px] font-bold transition-all dark:border-dark-elements dark:text-dark-white sm:text-[22px]/[31px] sm:font-extrabold">
           About
         </h2>
         {description.map((section) => (
           <div key={section.title}>
-            <h3 className="mb-4 text-[16px]/[21px] font-bold sm:text-[20px]/[26px]">
+            <h3 className="mb-4 text-[16px]/[21px] font-bold transition-all dark:text-dark-white sm:text-[20px]/[26px]">
               {section.title}
             </h3>
-            <div className="text-[14px]/[21px] font-semibold text-secondary xl:font-medium">
+            <div className="text-[14px]/[21px] font-semibold text-secondary transition-all dark:text-dark-secondary">
               {section.text.map((paragraph) => (
                 <React.Fragment key={paragraph}>
                   <p>{paragraph}</p>
@@ -46,18 +46,18 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
         ))}
       </div>
       <div className="col-span-full flex flex-col gap-y-8 xl:col-start-[14] xl:col-end-[-1]">
-        <h2 className="border-b pb-4 text-[20px]/[26px] font-bold sm:text-[22px]/[31px] sm:font-extrabold">
+        <h2 className="border-b pb-4 text-[20px]/[26px] font-bold transition-all dark:border-dark-elements dark:text-dark-white sm:text-[22px]/[31px] sm:font-extrabold">
           Tech specs
         </h2>
         <div className="grid gap-y-2">
           {Object.entries(techSpecs).map(([key, value]) => (
             <div className="flex justify-between" key={key}>
-              <span className="text-[14px]/[21px] font-medium text-secondary">
+              <span className="text-[14px]/[21px] font-semibold text-secondary transition-all dark:text-dark-secondary">
                 {key === "ram"
                   ? `${key.toUpperCase()}`
                   : `${key.charAt(0).toUpperCase()}${key.slice(1)}`}
               </span>
-              <span className="max-w-48 text-right text-[14px]/[21px] text-primary sm:max-w-full">
+              <span className="max-w-48 text-right text-[14px]/[21px] text-primary transition-all dark:text-dark-white sm:max-w-full">
                 {Array.isArray(value) ? value.join(", ") : value}
               </span>
             </div>
