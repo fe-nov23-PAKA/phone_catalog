@@ -12,6 +12,7 @@ import { Item } from "../../types/Item";
 import { Breadcrumbs } from "../UI/Breadcrumbs";
 import { Loader } from "../UI/Loader/CardLoader/Loader";
 import { sortedItems } from "../../utils/sortedItems";
+import { debouncedSetSearchWith } from "../../utils/setSearchWith";
 import { useAppSelector } from "../../app/hooks";
 
 interface Props {
@@ -26,6 +27,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const sortField = searchParams.get("sort") || "newest";
   const page = searchParams.get("page") || "1";
   const itemsOnPage = searchParams.get("perPage") || "16";
+  const query = searchParams.get("query") || "";
+  const [queryFilter, setQueryFilter] = useState(query);
+
   const itemsOnPageList = ["16", "24", "32", "64"];
   const sortFields = ["cheapest", "newest", "alphabetically"];
   const theme = useAppSelector((state) => state.theme);
@@ -54,11 +58,22 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     event?.preventDefault();
     if (number !== "1") {
       params.set("page", number);
-      setSearchParams(params);
+      setSearchParams(params.toString());
     } else {
       params.delete("page");
-      setSearchParams(params);
+      setSearchParams(params.toString());
     }
+  };
+
+  const handleSetQueryParams = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const queryValue = event.target.value.trim().toLowerCase();
+
+    setQueryFilter(event.target.value);
+    debouncedSetSearchWith(
+      searchParams,
+      { query: queryValue || null },
+      setSearchParams,
+    );
   };
 
   const handleSortDropDownClick = () => {
@@ -100,14 +115,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     setSearchParams(params);
   };
 
-  const sortedProducts = sortedItems(items, sortField);
+  const sortedProducts = sortedItems(items, sortField, query);
 
-  const itemPages = Math.ceil(items.length / +itemsOnPage);
   const itemsPagesMap: string[] = [];
-
-  for (let i = 1; i <= itemPages; i += 1) {
-    itemsPagesMap.push(i.toString());
-  }
 
   const itemsOnPageEditor = setShowItems(
     itemsOnPage,
@@ -115,6 +125,12 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     itemsPagesMap,
     sortedProducts,
   );
+
+  const itemPages = Math.ceil(sortedProducts.length / +itemsOnPage);
+
+  for (let i = 1; i <= itemPages; i += 1) {
+    itemsPagesMap.push(i.toString());
+  }
 
   return (
     <>
@@ -138,7 +154,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div
               className="mb-6 grid grid-cols-4
         justify-center justify-items-center gap-x-4
-        gap-y-10 sm:grid-cols-12 lg:grid-cols-24"
+        gap-y-10 sm:grid-cols-12 xl:grid-cols-24"
             >
               <DropDownMenu
                 classname="sm:col-span-4"
@@ -159,6 +175,22 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 handlerToOpen={handleItemsDropDownClick}
                 handlerOnClick={handleItemsDropDownElementClick}
               />
+
+              <div className="col-span-4 w-full sm:col-start-9 sm:col-end-[-1] xl:col-start-[17]">
+                <label className="block">
+                  <span className="mb-1 block text-xs font-medium text-secondary after:ml-0.5">
+                    Looking for something?
+                  </span>
+                  <input
+                    type="search"
+                    name="search"
+                    className="block min-h-10 w-full rounded-md border border-slate-300 bg-white px-3 py-2 placeholder-slate-400 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+                    placeholder="Type here"
+                    onChange={handleSetQueryParams}
+                    value={queryFilter}
+                  />
+                </label>
+              </div>
             </div>
 
             <ul

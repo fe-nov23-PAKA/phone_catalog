@@ -10,12 +10,12 @@ export function setShowItems(
   const itemsEnd = +itemsOnPage * +page;
 
   if (page === itemsPagesMap[itemsPagesMap.length - 1]) {
-    const shownItems = startVisiblePhones.slice(itemsStart);
+    const queriedItems = startVisiblePhones.slice(itemsStart);
 
-    return shownItems;
+    return queriedItems;
   }
 
-  const shownItems = startVisiblePhones.slice(itemsStart, itemsEnd);
+  const queriedItems = startVisiblePhones.slice(itemsStart, itemsEnd);
 
-  return shownItems;
+  return queriedItems;
 }
