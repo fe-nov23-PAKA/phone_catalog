@@ -4,8 +4,40 @@
 
 html {
   font-family: "Mont";
-
   transition-duration: 300ms;
+}
+
+.custom-scrollbar-dark::-webkit-scrollbar {
+  width: 12px;
+  height: 14px;
+}
+
+.custom-scrollbar-dark::-webkit-scrollbar-track {
+  background: #3B3E4A;
+  border: solid 1px black;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 20px;
+}
+
+.custom-scrollbar-dark::-webkit-scrollbar-thumb {
+  background-color: #905BFF;
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+  height: 14px;
+}
+
+body::-webkit-scrollbar-track {
+  background: white;
+  border: solid 1px #E2E6E9
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #B4BDC3;
+  border-radius: 20px;
 }
 
 @font-face {
@@ -35,3 +67,4 @@ html {
   font-weight: 500;
   font-style: normal;
 }
+
