@@ -1,3 +1,4 @@
+import imgEmptyFavourites from "../assets/img/empty-favourites-3.png";
 import { useAppSelector } from "../app/hooks";
 import { ProductCard } from "../components/ProductCard";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
@@ -14,9 +15,11 @@ export const Favourites = () => {
         <span className="dark:text-dark-white mb-[8px] text-[32px]/[41px] font-extrabold tracking-[-0.01em] text-primary transition-all sm:text-[48px]/[56px]">
           Favourites
         </span>
-        <span className="dark:text-dark-secondary text-sm font-semibold text-secondary">{`${countFavouritesItems === 1 ? `${countFavouritesItems} item` : `${countFavouritesItems} items`}`}</span>
+        {!!countFavouritesItems && (
+          <span className="text-sm font-semibold text-secondary dark:text-dark-secondary">{`${countFavouritesItems === 1 ? `${countFavouritesItems} item` : `${countFavouritesItems} items`}`}</span>
+        )}
       </div>
-      {!!countFavouritesItems && (
+      {countFavouritesItems ? (
         <ul
           className="col-span-full grid 
           grid-cols-4 justify-items-center 
@@ -26,6 +29,14 @@ export const Favourites = () => {
             <ProductCard key={item.id} item={item} />
           ))}
         </ul>
+      ) : (
+        <div className="mt-[15vh]">
+          <img
+            className="ml-auto mr-auto"
+            src={imgEmptyFavourites}
+            alt="Empty cart"
+          />
+        </div>
       )}
     </div>
   );

@@ -139,7 +139,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="dark:border-dark-elements block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none"
+            className="block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none dark:border-dark-elements"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
