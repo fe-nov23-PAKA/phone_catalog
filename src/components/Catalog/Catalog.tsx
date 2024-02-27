@@ -129,7 +129,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
               {title}
             </h1>
-            <div className="mb-8  font-semibold text-secondary transition-all dark:text-dark-secondary">
+            <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
               {items.length} models
             </div>
           </div>
