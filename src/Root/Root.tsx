@@ -5,12 +5,25 @@ import { PageNotFound } from "../Pages/NotFoundPage";
 import { Footer } from "../components/Footer/Footer";
 import { Header } from "../components/Header/Header";
 import { ItemTitle } from "../types/ItemTitle";
-import { useAppDispatch } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import * as itemsSlice from "../features/ItemsSlice";
 
 export const Root = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useAppDispatch();
+
+  const theme = useAppSelector((state) => state.theme);
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (theme === "dark") {
+      document.body.classList.add("custom-scrollbar-dark");
+      html.style.backgroundColor = "#0F0F11";
+    } else {
+      document.body.classList.remove("custom-scrollbar-dark");
+    }
+  }, [theme]);
 
   useEffect(() => {
     dispatch(itemsSlice.init("products"));
