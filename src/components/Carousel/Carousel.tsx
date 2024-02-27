@@ -7,9 +7,11 @@ import banner from "../../assets/img/Banner.png";
 import bannerPhones from "../../assets/img/banner-phones.png";
 import bannerTablets from "../../assets/img/banner-tablets.png";
 import bannerAccessories from "../../assets/img/phone-accessories-1.jpg";
+import { useAppSelector } from "../../app/hooks";
 
 export const Carousel: React.FC = () => {
   const imgIds = [banner, bannerPhones, bannerTablets, bannerAccessories];
+  const theme = useAppSelector((state) => state.theme);
 
   function SampleNextArrow(props: CustomArrowProps) {
     const { onClick } = props;
@@ -17,11 +19,7 @@ export const Carousel: React.FC = () => {
     return (
       <button
         type="button"
-        className={
-          localStorage.getItem("theme") === "dark"
-            ? "dark_slick-next"
-            : "slick-next"
-        }
+        className={theme === "dark" ? "dark_slick-next" : "slick-next"}
         onClick={onClick}
       />
     );
@@ -33,11 +31,7 @@ export const Carousel: React.FC = () => {
     return (
       <button
         type="button"
-        className={
-          localStorage.getItem("theme") === "dark"
-            ? "dark_slick-prev"
-            : "slick-prev"
-        }
+        className={theme === "dark" ? "dark_slick-prev" : "slick-prev"}
         onClick={onClick}
       />
     );
@@ -54,9 +48,9 @@ export const Carousel: React.FC = () => {
     customPaging: () => (
       <div
         className={
-          localStorage.getItem("theme") === "dark"
-            ? "dark_slick-dot"
-            : "slick-dot"
+          theme === "dark"
+            ? "dark_slick-dot transition-all"
+            : "slick-dot transition-all"
         }
         style={{
           width: "14px",

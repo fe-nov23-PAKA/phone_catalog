@@ -52,11 +52,11 @@ export const ProductCard: React.FC<Props> = ({
       ref={carouselItemRef}
       className={classNames(
         "col-span-full box-border h-full w-full rounded-lg border",
-        "dark:bg-dark-surface1 dark:border-dark-surface1 border-element-color transition-all sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "border-element-color transition-all dark:border-dark-surface1 dark:bg-dark-surface1 sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >
-      <div className="p-[32px] transition-all hover:shadow-sh2">
+      <div className="p-[32px] transition-all hover:shadow-sh2 dark:hover:shadow-zinc-700">
         <Link to={`../${item.category}/${item.itemId}`}>
           <div className=" relative mb-2 flex h-[196px] items-center justify-center">
             {isLoading ? (
@@ -70,53 +70,55 @@ export const ProductCard: React.FC<Props> = ({
             )}
           </div>
           <h3
-            className="dark:text-dark-white flex min-h-[58px] 
-          flex-col justify-end text-[14px]/[21px] font-semibold"
+            className="flex min-h-[58px] flex-col justify-end 
+          text-[14px]/[21px] font-semibold transition-all dark:text-dark-white"
           >
             {name}
           </h3>
         </Link>
         <div className="justify-flex-start mb-2 flex items-center">
-          <span className="dark:text-dark-white text-main font-extrabold leading-8">
+          <span className="text-main font-extrabold leading-8 transition-all dark:text-dark-white">
             ${price}
           </span>
           <span
             className="
-          dark:text-dark-secondary ml-2 text-main
-          font-semibold leading-7 text-secondary line-through"
+          ml-2 text-main font-semibold leading-7
+          text-secondary line-through transition-all dark:text-dark-secondary"
           >
             ${fullPrice}
           </span>
         </div>
-        <div className="dark:border-elements mb-2 border" />
+        <div className="mb-2 border dark:border-dark-elements" />
         <div className="mb-2 flex flex-col gap-y-2 py-2">
           <div className="flex items-center justify-between">
-            <div className="dark:text-dark-secondary text-xs font-bold text-secondary">
+            <div className="text-xs font-bold text-secondary transition-all dark:text-dark-secondary">
               Screen
             </div>
-            <div className="dark:text-dark-white text-xs font-bold">
+            <div className="text-xs font-bold transition-all dark:text-dark-white">
               {screen}
             </div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            dark:text-dark-secondary text-xs font-bold text-secondary"
+            text-xs font-bold text-secondary transition-all dark:text-dark-secondary"
             >
               Capacity
             </div>
-            <div className="dark:text-dark-white text-xs font-bold">
+            <div className="text-xs font-bold transition-all dark:text-dark-white">
               {capacity}
             </div>
           </div>
           <div className="flex items-center justify-between">
             <div
               className="
-            dark:text-dark-secondary text-xs font-bold text-secondary"
+            text-xs font-bold text-secondary transition-all dark:text-dark-secondary"
             >
               RAM
             </div>
-            <div className="dark:text-dark-white text-xs font-bold">{ram}</div>
+            <div className="text-xs font-bold transition-all dark:text-dark-white">
+              {ram}
+            </div>
           </div>
         </div>
 

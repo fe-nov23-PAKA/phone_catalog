@@ -1,22 +1,22 @@
 /* eslint-disable react/no-unknown-property */
-import { useState } from "react";
 import "./DarkTahemeTogglerStyles.scss";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { actions as themeActions } from "../../../features/ThemeSlice";
 
 export const DarkThemeToggler = () => {
-  const [isDark, setIsDark] = useState(
-    localStorage.getItem("theme") === "dark",
-  );
+  const isDark = useAppSelector((state) => state.theme) === "dark";
+  const dispatch = useAppDispatch();
 
   const toggleDarkMode = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
       document.documentElement.classList.add("dark");
-      setIsDark(true);
+      dispatch(themeActions.toggleTheme());
       localStorage.theme = "dark";
     } else {
+      dispatch(themeActions.toggleTheme());
       document.documentElement.classList.remove("dark");
-      setIsDark(false);
       localStorage.theme = "light";
     }
   };

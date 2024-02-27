@@ -26,6 +26,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   const favouriteItems = useAppSelector((state) => state.favourites);
   const cartItems = useAppSelector((state) => state.cart);
+  const theme = useAppSelector((state) => state.theme);
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,17 +54,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex items-center">
           <NavLink to="/" className="py-4">
             {isMenuOpen ? (
-              <Logo
-                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-              />
+              <Logo fill={theme === "dark" ? "#F1F2F9" : ""} />
             ) : (
-              <Logo
-                fill={
-                  localStorage.getItem("theme") === "dark"
-                    ? "#F1F2F9"
-                    : "#F447AF"
-                }
-              />
+              <Logo fill={theme === "dark" ? "#F1F2F9" : "#F447AF"} />
             )}
           </NavLink>
           <nav
@@ -74,7 +67,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               to="/"
               classname={classNames(
                 "dark:text-dark-secondary hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary dark:sm:hover:text-dark-white sm:hover:text-primary transition-all relative",
-                { darkhover: localStorage.getItem("theme") === "dark" },
+                { darkhover: theme === "dark" },
               )}
             >
               Home
@@ -85,7 +78,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
                 to={`/${nav_item.toLowerCase()}`}
                 classname={classNames(
                   "dark:text-dark-secondary dark:sm:hover:text-dark-white hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative",
-                  { darkhover: localStorage.getItem("theme") === "dark" },
+                  { darkhover: theme === "dark" },
                 )}
               >
                 {nav_item}
@@ -104,16 +97,14 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               classNames(
                 "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-6 dark:sm:border-dark-elements",
                 {
-                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                     isActive,
                 },
               )
             }
           >
             <div className="relative">
-              <Favourites
-                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-              />
+              <Favourites fill={theme === "dark" ? "#F1F2F9" : ""} />
               {favouriteItems.length > 0 && (
                 <ChosenItemsIcon
                   count={favouriteItems.length}
@@ -128,16 +119,14 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               classNames(
                 "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-6 dark:sm:border-dark-elements",
                 {
-                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                     isActive,
                 },
               )
             }
           >
             <div className="relative">
-              <ShoppingBag
-                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-              />
+              <ShoppingBag fill={theme === "dark" ? "#F1F2F9" : ""} />
               {cartItems.length > 0 && (
                 <ChosenItemsIcon
                   count={cartItems.length}
@@ -150,17 +139,13 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none dark:border-dark-elements"
+            className="block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none dark:border-dark-elements"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <Close
-                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-              />
+              <Close fill={theme === "dark" ? "#F1F2F9" : ""} />
             ) : (
-              <Menu
-                fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-              />
+              <Menu fill={theme === "dark" ? "#F1F2F9" : ""} />
             )}
           </button>
         </div>

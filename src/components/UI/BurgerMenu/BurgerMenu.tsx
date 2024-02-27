@@ -14,11 +14,12 @@ interface Props {
 export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
   const favouriteItems = useAppSelector((state) => state.favourites);
   const cartItems = useAppSelector((state) => state.cart);
+  const theme = useAppSelector((state) => state.theme);
 
   return (
     <div
-      className="dark:bg-dark-black dark:border-dark-elements left-0 flex h-full w-full 
-    flex-col justify-between overflow-hidden border-t bg-white"
+      className="left-0 flex h-full w-full flex-col justify-between 
+    overflow-hidden border-t bg-white transition-all dark:border-dark-elements dark:bg-dark-black"
     >
       <ul
         className="mt-6 flex flex-grow flex-col 
@@ -51,9 +52,9 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
           to="favourites"
           className={({ isActive }) =>
             classNames(
-              " dark:border-dark-elements relative flex w-1/2 items-center justify-center border-r border-t py-6",
+              "relative flex w-1/2 items-center justify-center border-r border-t py-6 transition-all dark:border-dark-elements",
               {
-                "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                "after:content[] transition-all after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                   isActive,
               },
             )
@@ -66,9 +67,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
                 count={favouriteItems.length}
               />
             )}
-            <Favourites
-              fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-            />
+            <Favourites fill={theme === "dark" ? "#F1F2F9" : ""} />
           </div>
         </NavLink>
         <NavLink
@@ -76,9 +75,9 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
           to="cart"
           className={({ isActive }) =>
             classNames(
-              " dark:border-dark-elements relative flex w-1/2 items-center justify-center border-r border-t py-6",
+              "relative flex w-1/2 items-center justify-center border-r border-t py-6 transition-all dark:border-dark-elements",
               {
-                "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                "after:content[] transition-all after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                   isActive,
               },
             )
@@ -91,9 +90,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
                 count={cartItems.length}
               />
             )}
-            <ShoppingBag
-              fill={localStorage.getItem("theme") === "dark" ? "#F1F2F9" : ""}
-            />
+            <ShoppingBag fill={theme === "dark" ? "#F1F2F9" : ""} />
           </div>
         </NavLink>
       </div>
