@@ -21,19 +21,19 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSortDropDownShown, setIsSortDropDownShown] = useState(true);
   const [isItemsDropDownShown, setIsItemsDropDownShown] = useState(true);
-  const sortField = searchParams.get("sort") || "Cheapest";
+  const sortField = searchParams.get("sort") || "newest";
   const page = searchParams.get("page") || "1";
   const itemsOnPage = searchParams.get("perPage") || "16";
   const itemsOnPageList = ["16", "24", "32", "64"];
-  const sortFields = ["Cheapest", "Newest", "Alphabetically"];
+  const sortFields = ["cheapest", "newest", "alphabetically"];
 
   const params = new URLSearchParams(searchParams);
 
   useEffect(() => {
-    if (sortField === "Cheapest" && itemsOnPage === "16") {
+    if (sortField === "newest" && itemsOnPage === "16") {
       const defaultSearchParams = new URLSearchParams({
         perPage: "16",
-        sort: "Cheapest",
+        sort: "newest",
       });
 
       setSearchParams(defaultSearchParams);
