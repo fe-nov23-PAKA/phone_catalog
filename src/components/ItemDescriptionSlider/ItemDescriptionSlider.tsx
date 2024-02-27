@@ -109,7 +109,7 @@ export const ItemDescription: React.FC<Props> = ({
 
   return (
     <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
-      <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] transition-all dark:text-dark-white sm:mb-10">
+      <h2 className="dark:text-dark-white col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] transition-all sm:mb-10">
         {currentItem.name}
       </h2>
       <div className="relative col-span-full min-h-[400px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
@@ -140,13 +140,13 @@ export const ItemDescription: React.FC<Props> = ({
         )}
       </div>
       <div className="col-span-full flex flex-col gap-[37.5px] sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
-        <div className="justify-between border-b-[1px] pb-[24px] transition-all dark:border-dark-elements">
+        <div className="dark:border-dark-elements justify-between border-b-[1px] pb-[24px] transition-all">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
-              <span className="text-[12px] font-bold leading-[15px] text-secondary transition-all dark:text-dark-secondary">
+              <span className="dark:text-dark-secondary text-[12px] font-bold leading-[15px] text-secondary transition-all">
                 Available colors
               </span>
-              <span className="text-[12px] font-bold leading-[15px] text-icons-color transition-all dark:text-dark-icons">
+              <span className="dark:text-dark-icons text-[12px] font-bold leading-[15px] text-icons-color transition-all">
                 {`ID: ${shortInfoItem.id}`}
               </span>
             </div>
@@ -169,10 +169,10 @@ export const ItemDescription: React.FC<Props> = ({
                     onClick={(event) => handleColorChange(itemColor, event)}
                     type="button"
                     className={classNames(
-                      `h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 ring-icons-color transition-all hover:ring-1 hover:ring-primary
-                      dark:border-dark-black dark:ring-dark-elements dark:hover:ring-dark-white bg-${itemColor}`,
+                      `dark:border-dark-black dark:ring-dark-elements dark:hover:ring-dark-white h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 ring-icons-color
+                      transition-all hover:ring-1 hover:ring-primary bg-${itemColor}`,
                       {
-                        "ring-primary dark:ring-dark-white":
+                        "dark:ring-dark-white ring-primary":
                           currentColor === itemColor,
                       },
                     )}
@@ -183,7 +183,7 @@ export const ItemDescription: React.FC<Props> = ({
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2 border-b-[1px] pb-[24px] text-[12px] font-bold leading-[15px] text-secondary transition-all dark:border-dark-elements">
+        <div className="dark:border-dark-elements flex flex-col gap-2 border-b-[1px] pb-[24px] text-[12px] font-bold leading-[15px] text-secondary transition-all">
           <span>Select capacity</span>
           <div className="flex gap-2">
             {capacityAvailable.map((capacityMap) => (
@@ -191,9 +191,9 @@ export const ItemDescription: React.FC<Props> = ({
                 key={capacityMap}
                 type="button"
                 className={classNames(
-                  "h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] transition-all hover:border-primary dark:border-dark-icons dark:hover:border-dark-white",
+                  "dark:border-dark-icons dark:hover:border-dark-white h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] transition-all hover:border-primary",
                   {
-                    "bg-primary text-white dark:border-dark-white dark:bg-dark-white dark:text-dark-black":
+                    "dark:border-dark-white dark:bg-dark-white dark:text-dark-black bg-primary text-white":
                       capacityMap === currentCapacity,
                   },
                 )}
@@ -206,14 +206,14 @@ export const ItemDescription: React.FC<Props> = ({
         </div>
         <div className="flex flex-col gap-4">
           <div className="justify-flex-start mb-2 flex items-center">
-            <span className="text-[32px]/[41px] font-extrabold leading-8 transition-all dark:text-dark-white">
+            <span className="dark:text-dark-white text-[32px]/[41px] font-extrabold leading-8 transition-all">
               ${priceDiscount}
             </span>
             <span
               className="
-          ml-2 text-[22px]/[28.12px] font-semibold
-          text-secondary line-through
-          dark:text-dark-secondary"
+          dark:text-dark-secondary ml-2 text-[22px]/[28.12px]
+          font-semibold text-secondary
+          line-through"
             >
               ${priceRegular}
             </span>
@@ -226,10 +226,10 @@ export const ItemDescription: React.FC<Props> = ({
 
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <div className="text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary">
+            <div className="text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all">
               Screen
             </div>
-            <div className="text-[12px] font-bold dark:text-dark-white">
+            <div className="dark:text-dark-white text-[12px] font-bold">
               {screen}
             </div>
           </div>
@@ -237,11 +237,11 @@ export const ItemDescription: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary"
+            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
             >
               Resolution
             </div>
-            <div className="text-[12px] font-bold dark:text-dark-white">
+            <div className="dark:text-dark-white text-[12px] font-bold">
               {resolution}
             </div>
           </div>
@@ -249,11 +249,11 @@ export const ItemDescription: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary"
+            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
             >
               Processor
             </div>
-            <div className="text-[12px] font-bold transition-all dark:text-dark-white">
+            <div className="dark:text-dark-white text-[12px] font-bold transition-all">
               {processor}
             </div>
           </div>
@@ -261,11 +261,11 @@ export const ItemDescription: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary"
+            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
             >
               RAM
             </div>
-            <div className="text-xs font-bold transition-all dark:text-dark-white">
+            <div className="dark:text-dark-white text-xs font-bold transition-all">
               {ram}
             </div>
           </div>

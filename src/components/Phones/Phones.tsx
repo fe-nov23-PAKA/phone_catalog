@@ -22,7 +22,7 @@ export const Phones = () => {
   return (
     <>
       <div className="container pb-16">
-        <h2 className="pb-6 text-[32px] font-extrabold leading-[41px] transition-all dark:text-dark-white">
+        <h2 className="dark:text-dark-white pb-6 text-[32px] font-extrabold leading-[41px] transition-all">
           Shop by category
         </h2>
         <div className="grid grid-cols-1 justify-between gap-8 sm:grid-cols-3 sm:gap-4">
@@ -34,10 +34,10 @@ export const Phones = () => {
                 className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
-                <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
+                <span className="dark:text-dark-white text-xl font-bold leading-[26px] transition-all">
                   Mobile phones
                 </span>
-                <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${phonesQuantity} models`}</span>
+                <span className="dark:text-dark-secondary text-sm font-semibold text-secondary transition-all">{`${phonesQuantity} models`}</span>
               </div>
             </div>
           </Link>
@@ -49,10 +49,10 @@ export const Phones = () => {
                 className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
-                <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
+                <span className="dark:text-dark-white text-xl font-bold leading-[26px] transition-all">
                   Tablets
                 </span>
-                <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${tabletsQuantity} models`}</span>
+                <span className="dark:text-dark-secondary text-sm font-semibold text-secondary transition-all">{`${tabletsQuantity} models`}</span>
               </div>
             </div>
           </Link>
@@ -64,10 +64,10 @@ export const Phones = () => {
                 className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
-                <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
+                <span className="dark:text-dark-white text-xl font-bold leading-[26px] transition-all">
                   Accessories
                 </span>
-                <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${accessoriesQuantity} models`}</span>
+                <span className="dark:text-dark-secondary text-sm font-semibold text-secondary transition-all">{`${accessoriesQuantity} models`}</span>
               </div>
             </div>
           </Link>

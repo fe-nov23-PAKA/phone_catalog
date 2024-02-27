@@ -19,9 +19,9 @@ export const AddToCartButton: React.FC<Props> = ({ item }) => {
       className={classNames(
         "all w-4/5 rounded-lg border",
         " py-2 font-semibold ",
-        "border-accent bg-white text-accent transition-all dark:border-dark-surface2 dark:bg-dark-surface2 dark:text-dark-white ",
+        "dark:border-dark-surface2 dark:bg-dark-surface2 dark:text-dark-white border-accent bg-white text-accent transition-all ",
         {
-          "!bg-accent !text-white hover:shadow-sh1 dark:!bg-dark-accent dark:!text-dark-white dark:hover:!bg-dark-hover dark:hover:!shadow-sh1 dark:hover:!shadow-zinc-700":
+          "dark:!bg-dark-accent dark:!text-dark-white dark:hover:!bg-dark-hover !bg-accent !text-white hover:shadow-sh1 dark:hover:!shadow-sh1 dark:hover:!shadow-zinc-700":
             !cartItemsIds.includes(item.id),
         },
       )}

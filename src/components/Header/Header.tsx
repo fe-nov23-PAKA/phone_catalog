@@ -45,9 +45,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[2] flex flex-col bg-white transition-all dark:bg-dark-black",
+        "dark:bg-dark-black sticky top-0 z-[2] flex flex-col bg-white transition-all",
         { "h-screen": isMenuOpen },
-        { "border-b dark:border-dark-elements": !isMenuOpen },
+        { "dark:border-dark-elements border-b": !isMenuOpen },
       )}
     >
       <div className="flex pl-4 sm:pr-0">
@@ -95,9 +95,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             to="favourites"
             className={({ isActive }) =>
               classNames(
-                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-6 dark:sm:border-dark-elements",
+                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
                 {
-                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
+                  "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
                 },
               )
@@ -117,9 +117,9 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             to="cart"
             className={({ isActive }) =>
               classNames(
-                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-6 dark:sm:border-dark-elements",
+                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
                 {
-                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
+                  "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
                 },
               )
@@ -139,7 +139,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none dark:border-dark-elements"
+            className="dark:border-dark-elements block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
