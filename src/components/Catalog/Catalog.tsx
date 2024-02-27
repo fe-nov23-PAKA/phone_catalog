@@ -184,7 +184,12 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   <input
                     type="search"
                     name="search"
-                    className="block min-h-10 w-full rounded-md border border-slate-300 bg-white px-3 py-2 placeholder-slate-400 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+                    className="dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2 
+                    dark:hover:ring-dark-icons dark:focus:ring-dark-accent dark:border-dark-black 
+                    block min-h-10 w-full rounded-md dark:rounded-none border
+                    border-slate-300 bg-white px-3 py-2 placeholder-slate-400 shadow-sm
+                    transition-all focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary
+                    sm:text-sm"
                     placeholder="Type here"
                     onChange={handleSetQueryParams}
                     value={queryFilter}
