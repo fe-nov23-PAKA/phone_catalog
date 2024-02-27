@@ -8,6 +8,9 @@ import { ItemDescriptionType } from "../types/ItemDescriptionType";
 import { Item } from "../types/Item";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
 import { Loader } from "../components/UI/Loader/CardLoader/Loader";
+import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
+import { SortType } from "../types/SortType";
+import { BackButton } from "../components/UI/BackButton";
 
 export const ItemCard = () => {
   const { items } = useAppSelector((state) => state.items);
@@ -27,12 +30,14 @@ export const ItemCard = () => {
       {productsList.length > 0 ? (
         <>
           <Breadcrumbs />
+          <BackButton />
           <ItemDescription
             item={fullChoosedCard()}
             allItems={productsList}
             shortInfoItem={choosedItem}
           />
           <AboutSection item={fullChoosedCard()} />
+          <ItemsCarousel titleName={SortType.LIKE} startVisibleItems={items} />
         </>
       ) : (
         <Loader />

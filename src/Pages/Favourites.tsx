@@ -1,5 +1,6 @@
 import { useAppSelector } from "../app/hooks";
 import { ProductCard } from "../components/ProductCard";
+import { BackButton } from "../components/UI/BackButton";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
 
 export const Favourites = () => {
@@ -9,12 +10,13 @@ export const Favourites = () => {
 
   return (
     <div className="container">
-      <div className="mb-[32px] flex flex-col gap-2 pt-[24px] sm:mb-[40px]">
+      <div className="mb-[32px] flex flex-col pt-[24px] sm:mb-[40px]">
         <Breadcrumbs />
-        <span className="dark:text-dark-white mb-[8px] text-[32px]/[41px] font-extrabold tracking-[-0.01em] text-primary transition-all sm:text-[48px]/[56px]">
+        <BackButton />
+        <span className="mb-[8px] text-[32px]/[41px] font-extrabold tracking-[-0.01em] text-primary transition-all dark:text-dark-white sm:text-[48px]/[56px]">
           Favourites
         </span>
-        <span className="dark:text-dark-secondary text-sm font-semibold text-secondary">{`${countFavouritesItems === 1 ? `${countFavouritesItems} item` : `${countFavouritesItems} items`}`}</span>
+        <span className="text-sm font-semibold text-secondary dark:text-dark-secondary">{`${countFavouritesItems === 1 ? `${countFavouritesItems} item` : `${countFavouritesItems} items`}`}</span>
       </div>
       {!!countFavouritesItems && (
         <ul
