@@ -45,7 +45,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "dark:bg-dark-black sticky top-0 z-[2] flex flex-col bg-white transition-all",
+        "dark:bg-dark-black sticky top-0 z-[20] flex flex-col bg-white transition-all",
         { "h-screen": isMenuOpen },
         { "dark:border-dark-elements border-b": !isMenuOpen },
       )}
