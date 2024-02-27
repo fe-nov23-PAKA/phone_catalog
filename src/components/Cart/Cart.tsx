@@ -1,10 +1,11 @@
 import { useState } from "react";
+import classNames from "classnames";
+import confetti from "canvas-confetti";
 import { CartItem } from "../CartItem";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { useAppSelector } from "../../app/hooks";
 import { InitialState } from "../../types/InitialState";
 import { CheckoutModal } from "../CheckoutModal";
-import classNames from "classnames";
 
 export const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,7 +50,13 @@ export const Cart = () => {
                 )}
                 type="button"
                 disabled={!cartItems.length}
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  setIsModalOpen(true);
+                  confetti({
+                    particleCount: 100,
+                    spread: 70,
+                  });
+                }}
               >
                 Checkout
               </button>
