@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[20] h-[60px] bg-white transition-all dark:bg-dark-black",
+        "sticky top-0 z-[20] h-full bg-white transition-all dark:bg-dark-black",
         { "border-b": !isMenuOpen },
       )}
     >
@@ -134,7 +134,7 @@ export const Header: React.FC = () => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none dark:border-dark-elements"
+            className="block border-l px-[10px] py-[10px] text-secondary transition-all focus:outline-none dark:border-dark-elements"
             onClick={toggleMenu}
           >
             <Hamburger
