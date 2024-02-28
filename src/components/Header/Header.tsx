@@ -1,9 +1,8 @@
 import classNames from "classnames";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Squash as Hamburger } from "hamburger-react";
 import { Logo } from "../../icons/Logo";
-import { Close } from "../../icons/Close";
-import { Menu } from "../../icons/Menu";
 import { ShoppingBag } from "../../icons/Shopping-Bag";
 import { BurgerMenu } from "../UI/BurgerMenu";
 import { Favourites } from "../../icons/Favourites";
@@ -21,7 +20,9 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setTimeout(() => {
+      setIsMenuOpen(!isMenuOpen);
+    }, 300);
   };
 
   const favouriteItems = useAppSelector((state) => state.favourites);
@@ -128,14 +129,19 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[17px] py-[21px] text-secondary focus:outline-none"
+            className="block border-l px-[5px] focus:outline-none"
             onClick={toggleMenu}
           >
-            {isMenuOpen ? <Close /> : <Menu />}
+            <Hamburger
+              toggled={isMenuOpen}
+              size={14}
+              toggle={() => setIsMenuOpen}
+              color="#0F0F11"
+            />
           </button>
         </div>
       </div>
-      {isMenuOpen && <BurgerMenu setIsMenuOpen={setIsMenuOpen} />}
+      <BurgerMenu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
     </header>
   );
 };

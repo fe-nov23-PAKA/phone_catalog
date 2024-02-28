@@ -8,17 +8,21 @@ import { NAV_LIST } from "../../../variables";
 import { NavLinkMenu } from "../NavLinkMenu";
 
 interface Props {
+  isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
 }
 
-export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
+export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
   const favouriteItems = useAppSelector((state) => state.favourites);
   const cartItems = useAppSelector((state) => state.cart);
 
   return (
     <div
-      className="left-0 flex h-full w-full flex-col justify-between 
-    overflow-hidden border-t bg-white"
+      className={classNames(
+        "flex h-0 w-full flex-col transition-all duration-[500ms] ease-in-out",
+        "justify-between overflow-hidden border-t bg-white",
+        { "!h-full": isMenuOpen },
+      )}
     >
       <ul
         className="mt-6 flex flex-grow flex-col 
