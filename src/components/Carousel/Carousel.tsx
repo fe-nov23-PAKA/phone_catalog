@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Slider, { CustomArrowProps } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.scss";
-import AOS from "aos";
 import banner from "../../assets/img/Banner.png";
 import bannerPhones from "../../assets/img/banner-phones.png";
 import bannerTablets from "../../assets/img/banner-tablets.png";
@@ -66,14 +65,10 @@ export const Carousel: React.FC = () => {
     nextArrow: <SampleNextArrow />,
   };
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
     <Slider {...settings} className="carousel">
       {imgIds.map((item) => (
-        <div key={item} className="carousel__banner" data-aos="zoom-out-up">
+        <div key={item} className="carousel__banner">
           <img src={item} alt="HeroBanner" className="carousel__main-img" />
         </div>
       ))}

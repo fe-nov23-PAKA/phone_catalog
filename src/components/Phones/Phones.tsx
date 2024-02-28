@@ -36,7 +36,7 @@ export const Phones = () => {
           <Link to="phones" className="flex items-center justify-center">
             <div className="grid gap-6">
               <img
-                data-aos="fade-right"
+                data-aos="fade-up"
                 src={phone_1}
                 alt="phone_1"
                 className="rounded-lg transition-all hover:scale-[1.1]"
@@ -52,7 +52,7 @@ export const Phones = () => {
           <Link to="tablets" className="flex items-center justify-center">
             <div className="grid gap-6">
               <img
-                data-aos="fade-up"
+                data-aos="fade-down"
                 src={phone_2}
                 alt="phone_2"
                 className="rounded-lg transition-all hover:scale-[1.1]"
@@ -68,7 +68,7 @@ export const Phones = () => {
           <Link to="accessories" className="flex items-center justify-center">
             <div className="grid gap-6">
               <img
-                data-aos="fade-left"
+                data-aos="fade-up"
                 src={phone_3}
                 alt="phone_3"
                 className="rounded-lg transition-all hover:scale-[1.1]"
