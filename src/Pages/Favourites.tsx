@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import imgEmptyFavourites from "../assets/img/empty-favourites-2.png";
 import { useAppSelector } from "../app/hooks";
 import { ProductCard } from "../components/ProductCard";
@@ -8,6 +9,7 @@ export const Favourites = () => {
   const favouriteItems = useAppSelector((state) => state.favourites);
 
   const countFavouritesItems = favouriteItems.length;
+  const { t } = useTranslation();
 
   return (
     <div className="container">
@@ -15,7 +17,7 @@ export const Favourites = () => {
         <Breadcrumbs />
         <BackButton />
         <span className="dark:text-dark-white mb-[8px] text-[32px]/[41px] font-extrabold tracking-[-0.01em] text-primary transition-all sm:text-[48px]/[56px]">
-          Favourites
+          {t("Favourites")}
         </span>
         {!!countFavouritesItems && (
           <span className="dark:text-dark-secondary text-sm font-semibold text-secondary">

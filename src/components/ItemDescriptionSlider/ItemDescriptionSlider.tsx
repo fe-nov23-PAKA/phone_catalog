@@ -3,6 +3,7 @@ import { Pagination } from "swiper/modules";
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ItemDescriptionType } from "../../types/ItemDescriptionType";
 import { AddToCartButton } from "../UI/AddToCartButton";
 import { Item } from "../../types/Item";
@@ -25,6 +26,7 @@ export const ItemDescription: React.FC<Props> = ({
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
   const [currentItem, setCurrentItem] = useState(item);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   const swiperRef = useRef<SwiperRef>(null);
 
@@ -154,7 +156,7 @@ export const ItemDescription: React.FC<Props> = ({
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
               <span className="dark:text-dark-secondary text-[12px] font-bold leading-[15px] text-secondary transition-all">
-                Available colors
+                {t("Available-colors")}
               </span>
               <span className="dark:text-dark-icons text-[12px] font-bold leading-[15px] text-icons-color transition-all">
                 {`ID: ${shortInfoItem.id}`}
@@ -194,7 +196,7 @@ export const ItemDescription: React.FC<Props> = ({
           </div>
         </div>
         <div className="dark:border-dark-elements flex flex-col gap-2 border-b-[1px] pb-[24px] text-[12px] font-bold leading-[15px] text-secondary transition-all">
-          <span>Select capacity</span>
+          <span>{t("Select-capacity")}</span>
           <div className="flex gap-2">
             {capacityAvailable.map((capacityMap) => (
               <button
@@ -237,7 +239,7 @@ export const ItemDescription: React.FC<Props> = ({
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <div className="text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all">
-              Screen
+              {t("Screen")}
             </div>
             <div className="dark:text-dark-white text-[12px] font-bold">
               {screen}
@@ -249,7 +251,7 @@ export const ItemDescription: React.FC<Props> = ({
               className="
             text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
             >
-              Resolution
+              {t("Resolution")}
             </div>
             <div className="dark:text-dark-white text-[12px] font-bold">
               {resolution}
@@ -261,7 +263,7 @@ export const ItemDescription: React.FC<Props> = ({
               className="
             text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
             >
-              Processor
+              {t("Processor")}
             </div>
             <div className="dark:text-dark-white text-[12px] font-bold transition-all">
               {processor}
@@ -273,7 +275,7 @@ export const ItemDescription: React.FC<Props> = ({
               className="
             text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
             >
-              RAM
+              {t("RAM")}
             </div>
             <div className="dark:text-dark-white text-xs font-bold transition-all">
               {ram}

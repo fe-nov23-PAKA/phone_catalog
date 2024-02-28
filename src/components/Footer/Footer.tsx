@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { Logo } from "../../icons/Logo";
 import { ArrowUp } from "../../icons/Arrow-Up";
@@ -6,6 +7,7 @@ import { useAppSelector } from "../../app/hooks";
 
 export const Footer: React.FC = () => {
   const theme = useAppSelector((state) => state.theme);
+  const { t, i18n } = useTranslation();
 
   return (
     <footer
@@ -14,7 +16,7 @@ export const Footer: React.FC = () => {
     >
       <div
         className="container w-full py-8 
-    pl-4 sm:flex sm:justify-between sm:px-8"
+    pl-4 sm:flex sm:justify-between sm:px-8 relative"
       >
         <div className="mb-8 sm:mb-0">
           <a href="/">
@@ -39,7 +41,7 @@ export const Footer: React.FC = () => {
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
-            Contacts
+            {t("Contacts")}
           </a>
 
           <a
@@ -47,10 +49,54 @@ export const Footer: React.FC = () => {
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
-            Rights
+            {t("Rights")}
           </a>
         </div>
+        <div className="absolute top-9 left-40 md:left-25 xl:left-40">
 
+          <button
+            type="button"
+            onClick={() => i18n.changeLanguage("en")}
+            className="mr-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 50 30"
+              width="30"
+              height="20"
+            >
+              <clipPath id="t">
+                <path d="M25,15h25v15zv15h-25zh-25v-15zv-15h25z" />
+              </clipPath>
+              <path d="M0,0v30h50v-30z" fill="#012169" />
+              <path d="M0,0 50,30M50,0 0,30" stroke="#fff" strokeWidth="6" />
+              <path
+                d="M0,0 50,30M50,0 0,30"
+                clipPath="url(#t)"
+                stroke="#C8102E"
+                strokeWidth="4"
+              />
+              <path
+                d="M-1 11h22v-12h8v12h22v8h-22v12h-8v-12h-22z"
+                fill="#C8102E"
+                stroke="#FFF"
+                strokeWidth="2"
+              />
+            </svg>
+            ua
+          </button>
+          <button
+            type="button"
+            onClick={() => i18n.changeLanguage("ua")}
+            className=""
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="20">
+              <rect width="30" height="20" fill="#0057B7" />
+              <rect width="30" height="20" y="11" fill="#FFD700" />
+            </svg>
+            eng
+          </button>
+        </div>
         <div
           className="flex items-center justify-center 
         text-xs font-bold text-secondary"
@@ -61,7 +107,7 @@ export const Footer: React.FC = () => {
             self-center transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             onClick={scrollToTop}
           >
-            Back to top
+            {t("Backtop")}
             <span
               className="box-border flex h-8 
             w-8 items-center justify-center rounded-full

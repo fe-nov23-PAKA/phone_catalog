@@ -1,6 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Tick } from "../../icons/Tick";
 import { actions as cartActions } from "../../features/CartSlice";
 import { useAppDispatch } from "../../app/hooks";
@@ -8,6 +9,7 @@ import { useAppDispatch } from "../../app/hooks";
 export const CheckoutModal = () => {
   const dispatch = useAppDispatch();
   const [isActive, setIsActive] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsActive(true);
@@ -37,11 +39,11 @@ export const CheckoutModal = () => {
           <Tick fill="#27AE60" />
 
           <h1 className="text-2xl font-extrabold uppercase text-[#27AE60]">
-            Success
+            {t("Success")}
           </h1>
           <div className="flex flex-col gap-y-1 xl:text-xl">
-            <p className="text-lg font-semibold">Thank you for purchasing</p>
-            <p>Shortly you will find a confirmation in your email.</p>
+            <p className="text-lg font-semibold">{t("Checkout-modal")}</p>
+            <p>{t("Checkout-modal-confirm")}</p>
           </div>
         </div>
       </div>

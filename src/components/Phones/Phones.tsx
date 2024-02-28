@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import phone_1 from "../../assets/img/PhonesHome/Phones_1.png";
 import phone_2 from "../../assets/img/PhonesHome/Phones_2.png";
@@ -6,6 +7,7 @@ import { useAppSelector } from "../../app/hooks";
 
 export const Phones = () => {
   const products = useAppSelector((state) => state.items.items);
+  const { t } = useTranslation();
 
   const phonesQuantity = products.filter(
     (product) => product.category === "phones",
@@ -22,8 +24,8 @@ export const Phones = () => {
   return (
     <>
       <div className="container pb-16">
-        <h2 className="dark:text-dark-white pb-6 text-[32px] font-extrabold leading-[41px] transition-all">
-          Shop by category
+        <h2 className="pb-6 text-[32px] font-extrabold leading-[41px] transition-all dark:text-dark-white">
+          {t("ShopCategory-title")}
         </h2>
         <div className="grid grid-cols-1 justify-between gap-8 sm:grid-cols-3 sm:gap-4">
           <Link to="phones" className="flex items-center justify-center gap-6">
@@ -34,10 +36,10 @@ export const Phones = () => {
                 className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
-                <span className="dark:text-dark-white text-xl font-bold leading-[26px] transition-all">
-                  Mobile phones
+                <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
+                  {t("ShopCategory-phone")}
                 </span>
-                <span className="dark:text-dark-secondary text-sm font-semibold text-secondary transition-all">{`${phonesQuantity} models`}</span>
+                <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${phonesQuantity} ${t("Models")}`}</span>
               </div>
             </div>
           </Link>
@@ -49,10 +51,10 @@ export const Phones = () => {
                 className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
-                <span className="dark:text-dark-white text-xl font-bold leading-[26px] transition-all">
-                  Tablets
+                <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
+                  {t("ShopCategory-tablets")}
                 </span>
-                <span className="dark:text-dark-secondary text-sm font-semibold text-secondary transition-all">{`${tabletsQuantity} models`}</span>
+                <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${tabletsQuantity} ${t("Models")}`}</span>
               </div>
             </div>
           </Link>
@@ -64,10 +66,10 @@ export const Phones = () => {
                 className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
-                <span className="dark:text-dark-white text-xl font-bold leading-[26px] transition-all">
-                  Accessories
+                <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
+                  {t("ShopCategory-accessories")}
                 </span>
-                <span className="dark:text-dark-secondary text-sm font-semibold text-secondary transition-all">{`${accessoriesQuantity} models`}</span>
+                <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${accessoriesQuantity} ${t("Models")}`}</span>
               </div>
             </div>
           </Link>

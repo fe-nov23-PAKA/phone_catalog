@@ -2,6 +2,7 @@
 import classNames from "classnames";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ProductCard } from "../ProductCard";
 import { ArrowRight } from "../../icons/Arrow-Right";
 import { ArrowLeft } from "../../icons/Arrow-Left";
@@ -29,6 +30,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const itemsOnPage = searchParams.get("perPage") || "16";
   const query = searchParams.get("query") || "";
   const [queryFilter, setQueryFilter] = useState(query);
+  const { t } = useTranslation();
 
   const itemsOnPageList = ["16", "24", "32", "64"];
   const sortFields = ["cheapest", "newest", "alphabetically"];
@@ -142,11 +144,11 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
-            <h1 className="dark:text-dark-white mb-2 text-[32px]/[41px] font-extrabold transition-all sm:text-[48px]/[56px]">
+            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
               {title}
             </h1>
-            <div className="dark:text-dark-secondary mb-8 font-semibold text-secondary transition-all">
-              {items.length} models
+            <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
+              {items.length} {t("Models")}
             </div>
           </div>
 
@@ -158,7 +160,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             >
               <DropDownMenu
                 classname="sm:col-span-4"
-                label="Sort by"
+                label={t("Sort")}
                 dropDownField={sortField}
                 dropDownFields={sortFields}
                 isOpen={isSortDropDownShown}
@@ -168,7 +170,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
 
               <DropDownMenu
                 classname="sm:col-span-3"
-                label="Items on page"
+                label={t("Items-page")}
                 dropDownField={itemsOnPage}
                 dropDownFields={itemsOnPageList}
                 isOpen={isItemsDropDownShown}
@@ -179,7 +181,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <div className="col-span-4 w-full sm:col-start-9 sm:col-end-[-1] xl:col-start-[17]">
                 <label className="block">
                   <span className="mb-1 block text-xs font-medium text-secondary after:ml-0.5">
-                    Looking for something?
+                    {t("looking")}
                   </span>
                   <input
                     type="search"
@@ -190,7 +192,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                     border-slate-300 bg-white px-3 py-2 placeholder-slate-400 shadow-sm
                     transition-all focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary
                     sm:text-sm"
-                    placeholder="Type here"
+                    placeholder={t("Type")}
                     onChange={handleSetQueryParams}
                     value={queryFilter}
                   />
