@@ -10,8 +10,8 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="flex w-full items-center justify-center border-t
-    border-element-color bg-white transition-all dark:border-dark-elements dark:bg-dark-black"
+      className="flex w-full items-center justify-center
+    border-t border-element-color bg-white transition-all dark:border-dark-elements dark:bg-dark-black"
     >
       <div
         className="container w-full py-8 

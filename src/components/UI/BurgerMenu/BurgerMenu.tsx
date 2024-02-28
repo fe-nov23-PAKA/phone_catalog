@@ -29,7 +29,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
   return (
     <div
       className={classNames(
-        "absolute bottom-0 top-full z-[50] flex h-0 w-full flex-col transition-all duration-[500ms] ease-in-out",
+        "absolute bottom-0 top-full z-[50] flex h-0 w-full flex-col transition-all ease-in-out",
         "justify-between overflow-hidden border-t bg-white dark:border-dark-elements dark:bg-dark-black",
         { "!h-[calc(100vh-60px)]": isMenuOpen },
       )}
