@@ -39,7 +39,6 @@ export const Footer: React.FC = () => {
           </Link>
 
           <Link
-            target="_blank"
             className="text-xs font-extrabold uppercase text-secondary 
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             to="contacts"
