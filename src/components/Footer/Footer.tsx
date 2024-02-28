@@ -9,8 +9,8 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="dark:border-dark-elements dark:bg-dark-black flex w-full items-center
-    justify-center border-t border-element-color transition-all"
+      className="flex w-full items-center justify-center border-t
+    border-element-color bg-white transition-all dark:border-dark-elements dark:bg-dark-black"
     >
       <div
         className="container w-full py-8 
@@ -27,24 +27,24 @@ export const Footer: React.FC = () => {
     sm:w-full sm:max-w-[35%] sm:flex-row sm:items-center sm:justify-between"
         >
           <a
-            className="dark:text-dark-secondary dark:hover:text-dark-white text-xs font-extrabold
-          uppercase text-secondary transition-all hover:text-primary"
+            className="text-xs font-extrabold uppercase text-secondary
+          transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
             Github
           </a>
 
           <a
-            className="dark:text-dark-secondary dark:hover:text-dark-white text-xs font-extrabold 
-          uppercase text-secondary transition-all hover:text-primary"
+            className="text-xs font-extrabold uppercase text-secondary 
+          transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
             Contacts
           </a>
 
           <a
-            className="dark:text-dark-secondary dark:hover:text-dark-white text-xs font-extrabold 
-          uppercase text-secondary transition-all hover:text-primary"
+            className="text-xs font-extrabold uppercase text-secondary 
+          transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
             Rights
@@ -57,15 +57,15 @@ export const Footer: React.FC = () => {
         >
           <button
             type="button"
-            className="dark:text-dark-secondary dark:hover:text-dark-white group flex 
-            items-center gap-4 self-center transition-all hover:text-primary"
+            className="group flex items-center gap-4 
+            self-center transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             onClick={scrollToTop}
           >
             Back to top
             <span
-              className="dark:border-dark-secondary dark:group-hover:border-dark-white box-border 
-            flex h-8 w-8 items-center
-            justify-center rounded-full border transition-all group-hover:border-primary"
+              className="box-border flex h-8 
+            w-8 items-center justify-center rounded-full
+            border transition-all group-hover:border-primary dark:border-dark-secondary dark:group-hover:border-dark-white"
             >
               <ArrowUp fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
             </span>
