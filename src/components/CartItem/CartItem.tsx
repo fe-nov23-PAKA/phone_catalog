@@ -34,7 +34,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           {name}
         </div>
       </div>
-      <div className="flex flex-row items-center justify-between gap-x-[53px]">
+      <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-3">
           <button
             type="button"

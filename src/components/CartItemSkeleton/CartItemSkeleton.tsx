@@ -18,15 +18,15 @@ export const CartItemSkeleton = () => {
             }
           />
         </div>
-        <div className="h-[21px] w-7/12 rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-600 sm:w-[134px] xl:w-[300px]" />
+        <div className="h-[21px] w-7/12 rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-600 sm:w-[120px] md:w-[80px] xl:w-[300px]" />
       </div>
-      <div className="flex flex-row items-center justify-between gap-x-[53px]">
+      <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-3">
           <div className="h-[34px] w-[34px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-600" />
           <div className="h-[34px] w-[17px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-600" />
           <div className="h-[34px] w-[34px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-600" />
         </div>
-        <div className="h-[34px] min-w-[100px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-600" />
+        <div className="ml-6 h-[34px] min-w-[80px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-600" />
       </div>
     </div>
   );
