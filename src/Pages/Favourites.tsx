@@ -1,4 +1,4 @@
-import imgEmptyFavourites from "../assets/img/empty-favourites-3.png";
+import imgEmptyFavourites from "../assets/img/empty-favourites-2.png";
 import { useAppSelector } from "../app/hooks";
 import { ProductCard } from "../components/ProductCard";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
@@ -30,9 +30,9 @@ export const Favourites = () => {
           ))}
         </ul>
       ) : (
-        <div className="mt-[15vh]">
+        <div>
           <img
-            className="ml-auto mr-auto"
+            className="ml-auto mr-auto max-h-[400px]"
             src={imgEmptyFavourites}
             alt="Empty cart"
           />
