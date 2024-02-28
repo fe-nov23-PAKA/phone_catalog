@@ -25,6 +25,7 @@ export const ItemDescription: React.FC<Props> = ({
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
   const [currentItem, setCurrentItem] = useState(item);
   const [isLoading, setIsLoading] = useState(true);
+  const [isColorLoading, setIsColorLoading] = useState(true);
 
   const swiperRef = useRef<SwiperRef>(null);
 
@@ -43,11 +44,19 @@ export const ItemDescription: React.FC<Props> = ({
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setIsLoading(false);
+      setIsColorLoading(false);
     }, 800);
 
     return () => clearTimeout(timerId);
   }, [currentColor]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timerId);
+  }, []);
 
   const {
     capacityAvailable,
@@ -87,7 +96,7 @@ export const ItemDescription: React.FC<Props> = ({
   ) => {
     event.preventDefault();
     setCurrentColor(phoneColor);
-    setIsLoading(true);
+    setIsColorLoading(true);
   };
 
   const handleCapacityChange = (
@@ -108,9 +117,11 @@ export const ItemDescription: React.FC<Props> = ({
     graphite: "#41424C",
   };
 
-  return (
+  return isLoading ? (
+    <ItemDescriptionSkeleton />
+  ) : (
     <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
-      {isLoading ? (
+      {isColorLoading ? (
         <ItemSliderSkeleton />
       ) : (
         <>

@@ -46,7 +46,6 @@ export const Cart = () => {
                 <CartItem item={item} key={item.product.id} />
               ),
             )}
-            <CartItemSkeleton />
           </div>
           {isLoading ? (
             <CartCheckoutSkeleton />

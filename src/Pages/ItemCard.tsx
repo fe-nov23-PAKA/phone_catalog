@@ -11,7 +11,6 @@ import { Loader } from "../components/UI/Loader/CardLoader/Loader";
 import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
 import { SortType } from "../types/SortType";
 import { BackButton } from "../components/UI/BackButton";
-import { ItemSliderSkeleton } from "../components/ItemSliderSkeleton";
 
 export const ItemCard = () => {
   const { items } = useAppSelector((state) => state.items);
