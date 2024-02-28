@@ -17,7 +17,6 @@ interface Props {
     option: string,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
-  setIsFieldOpen?: (isShown: boolean) => void;
 }
 
 export const DropDownMenu: React.FC<Props> = ({
@@ -55,8 +54,10 @@ export const DropDownMenu: React.FC<Props> = ({
           type="button"
           className={classNames(
             { "focus:ring-primary dark:focus:ring-dark-accent": !isOpen },
+            { "focus:ring-primary dark:focus:ring-dark-accent": !isOpen },
             { "hover:ring-secondary": isOpen },
             "dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2",
+            "inline-flex w-full items-center dark:hover:ring-dark-icons",
             "inline-flex w-full items-center dark:hover:ring-dark-icons",
             "justify-between rounded-md bg-white px-3 py-2 text-[14px]/[21px] ",
             "font-bold capitalize tracking-wider text-primary shadow-sm ring-1",
@@ -88,12 +89,16 @@ export const DropDownMenu: React.FC<Props> = ({
       >
         <div
           className="border-elements rounded-lg border bg-white py-1 transition-all dark:rounded-none dark:border-dark-elements dark:bg-dark-black"
+          className="border-elements rounded-lg border bg-white py-1 transition-all dark:rounded-none dark:border-dark-elements dark:bg-dark-black"
           role="none"
         >
           {dropDownFields.map((field) => (
             <button
               key={field}
               type="button"
+              className="block w-full rounded bg-white px-4 py-2
+                    text-left text-sm font-semibold capitalize tracking-wider transition-all hover:bg-hover-color hover:text-primary dark:rounded-none
+                  dark:bg-dark-black dark:text-dark-secondary dark:hover:bg-dark-surface2 dark:hover:text-dark-white"
               className="block w-full rounded bg-white px-4 py-2
                     text-left text-sm font-semibold capitalize tracking-wider transition-all hover:bg-hover-color hover:text-primary dark:rounded-none
                   dark:bg-dark-black dark:text-dark-secondary dark:hover:bg-dark-surface2 dark:hover:text-dark-white"
