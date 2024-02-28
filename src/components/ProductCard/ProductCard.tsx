@@ -54,7 +54,7 @@ export const ProductCard: React.FC<Props> = ({
       ref={carouselItemRef}
       className={classNames(
         "col-span-full box-border h-full w-full rounded-lg border",
-        "border-element-color transition-all dark:border-dark-surface1 dark:bg-dark-surface1 sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "border-element-color transition-all dark:rounded-none dark:border-dark-surface1 dark:bg-dark-surface1 sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >

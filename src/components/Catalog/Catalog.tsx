@@ -178,7 +178,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
 
               <div className="col-span-4 w-full sm:col-start-9 sm:col-end-[-1] xl:col-start-[17]">
                 <label className="block">
-                  <span className="mb-1 block text-xs font-medium text-secondary after:ml-0.5">
+                  <span className="mb-1 block text-xs font-bold tracking-wider text-secondary after:ml-0.5 dark:text-dark-secondary">
                     Looking for something?
                   </span>
                   <input

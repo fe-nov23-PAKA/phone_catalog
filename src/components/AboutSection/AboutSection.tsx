@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ItemDescriptionType } from "../../types/ItemDescriptionType";
+import { AboutSecionSkeleton } from "../AboutSectionSkeleton";
 
 type Props = {
   item: ItemDescriptionType;
@@ -21,7 +22,19 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
     ...techSpecs
   } = item;
 
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timerId);
+  }, []);
+
+  return isLoading ? (
+    <AboutSecionSkeleton />
+  ) : (
     <div className="grid grid-cols-4 gap-x-4 pb-14 font-semibold sm:grid-cols-12 sm:pb-10 xl:grid-cols-24">
       <div className="col-span-full mb-14 grid gap-y-8 xl:col-span-12">
         <h2 className="border-b pb-4 text-[20px]/[26px] font-bold transition-all dark:border-dark-elements dark:text-dark-white sm:text-[22px]/[31px] sm:font-extrabold">

@@ -37,20 +37,20 @@ export const ProductCardSkeleton: React.FC<Props> = ({ className }) => {
           <div className="mb-2 flex flex-col gap-y-2 py-2">
             <div className="flex items-center justify-between">
               <div className="h-[15px] w-[57px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
-              <div className="h-[15px] w-[80px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
+              <div className="h-[15px] w-6/12 rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
             </div>
             <div className="flex items-center justify-between">
               <div className="h-[15px] w-[57px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
-              <div className="h-[15px] w-[80px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
+              <div className="h-[15px] w-4/12 rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
             </div>
             <div className="flex items-center justify-between">
               <div className="h-[15px] w-[57px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
-              <div className="h-[15px] w-[80px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
+              <div className="h-[15px] w-3/12 rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
             </div>
           </div>
 
           <div className="flex items-center justify-between gap-x-2">
-            <div className="h-[40px] min-w-[160px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
+            <div className="h-[40px] w-4/5 rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
             <div className="h-[40px] w-[40px] rounded-full bg-gray-200 dark:rounded-none dark:bg-gray-700" />
           </div>
         </div>

@@ -19,8 +19,8 @@ export const AddToFavouritesButton: React.FC<Props> = ({ item }) => {
       type="button"
       className="
             flex h-10 w-10 items-center justify-center rounded-full
-            border border-icons-color
-            transition-all hover:border-primary dark:border-dark-surface2 dark:bg-dark-surface2 dark:hover:bg-dark-icons"
+            border border-icons-color transition-all
+            hover:border-primary dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2 dark:hover:bg-dark-icons"
       onClick={() =>
         favouriteItemsIds.includes(item.itemId)
           ? dispatch(favouritesActions.replace(item))

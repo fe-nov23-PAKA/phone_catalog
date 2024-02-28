@@ -7,7 +7,7 @@ import { AddToCartButton } from "../UI/AddToCartButton";
 import { Item } from "../../types/Item";
 import "swiper/css";
 import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
-import { CardLoader } from "../UI/Loader/CardLoader/CardLoader";
+import { ItemDescriptionSkeleton } from "../ItemDescriptionSkeleton";
 
 interface Props {
   shortInfoItem: Item;
@@ -107,37 +107,35 @@ export const ItemDescription: React.FC<Props> = ({
     graphite: "#41424C",
   };
 
-  return (
+  return isLoading ? (
+    <ItemDescriptionSkeleton />
+  ) : (
     <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
       <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] transition-all dark:text-dark-white sm:mb-10">
         {currentItem.name}
       </h2>
       <div className="relative col-span-full min-h-[400px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
-        {isLoading ? (
-          <CardLoader />
-        ) : (
-          <>
-            <Swiper
-              ref={swiperRef}
-              key={currentItem.images[0]}
-              pagination={pagination}
-              modules={[Pagination]}
-              className="sm:max-m-[450px] sm:w-[445px]"
-              spaceBetween={100}
-            >
-              {currentItem.images.map((image) => (
-                <SwiperSlide key={image}>
-                  <img
-                    src={image}
-                    alt="phone_image"
-                    className="mx-auto aspect-square h-full max-h-[290px] w-full max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
-          </>
-        )}
+        <>
+          <Swiper
+            ref={swiperRef}
+            key={currentItem.images[0]}
+            pagination={pagination}
+            modules={[Pagination]}
+            className="sm:w-[445px] sm:max-w-[450px]"
+            spaceBetween={100}
+          >
+            {currentItem.images.map((image) => (
+              <SwiperSlide key={image}>
+                <img
+                  src={image}
+                  alt="phone_image"
+                  className="mx-auto aspect-square h-full max-h-[290px] w-full max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
+        </>
       </div>
       <div className="col-span-full flex flex-col gap-[37.5px] sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
         <div className="justify-between border-b-[1px] pb-[24px] transition-all dark:border-dark-elements">
@@ -191,7 +189,7 @@ export const ItemDescription: React.FC<Props> = ({
                 key={capacityMap}
                 type="button"
                 className={classNames(
-                  "h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] transition-all hover:border-primary dark:border-dark-icons dark:hover:border-dark-white",
+                  "h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] transition-all hover:border-primary dark:rounded-none dark:border-dark-icons dark:hover:border-dark-white",
                   {
                     "bg-primary text-white dark:border-dark-white dark:bg-dark-white dark:text-dark-black":
                       capacityMap === currentCapacity,

@@ -4,7 +4,6 @@ import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
 import { useAppSelector } from "../app/hooks";
 import { Loader } from "../components/UI/Loader/CardLoader/Loader";
 import { SortType } from "../types/SortType";
-import { ProductCardSkeleton } from "../components/ProductCardSkeleton";
 
 export const HomePage = () => {
   const OFFER_TITLE_NEW = SortType.HOT;
@@ -18,7 +17,7 @@ export const HomePage = () => {
       {loading && <Loader />}
 
       {!loading && !error && (
-        <>
+        <div className="container">
           <h1 className="container py-6 text-left text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:py-8 xl:py-14">
             Welcome to Nice Gadgets store!
           </h1>
@@ -36,8 +35,7 @@ export const HomePage = () => {
             titleName={OFFER_TITLE_NEW}
             startVisibleItems={items}
           />
-          <ProductCardSkeleton />
-        </>
+        </div>
       )}
     </>
   );

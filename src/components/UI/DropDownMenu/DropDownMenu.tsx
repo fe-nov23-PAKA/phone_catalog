@@ -35,7 +35,7 @@ export const DropDownMenu: React.FC<Props> = ({
       })}
     >
       <div>
-        <p className="mb-1 text-xs text-secondary transition-all dark:text-dark-secondary">
+        <p className="mb-1 text-xs font-bold tracking-wider text-secondary transition-all dark:text-dark-secondary">
           {label}
         </p>
         <button

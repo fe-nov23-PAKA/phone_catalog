@@ -26,12 +26,12 @@ export const Phones = () => {
           Shop by category
         </h2>
         <div className="grid grid-cols-1 justify-between gap-8 sm:grid-cols-3 sm:gap-4">
-          <Link to="phones" className="flex items-center justify-center gap-6">
+          <Link to="phones" className="flex items-center justify-center">
             <div className="grid gap-6">
               <img
                 src={phone_1}
                 alt="phone_1"
-                className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
+                className="rounded-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
@@ -45,8 +45,8 @@ export const Phones = () => {
             <div className="grid gap-6">
               <img
                 src={phone_2}
-                alt="phone_1"
-                className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
+                alt="phone_2"
+                className="rounded-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
@@ -60,8 +60,8 @@ export const Phones = () => {
             <div className="grid gap-6">
               <img
                 src={phone_3}
-                alt="phone_1"
-                className="rounded-lg rounded-b-lg transition-all hover:scale-[1.1]"
+                alt="phone_3"
+                className="rounded-lg transition-all hover:scale-[1.1]"
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">

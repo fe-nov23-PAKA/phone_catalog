@@ -26,7 +26,7 @@ export const ItemsCarousel: React.FC<Props> = ({
   const carouselRef = useRef<HTMLUListElement>(null);
 
   const visibleItems = useMemo(
-    () => getItemsToShow(titleName, startVisibleItems),
+    () => getItemsToShow(titleName, startVisibleItems.slice(0, 20)),
     [],
   );
   const ITEMS_GAP = 16;
@@ -81,32 +81,32 @@ export const ItemsCarousel: React.FC<Props> = ({
 
   return (
     <>
-      <div className="container pb-20">
+      <div className="pb-20">
         <div className="flex items-center justify-between pb-6">
-          <h2 className="text-[32px] font-extrabold leading-[41px] dark:text-dark-white transition-all">
+          <h2 className="text-[32px] font-extrabold leading-[41px] transition-all dark:text-dark-white">
             {titleName}
           </h2>
           <div className="flex gap-4">
-            <a
+            <button
+              type="button"
               onClick={handleScrollLeft}
-              href="#/"
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:border-dark-elements dark:hover:border-dark-white",
+                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2 dark:hover:border-dark-icons dark:hover:bg-dark-icons",
                 { "pointer-events-none opacity-50": isAtStart },
               )}
             >
               <ArrowLeft fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
-            </a>
-            <a
+            </button>
+            <button
+              type="button"
               onClick={handleScrollRight}
-              href="#/"
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:border-dark-elements dark:hover:border-dark-white",
+                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2 dark:hover:border-dark-icons dark:hover:bg-dark-icons",
                 { "pointer-events-none opacity-50": isAtEnd },
               )}
             >
               <ArrowRight fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
-            </a>
+            </button>
           </div>
         </div>
         <ul

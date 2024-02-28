@@ -28,7 +28,7 @@ const saveFavouritesToLocalStorage = () => {
 const saveThemeToLocalStorage = () => {
   const state = store.getState().theme;
 
-  localStorage.setItem("theme", JSON.stringify(state));
+  localStorage.setItem("theme", state);
 };
 
 store.subscribe(() => {
