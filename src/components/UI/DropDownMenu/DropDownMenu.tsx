@@ -89,16 +89,12 @@ export const DropDownMenu: React.FC<Props> = ({
       >
         <div
           className="border-elements rounded-lg border bg-white py-1 transition-all dark:rounded-none dark:border-dark-elements dark:bg-dark-black"
-          className="border-elements rounded-lg border bg-white py-1 transition-all dark:rounded-none dark:border-dark-elements dark:bg-dark-black"
           role="none"
         >
           {dropDownFields.map((field) => (
             <button
               key={field}
               type="button"
-              className="block w-full rounded bg-white px-4 py-2
-                    text-left text-sm font-semibold capitalize tracking-wider transition-all hover:bg-hover-color hover:text-primary dark:rounded-none
-                  dark:bg-dark-black dark:text-dark-secondary dark:hover:bg-dark-surface2 dark:hover:text-dark-white"
               className="block w-full rounded bg-white px-4 py-2
                     text-left text-sm font-semibold capitalize tracking-wider transition-all hover:bg-hover-color hover:text-primary dark:rounded-none
                   dark:bg-dark-black dark:text-dark-secondary dark:hover:bg-dark-surface2 dark:hover:text-dark-white"
