@@ -8,7 +8,8 @@ import { AddToCartButton } from "../UI/AddToCartButton";
 import { Item } from "../../types/Item";
 import "swiper/css";
 import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
-import { CardLoader } from "../UI/Loader/CardLoader/CardLoader";
+import { ItemDescriptionSkeleton } from "../ItemDescriptionSkeleton";
+import { ItemSliderSkeleton } from "../ItemSliderSkeleton";
 
 interface Props {
   shortInfoItem: Item;
@@ -25,6 +26,7 @@ export const ItemDescription: React.FC<Props> = ({
   const [currentCapacity, setCurrentCapacity] = useState(item.capacity);
   const [currentItem, setCurrentItem] = useState(item);
   const [isLoading, setIsLoading] = useState(true);
+  const [isColorLoading, setIsColorLoading] = useState(true);
 
   const swiperRef = useRef<SwiperRef>(null);
 
@@ -45,11 +47,19 @@ export const ItemDescription: React.FC<Props> = ({
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setIsLoading(false);
+      setIsColorLoading(false);
     }, 800);
 
     return () => clearTimeout(timerId);
   }, [currentColor]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timerId);
+  }, []);
 
   const {
     capacityAvailable,
@@ -89,7 +99,7 @@ export const ItemDescription: React.FC<Props> = ({
   ) => {
     event.preventDefault();
     setCurrentColor(phoneColor);
-    setIsLoading(true);
+    setIsColorLoading(true);
     navigate(
       `../${item.namespaceId}-${currentCapacity.toLowerCase()}-${phoneColor.toLowerCase()}`,
     );
@@ -116,47 +126,51 @@ export const ItemDescription: React.FC<Props> = ({
     graphite: "#41424C",
   };
 
-  return (
-    <div className="mb-14 grid grid-cols-4 gap-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
-      <h2 className="dark:text-dark-white col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] transition-all sm:mb-10">
-        {currentItem.name}
-      </h2>
-      <div className="relative col-span-full min-h-[400px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
-        {isLoading ? (
-          <CardLoader />
-        ) : (
-          <>
-            <Swiper
-              ref={swiperRef}
-              key={currentItem.images[0]}
-              pagination={pagination}
-              modules={[Pagination]}
-              className="sm:max-m-[450px] sm:w-[445px]"
-              spaceBetween={100}
-            >
-              {currentItem.images.map((image) => (
-                <SwiperSlide key={image}>
-                  <img
-                    src={image}
-                    alt="phone_image"
-                    className="mx-auto aspect-square h-full max-h-[290px] w-full 
-                    max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
-          </>
-        )}
-      </div>
+  return isLoading ? (
+    <ItemDescriptionSkeleton />
+  ) : (
+    <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
+      {isColorLoading ? (
+        <ItemSliderSkeleton />
+      ) : (
+        <>
+          <h2 className="col-span-full mb-8 text-[32px]/[41px] font-extrabold tracking-[0.01em] transition-all dark:text-dark-white sm:mb-10">
+            {currentItem.name}
+          </h2>
+          <div className="relative col-span-full min-h-[400px] sm:col-span-7 sm:flex sm:flex-row-reverse xl:col-span-12">
+            <>
+              <Swiper
+                ref={swiperRef}
+                key={currentItem.images[0]}
+                pagination={pagination}
+                modules={[Pagination]}
+                className="sm:w-[445px] sm:max-w-[450px]"
+                spaceBetween={100}
+              >
+                {currentItem.images.map((image) => (
+                  <SwiperSlide key={image}>
+                    <img
+                      src={image}
+                      alt="phone_image"
+                      className="mx-auto aspect-square h-full max-h-[290px] w-full max-w-[290px] object-contain sm:max-h-[350px] sm:max-w-[350px] xl:max-h-[445px] xl:max-w-[445px]"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
+            </>
+          </div>
+        </>
+      )}
+
       <div className="col-span-full flex flex-col gap-[37.5px] sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
-        <div className="dark:border-dark-elements justify-between border-b-[1px] pb-[24px] transition-all">
+        <div className="justify-between border-b-[1px] pb-[24px] transition-all dark:border-dark-elements">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
-              <span className="dark:text-dark-secondary text-[12px] font-bold leading-[15px] text-secondary transition-all">
+              <span className="text-[12px] font-bold leading-[15px] text-secondary transition-all dark:text-dark-secondary">
                 Available colors
               </span>
-              <span className="dark:text-dark-icons text-[12px] font-bold leading-[15px] text-icons-color transition-all">
+              <span className="text-[12px] font-bold leading-[15px] text-icons-color transition-all dark:text-dark-icons">
                 {`ID: ${shortInfoItem.id}`}
               </span>
             </div>
@@ -179,10 +193,10 @@ export const ItemDescription: React.FC<Props> = ({
                     onClick={(event) => handleColorChange(itemColor, event)}
                     type="button"
                     className={classNames(
-                      `dark:border-dark-black dark:ring-dark-elements dark:hover:ring-dark-white h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 ring-icons-color
-                      transition-all hover:ring-1 hover:ring-primary bg-${itemColor}`,
+                      `h-[30px] w-[30px] rounded-full border-[2px] border-white ring-1 ring-icons-color transition-all hover:ring-1 hover:ring-primary
+                      dark:border-dark-black dark:ring-dark-elements dark:hover:ring-dark-white bg-${itemColor}`,
                       {
-                        "dark:ring-dark-white ring-primary":
+                        "ring-primary dark:ring-dark-white":
                           currentColor === itemColor,
                       },
                     )}
@@ -193,7 +207,7 @@ export const ItemDescription: React.FC<Props> = ({
             </div>
           </div>
         </div>
-        <div className="dark:border-dark-elements flex flex-col gap-2 border-b-[1px] pb-[24px] text-[12px] font-bold leading-[15px] text-secondary transition-all">
+        <div className="flex flex-col gap-2 border-b-[1px] pb-[24px] text-[12px] font-bold leading-[15px] text-secondary transition-all dark:border-dark-elements">
           <span>Select capacity</span>
           <div className="flex gap-2">
             {capacityAvailable.map((capacityMap) => (
@@ -201,9 +215,9 @@ export const ItemDescription: React.FC<Props> = ({
                 key={capacityMap}
                 type="button"
                 className={classNames(
-                  "dark:border-dark-icons dark:hover:border-dark-white h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] transition-all hover:border-primary",
+                  "h-[32px] rounded-[4px] border border-element-color px-2 text-sm leading-[21px] transition-all hover:border-primary dark:rounded-none dark:border-dark-icons dark:hover:border-dark-white",
                   {
-                    "dark:border-dark-white dark:bg-dark-white dark:text-dark-black bg-primary text-white":
+                    "bg-primary text-white dark:border-dark-white dark:bg-dark-white dark:text-dark-black":
                       capacityMap === currentCapacity,
                   },
                 )}
@@ -216,14 +230,14 @@ export const ItemDescription: React.FC<Props> = ({
         </div>
         <div className="flex flex-col gap-4">
           <div className="justify-flex-start mb-2 flex items-center">
-            <span className="dark:text-dark-white text-[32px]/[41px] font-extrabold leading-8 transition-all">
+            <span className="text-[32px]/[41px] font-extrabold leading-8 transition-all dark:text-dark-white">
               ${priceDiscount}
             </span>
             <span
               className="
-          dark:text-dark-secondary ml-2 text-[22px]/[28.12px]
-          font-semibold text-secondary
-          line-through"
+          ml-2 text-[22px]/[28.12px] font-semibold
+          text-secondary line-through
+          dark:text-dark-secondary"
             >
               ${priceRegular}
             </span>
@@ -236,10 +250,10 @@ export const ItemDescription: React.FC<Props> = ({
 
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <div className="text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all">
+            <div className="text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary">
               Screen
             </div>
-            <div className="dark:text-dark-white text-[12px] font-bold">
+            <div className="text-[12px] font-bold dark:text-dark-white">
               {screen}
             </div>
           </div>
@@ -247,11 +261,11 @@ export const ItemDescription: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
+            text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary"
             >
               Resolution
             </div>
-            <div className="dark:text-dark-white text-[12px] font-bold">
+            <div className="text-[12px] font-bold dark:text-dark-white">
               {resolution}
             </div>
           </div>
@@ -259,11 +273,11 @@ export const ItemDescription: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
+            text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary"
             >
               Processor
             </div>
-            <div className="dark:text-dark-white text-[12px] font-bold transition-all">
+            <div className="text-[12px] font-bold transition-all dark:text-dark-white">
               {processor}
             </div>
           </div>
@@ -271,11 +285,11 @@ export const ItemDescription: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <div
               className="
-            text-gray-elem dark:text-dark-secondary text-[12px] font-bold text-secondary transition-all"
+            text-gray-elem text-[12px] font-bold text-secondary transition-all dark:text-dark-secondary"
             >
               RAM
             </div>
-            <div className="dark:text-dark-white text-xs font-bold transition-all">
+            <div className="text-xs font-bold transition-all dark:text-dark-white">
               {ram}
             </div>
           </div>

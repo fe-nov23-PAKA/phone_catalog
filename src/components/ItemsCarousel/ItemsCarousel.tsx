@@ -91,7 +91,7 @@ export const ItemsCarousel: React.FC<Props> = ({
               type="button"
               onClick={handleScrollLeft}
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:border-dark-elements dark:hover:border-dark-white",
+                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2 dark:hover:border-dark-icons dark:hover:bg-dark-icons",
                 { "pointer-events-none opacity-50": isAtStart },
               )}
             >
@@ -101,7 +101,7 @@ export const ItemsCarousel: React.FC<Props> = ({
               type="button"
               onClick={handleScrollRight}
               className={classNames(
-                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:border-dark-elements dark:hover:border-dark-white",
+                "flex h-8 w-8 items-center justify-center rounded-full border border-icons-color transition-all hover:border-primary dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2 dark:hover:border-dark-icons dark:hover:bg-dark-icons",
                 { "pointer-events-none opacity-50": isAtEnd },
               )}
             >

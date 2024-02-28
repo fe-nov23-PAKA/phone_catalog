@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { Item } from "../../types/Item";
 import { AddToCartButton } from "../UI/AddToCartButton";
 import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
-import { CardLoader } from "../UI/Loader/CardLoader/CardLoader";
+import { ProductCardSkeleton } from "../ProductCardSkeleton";
 
 type Props = {
   item: Item;
@@ -47,27 +47,25 @@ export const ProductCard: React.FC<Props> = ({
     return () => clearTimeout(timerId);
   }, []);
 
-  return (
+  return isLoading ? (
+    <ProductCardSkeleton className={classname} />
+  ) : (
     <li
       ref={carouselItemRef}
       className={classNames(
         "col-span-full box-border h-full w-full rounded-lg border",
-        "border-element-color transition-all dark:border-dark-surface1 dark:bg-dark-surface1 sm:col-span-6 md:col-span-4 xl:col-span-6",
+        "border-element-color transition-all dark:rounded-none dark:border-dark-surface1 dark:bg-dark-surface1 sm:col-span-6 md:col-span-4 xl:col-span-6",
         { [`${classname}`]: classname },
       )}
     >
       <div className="p-[32px] transition-all hover:shadow-sh2 dark:hover:shadow-zinc-700">
         <Link to={`../${item.category}/${item.itemId}`}>
           <div className=" relative mb-2 flex h-[196px] items-center justify-center">
-            {isLoading ? (
-              <CardLoader />
-            ) : (
-              <img
-                className="block h-full w-full object-contain transition-all hover:scale-[1.1]"
-                src={image}
-                alt="Product"
-              />
-            )}
+            <img
+              className="block h-full w-full object-contain transition-all hover:scale-[1.1]"
+              src={image}
+              alt="Product"
+            />
           </div>
           <h3
             className="flex min-h-[58px] flex-col justify-end 

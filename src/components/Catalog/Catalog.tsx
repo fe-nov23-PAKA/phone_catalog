@@ -141,8 +141,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <Breadcrumbs />
             </div>
             <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
+            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
               {title}
             </h1>
+            <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
             <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
               {items.length} models
             </div>
@@ -178,7 +180,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
 
               <div className="col-span-4 w-full sm:col-start-9 sm:col-end-[-1] xl:col-start-[17]">
                 <label className="block">
-                  <span className="mb-1 block text-xs font-medium text-secondary after:ml-0.5">
+                  <span className="mb-1 block text-xs font-bold tracking-wider text-secondary after:ml-0.5 dark:text-dark-secondary">
                     Looking for something?
                   </span>
                   <input
@@ -220,11 +222,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <li
                 className={classNames(
                   "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       page === "1",
                   },
                   {
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                     "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(page === "1"),
                   },
@@ -292,11 +296,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <li
                 className={classNames(
                   "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       +page === itemPages,
                   },
                   {
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                     "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(+page === itemPages),
                   },

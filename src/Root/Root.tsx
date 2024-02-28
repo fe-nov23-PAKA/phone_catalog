@@ -32,7 +32,7 @@ export const Root = () => {
     <>
       <Header />
 
-      <div className="dark:bg-dark-black min-h-[calc(100vh-64px-98px)] bg-hover-color transition-all">
+      <div className="min-h-[calc(100vh-64px-98px)] bg-hover-color transition-all dark:bg-dark-black">
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />

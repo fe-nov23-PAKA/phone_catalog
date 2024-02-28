@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
             <span
               className="box-border flex h-8 
             w-8 items-center justify-center rounded-full
-            border transition-all group-hover:border-primary dark:border-dark-secondary dark:group-hover:border-dark-white"
+            border transition-all group-hover:border-primary dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2 dark:group-hover:border-dark-icons dark:group-hover:bg-dark-icons"
             >
               <ArrowUp fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
             </span>

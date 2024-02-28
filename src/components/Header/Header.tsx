@@ -134,7 +134,7 @@ export const Header: React.FC = () => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[5px] focus:outline-none dark:border-dark-elements"
+            className="block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none dark:border-dark-elements"
             onClick={toggleMenu}
           >
             <Hamburger

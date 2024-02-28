@@ -47,21 +47,15 @@ export const DropDownMenu: React.FC<Props> = ({
       })}
     >
       <div>
-        <p className="mb-1 text-xs text-secondary transition-all dark:text-dark-secondary">
+        <p className="mb-1 text-xs font-bold tracking-wider text-secondary transition-all dark:text-dark-secondary">
           {label}
         </p>
         <button
           type="button"
           className={classNames(
             { "focus:ring-primary dark:focus:ring-dark-accent": !isOpen },
-            { "focus:ring-primary dark:focus:ring-dark-accent": !isOpen },
             { "hover:ring-secondary": isOpen },
-            "dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2",
-            "inline-flex w-full items-center dark:hover:ring-dark-icons",
-            "inline-flex w-full items-center dark:hover:ring-dark-icons",
-            "justify-between rounded-md bg-white px-3 py-2 text-[14px]/[21px] ",
-            "font-bold capitalize tracking-wider text-primary shadow-sm ring-1",
-            "ring-inset ring-icons-color transition-all dark:rounded-none",
+            "inline-flex w-full items-center justify-between rounded-md bg-white px-3 py-2 text-[14px]/[21px] font-bold capitalize tracking-wider text-primary shadow-sm ring-1 ring-inset ring-icons-color transition-all dark:rounded-none dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2 dark:hover:ring-dark-icons",
           )}
           onClick={handlerToOpen}
           id="menu-button"
