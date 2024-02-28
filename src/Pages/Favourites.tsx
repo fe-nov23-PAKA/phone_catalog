@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import imgEmptyFavourites from "../assets/img/empty-favourites-2.png";
 import { useAppSelector } from "../app/hooks";
-import imgEmptyFavourites from "../assets/img/empty-favourites-2.png";
 import { ProductCard } from "../components/ProductCard";
 import { BackButton } from "../components/UI/BackButton";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
