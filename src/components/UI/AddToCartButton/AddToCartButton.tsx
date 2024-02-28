@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { actions as cartActions } from "../../../features/CartSlice";
 import { Item } from "../../../types/Item";
@@ -12,6 +13,7 @@ export const AddToCartButton: React.FC<Props> = ({ item }) => {
 
   const cartItems = useAppSelector((state) => state.cart);
   const cartItemsIds = cartItems.map((cartItem) => cartItem.id);
+  const { t } = useTranslation();
 
   return (
     <button
@@ -30,7 +32,7 @@ export const AddToCartButton: React.FC<Props> = ({ item }) => {
         dispatch(cartActions.add(item));
       }}
     >
-      {cartItemsIds.includes(item.id) ? "Added to cart" : "Add to cart"}
+      {cartItemsIds.includes(item.id) ? t("Added") : t("Add")}
     </button>
   );
 };

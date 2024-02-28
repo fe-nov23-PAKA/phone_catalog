@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import AOS from "aos";
@@ -9,6 +10,7 @@ import "aos/dist/aos.css";
 
 export const Phones = () => {
   const products = useAppSelector((state) => state.items.items);
+  const { t } = useTranslation();
 
   const phonesQuantity = products.filter(
     (product) => product.category === "phones",
@@ -30,7 +32,7 @@ export const Phones = () => {
     <>
       <div className="container pb-16">
         <h2 className="pb-6 text-[32px] font-extrabold leading-[41px] transition-all dark:text-dark-white">
-          Shop by category
+          {t("ShopCategory-title")}
         </h2>
         <div className="grid grid-cols-1 justify-between gap-8 sm:grid-cols-3 sm:gap-4">
           <Link to="phones" className="flex items-center justify-center">
@@ -43,7 +45,7 @@ export const Phones = () => {
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
-                  Mobile phones
+                  {t("ShopCategory-phone")}
                 </span>
                 <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${phonesQuantity} models`}</span>
               </div>
@@ -59,7 +61,7 @@ export const Phones = () => {
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
-                  Tablets
+                  {t("ShopCategory-tablets")}
                 </span>
                 <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${tabletsQuantity} models`}</span>
               </div>
@@ -75,7 +77,7 @@ export const Phones = () => {
               />
               <div className="flex flex-col gap-1">
                 <span className="text-xl font-bold leading-[26px] transition-all dark:text-dark-white">
-                  Accessories
+                  {t("ShopCategory-accessories")}
                 </span>
                 <span className="text-sm font-semibold text-secondary transition-all dark:text-dark-secondary">{`${accessoriesQuantity} models`}</span>
               </div>

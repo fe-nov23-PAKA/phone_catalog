@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../app/hooks";
 import { ItemDescription } from "../components/ItemDescriptionSlider/ItemDescriptionSlider";
 import { AboutSection } from "../components/AboutSection";
@@ -9,7 +10,6 @@ import { Item } from "../types/Item";
 import { Breadcrumbs } from "../components/UI/Breadcrumbs";
 import { Loader } from "../components/UI/Loader/CardLoader/Loader";
 import { ItemsCarousel } from "../components/ItemsCarousel/ItemsCarousel";
-import { SortType } from "../types/SortType";
 import { BackButton } from "../components/UI/BackButton";
 
 export const ItemCard = () => {
@@ -21,6 +21,8 @@ export const ItemCard = () => {
   useEffect(() => {
     getData(choosedItem?.category as string).then(setProductsList);
   }, [choosedItem]);
+
+  const { t } = useTranslation();
 
   const fullChoosedCard = () =>
     productsList.find((product) => product.id === slug) as ItemDescriptionType;
@@ -37,7 +39,7 @@ export const ItemCard = () => {
             shortInfoItem={choosedItem}
           />
           <AboutSection item={fullChoosedCard()} />
-          <ItemsCarousel titleName={SortType.LIKE} startVisibleItems={items} />
+          <ItemsCarousel titleName={t("Youmaylike")} startVisibleItems={items} />
         </>
       ) : (
         <Loader />

@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AOS from "aos";
+import { useTranslation } from "react-i18next";
 import { ProductCard } from "../ProductCard";
 import { ArrowRight } from "../../icons/Arrow-Right";
 import { ArrowLeft } from "../../icons/Arrow-Left";
@@ -35,6 +36,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const itemsOnPage = searchParams.get("perPage") || "16";
   const query = searchParams.get("query") || "";
   const [queryFilter, setQueryFilter] = useState(query);
+  const { t } = useTranslation();
 
   const itemsOnPageList = ["16", "24", "32", "64"];
   const sortFields = ["cheapest", "newest", "alphabetically"];
@@ -150,7 +152,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               {title}
             </h1>
             <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
-              {items.length} models
+              {items.length} {t("Models")}
             </div>
           </div>
 
@@ -162,7 +164,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             >
               <DropDownMenu
                 classname="sm:col-span-4"
-                label="Sort by"
+                label={t("Sort")}
                 dropDownField={sortField}
                 dropDownFields={sortFields}
                 isOpen={isSortDropDownShown}
@@ -173,7 +175,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
 
               <DropDownMenu
                 classname="sm:col-span-3"
-                label="Items on page"
+                label={t("Items-page")}
                 dropDownField={itemsOnPage}
                 dropDownFields={itemsOnPageList}
                 isOpen={isItemsDropDownShown}
@@ -185,7 +187,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <div className="col-span-4 w-full sm:col-start-9 sm:col-end-[-1] xl:col-start-[17]">
                 <label className="block">
                   <span className="mb-1 block text-xs font-bold tracking-wider text-secondary after:ml-0.5 dark:text-dark-secondary">
-                    Looking for something?
+                    {t("looking")}
                   </span>
                   <input
                     type="search"
@@ -196,7 +198,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                     focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:rounded-none dark:border-dark-black
                     dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2 dark:hover:ring-dark-icons dark:focus:ring-dark-accent
                     sm:text-sm"
-                    placeholder="Type here"
+                    placeholder={t("Type")}
                     onChange={handleSetQueryParams}
                     value={queryFilter}
                   />

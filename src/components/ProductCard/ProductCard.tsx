@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 import { Item } from "../../types/Item";
 import { AddToCartButton } from "../UI/AddToCartButton";
 import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
@@ -22,6 +23,7 @@ export const ProductCard: React.FC<Props> = ({
 
   const carouselItemRef = useRef<HTMLLIElement>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const updateWidth = () => {
@@ -90,7 +92,7 @@ export const ProductCard: React.FC<Props> = ({
         <div className="mb-2 flex flex-col gap-y-2 py-2">
           <div className="flex items-center justify-between">
             <div className="text-xs font-bold text-secondary transition-all dark:text-dark-secondary">
-              Screen
+              {t("Screen")}
             </div>
             <div className="text-xs font-bold transition-all dark:text-dark-white">
               {screen}
@@ -101,7 +103,7 @@ export const ProductCard: React.FC<Props> = ({
               className="
             text-xs font-bold text-secondary transition-all dark:text-dark-secondary"
             >
-              Capacity
+              {t("Capacity")}
             </div>
             <div className="text-xs font-bold transition-all dark:text-dark-white">
               {capacity}
@@ -112,7 +114,7 @@ export const ProductCard: React.FC<Props> = ({
               className="
             text-xs font-bold text-secondary transition-all dark:text-dark-secondary"
             >
-              RAM
+              {t("RAM")}
             </div>
             <div className="text-xs font-bold transition-all dark:text-dark-white">
               {ram}
