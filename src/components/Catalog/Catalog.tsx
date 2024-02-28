@@ -78,16 +78,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
 
   const handleSortDropDownClick = () => {
     setIsSortDropDownShown((currentValue) => !currentValue);
-    if (!isItemsDropDownShown) {
-      setIsItemsDropDownShown(true);
-    }
   };
 
   const handleItemsDropDownClick = () => {
     setIsItemsDropDownShown((currentValue) => !currentValue);
-    if (!isSortDropDownShown) {
-      setIsSortDropDownShown(true);
-    }
   };
 
   const handleSortDropDownElementClick = (
@@ -142,10 +136,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
-            <h1 className="dark:text-dark-white mb-2 text-[32px]/[41px] font-extrabold transition-all sm:text-[48px]/[56px]">
+            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
               {title}
             </h1>
-            <div className="dark:text-dark-secondary mb-8 font-semibold text-secondary transition-all">
+            <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
               {items.length} models
             </div>
           </div>
@@ -162,6 +156,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 dropDownField={sortField}
                 dropDownFields={sortFields}
                 isOpen={isSortDropDownShown}
+                setIsOpen={setIsSortDropDownShown}
                 handlerToOpen={handleSortDropDownClick}
                 handlerOnClick={handleSortDropDownElementClick}
               />
@@ -172,6 +167,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 dropDownField={itemsOnPage}
                 dropDownFields={itemsOnPageList}
                 isOpen={isItemsDropDownShown}
+                setIsOpen={setIsItemsDropDownShown}
                 handlerToOpen={handleItemsDropDownClick}
                 handlerOnClick={handleItemsDropDownElementClick}
               />
@@ -184,11 +180,11 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   <input
                     type="search"
                     name="search"
-                    className="dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2 
-                    dark:hover:ring-dark-icons dark:focus:ring-dark-accent dark:border-dark-black 
-                    block min-h-10 w-full rounded-md dark:rounded-none border
-                    border-slate-300 bg-white px-3 py-2 placeholder-slate-400 shadow-sm
-                    transition-all focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary
+                    className="block min-h-10 w-full 
+                    rounded-md border border-slate-300 
+                    bg-white px-3 py-2 placeholder-slate-400 shadow-sm transition-all
+                    focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:rounded-none dark:border-dark-black
+                    dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2 dark:hover:ring-dark-icons dark:focus:ring-dark-accent
                     sm:text-sm"
                     placeholder="Type here"
                     onChange={handleSetQueryParams}
@@ -219,13 +215,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             >
               <li
                 className={classNames(
-                  "dark:border-dark-surface2 dark:bg-dark-surface2 rounded-full border transition-all dark:rounded-none",
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       page === "1",
                   },
                   {
-                    "dark:hover:border-dark-icons dark:hover:bg-dark-icons hover:border-primary":
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(page === "1"),
                   },
                 )}
@@ -263,9 +259,9 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                 <li
                   key={number}
                   className={classNames(
-                    "dark:border-dark-surface1 dark:bg-dark-surface1 dark:text-dark-white dark:hover:border-dark-elements dark:hover:bg-dark-elements rounded-full border text-primary transition-all hover:border-primary dark:rounded-none",
+                    "rounded-full border text-primary transition-all hover:border-primary dark:rounded-none dark:border-dark-surface1 dark:bg-dark-surface1 dark:text-dark-white dark:hover:border-dark-elements dark:hover:bg-dark-elements",
                     {
-                      "dark:!border-dark-accent dark:!bg-dark-accent dark:text-dark-white dark:hover:!border-dark-hover dark:hover:!bg-dark-hover border-primary bg-primary text-white hover:bg-white hover:text-primary":
+                      "border-primary bg-primary text-white hover:bg-white hover:text-primary dark:!border-dark-accent dark:!bg-dark-accent dark:text-dark-white dark:hover:!border-dark-hover dark:hover:!bg-dark-hover":
                         page === number,
                     },
                   )}
@@ -281,13 +277,13 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               ))}
               <li
                 className={classNames(
-                  "dark:border-dark-surface2 dark:bg-dark-surface2 rounded-full border transition-all dark:rounded-none",
+                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       +page === itemPages,
                   },
                   {
-                    "dark:hover:border-dark-icons dark:hover:bg-dark-icons hover:border-primary":
+                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(+page === itemPages),
                   },
                 )}
