@@ -1,7 +1,7 @@
+import AOS from "aos";
 import React, { useEffect, useState } from "react";
 import { ItemDescriptionType } from "../../types/ItemDescriptionType";
 import { AboutSecionSkeleton } from "../AboutSectionSkeleton";
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 type Props = {

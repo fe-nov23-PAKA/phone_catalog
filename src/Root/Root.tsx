@@ -7,6 +7,7 @@ import { Header } from "../components/Header/Header";
 import { ItemTitle } from "../types/ItemTitle";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import * as itemsSlice from "../features/ItemsSlice";
+import { Contacts } from "../Pages/Contacts";
 
 export const Root = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ export const Root = () => {
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />
+            <Route path="contacts" element={<Contacts />} />
             <Route path="home" element={<Navigate to="/" />} />
 
             <Route path="phones">
