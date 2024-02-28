@@ -1,9 +1,8 @@
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Squash as Hamburger } from "hamburger-react";
 import { Logo } from "../../icons/Logo";
-import { Close } from "../../icons/Close";
-import { Menu } from "../../icons/Menu";
 import { ShoppingBag } from "../../icons/Shopping-Bag";
 import { BurgerMenu } from "../UI/BurgerMenu";
 import { Favourites } from "../../icons/Favourites";
@@ -14,12 +13,9 @@ import { useAppSelector } from "../../app/hooks";
 import { DarkThemeToggler } from "../UI/DarkThemeToggler/DarkThemeToggler";
 import "./HoverNav.scss";
 
-interface Props {
-  isMenuOpen: boolean;
-  setIsMenuOpen: (isMenuOpen: boolean) => void;
-}
+export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -45,9 +41,8 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "dark:bg-dark-black sticky top-0 z-[20] flex flex-col bg-white transition-all",
-        { "h-screen": isMenuOpen },
-        { "dark:border-dark-elements border-b": !isMenuOpen },
+        "sticky top-0 z-[2] h-[60px] bg-white transition-all",
+        { "border-b": !isMenuOpen },
       )}
     >
       <div className="flex pl-4 sm:pr-0">
@@ -139,18 +134,19 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[17px] py-[21px] text-secondary transition-all focus:outline-none dark:border-dark-elements"
+            className="block border-l px-[5px] focus:outline-none"
             onClick={toggleMenu}
           >
-            {isMenuOpen ? (
-              <Close fill={theme === "dark" ? "#F1F2F9" : ""} />
-            ) : (
-              <Menu fill={theme === "dark" ? "#F1F2F9" : ""} />
-            )}
+            <Hamburger
+              toggled={isMenuOpen}
+              size={14}
+              toggle={() => setIsMenuOpen}
+              color="#0F0F11"
+            />
           </button>
         </div>
       </div>
-      {isMenuOpen && <BurgerMenu setIsMenuOpen={setIsMenuOpen} />}
+      <BurgerMenu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
     </header>
   );
 };
