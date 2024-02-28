@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ItemDescriptionType } from "../../types/ItemDescriptionType";
 import { AboutSecionSkeleton } from "../AboutSectionSkeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 type Props = {
   item: ItemDescriptionType;
@@ -32,16 +34,23 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
     return () => clearTimeout(timerId);
   }, []);
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return isLoading ? (
     <AboutSecionSkeleton />
   ) : (
     <div className="grid grid-cols-4 gap-x-4 pb-14 font-semibold sm:grid-cols-12 sm:pb-10 xl:grid-cols-24">
       <div className="col-span-full mb-14 grid gap-y-8 xl:col-span-12">
-        <h2 className="border-b pb-4 text-[20px]/[26px] font-bold transition-all dark:border-dark-elements dark:text-dark-white sm:text-[22px]/[31px] sm:font-extrabold">
+        <h2
+          data-aos="fade-up"
+          className="border-b pb-4 text-[20px]/[26px] font-bold transition-all dark:border-dark-elements dark:text-dark-white sm:text-[22px]/[31px] sm:font-extrabold"
+        >
           About
         </h2>
         {description.map((section) => (
-          <div key={section.title}>
+          <div data-aos="fade-right" key={section.title}>
             <h3 className="mb-4 text-[16px]/[21px] font-bold transition-all dark:text-dark-white sm:text-[20px]/[26px]">
               {section.title}
             </h3>
@@ -59,10 +68,13 @@ export const AboutSection: React.FC<Props> = ({ item }) => {
         ))}
       </div>
       <div className="col-span-full flex flex-col gap-y-8 xl:col-start-[14] xl:col-end-[-1]">
-        <h2 className="border-b pb-4 text-[20px]/[26px] font-bold transition-all dark:border-dark-elements dark:text-dark-white sm:text-[22px]/[31px] sm:font-extrabold">
+        <h2
+          data-aos="fade-up"
+          className="border-b pb-4 text-[20px]/[26px] font-bold transition-all dark:border-dark-elements dark:text-dark-white sm:text-[22px]/[31px] sm:font-extrabold"
+        >
           Tech specs
         </h2>
-        <div className="grid gap-y-2">
+        <div data-aos="fade-left" className="grid gap-y-2">
           {Object.entries(techSpecs).map(([key, value]) => (
             <div className="flex justify-between" key={key}>
               <span className="text-[14px]/[21px] font-semibold text-secondary transition-all dark:text-dark-secondary">

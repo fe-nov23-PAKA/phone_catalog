@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import { useOnClickOutside } from "usehooks-ts";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos";
 import { ArrowDown } from "../../../icons/Arrow-Down";
-import { ArrowUp } from "../../../icons/Arrow-Up";
 import { useAppSelector } from "../../../app/hooks";
 
 interface Props {
@@ -39,6 +40,10 @@ export const DropDownMenu: React.FC<Props> = ({
 
   useOnClickOutside(ref, handleClickOutside);
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div
       ref={ref}
@@ -61,46 +66,47 @@ export const DropDownMenu: React.FC<Props> = ({
           id="menu-button"
         >
           {dropDownField}
-          {isOpen ? (
-            <ArrowDown fill={theme === "dark" ? "#75767F" : ""} />
-          ) : (
-            <ArrowUp fill={theme === "dark" ? "#75767F" : ""} />
-          )}
+          <ArrowDown
+            fill={theme === "dark" ? "#75767F" : ""}
+            className={classNames("transition-all", { "rotate-180": isOpen })}
+          />
         </button>
       </div>
 
-      <div
-        className={classNames(
-          { hidden: isOpen },
-          "absolute left-0 z-10 mt-1 text-secondary",
-          "w-full origin-top-right rounded-md",
-          "shadow-lg ring-1 ring-black ring-opacity-5",
-          "focus:outline-none",
-        )}
-        role="menu"
-        aria-orientation="vertical"
-        aria-labelledby="menu-button"
-      >
+      {!isOpen && (
         <div
-          className="border-elements rounded-lg border bg-white py-1 transition-all dark:rounded-none dark:border-dark-elements dark:bg-dark-black"
-          role="none"
+          data-aos="zoom-in-down"
+          className={classNames(
+            "absolute left-0 z-10 mt-1 text-secondary",
+            "w-full origin-top-right rounded-md",
+            "shadow-lg ring-1 ring-black ring-opacity-5",
+            "focus:outline-none",
+          )}
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
         >
-          {dropDownFields.map((field) => (
-            <button
-              key={field}
-              type="button"
-              className="block w-full rounded bg-white px-4 py-2
+          <div
+            className="border-elements rounded-lg border bg-white py-1 transition-all dark:rounded-none dark:border-dark-elements dark:bg-dark-black"
+            role="none"
+          >
+            {dropDownFields.map((field) => (
+              <button
+                key={field}
+                type="button"
+                className="block w-full rounded bg-white px-4 py-2
                     text-left text-sm font-semibold capitalize tracking-wider transition-all hover:bg-hover-color hover:text-primary dark:rounded-none
                   dark:bg-dark-black dark:text-dark-secondary dark:hover:bg-dark-surface2 dark:hover:text-dark-white"
-              role="menuitem"
-              id="menu-item-0"
-              onClick={(event) => handlerOnClick(field, event)}
-            >
-              {field}
-            </button>
-          ))}
+                role="menuitem"
+                id="menu-item-0"
+                onClick={(event) => handlerOnClick(field, event)}
+              >
+                {field}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

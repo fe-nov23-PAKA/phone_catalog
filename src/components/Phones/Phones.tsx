@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import AOS from "aos";
 import phone_1 from "../../assets/img/PhonesHome/Phones_1.png";
 import phone_2 from "../../assets/img/PhonesHome/Phones_2.png";
 import phone_3 from "../../assets/img/PhonesHome/Phones_3.png";
 import { useAppSelector } from "../../app/hooks";
+import "aos/dist/aos.css";
 
 export const Phones = () => {
   const products = useAppSelector((state) => state.items.items);
@@ -19,6 +22,10 @@ export const Phones = () => {
     (product) => product.category === "accessories",
   ).length;
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       <div className="container pb-16">
@@ -29,6 +36,7 @@ export const Phones = () => {
           <Link to="phones" className="flex items-center justify-center">
             <div className="grid gap-6">
               <img
+                data-aos="fade-right"
                 src={phone_1}
                 alt="phone_1"
                 className="rounded-lg transition-all hover:scale-[1.1]"
@@ -44,6 +52,7 @@ export const Phones = () => {
           <Link to="tablets" className="flex items-center justify-center">
             <div className="grid gap-6">
               <img
+                data-aos="fade-up"
                 src={phone_2}
                 alt="phone_2"
                 className="rounded-lg transition-all hover:scale-[1.1]"
@@ -59,6 +68,7 @@ export const Phones = () => {
           <Link to="accessories" className="flex items-center justify-center">
             <div className="grid gap-6">
               <img
+                data-aos="fade-left"
                 src={phone_3}
                 alt="phone_3"
                 className="rounded-lg transition-all hover:scale-[1.1]"

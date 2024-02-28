@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import AOS from "aos";
 import confetti from "canvas-confetti";
 import { CartItem } from "../CartItem";
 import { useAppSelector } from "../../app/hooks";
@@ -10,6 +11,7 @@ import { Breadcrumbs } from "../UI/Breadcrumbs";
 import imgEmptyCart from "../../assets/img/empty-cart-1.png";
 import { CartItemSkeleton } from "../CartItemSkeleton";
 import { CartCheckoutSkeleton } from "../CartCheckoutSkeleton";
+import "aos/dist/aos.css";
 
 export const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +29,7 @@ export const Cart = () => {
       setIsLoading(false);
     }, 800);
 
+    AOS.init();
     return () => clearTimeout(timerId);
   }, []);
 
@@ -35,7 +38,10 @@ export const Cart = () => {
       <div className="container px-4 pb-14 pt-6 sm:px-6 sm:pb-16 xl:px-8 xl:pb-20">
         <Breadcrumbs />
         <BackButton />
-        <h1 className="mb-8 text-left text-[32px]/[41px] font-extrabold tracking-[-0.01em] dark:text-dark-white sm:text-[48px]/[56px]">
+        <h1
+          data-aos="fade-right"
+          className="mb-8 text-left text-[32px]/[41px] font-extrabold tracking-[-0.01em] dark:text-dark-white sm:text-[48px]/[56px]"
+        >
           Cart
         </h1>
         <div className="grid gap-x-4 md:grid-cols-3">
@@ -51,7 +57,10 @@ export const Cart = () => {
           {isLoading ? (
             <CartCheckoutSkeleton />
           ) : (
-            <div className="flex max-h-[190px] flex-col items-center justify-center rounded-[16px] border border-element-color p-6 dark:rounded-none dark:border-dark-elements">
+            <div
+              data-aos="fade-left"
+              className="flex max-h-[190px] flex-col items-center justify-center rounded-[16px] border border-element-color p-6 dark:rounded-none dark:border-dark-elements"
+            >
               <div className="flex w-full flex-col justify-center gap-y-4 text-center">
                 <div className="border-b border-element-color pb-4 dark:border-dark-elements">
                   <h2 className="text-[32px]/[41px] font-extrabold tracking-[-0.01em] dark:text-dark-white">

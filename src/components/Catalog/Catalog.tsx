@@ -3,6 +3,7 @@
 import classNames from "classnames";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AOS from "aos";
 import { ProductCard } from "../ProductCard";
 import { ArrowRight } from "../../icons/Arrow-Right";
 import { ArrowLeft } from "../../icons/Arrow-Left";
@@ -18,6 +19,7 @@ import { useAppSelector } from "../../app/hooks";
 import { PaginationStart } from "../PaginationStart/PaginationStart";
 import { PaginationMiddle } from "../PaginationMiddle/PaginationMiddle";
 import { PaginationEnd } from "../PaginationEnd/PaginationEnd";
+import "aos/dist/aos.css";
 
 interface Props {
   items: Item[];
@@ -130,6 +132,10 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
     itemsPagesMap.push(i.toString());
   }
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       {items.length <= 0 ? (
@@ -140,7 +146,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
             <div className="flex items-center gap-2">
               <Breadcrumbs />
             </div>
-            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
+            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]" data-aos="fade-right">
               {title}
             </h1>
             <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">

@@ -1,11 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import classNames from "classnames";
+import AOS from "aos";
+import { useEffect } from "react";
 import { Plus } from "../../icons/Plus";
 import { Minus } from "../../icons/Minus";
 import { Close } from "../../icons/Close";
 import { InitialState } from "../../types/InitialState";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { actions as cartActions } from "../../features/CartSlice";
+import "aos/dist/aos.css";
 
 interface Props {
   item: InitialState;
@@ -18,8 +21,15 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="box-border flex flex-col justify-between gap-4 rounded-[16px] border border-solid border-element-color p-4 dark:rounded-none dark:border-dark-surface1 dark:bg-dark-surface1 sm:flex-row sm:p-6">
+    <div
+      data-aos="fade-up"
+      className="box-border flex flex-col justify-between gap-4 rounded-[16px] border border-solid border-element-color p-4 dark:rounded-none dark:border-dark-surface1 dark:bg-dark-surface1 sm:flex-row sm:p-6"
+    >
       <div className="flex flex-row items-center gap-4">
         <button
           type="button"
