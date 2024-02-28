@@ -62,23 +62,6 @@ export const Cart = () => {
                   Checkout
                 </button>
               </div>
-              <button
-                className={classNames(
-                  "dark:bg-dark-accent dark:text-dark-white dark:hover:bg-dark-hover min-h-12 w-full rounded-lg bg-accent text-[14px]/[21px] font-semibold text-white transition-all hover:shadow-sh1 dark:rounded-none dark:hover:shadow-zinc-700",
-                  { "bg-icons-color hover:shadow-none": !cartItems.length },
-                )}
-                type="button"
-                disabled={!cartItems.length}
-                onClick={() => {
-                  setIsModalOpen(true);
-                  confetti({
-                    particleCount: 100,
-                    spread: 70,
-                  });
-                }}
-              >
-                Checkout
-              </button>
             </div>
           </div>
         ) : (

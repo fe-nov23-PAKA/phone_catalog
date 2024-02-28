@@ -18,7 +18,9 @@ export const Favourites = () => {
           Favourites
         </span>
         {!!countFavouritesItems && (
-          <span className="dark:text-dark-secondary text-sm font-semibold text-secondary">{`${countFavouritesItems === 1 ? `${countFavouritesItems} item` : `${countFavouritesItems} items`}`}</span>
+          <span className="dark:text-dark-secondary text-sm font-semibold text-secondary">
+            {`${countFavouritesItems === 1 ? `${countFavouritesItems} item` : `${countFavouritesItems} items`}`}
+          </span>
         )}
       </div>
       {countFavouritesItems ? (
