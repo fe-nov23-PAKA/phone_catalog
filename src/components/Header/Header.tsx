@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[2] h-[60px] bg-white transition-all",
+        "dark:bg-dark-black sticky top-0 z-[2] h-[60px] bg-white transition-all",
         { "border-b": !isMenuOpen },
       )}
     >
@@ -90,7 +90,7 @@ export const Header: React.FC = () => {
             to="favourites"
             className={({ isActive }) =>
               classNames(
-                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-[21px]",
                 {
                   "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
@@ -112,7 +112,7 @@ export const Header: React.FC = () => {
             to="cart"
             className={({ isActive }) =>
               classNames(
-                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-6",
+                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-[21px]",
                 {
                   "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
                     isActive,
@@ -134,14 +134,14 @@ export const Header: React.FC = () => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="block border-l px-[5px] focus:outline-none"
+            className="border-dark-elements block border-l px-[5px] focus:outline-none"
             onClick={toggleMenu}
           >
             <Hamburger
               toggled={isMenuOpen}
               size={14}
               toggle={() => setIsMenuOpen}
-              color="#0F0F11"
+              color={theme === "dark" ? "white" : "#0F0F11"}
             />
           </button>
         </div>
