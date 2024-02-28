@@ -14,7 +14,6 @@ interface Props {
     option: string,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
-  setIsFieldOpen?: (isShown: boolean) => void;
 }
 
 export const DropDownMenu: React.FC<Props> = ({
@@ -28,23 +27,31 @@ export const DropDownMenu: React.FC<Props> = ({
 }) => {
   const theme = useAppSelector((state) => state.theme);
 
+  // const handleCloseOnBlur = () => {
+  //   setTimeout(() => {
+  //     handlerToOpen();
+  //   }, 500);
+  // };
+
   return (
     <div
       className={classNames("relative col-span-2 w-full text-left", {
         [`${classname}`]: classname,
       })}
     >
-      <div>
-        <p className="dark:text-dark-secondary mb-1 text-xs text-secondary transition-all">
+      <div
+      // onBlur={handleCloseOnBlur}
+      >
+        <p className="mb-1 text-xs text-secondary transition-all dark:text-dark-secondary">
           {label}
         </p>
         <button
           type="button"
           className={classNames(
-            { "dark:focus:ring-dark-accent focus:ring-primary": !isOpen },
+            { "focus:ring-primary dark:focus:ring-dark-accent": !isOpen },
             { "hover:ring-secondary": isOpen },
             "dark:bg-dark-surface2 dark:text-dark-white dark:ring-dark-surface2",
-            "dark:hover:ring-dark-icons inline-flex w-full items-center",
+            "inline-flex w-full items-center dark:hover:ring-dark-icons",
             "justify-between rounded-md bg-white px-3 py-2 text-[14px]/[21px] ",
             "font-bold capitalize tracking-wider text-primary shadow-sm ring-1",
             "ring-inset ring-icons-color transition-all dark:rounded-none",
@@ -74,16 +81,16 @@ export const DropDownMenu: React.FC<Props> = ({
         aria-labelledby="menu-button"
       >
         <div
-          className="border-elements dark:border-dark-elements dark:bg-dark-black rounded-lg border bg-white py-1 transition-all dark:rounded-none"
+          className="border-elements rounded-lg border bg-white py-1 transition-all dark:rounded-none dark:border-dark-elements dark:bg-dark-black"
           role="none"
         >
           {dropDownFields.map((field) => (
             <button
               key={field}
               type="button"
-              className="dark:bg-dark-black dark:text-dark-secondary dark:hover:bg-dark-surface2 dark:hover:text-dark-white block w-full
-                    rounded bg-white px-4 py-2 text-left text-sm font-semibold capitalize tracking-wider
-                  transition-all hover:bg-hover-color hover:text-primary dark:rounded-none"
+              className="block w-full rounded bg-white px-4 py-2
+                    text-left text-sm font-semibold capitalize tracking-wider transition-all hover:bg-hover-color hover:text-primary dark:rounded-none
+                  dark:bg-dark-black dark:text-dark-secondary dark:hover:bg-dark-surface2 dark:hover:text-dark-white"
               role="menuitem"
               id="menu-item-0"
               onClick={(event) => handlerOnClick(field, event)}
