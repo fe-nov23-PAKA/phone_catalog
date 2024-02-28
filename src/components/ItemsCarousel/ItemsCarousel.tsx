@@ -26,7 +26,7 @@ export const ItemsCarousel: React.FC<Props> = ({
   const carouselRef = useRef<HTMLUListElement>(null);
 
   const visibleItems = useMemo(
-    () => getItemsToShow(titleName, startVisibleItems.slice(0, 20)),
+    () => getItemsToShow(titleName, startVisibleItems),
     [],
   );
   const ITEMS_GAP = 16;

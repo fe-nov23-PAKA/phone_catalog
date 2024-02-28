@@ -38,5 +38,5 @@ export function getItemsToShow(
 
   const itemsOut: Item[] = Object.values(uniqueItems);
 
-  return itemsOut;
+  return itemsOut.slice(0, 10);
 }
