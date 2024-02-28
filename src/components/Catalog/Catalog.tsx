@@ -268,6 +268,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   itemsPagesMap={itemsPagesMap}
                   page={page}
                   handleSetPage={handleSetPage}
+                  sortField={sortField}
+                  itemsOnPage={itemsOnPage}
                 />
               )}
               {+page >= 3 &&
@@ -277,6 +279,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   itemsPagesMap={itemsPagesMap}
                   page={page}
                   handleSetPage={handleSetPage}
+                  sortField={sortField}
+                  itemsOnPage={itemsOnPage}
                 />
               )}
               {+page >= itemsPagesMap.length - 1 && (
@@ -284,6 +288,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
                   itemsPagesMap={itemsPagesMap}
                   page={page}
                   handleSetPage={handleSetPage}
+                  sortField={sortField}
+                  itemsOnPage={itemsOnPage}
                 />
               )}
 

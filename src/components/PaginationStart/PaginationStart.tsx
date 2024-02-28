@@ -8,17 +8,21 @@ interface Props {
     number: string,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
+  sortField: string;
+  itemsOnPage: string;
 }
 
 export const PaginationStart: React.FC<Props> = ({
   itemsPagesMap,
   page,
   handleSetPage,
+  sortField,
+  itemsOnPage,
 }) => {
   const [, setSearchParams] = useSearchParams();
   const params = new URLSearchParams({
-    perPage: "16",
-    sort: "newest",
+    sort: sortField,
+    perPage: itemsOnPage,
   });
   let visiblePages: string[] = [];
 
