@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import classNames from "classnames";
+import AOS from "aos";
 import { ProductCard } from "../ProductCard";
 import { ArrowLeft } from "../../icons/Arrow-Left";
 import { ArrowRight } from "../../icons/Arrow-Right";
@@ -8,6 +9,7 @@ import { Item } from "../../types/Item";
 import { SortType } from "../../types/SortType";
 import { getItemsToShow } from "../../utils/getItemsToShow";
 import { useAppSelector } from "../../app/hooks";
+import "aos/dist/aos.css";
 
 interface Props {
   titleName: SortType;
@@ -79,9 +81,13 @@ export const ItemsCarousel: React.FC<Props> = ({
     }
   };
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
-      <div className="pb-20">
+      <div className="pb-20" data-aos="fade-up">
         <div className="flex items-center justify-between pb-6">
           <h2 className="text-[32px] font-extrabold leading-[41px] transition-all dark:text-dark-white">
             {titleName}
