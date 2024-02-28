@@ -163,7 +163,7 @@ export const ItemDescription: React.FC<Props> = ({
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-between xl:gap-4" />
+              <div className="swiper_pagination mb-10 mt-4 flex justify-center gap-2 sm:mb-0 sm:mr-4 sm:mt-0 sm:flex-col sm:justify-normal xl:justify-start xl:gap-4" />
             </>
           </div>
         </>

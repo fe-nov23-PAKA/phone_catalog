@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
             target="_blank"
             className="text-xs font-extrabold uppercase text-secondary 
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
-            to="https://github.com/orgs/fe-nov23-PAKA/people"
+            to="contacts"
           >
             Contacts
           </Link>
