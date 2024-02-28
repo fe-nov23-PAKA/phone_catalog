@@ -1,11 +1,9 @@
 /* eslint-disable react/self-closing-comp */
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import AOS from "aos";
 import { Tick } from "../../icons/Tick";
 import { actions as cartActions } from "../../features/CartSlice";
 import { useAppDispatch } from "../../app/hooks";
-import "aos/dist/aos.css";
 
 export const CheckoutModal = () => {
   const dispatch = useAppDispatch();

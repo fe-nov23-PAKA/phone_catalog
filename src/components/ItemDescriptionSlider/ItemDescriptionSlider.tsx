@@ -11,7 +11,6 @@ import "swiper/css";
 import { AddToFavouritesButton } from "../UI/AddToFavouritesButton";
 import { ItemDescriptionSkeleton } from "../ItemDescriptionSkeleton";
 import { ItemSliderSkeleton } from "../ItemSliderSkeleton";
-import { CardLoader } from "../UI/Loader/CardLoader/CardLoader";
 import "aos/dist/aos.css";
 
 interface Props {
@@ -129,11 +128,11 @@ export const ItemDescription: React.FC<Props> = ({
     graphite: "#41424C",
   };
 
-useEffect(() => {
-  AOS.init();
-}, []);
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
-return isLoading ? (
+  return isLoading ? (
     <ItemDescriptionSkeleton />
   ) : (
     <div className="mb-14 grid grid-cols-4 gap-4 pt-4 sm:mb-16 sm:grid-cols-12 xl:mb-20 xl:grid-cols-24">
@@ -170,7 +169,10 @@ return isLoading ? (
         </>
       )}
 
-      <div data-aos="fade-left" className="col-span-full flex flex-col gap-[37.5px] sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]">
+      <div
+        data-aos="fade-left"
+        className="col-span-full flex flex-col gap-[37.5px] sm:col-span-5 xl:col-start-[14] xl:col-end-[-1]"
+      >
         <div className="justify-between border-b-[1px] pb-[24px] transition-all dark:border-dark-elements">
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
