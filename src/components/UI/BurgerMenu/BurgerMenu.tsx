@@ -48,7 +48,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
           </NavLinkMenu>
         </li>
         {NAV_LIST.map((navItem) => (
-          <li>
+          <li key={navItem}>
             <NavLinkMenu
               onClick={() => setIsMenuOpen(false)}
               to={`/${navItem.toLowerCase()}`}
@@ -65,9 +65,9 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
           to="favourites"
           className={({ isActive }) =>
             classNames(
-              "dark:border-dark-elements relative flex w-1/2 items-center justify-center border-r border-t py-6 transition-all",
+              "relative flex w-1/2 items-center justify-center border-r border-t py-6 transition-all dark:border-dark-elements",
               {
-                "after:content[] dark:after:bg-dark-white transition-all after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                "after:content[] transition-all after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                   isActive,
               },
             )
@@ -88,9 +88,9 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
           to="cart"
           className={({ isActive }) =>
             classNames(
-              "dark:border-dark-elements relative flex w-1/2 items-center justify-center border-r border-t py-6 transition-all",
+              "relative flex w-1/2 items-center justify-center border-r border-t py-6 transition-all dark:border-dark-elements",
               {
-                "after:content[] dark:after:bg-dark-white transition-all after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                "after:content[] transition-all after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                   isActive,
               },
             )

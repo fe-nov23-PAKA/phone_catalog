@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { Logo } from "../../icons/Logo";
 import { ArrowUp } from "../../icons/Arrow-Up";
@@ -26,21 +27,23 @@ export const Footer: React.FC = () => {
           className="mb-8 flex flex-col gap-3 sm:mb-0
     sm:w-full sm:max-w-[35%] sm:flex-row sm:items-center sm:justify-between"
         >
-          <a
+          <Link
+            target="_blank"
             className="text-xs font-extrabold uppercase text-secondary
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
-            href="/"
+            to="https://github.com/fe-nov23-PAKA/phone_catalog"
           >
             Github
-          </a>
+          </Link>
 
-          <a
+          <Link
+            target="_blank"
             className="text-xs font-extrabold uppercase text-secondary 
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
-            href="/"
+            to="https://github.com/orgs/fe-nov23-PAKA/people"
           >
             Contacts
-          </a>
+          </Link>
 
           <a
             className="text-xs font-extrabold uppercase text-secondary 

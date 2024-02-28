@@ -13,14 +13,15 @@ export const HomePage = () => {
 
   return (
     <>
+      <h1 className="hidden">Product Catalog</h1>
       {error && <div>Error</div>}
       {loading && <Loader />}
 
       {!loading && !error && (
         <div className="container">
-          <h1 className="dark:text-dark-white py-6 text-left text-[32px]/[41px] font-extrabold transition-all sm:py-8 xl:py-14">
+          <h2 className="py-6 text-left text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:py-8 xl:py-14">
             Welcome to Nice Gadgets store!
-          </h1>
+          </h2>
           <div className="mx-auto max-w-[1232px] sm:px-[74px] xl:px-[82px]">
             <Carousel />
           </div>

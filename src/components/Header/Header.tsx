@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
   return (
     <header
       className={classNames(
-        "dark:bg-dark-black sticky top-0 z-[2] h-[60px] bg-white transition-all",
+        "sticky top-0 z-[20] h-[60px] bg-white transition-all dark:bg-dark-black",
         { "border-b": !isMenuOpen },
       )}
     >
@@ -90,9 +90,9 @@ export const Header: React.FC = () => {
             to="favourites"
             className={({ isActive }) =>
               classNames(
-                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-[21px]",
+                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-[21px] dark:sm:border-dark-elements",
                 {
-                  "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                     isActive,
                 },
               )
@@ -112,9 +112,9 @@ export const Header: React.FC = () => {
             to="cart"
             className={({ isActive }) =>
               classNames(
-                "dark:hover:bg-dark-surface2 dark:sm:border-dark-elements relative transition-all hover:bg-hover-color sm:border-l sm:p-[21px]",
+                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-[21px] dark:sm:border-dark-elements",
                 {
-                  "after:content[] dark:after:bg-dark-white after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary":
+                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
                     isActive,
                 },
               )
@@ -134,7 +134,7 @@ export const Header: React.FC = () => {
         <div className="flex sm:hidden">
           <button
             type="button"
-            className="border-dark-elements block border-l px-[5px] focus:outline-none"
+            className="block border-l px-[5px] focus:outline-none dark:border-dark-elements"
             onClick={toggleMenu}
           >
             <Hamburger
