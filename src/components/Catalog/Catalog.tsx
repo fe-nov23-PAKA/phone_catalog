@@ -43,8 +43,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   useEffect(() => {
     if (sortField === "newest" && itemsOnPage === "16") {
       const defaultSearchParams = new URLSearchParams({
-        perPage: "16",
         sort: "newest",
+        perPage: "16",
       });
 
       setSearchParams(defaultSearchParams);

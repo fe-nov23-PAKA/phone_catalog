@@ -41,6 +41,15 @@ export const PaginationEnd: React.FC<Props> = ({
     ];
   }
 
+  const handleDotsBack = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+
+    params.set("page", `${+page - 2}`);
+    setSearchParams(params);
+  };
+
   return (
     <>
       {itemsPagesMap.length > 2 && (
@@ -52,12 +61,7 @@ export const PaginationEnd: React.FC<Props> = ({
           <button
             type="button"
             className="flex h-8 w-8 items-center justify-center"
-            onClick={(event) => {
-              event.preventDefault();
-
-              params.set("page", `${+page - 2}`);
-              setSearchParams(params);
-            }}
+            onClick={handleDotsBack}
           >
             ...
           </button>

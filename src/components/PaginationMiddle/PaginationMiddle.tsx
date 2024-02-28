@@ -36,6 +36,28 @@ export const PaginationMiddle: React.FC<Props> = ({
     itemsPagesMap[currentPage + 1],
   ];
 
+  const handleDotsBack = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+    if (+page - 2 !== 1) {
+      params.set("page", `${+page - 2}`);
+      setSearchParams(params.toString());
+    } else {
+      params.delete("page");
+      setSearchParams(params.toString());
+    }
+  };
+
+  const handleDotsForward = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+
+    params.set("page", `${+page + 2}`);
+    setSearchParams(params);
+  };
+
   return (
     <>
       <li
@@ -46,16 +68,7 @@ export const PaginationMiddle: React.FC<Props> = ({
         <button
           type="button"
           className="flex h-8 w-8 items-center justify-center"
-          onClick={(event) => {
-            event.preventDefault();
-            if (+page - 2 !== 1) {
-              params.set("page", `${+page - 2}`);
-              setSearchParams(params.toString());
-            } else {
-              params.delete("page");
-              setSearchParams(params.toString());
-            }
-          }}
+          onClick={handleDotsBack}
         >
           ...
         </button>
@@ -88,12 +101,7 @@ export const PaginationMiddle: React.FC<Props> = ({
         <button
           type="button"
           className="flex h-8 w-8 items-center justify-center"
-          onClick={(event) => {
-            event.preventDefault();
-
-            params.set("page", `${+page + 2}`);
-            setSearchParams(params);
-          }}
+          onClick={handleDotsForward}
         >
           ...
         </button>

@@ -32,6 +32,15 @@ export const PaginationStart: React.FC<Props> = ({
     visiblePages = [itemsPagesMap[0], itemsPagesMap[1], itemsPagesMap[2]];
   }
 
+  const handleDotsForward = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+
+    params.set("page", `${+page + 2}`);
+    setSearchParams(params);
+  };
+
   return (
     <>
       {visiblePages.map((number) => (
@@ -62,12 +71,7 @@ export const PaginationStart: React.FC<Props> = ({
         <button
           type="button"
           className="flex h-8 w-8 items-center justify-center"
-          onClick={(event) => {
-            event.preventDefault();
-
-            params.set("page", `${+page + 2}`);
-            setSearchParams(params);
-          }}
+          onClick={handleDotsForward}
         >
           ...
         </button>
