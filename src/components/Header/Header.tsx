@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Squash as Hamburger } from "hamburger-react";
 import { Logo } from "../../icons/Logo";
@@ -13,16 +13,11 @@ import { useAppSelector } from "../../app/hooks";
 import { DarkThemeToggler } from "../UI/DarkThemeToggler/DarkThemeToggler";
 import "./HoverNav.scss";
 
-interface Props {
-  isMenuOpen: boolean;
-  setIsMenuOpen: (isMenuOpen: boolean) => void;
-}
+export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const toggleMenu = () => {
-    setTimeout(() => {
-      setIsMenuOpen(!isMenuOpen);
-    }, 300);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const favouriteItems = useAppSelector((state) => state.favourites);
@@ -45,8 +40,7 @@ export const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[2] flex flex-col bg-white transition-all",
-        { "h-screen": isMenuOpen },
+        "sticky top-0 z-[2] h-[60px] bg-white transition-all",
         { "border-b": !isMenuOpen },
       )}
     >

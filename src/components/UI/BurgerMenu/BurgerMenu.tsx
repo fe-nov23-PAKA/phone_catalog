@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
+import { useEffect } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { ChosenItemsIcon } from "../../../icons/Chosen-Items-Icon";
 import { Favourites } from "../../../icons/Favourites";
@@ -16,12 +17,20 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
   const favouriteItems = useAppSelector((state) => state.favourites);
   const cartItems = useAppSelector((state) => state.cart);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMenuOpen]);
+
   return (
     <div
       className={classNames(
-        "flex h-0 w-full flex-col transition-all duration-[500ms] ease-in-out",
+        "absolute bottom-0 top-full z-[50] flex h-0 w-full flex-col transition-all duration-[500ms] ease-in-out",
         "justify-between overflow-hidden border-t bg-white",
-        { "!h-full": isMenuOpen },
+        { "!h-[calc(100vh-60px)]": isMenuOpen },
       )}
     >
       <ul
