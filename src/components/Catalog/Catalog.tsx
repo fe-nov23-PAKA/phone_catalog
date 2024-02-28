@@ -141,10 +141,8 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <Breadcrumbs />
             </div>
             <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
-            <h1 className="mb-2 text-[32px]/[41px] font-extrabold transition-all dark:text-dark-white sm:text-[48px]/[56px]">
               {title}
             </h1>
-            <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
             <div className="mb-8 font-semibold text-secondary transition-all dark:text-dark-secondary">
               {items.length} models
             </div>
@@ -222,13 +220,11 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <li
                 className={classNames(
                   "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
-                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       page === "1",
                   },
                   {
-                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                     "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(page === "1"),
                   },
@@ -296,13 +292,11 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
               <li
                 className={classNames(
                   "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
-                  "rounded-full border transition-all dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2",
                   {
                     "disabled dark:!border-dark-elements dark:!bg-dark-black":
                       +page === itemPages,
                   },
                   {
-                    "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                     "hover:border-primary dark:hover:border-dark-icons dark:hover:bg-dark-icons":
                       !(+page === itemPages),
                   },
