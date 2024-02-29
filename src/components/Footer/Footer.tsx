@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
           <button
             type="button"
             onClick={() => i18n.changeLanguage("en")}
-            className="mr-3"
+            className="mr-3 text-primary dark:text-dark-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,18 +84,18 @@ export const Footer: React.FC = () => {
                 strokeWidth="2"
               />
             </svg>
-            ua
+            ENG
           </button>
           <button
             type="button"
             onClick={() => i18n.changeLanguage("ua")}
-            className=""
+            className="text-primary dark:text-dark-white"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="20">
               <rect width="30" height="20" fill="#0057B7" />
               <rect width="30" height="20" y="11" fill="#FFD700" />
             </svg>
-            eng
+            UA
           </button>
         </div>
         <div
