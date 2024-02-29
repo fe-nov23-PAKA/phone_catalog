@@ -60,7 +60,9 @@ export const Contacts = () => {
             </div>
             <div className="flex flex-col items-center justify-center gap-y-1">
               <h3 className="text-center text-[22px]/[27px] font-bold text-primary dark:text-dark-white">
-                Ruslan (URKLAN(Pivo)) Voschylo
+                Ruslan (URKLAN
+                <br />
+                (Sasaki(Pivo))) Voschylo
               </h3>
               <a
                 rel="noreferrer"
