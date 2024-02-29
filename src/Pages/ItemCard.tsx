@@ -39,7 +39,10 @@ export const ItemCard = () => {
             shortInfoItem={choosedItem}
           />
           <AboutSection item={fullChoosedCard()} />
-          <ItemsCarousel titleName={t("Youmaylike")} startVisibleItems={items} />
+          <ItemsCarousel
+            titleName={t("Youmaylike")}
+            startVisibleItems={items}
+          />
         </>
       ) : (
         <Loader />

@@ -1,6 +1,5 @@
 import a_duchenko from "../assets/img/team_photos/a_duchenko.png";
 import r_voshchylo from "../assets/img/team_photos/r_voshchylo.jpg";
-import d_iarechuk from "../assets/img/team_photos/d_iarechuk.jpg";
 import n_prokopenko from "../assets/img/team_photos/n_prokopenko.png";
 import r_tkachuk from "../assets/img/team_photos/r_tkachuk.jpg";
 import seventh from "../assets/img/team_photos/1_7.jpg";
