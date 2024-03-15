@@ -1,4 +1,4 @@
-import "./CardLoader.scss";
+import './CardLoader.scss';
 
 export const CardLoader = () => {
   return (

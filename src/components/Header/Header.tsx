@@ -1,20 +1,23 @@
-import classNames from "classnames";
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Squash as Hamburger } from "hamburger-react";
-import { Logo } from "../../icons/Logo";
-import { ShoppingBag } from "../../icons/Shopping-Bag";
-import { BurgerMenu } from "../UI/BurgerMenu";
-import { Favourites } from "../../icons/Favourites";
-import { NavLinkMenu } from "../UI/NavLinkMenu";
-import { NAV_LIST } from "../../variables";
-import { ChosenItemsIcon } from "../../icons/Chosen-Items-Icon";
-import { useAppSelector } from "../../app/hooks";
-import { DarkThemeToggler } from "../UI/DarkThemeToggler/DarkThemeToggler";
-import "./HoverNav.scss";
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Squash as Hamburger } from 'hamburger-react';
+import { Logo } from '../../icons/Logo';
+import { ShoppingBag } from '../../icons/Shopping-Bag';
+import { BurgerMenu } from '../UI/BurgerMenu';
+import { Favourites } from '../../icons/Favourites';
+import { NavLinkMenu } from '../UI/NavLinkMenu';
+import { NAV_LIST } from '../../variables';
+import { ChosenItemsIcon } from '../../icons/Chosen-Items-Icon';
+import { useAppSelector } from '../../app/hooks';
+import { DarkThemeToggler } from '../UI/DarkThemeToggler/DarkThemeToggler';
+import './HoverNav.scss';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuth] = useState(false);
+
+  const isLoginPage = useLocation().pathname.split('/')[1] === 'login';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -31,27 +34,27 @@ export const Header: React.FC = () => {
       }
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
     <header
       className={classNames(
-        "sticky top-0 z-[20] h-full bg-white transition-all dark:bg-dark-black",
-        { "border-b": !isMenuOpen },
+        'sticky top-0 z-[20] h-full bg-white transition-all dark:bg-dark-black',
+        { 'border-b': !isMenuOpen },
       )}
     >
       <div className="flex pl-4 sm:pr-0">
         <div className="flex items-center">
           <NavLink to="/" className="py-4">
             {isMenuOpen ? (
-              <Logo fill={theme === "dark" ? "#F1F2F9" : ""} />
+              <Logo fill={theme === 'dark' ? '#F1F2F9' : ''} />
             ) : (
-              <Logo fill={theme === "dark" ? "#F1F2F9" : "#F447AF"} />
+              <Logo fill={theme === 'dark' ? '#F1F2F9' : '#F447AF'} />
             )}
           </NavLink>
           <nav
@@ -61,8 +64,8 @@ export const Header: React.FC = () => {
             <NavLinkMenu
               to="/"
               classname={classNames(
-                "dark:text-dark-secondary hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary dark:sm:hover:text-dark-white sm:hover:text-primary transition-all relative",
-                { darkhover: theme === "dark" },
+                'dark:text-dark-secondary hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary dark:sm:hover:text-dark-white sm:hover:text-primary transition-all relative',
+                { darkhover: theme === 'dark' },
               )}
             >
               Home
@@ -72,8 +75,8 @@ export const Header: React.FC = () => {
                 key={nav_item}
                 to={`/${nav_item.toLowerCase()}`}
                 classname={classNames(
-                  "dark:text-dark-secondary dark:sm:hover:text-dark-white hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative",
-                  { darkhover: theme === "dark" },
+                  'dark:text-dark-secondary dark:sm:hover:text-dark-white hover text-xs/[31px] py-[15px] font-extrabold uppercase text-secondary sm:hover:text-primary transition-all relative',
+                  { darkhover: theme === 'dark' },
                 )}
               >
                 {nav_item}
@@ -82,55 +85,64 @@ export const Header: React.FC = () => {
           </nav>
         </div>
         <DarkThemeToggler />
-        <div
-          className="hidden items-center
+        {isAuth && (
+          <div
+            className="hidden items-center
           sm:flex sm:border-secondary"
+          >
+            <NavLink
+              to="favourites"
+              className={({ isActive }) =>
+                classNames(
+                  'relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-[21px] dark:sm:border-dark-elements',
+                  {
+                    'after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white':
+                      isActive,
+                  },
+                )
+              }
+            >
+              <div className="relative">
+                <Favourites fill={theme === 'dark' ? '#F1F2F9' : ''} />
+                {favouriteItems.length > 0 && (
+                  <ChosenItemsIcon
+                    count={favouriteItems.length}
+                    classname="bottom-2 left-2"
+                  />
+                )}
+              </div>
+            </NavLink>
+            <NavLink
+              to="cart"
+              className={({ isActive }) =>
+                classNames(
+                  'relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-[21px] dark:sm:border-dark-elements',
+                  {
+                    'after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white':
+                      isActive,
+                  },
+                )
+              }
+            >
+              <div className="relative">
+                <ShoppingBag fill={theme === 'dark' ? '#F1F2F9' : ''} />
+                {cartItems.length > 0 && (
+                  <ChosenItemsIcon
+                    count={cartItems.length}
+                    classname="bottom-2 left-2"
+                  />
+                )}
+              </div>
+            </NavLink>
+          </div>
+        )}
+        <Link
+          to={isLoginPage ? 'sign-in' : 'login'}
+          className="my-auto mr-4 hidden h-full min-h-[40px] w-full max-w-[80px] rounded-2xl border-b-2 border-b-gray-300 bg-white font-bold text-blue-500 ring-2 ring-gray-300 
+          hover:bg-gray-200 active:translate-y-[0.125rem] active:border-b-gray-200 sm:flex sm:items-center sm:justify-center"
         >
-          <NavLink
-            to="favourites"
-            className={({ isActive }) =>
-              classNames(
-                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-[21px] dark:sm:border-dark-elements",
-                {
-                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
-                    isActive,
-                },
-              )
-            }
-          >
-            <div className="relative">
-              <Favourites fill={theme === "dark" ? "#F1F2F9" : ""} />
-              {favouriteItems.length > 0 && (
-                <ChosenItemsIcon
-                  count={favouriteItems.length}
-                  classname="bottom-2 left-2"
-                />
-              )}
-            </div>
-          </NavLink>
-          <NavLink
-            to="cart"
-            className={({ isActive }) =>
-              classNames(
-                "relative transition-all hover:bg-hover-color dark:hover:bg-dark-surface2 sm:border-l sm:p-[21px] dark:sm:border-dark-elements",
-                {
-                  "after:content[] after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:scale-100 after:bg-primary dark:after:bg-dark-white":
-                    isActive,
-                },
-              )
-            }
-          >
-            <div className="relative">
-              <ShoppingBag fill={theme === "dark" ? "#F1F2F9" : ""} />
-              {cartItems.length > 0 && (
-                <ChosenItemsIcon
-                  count={cartItems.length}
-                  classname="bottom-2 left-2"
-                />
-              )}
-            </div>
-          </NavLink>
-        </div>
+          {isLoginPage ? 'SIGN-IN' : 'LOGIN'}
+        </Link>
         <div className="flex sm:hidden">
           <button
             type="button"
@@ -141,12 +153,17 @@ export const Header: React.FC = () => {
               toggled={isMenuOpen}
               size={14}
               toggle={() => setIsMenuOpen}
-              color={theme === "dark" ? "white" : "#0F0F11"}
+              color={theme === 'dark' ? 'white' : '#0F0F11'}
             />
           </button>
         </div>
       </div>
-      <BurgerMenu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
+      <BurgerMenu
+        setIsMenuOpen={setIsMenuOpen}
+        isMenuOpen={isMenuOpen}
+        isAuth={isAuth}
+        isLoginPage={isLoginPage}
+      />
     </header>
   );
 };

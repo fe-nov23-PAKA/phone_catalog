@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./particles.css";
-import { useAppSelector } from "../../app/hooks";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './particles.css';
+import { useAppSelector } from '../../app/hooks';
 
 export const NotFoundPage: React.FC = () => {
   const theme = useAppSelector((state) => state.theme);
@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => {
   return (
     <>
       <div
-        className="flex min-h-[calc(100vh-61px-103px)] items-center justify-center bg-lightness 
+        className="flex min-h-[calc(100vh-61px-97px)] items-center justify-center bg-lightness 
     bg-cover object-fill transition-all dark:bg-darkness"
       >
         <div
@@ -32,10 +32,10 @@ export const NotFoundPage: React.FC = () => {
           </Link>
         </div>
       </div>
-      <div className={theme === "dark" ? "particle" : "dark-particle"} />
-      <div className={theme === "dark" ? "particle" : "dark-particle"} />
-      <div className={theme === "dark" ? "particle" : "dark-particle"} />
-      <div className={theme === "dark" ? "particle" : "dark-particle"} />
+      <div className={theme === 'dark' ? 'particle' : 'dark-particle'} />
+      <div className={theme === 'dark' ? 'particle' : 'dark-particle'} />
+      <div className={theme === 'dark' ? 'particle' : 'dark-particle'} />
+      <div className={theme === 'dark' ? 'particle' : 'dark-particle'} />
     </>
   );
 };

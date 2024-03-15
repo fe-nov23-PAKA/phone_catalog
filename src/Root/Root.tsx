@@ -1,13 +1,15 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
-import { Cart, Favourites, HomePage, ItemCard, ItemsPage } from "../Pages";
-import { PageNotFound } from "../Pages/NotFoundPage";
-import { Footer } from "../components/Footer/Footer";
-import { Header } from "../components/Header/Header";
-import { ItemTitle } from "../types/ItemTitle";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import * as itemsSlice from "../features/ItemsSlice";
-import { Contacts } from "../Pages/Contacts";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Cart, Favourites, HomePage, ItemCard, ItemsPage } from '../Pages';
+import { PageNotFound } from '../Pages/NotFoundPage';
+import { Footer } from '../components/Footer/Footer';
+import { Header } from '../components/Header/Header';
+import { ItemTitle } from '../types/ItemTitle';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import * as itemsSlice from '../features/ItemsSlice';
+import { Contacts } from '../Pages/Contacts';
+import { LoginPage } from '../Pages/LoginPage';
+import { SignInPage } from '../Pages/SignInPage';
 
 export const Root = () => {
   const dispatch = useAppDispatch();
@@ -17,23 +19,23 @@ export const Root = () => {
   useEffect(() => {
     const html = document.documentElement;
 
-    if (theme === "dark") {
-      document.body.classList.add("custom-scrollbar-dark");
-      html.style.backgroundColor = "#0F0F11";
+    if (theme === 'dark') {
+      document.body.classList.add('custom-scrollbar-dark');
+      html.style.backgroundColor = '#0F0F11';
     } else {
-      document.body.classList.remove("custom-scrollbar-dark");
+      document.body.classList.remove('custom-scrollbar-dark');
     }
   }, [theme]);
 
   useEffect(() => {
-    dispatch(itemsSlice.init("products"));
+    dispatch(itemsSlice.init('products'));
   }, []);
 
   return (
     <>
       <Header />
 
-      <div className="min-h-[calc(100vh-64px-98px)] overflow-hidden bg-hover-color transition-all dark:bg-dark-black">
+      <div className="min-h-[calc(100vh-61px-97px)] overflow-hidden bg-hover-color transition-all dark:bg-dark-black">
         <Routes>
           <Route path="/">
             <Route index element={<HomePage />} />
@@ -73,6 +75,8 @@ export const Root = () => {
 
             <Route path="favourites" element={<Favourites />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="sign-in" element={<SignInPage />} />
           </Route>
 
           <Route path="*" element={<PageNotFound />} />

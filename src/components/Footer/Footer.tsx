@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { scrollToTop } from "../../utils/scrollToTop";
-import { Logo } from "../../icons/Logo";
-import { ArrowUp } from "../../icons/Arrow-Up";
-import { useAppSelector } from "../../app/hooks";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { scrollToTop } from '../../utils/scrollToTop';
+import { Logo } from '../../icons/Logo';
+import { ArrowUp } from '../../icons/Arrow-Up';
+import { useAppSelector } from '../../app/hooks';
 
 export const Footer: React.FC = () => {
   const theme = useAppSelector((state) => state.theme);
@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="flex w-full items-center justify-center
+      className="sticky flex w-full items-center justify-center
     border-t border-element-color bg-white transition-all dark:border-dark-elements dark:bg-dark-black"
     >
       <div
@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
       >
         <div className="mb-8 sm:mb-0">
           <a href="/">
-            <Logo fill={theme === "dark" ? "#F1F2F9" : "#F447AF"} />
+            <Logo fill={theme === 'dark' ? '#F1F2F9' : '#F447AF'} />
           </a>
         </div>
 
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             to="contacts"
           >
-            {t("Contacts")}
+            {t('Contacts')}
           </Link>
 
           <a
@@ -51,13 +51,13 @@ export const Footer: React.FC = () => {
           transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             href="/"
           >
-            {t("Rights")}
+            {t('Rights')}
           </a>
         </div>
         <div className="md:left-25 absolute left-40 top-9 xl:left-40">
           <button
             type="button"
-            onClick={() => i18n.changeLanguage("en")}
+            onClick={() => i18n.changeLanguage('en')}
             className="mr-3"
           >
             <svg
@@ -88,7 +88,7 @@ export const Footer: React.FC = () => {
           </button>
           <button
             type="button"
-            onClick={() => i18n.changeLanguage("ua")}
+            onClick={() => i18n.changeLanguage('ua')}
             className=""
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="20">
@@ -108,13 +108,13 @@ export const Footer: React.FC = () => {
             self-center transition-all hover:text-primary dark:text-dark-secondary dark:hover:text-dark-white"
             onClick={scrollToTop}
           >
-            {t("Backtop")}
+            {t('Backtop')}
             <span
               className="box-border flex h-8 
             w-8 items-center justify-center rounded-full
             border transition-all group-hover:border-primary dark:rounded-none dark:border-dark-surface2 dark:bg-dark-surface2 dark:group-hover:border-dark-icons dark:group-hover:bg-dark-icons"
             >
-              <ArrowUp fill={theme === "dark" ? "#F1F2F9" : "#0F0F11"} />
+              <ArrowUp fill={theme === 'dark' ? '#F1F2F9' : '#0F0F11'} />
             </span>
           </button>
         </div>
