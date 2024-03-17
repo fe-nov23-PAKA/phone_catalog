@@ -1,6 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
-import { Cart, Favourites, HomePage, ItemCard, ItemsPage } from '../Pages';
+import {
+  ActivationPage,
+  Cart,
+  Favourites,
+  HomePage,
+  ItemCard,
+  ItemsPage,
+} from '../Pages';
 import { PageNotFound } from '../Pages/NotFoundPage';
 import { Footer } from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
@@ -77,6 +84,7 @@ export const Root = () => {
             <Route path="cart" element={<Cart />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="sign-in" element={<SignInPage />} />
+            <Route path="activate" element={<ActivationPage />} />
           </Route>
 
           <Route path="*" element={<PageNotFound />} />

@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { FormEvent, useState } from 'react';
-import { useAppDispatch } from '../app/hooks';
-import { actions as authActions } from '../features/AuthSlice';
 import { signIn } from '../api/userApi';
 
 export const SignInPage = () => {
@@ -9,16 +7,14 @@ export const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useAppDispatch();
   const navigation = useNavigate();
 
   const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     await signIn(name, email, password)
-      .then((response) => {
-        dispatch(authActions.setUser(response));
-        navigation('/');
+      .then(() => {
+        navigation('/activate');
       })
       .catch((error) => {
         window.alert(error.message);
