@@ -15,7 +15,8 @@ import './HoverNav.scss';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAuth] = useState(false);
+
+  const isAuth = useAppSelector((state) => state.auth);
 
   const isLoginPage = useLocation().pathname.split('/')[1] === 'login';
 
@@ -85,7 +86,7 @@ export const Header: React.FC = () => {
           </nav>
         </div>
         <DarkThemeToggler />
-        {isAuth && (
+        {isAuth ? (
           <div
             className="hidden items-center
           sm:flex sm:border-secondary"
@@ -135,14 +136,16 @@ export const Header: React.FC = () => {
               </div>
             </NavLink>
           </div>
-        )}
-        <Link
-          to={isLoginPage ? 'sign-in' : 'login'}
-          className="my-auto mr-4 hidden h-full min-h-[40px] w-full max-w-[80px] rounded-2xl border-b-2 border-b-gray-300 bg-white font-bold text-blue-500 ring-2 ring-gray-300 
+        ) : (
+          <Link
+            to={isLoginPage ? 'sign-in' : 'login'}
+            className="my-auto mr-4 hidden h-full min-h-[40px] w-full max-w-[80px] rounded-2xl border-b-2 border-b-gray-300 bg-white font-bold text-blue-500 ring-2 ring-gray-300 
           hover:bg-gray-200 active:translate-y-[0.125rem] active:border-b-gray-200 sm:flex sm:items-center sm:justify-center"
-        >
-          {isLoginPage ? 'SIGN-IN' : 'LOGIN'}
-        </Link>
+          >
+            {isLoginPage ? 'SIGN-IN' : 'LOGIN'}
+          </Link>
+        )}
+
         <div className="flex sm:hidden">
           <button
             type="button"

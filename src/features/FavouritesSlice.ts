@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Item } from "../types/Item";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Item } from '../types/Item';
 
 const isFavouritesInLocalStorage: string | null =
-  localStorage.getItem("favouritesList");
+  localStorage.getItem('favouritesList');
 
 const favouritesInLocalStorage = isFavouritesInLocalStorage
   ? JSON.parse(isFavouritesInLocalStorage)
@@ -11,7 +11,7 @@ const favouritesInLocalStorage = isFavouritesInLocalStorage
 const initialState: Item[] = favouritesInLocalStorage;
 
 export const favouritesSlice = createSlice({
-  name: "favourites",
+  name: 'favourites',
   initialState,
   reducers: {
     add: (items, action: PayloadAction<Item>) => {
