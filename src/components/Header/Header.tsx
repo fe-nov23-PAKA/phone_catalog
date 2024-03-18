@@ -16,7 +16,7 @@ import './HoverNav.scss';
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const isAuth = useAppSelector((state) => state.auth);
+  const isAuth = Boolean(useAppSelector((state) => state.auth));
 
   const isLoginPage = useLocation().pathname.split('/')[1] === 'login';
 
