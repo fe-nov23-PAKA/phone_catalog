@@ -17,6 +17,7 @@ import * as itemsSlice from '../features/ItemsSlice';
 import { Contacts } from '../Pages/Contacts';
 import { LoginPage } from '../Pages/LoginPage';
 import { SignInPage } from '../Pages/SignInPage';
+import { ActivationConfirm } from '../Pages/ActivationConfirm';
 
 export const Root = () => {
   const dispatch = useAppDispatch();
@@ -84,7 +85,10 @@ export const Root = () => {
             <Route path="cart" element={<Cart />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="sign-in" element={<SignInPage />} />
-            <Route path="activate" element={<ActivationPage />} />
+            <Route path="activate">
+              <Route index element={<ActivationPage />} />
+              <Route path=":activateId" element={<ActivationConfirm />} />
+            </Route>
           </Route>
 
           <Route path="*" element={<PageNotFound />} />
